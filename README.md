@@ -11,3 +11,4 @@ A mobile app that is easy and efficient in order to track Invisalign wear time, 
 Faster and more convenient to the user of Invisalign treatment. All information that is necessary, in relation to the treatment is in one app. 
 ##### Key features 
 View ClinCheck plan, View Treatment length, Timer for when braces have been taken in, Record of wear time (daily, weekly, monthly), Countdown till treatment is finished, Keep records Scheduled Appointment with an Orthodontist, Motivational Notifications if wear time isn’t on track.
+### extra
