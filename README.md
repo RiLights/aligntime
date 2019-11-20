@@ -12,3 +12,4 @@ Faster and more convenient to the user of Invisalign treatment. All information 
 ##### Key features 
 View ClinCheck plan, View Treatment length, Timer for when braces have been taken in, Record of wear time (daily, weekly, monthly), Countdown till treatment is finished, Keep records Scheduled Appointment with an Orthodontist, Motivational Notifications if wear time isn’t on track.
 ### extra
+#### extra 2 this is me trying to update it by myself without any help
