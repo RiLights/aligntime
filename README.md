@@ -1,4 +1,4 @@
-# aligntime
+# Aligntime
 AlignTime App product vision
 
 ##### Target group
