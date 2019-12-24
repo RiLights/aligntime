@@ -9,9 +9,12 @@
 import UIKit
 import SwiftUI
 
+let defaults = UserDefaults.standard
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var user_data = UserData()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
