@@ -35,7 +35,7 @@
 		F026CA1823B0B453006EC25D /* ProfileHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHost.swift; sourceTree = "<group>"; };
 		F026CA1A23B0BE64006EC25D /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		F026CA1C23B0C6D1006EC25D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		F05B5C4E238D0A7800BC10C9 /* aligntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aligntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F05B5C4E238D0A7800BC10C9 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F05B5C55238D0A7800BC10C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		F05B5C4F238D0A7800BC10C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F05B5C4E238D0A7800BC10C9 /* aligntime.app */,
+				F05B5C4E238D0A7800BC10C9 /* AlignTime.app */,
 				F05B5C64238D0A7900BC10C9 /* aligntimeTests.xctest */,
 			);
 			name = Products;
@@ -152,7 +152,7 @@
 			);
 			name = aligntime;
 			productName = aligntime;
-			productReference = F05B5C4E238D0A7800BC10C9 /* aligntime.app */;
+			productReference = F05B5C4E238D0A7800BC10C9 /* AlignTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F05B5C63238D0A7900BC10C9 /* aligntimeTests */ = {
@@ -393,7 +393,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.aligntime;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AlignTime;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -413,7 +413,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.aligntime;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AlignTime;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

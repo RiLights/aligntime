@@ -62,6 +62,7 @@ struct Home: View {
                 ProfileHost()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
