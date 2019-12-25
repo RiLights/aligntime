@@ -22,7 +22,7 @@ struct Home: View {
         }
     }
     var body: some View {
-        NavigationView {
+        Section {
            TabView(selection: $selection){
                 VStack {
                     Image(systemName: "play.circle")
@@ -62,6 +62,7 @@ struct Home: View {
                 ProfileHost()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
