@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject var user_data: UserData
     @State private var selection = 0
     
     @State var showingProfile = false
@@ -59,15 +60,10 @@ struct Home: View {
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
             .sheet(isPresented: $showingProfile) {
-                ProfileHost()
+                ProfileHost().environmentObject(self.user_data)
             }
         }
         .navigationBarBackButtonHidden(true)
-    }
-}
-
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
+        .navigationBarHidden(false)
     }
 }

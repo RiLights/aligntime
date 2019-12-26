@@ -10,8 +10,11 @@ import Combine
 import SwiftUI
 
 final class UserData: ObservableObject {
+    @Published var require_count:Int = 75
+    @Published var aligners_count:Int = 7
     @Published var start_treatment:Date = Date()
-    @Published var aligners_start:Int = 0
-    @Published var aligners_count:Int = 1
-    @Published var complete:Bool = false
+    @Published var align_count_now:Int = 4
+    @Published var days_wearing:Int = 6
+    
+    @Published var complete:Bool = true
 }

@@ -14,10 +14,12 @@ struct ContentView: View {
     var body: some View {
         Group{
             if user_data.complete == true {
-                Home()
+                NavigationView {
+                    Home().environmentObject(user_data)
+                }
             }
             else{
-                Init()
+                Welcome().environmentObject(user_data)
             }
         }
     }
