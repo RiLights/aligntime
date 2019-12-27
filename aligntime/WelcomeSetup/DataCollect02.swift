@@ -11,8 +11,7 @@ import SwiftUI
 struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var align_count_now = 4
-    @State private var days_wearing = 6
+    @EnvironmentObject var user_data: UserData
 
     var body: some View {
         Section {
@@ -23,8 +22,8 @@ struct DataCollect02: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(align_count_now)")
-                        Stepper("", value: $align_count_now, in: 1...10)
+                        Text("\(user_data.align_count_now)")
+                        Stepper("", value: $user_data.align_count_now, in: 1...10)
                     }
                     .padding(.horizontal, 30)
                     Divider()
@@ -37,8 +36,8 @@ struct DataCollect02: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(days_wearing)")
-                        Stepper("", value: $days_wearing, in: 1...10)
+                        Text("\(user_data.days_wearing)")
+                        Stepper("", value: $user_data.days_wearing, in: 1...10)
                     }
                     .padding(.horizontal, 30)
                     Divider()
@@ -65,6 +64,10 @@ struct DataCollect02: View {
                                 .padding(0)
                             Text("Ready")
                                 .foregroundColor(.white)
+                        }
+                        .onDisappear() {
+                            self.user_data.complete = true
+                            self.user_data.push_user_defaults()
                         }
                     }
                 }
