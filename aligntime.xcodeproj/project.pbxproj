@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F026CA0C23B0A7E1006EC25D /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA0B23B0A7E1006EC25D /* Calendar.swift */; };
+		F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */; };
 		F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1823B0B453006EC25D /* ProfileHost.swift */; };
 		F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1A23B0BE64006EC25D /* Welcome.swift */; };
 		F026CA1D23B0C6D1006EC25D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1C23B0C6D1006EC25D /* Home.swift */; };
@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F026CA0B23B0A7E1006EC25D /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F026CA1823B0B453006EC25D /* ProfileHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHost.swift; sourceTree = "<group>"; };
 		F026CA1A23B0BE64006EC25D /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		F026CA1C23B0C6D1006EC25D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -50,8 +50,8 @@
 		F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollect02.swift; sourceTree = "<group>"; };
 		F0ADCFC623B45CF300F7A3E7 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0ADCFCC23B5CC6100F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = aligntimeTests.xctest; path = "/Users/ostap/workspace/aligntime/build/Debug-iphoneos/aligntimeTests.xctest"; sourceTree = "<absolute>"; };
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
+		F0ADCFD123B9446700F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 		F026CA0A23B0A7BC006EC25D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				F026CA0B23B0A7E1006EC25D /* Calendar.swift */,
+				F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -95,6 +95,7 @@
 			children = (
 				F05B5C50238D0A7800BC10C9 /* aligntime */,
 				F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */,
+				F0ADCFD123B9446700F7A3E7 /* aligntimeTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,7 +180,7 @@
 			);
 			name = aligntimeTests;
 			productName = aligntimeTests;
-			productReference = F0ADCFCC23B5CC6100F7A3E7 /* aligntimeTests.xctest */;
+			productReference = F0ADCFD123B9446700F7A3E7 /* aligntimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -255,7 +256,7 @@
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */,
-				F026CA0C23B0A7E1006EC25D /* Calendar.swift in Sources */,
+				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
 				F026CA1D23B0C6D1006EC25D /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

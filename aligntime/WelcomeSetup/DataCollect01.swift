@@ -18,7 +18,7 @@ struct DataCollect01: View {
         formatter.dateStyle = .long
         return formatter
     }
-    
+    let min_date = Calendar.current.date(byAdding: .year, value: -3, to: Date())
 
     var body: some View {
         Section() {
@@ -32,7 +32,7 @@ struct DataCollect01: View {
                     HStack {
                         TextField("",value:$user_data.require_count,formatter: NumberFormatter())
                             //.keyboardType(.numberPad) Make event to hide keyboar when numer is more then ...
-                        Stepper("", value: $user_data.require_count, in: 0...130)
+                        Stepper("", value: $user_data.require_count, in: 1...200)
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -46,7 +46,7 @@ struct DataCollect01: View {
                         .multilineTextAlignment(.center)
                     HStack {
                         Text("\(user_data.aligners_count)")
-                        Stepper("", value: $user_data.aligners_count, in: 1...500)
+                        Stepper("", value: $user_data.aligners_count, in: 1...31)
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -59,7 +59,7 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .padding(.horizontal, 30)
                         .multilineTextAlignment(.center)
-                    DatePicker(selection: $user_data.start_treatment, in: ...Date(), displayedComponents: .date) {
+                    DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
                         Text("")
                         }
                     Text("Start date is: \(user_data.start_treatment, formatter: dateFormatter)")

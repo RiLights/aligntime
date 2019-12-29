@@ -35,7 +35,7 @@ struct Home: View {
                    }
                    .tag(0)
 
-               Calendar()
+               CalendarManager()
                    .font(.title)
                    .tabItem {
                        VStack {

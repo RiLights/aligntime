@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Calendar: View {
+struct CalendarManager: View {
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
@@ -22,8 +22,3 @@ struct Calendar: View {
     }
 }
 
-struct Calendar_Previews: PreviewProvider {
-    static var previews: some View {
-        Calendar()
-    }
-}
