@@ -48,7 +48,7 @@ struct DataCollect01: View {
                         Text("\(user_data.aligners_count)")
                         Stepper("", value: $user_data.aligners_count, in: 1...500)
                     }
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 20)
                     Divider()
                 }
                 .padding(.bottom,40)

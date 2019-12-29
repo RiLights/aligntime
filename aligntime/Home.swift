@@ -24,12 +24,8 @@ struct Home: View {
     }
     var body: some View {
         Section {
-           TabView(selection: $selection){
-                VStack {
-                    Image(systemName: "play.circle")
-                    Text("Today")
-                        .fontWeight(.light)
-                }
+            TabView(selection: $selection){
+                TodayManager()
                    .font(.title)
                    .tabItem {
                         VStack {
