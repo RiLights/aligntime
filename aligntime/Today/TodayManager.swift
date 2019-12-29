@@ -16,6 +16,7 @@ struct TodayManager: View {
     }
     var today_date = Date()
     @State var play_state:Bool = false
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("Today: \(today_date, formatter: dateFormatter)")
@@ -47,14 +48,14 @@ struct TodayManager: View {
             Spacer()
             HStack(alignment: .center, spacing: 4) {
                 Text("You have been wearing aligners for")
-                    .font(.headline)
+                    .font(.footnote)
                     .foregroundColor(Color.primary)
                     //.padding(.leading, 10)
                 Text("3")
                     .font(.headline)
                     .foregroundColor(Color.blue)
                 Text("days")
-                    .font(.headline)
+                    .font(.footnote)
                     .foregroundColor(Color.primary)
                     //.padding(.trailing, 10)
             }
@@ -65,8 +66,8 @@ struct TodayManager: View {
                     .padding(.leading, 5)
                     .padding(.top, 7)
                     .padding(.bottom, 30)
-                Text("days till the end of the treatment")
-                    .font(.headline)
+                Text("days left until you reach the end of your treatment")
+                    .font(.footnote)
                     .foregroundColor(Color.primary)
                     .padding(.trailing, 5)
                     .padding(.top, 7)
