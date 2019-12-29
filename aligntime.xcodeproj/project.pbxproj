@@ -20,6 +20,7 @@
 		F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC223B3F67400F7A3E7 /* DataCollect01.swift */; };
 		F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */; };
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
+		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		F0ADCFC623B45CF300F7A3E7 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFCC23B5CC6100F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = aligntimeTests.xctest; path = "/Users/ostap/workspace/aligntime/build/Debug-iphoneos/aligntimeTests.xctest"; sourceTree = "<absolute>"; };
+		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				F026CA1C23B0C6D1006EC25D /* Home.swift */,
 				F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */,
 				F026CA1123B0AF32006EC25D /* Profile */,
+				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
 				F026CA0A23B0A7BC006EC25D /* Calendar */,
 				F05B5C57238D0A7900BC10C9 /* Assets.xcassets */,
 				F05B5C5F238D0A7900BC10C9 /* Info.plist */,
@@ -131,6 +134,14 @@
 				F026CA1A23B0BE64006EC25D /* Welcome.swift */,
 			);
 			path = WelcomeSetup;
+			sourceTree = "<group>";
+		};
+		F0ADCFCD23B5FECF00F7A3E7 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				F05B5C52238D0A7800BC10C9 /* AppDelegate.swift in Sources */,
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
 				F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */,
+				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,
 				F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */,
