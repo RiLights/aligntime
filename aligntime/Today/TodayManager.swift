@@ -18,16 +18,16 @@ struct TodayManager: View {
     @State var play_state:Bool = false
     var body: some View {
         VStack(alignment: .center) {
-            Text("Today,: \(today_date, formatter: dateFormatter)")
+            Text("Today: \(today_date, formatter: dateFormatter)")
                 .font(.headline)
                 .foregroundColor(Color.primary)
             Spacer()
             VStack(alignment: .center) {
-                Text("Wear time: 2")
+                Text("Wear time: 2:12")
                     .font(.headline)
                     .foregroundColor(Color.primary)
                     .padding(.vertical, 5)
-                Text("Our time: 3")
+                Text("Out time: 9:15")
                     .font(.headline)
                     .foregroundColor(Color.primary)
             }
@@ -46,28 +46,30 @@ struct TodayManager: View {
             .frame(width: 110, height: 110, alignment: .bottom)
             Spacer()
             HStack(alignment: .center, spacing: 4) {
-                Text("You are wearing Aligner")
+                Text("You have been wearing aligners for")
                     .font(.headline)
                     .foregroundColor(Color.primary)
-                    .padding(.leading, 10)
+                    //.padding(.leading, 10)
                 Text("3")
                     .font(.headline)
                     .foregroundColor(Color.blue)
                 Text("days")
                     .font(.headline)
                     .foregroundColor(Color.primary)
-                    .padding(.trailing, 10)
+                    //.padding(.trailing, 10)
             }
             HStack(alignment: .center, spacing: 4) {
                 Text("70")
                     .font(.headline)
                     .foregroundColor(Color.blue)
                     .padding(.leading, 5)
+                    .padding(.top, 7)
                     .padding(.bottom, 30)
-                Text("of days till the end of the treatment")
+                Text("days till the end of the treatment")
                     .font(.headline)
                     .foregroundColor(Color.primary)
                     .padding(.trailing, 5)
+                    .padding(.top, 7)
                     .padding(.bottom, 30)
             }
         }
