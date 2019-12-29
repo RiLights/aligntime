@@ -38,7 +38,7 @@ struct TodayManager: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.primary, lineWidth: 2)
-                    Image(systemName: self.play_state ? "play.circle" : "pause.circle")
+                    Image(systemName: self.play_state ? "pause.circle" : "play.circle" )
                         .font(.system(size: 80))
                         
                 }
