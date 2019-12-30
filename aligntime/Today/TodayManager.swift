@@ -22,19 +22,31 @@ struct TodayManager: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Today: \(today_date, formatter: dateFormatter)")
-                .font(.headline)
+                .font(.system(size: 23))
                 .foregroundColor(Color.primary)
+                .fontWeight(Font.Weight.light)
             Spacer()
             VStack(alignment: .center) {
-                Text("Wear time: 2:12")
-                    .font(.headline)
-                    .foregroundColor(Color.primary)
-                    .padding(.vertical, 5)
-                Text("Out time: 9:15")
-                    .font(.headline)
-                    .foregroundColor(Color.primary)
+                HStack(alignment: .center, spacing: 4) {
+                    Text("Wear time: ")
+                        .font(.system(size: 24))
+                        .foregroundColor(Color.primary)
+                        .padding(.bottom, 5)
+                    Text("8:12")
+                         .font(.system(size: 24))
+                         .foregroundColor(Color.blue)
+                         .padding(.bottom, 5)
+                }
+                HStack(alignment: .center, spacing: 0) {
+                    Text("Out time: ")
+                        .font(.system(size: 24))
+                        .foregroundColor(Color.primary)
+                    Text("1:15")
+                        .font(.system(size: 24))
+                        .foregroundColor(Color.blue)
+                }
             }
-            .padding(.vertical, 10)
+            .padding(.bottom, 10)
             Button(action: {
                 self.play_state = !self.play_state
             }){
@@ -42,34 +54,31 @@ struct TodayManager: View {
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.primary, lineWidth: 2)
                     Image(systemName: self.play_state ? "pause.circle" : "play.circle" )
-                        .font(.system(size: 80))
-                        
+                        .font(.system(size: 90))
                 }
             }
-            .frame(width: 110, height: 110, alignment: .bottom)
+            .frame(width: 120, height: 120, alignment: .bottom)
             Spacer()
             HStack(alignment: .center, spacing: 4) {
                 Text("You have been wearing aligners for")
-                    .font(.footnote)
+                    .font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                    //.padding(.leading, 10)
                 Text("3")
-                    .font(.headline)
+                    .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                 Text("days")
-                    .font(.footnote)
+                    .font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                    //.padding(.trailing, 10)
             }
             HStack(alignment: .center, spacing: 4) {
                 Text("70")
-                    .font(.headline)
+                    .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                     .padding(.leading, 5)
                     .padding(.top, 7)
                     .padding(.bottom, 30)
-                Text("days left until you reach the end of your treatment")
-                    .font(.footnote)
+                Text("days left until the end of your treatment")
+                    .font(.system(size: 17))
                     .foregroundColor(Color.primary)
                     .padding(.trailing, 5)
                     .padding(.top, 7)
