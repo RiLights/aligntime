@@ -59,6 +59,19 @@ struct Home: View {
             .sheet(isPresented: $showingProfile) {
                 ProfileHost().environmentObject(self.user_data)
             }
+            .gesture(DragGesture()
+            .onEnded({ (value) in
+                if (value.translation.width > 0){
+                    if (value.translation.width > 100) && (self.selection>=1){
+                        self.selection-=1
+                    }
+                }
+                else{
+                    if (value.translation.width < -100) && (self.selection<=1){
+                        self.selection+=1
+                    }
+                }
+            }))
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
