@@ -12,6 +12,7 @@ struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @EnvironmentObject var user_data: UserData
+    @State private var ready_setup = false
 
     var body: some View {
         Section {
@@ -64,10 +65,6 @@ struct DataCollect02: View {
                                 .padding(0)
                             Text("Ready")
                                 .foregroundColor(.white)
-                        }
-                        .onDisappear() {
-                            self.user_data.complete = true
-                            self.user_data.push_user_defaults()
                         }
                     }
                 }

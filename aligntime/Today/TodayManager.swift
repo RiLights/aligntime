@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct TodayManager: View {
+    @EnvironmentObject var user_data: UserData
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -73,6 +75,12 @@ struct TodayManager: View {
                     .padding(.top, 7)
                     .padding(.bottom, 30)
             }
+        }
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                self.user_data.complete = true
+                self.user_data.push_user_defaults()
+            })
         }
     }
 }
