@@ -11,7 +11,7 @@ import SwiftUI
 struct TodayManager: View {
     @EnvironmentObject var user_data: UserData
     
-    var dateFormatter: DateFormatter {
+    var date_formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
@@ -21,7 +21,7 @@ struct TodayManager: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Today: \(today_date, formatter: dateFormatter)")
+            Text("Today: \(today_date, formatter: date_formatter)")
                 .font(.system(size: 23))
                 .foregroundColor(Color.primary)
                 .fontWeight(Font.Weight.light)

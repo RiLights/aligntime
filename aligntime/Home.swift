@@ -17,7 +17,8 @@ struct Home: View {
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
             Image(systemName: "person.crop.circle")
-                .imageScale(.large)
+                .font(.system(size: 26))
+                //.imageScale(.large)
                 .accessibility(label: Text("User Profile"))
                 .padding()
         }
