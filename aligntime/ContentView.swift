@@ -9,9 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var user_data: UserData
     
     var body: some View {
-        Init()
+        Group{
+            if user_data.complete == true {
+                NavigationView {
+                    Home().environmentObject(user_data)
+                }
+            }
+            else{
+                Welcome().environmentObject(user_data)
+            }
+        }
     }
 }
 

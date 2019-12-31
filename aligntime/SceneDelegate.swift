@@ -9,26 +9,54 @@
 import UIKit
 import SwiftUI
 
-let defaults = UserDefaults.standard
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    //var user_data = defaults.object(forKey: "UserData") as? UserData
     var user_data = UserData()
+    var timer = Timer()
+    
+    func runTimer() {
+         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    func format(second: TimeInterval) -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: second)
+    }
+    
+    @objc func updateTimer() {
+        if user_data.play_state{
+            if user_data.start_time != nil{
+                let elapsed_time = Date().timeIntervalSince(user_data.start_time!)
+                self.user_data.timer = self.format(second:elapsed_time)!
+                self.user_data.elapsed_time = elapsed_time
+            }
+        }
+        else{
+            let elapsed_time = Date().timeIntervalSince(user_data.out_time)
+            self.user_data.out_timer = self.format(second:elapsed_time)!
+            self.user_data.out_elapsed_time = elapsed_time
+        }
 
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
+        self.runTimer()
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
+        let content_view = ContentView()
+        user_data.pull_user_defaults()
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(rootView: content_view.environmentObject(user_data))
             self.window = window
             window.makeKeyAndVisible()
         }

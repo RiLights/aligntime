@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject var user_data: UserData
     @State private var selection = 0
     
     @State var showingProfile = false
@@ -16,19 +17,16 @@ struct Home: View {
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
             Image(systemName: "person.crop.circle")
-                .imageScale(.large)
+                .font(.system(size: 26))
+                //.imageScale(.large)
                 .accessibility(label: Text("User Profile"))
                 .padding()
         }
     }
     var body: some View {
-        NavigationView {
-           TabView(selection: $selection){
-                VStack {
-                    Image(systemName: "play.circle")
-                    Text("Today")
-                        .fontWeight(.light)
-                }
+        Section {
+            TabView(selection: $selection){
+                TodayManager()
                    .font(.title)
                    .tabItem {
                         VStack {
@@ -38,7 +36,7 @@ struct Home: View {
                    }
                    .tag(0)
 
-               Calendar()
+               CalendarManager()
                    .font(.title)
                    .tabItem {
                        VStack {
@@ -59,14 +57,23 @@ struct Home: View {
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
             .sheet(isPresented: $showingProfile) {
-                ProfileHost()
+                ProfileHost().environmentObject(self.user_data)
             }
+            .gesture(DragGesture()
+            .onEnded({ (value) in
+                if (value.translation.width > 0){
+                    if (value.translation.width > 100) && (self.selection>=1){
+                        self.selection-=1
+                    }
+                }
+                else{
+                    if (value.translation.width < -100) && (self.selection<=1){
+                        self.selection+=1
+                    }
+                }
+            }))
         }
-    }
-}
-
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(false)
     }
 }
