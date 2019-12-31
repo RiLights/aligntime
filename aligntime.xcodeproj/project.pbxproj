@@ -21,6 +21,7 @@
 		F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */; };
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
+		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0ADCFF323BB052C00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = aligntimeTests.xctest; path = "/Users/ostap/workspace/aligntime/build/Debug-iphoneos/aligntimeTests.xctest"; sourceTree = "<absolute>"; };
+		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */,
 				F05B5C55238D0A7800BC10C9 /* ContentView.swift */,
 				F026CA1C23B0C6D1006EC25D /* Home.swift */,
+				F0ADCFF423BB515900F7A3E7 /* Core */,
 				F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */,
 				F026CA1123B0AF32006EC25D /* Profile */,
 				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
@@ -142,6 +145,14 @@
 				F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		F0ADCFF423BB515900F7A3E7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,
 				F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */,
 				F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */,
+				F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */,
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */,
