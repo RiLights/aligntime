@@ -8,17 +8,46 @@
 
 import SwiftUI
 
+
 struct CalendarManager: View {
-    var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            Rectangle()
-                .border(Color.white, width: 1)
-                .frame(width: 200, height: 200)
-                .foregroundColor(.blue)
-            Text("That Is Calendar")
-            Spacer()
-        }
-    }
+     
+       @State var singleIsPresented = false
+       @State var startIsPresented = false
+       @State var multipleIsPresented = false
+       @State var deselectedIsPresented = false
+       
+       var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+       var pickup_date = "Pick up the date"
+       
+       var body: some View {
+        
+           VStack (spacing: 25) {
+               
+               Button(action: { self.singleIsPresented.toggle() }) {
+                   Text(self.getTextFromDate(date: self.rkManager1.selectedDate)).foregroundColor(.blue)
+               }
+               .sheet(isPresented: self.$singleIsPresented, content: {
+                   RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)})
+           }.onAppear(perform: startUp)
+               .navigationViewStyle(StackNavigationViewStyle())
+       }
+       
+       func startUp() {
+         
+           
+       }
+       
+       func getTextFromDate(date: Date!) -> String {
+           let formatter = DateFormatter()
+           formatter.locale = .current
+           formatter.dateFormat = "yyyy.MM.d"
+           return date == nil ? "Pick up the date" : formatter.string(from: date)
+       }
+
 }
 
+struct Calendar_Previews: PreviewProvider {
+    static var previews: some View {
+        CalendarManager()
+    }
+}
