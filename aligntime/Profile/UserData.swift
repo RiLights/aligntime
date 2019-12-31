@@ -18,6 +18,14 @@ final class UserData: ObservableObject {
     @Published var align_count_now:Int = 4
     @Published var days_wearing:Int = 6
     
+    @Published var play_state:Bool = false
+    @Published var start_time:Date?
+    @Published var out_time:Date = Date()
+    @Published var out_timer:String = "00:00:00"
+    @Published var timer:String = "00:00:00"
+    @Published var elapsed_time:TimeInterval = TimeInterval()
+    @Published var out_elapsed_time:TimeInterval = TimeInterval()
+    
     @Published var complete:Bool = false
     
     func push_user_defaults(){

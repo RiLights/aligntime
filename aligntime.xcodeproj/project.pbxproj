@@ -51,7 +51,7 @@
 		F0ADCFC623B45CF300F7A3E7 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
-		F0ADCFD123B9446700F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = aligntimeTests.xctest; path = "/Users/ostap/workspace/aligntime/build/Debug-iphoneos/aligntimeTests.xctest"; sourceTree = "<absolute>"; };
+		F0ADCFF323BB052C00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = aligntimeTests.xctest; path = "/Users/ostap/workspace/aligntime/build/Debug-iphoneos/aligntimeTests.xctest"; sourceTree = "<absolute>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +179,7 @@
 			);
 			name = aligntimeTests;
 			productName = aligntimeTests;
-			productReference = F0ADCFD123B9446700F7A3E7 /* aligntimeTests.xctest */;
+			productReference = F0ADCFF323BB052C00F7A3E7 /* aligntimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
