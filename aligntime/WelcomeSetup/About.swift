@@ -14,12 +14,12 @@ struct About: View {
     var body: some View {
         Section {
             VStack(alignment: .center){
-                Text("Faster and more convenient to the user of Invisalign treatment. All information that is necessary, in relation to the treatment is in one app.")
-                    .font(.headline)
+                Text("AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.")
+                    .font(.system(size: 21))
                     .fontWeight(.regular)
                     .foregroundColor(.blue)
-                    .padding(.horizontal, 20)
-                    .padding(20)
+                    .padding(.horizontal, 12)
+                    .padding(12)
                     .multilineTextAlignment(.center)
                 Spacer()
                 HStack(alignment: .firstTextBaseline,spacing: 0){
