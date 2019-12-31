@@ -18,6 +18,8 @@ struct TodayManager: View {
     }
     
     var today_date = Date()
+    let generator = UINotificationFeedbackGenerator()
+    let generator_feedback = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         VStack(alignment: .center) {
@@ -60,6 +62,7 @@ struct TodayManager: View {
                 else{
                     self.user_data.out_time = Date().addingTimeInterval((self.user_data.out_elapsed_time)*(-1))
                 }
+                self.generator_feedback.impactOccurred()
             }){
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
@@ -104,4 +107,3 @@ struct TodayManager: View {
         }
     }
 }
-
