@@ -22,12 +22,7 @@ struct CalendarManager: View {
        var body: some View {
         
            VStack (spacing: 25) {
-               
-               Button(action: { self.singleIsPresented.toggle() }) {
-                   Text(self.getTextFromDate(date: self.rkManager1.selectedDate)).foregroundColor(.blue)
-               }
-               .sheet(isPresented: self.$singleIsPresented, content: {
-                   RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)})
+                   RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)
            }.onAppear(perform: startUp)
                .navigationViewStyle(StackNavigationViewStyle())
        }
