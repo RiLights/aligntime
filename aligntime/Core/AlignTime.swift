@@ -23,4 +23,8 @@ class AlignTime {
     func get_wear_time_for_date(date:Date) ->String{return ""}
     
     func get_off_time_for_date(date:Date) ->String{return ""}
+    
+    func get_wearing_days() ->Int{return 0}
+    
+    func get_days_to_treatment_end() ->Int{return 0}
 }
