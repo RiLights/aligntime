@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TodayManager: View {
-    @EnvironmentObject var user_data: UserData
+    @EnvironmentObject var user_data: AlignTime
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -18,7 +18,6 @@ struct TodayManager: View {
     }
     
     var today_date = Date()
-    let generator = UINotificationFeedbackGenerator()
     let generator_feedback = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
@@ -34,7 +33,7 @@ struct TodayManager: View {
                         .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                         .padding(.bottom, 5)
-                    Text("\(self.user_data.timer)")
+                    Text("\(self.user_data.wear_timer)")
                         .font(.system(size: 24))
                         .foregroundColor(Color.blue)
                         .padding(.bottom, 5)
@@ -50,18 +49,15 @@ struct TodayManager: View {
             }
             .padding(.bottom, 10)
             Button(action: {
-                self.user_data.play_state = !self.user_data.play_state
                 if self.user_data.play_state{
-                    if self.user_data.start_time == nil{
-                        self.user_data.start_time = Date()
-                    }
-                    else{
-                        self.user_data.start_time = Date().addingTimeInterval((self.user_data.elapsed_time)*(-1))
-                    }
+                    self.user_data.start_wear()
                 }
                 else{
-                    self.user_data.out_time = Date().addingTimeInterval((self.user_data.out_elapsed_time)*(-1))
+                    self.user_data.out_wear()
                 }
+                self.user_data.play_state = !self.user_data.play_state
+                
+                //haptic feedback
                 self.generator_feedback.impactOccurred()
             }){
                 ZStack{

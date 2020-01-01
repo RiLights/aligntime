@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var user_data: UserData
+    @EnvironmentObject var user_data: AlignTime
     
     var body: some View {
         Group{

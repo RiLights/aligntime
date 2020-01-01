@@ -8,7 +8,7 @@ A view that hosts the profile viewer and editor.
 import SwiftUI
 
 struct ProfileHost: View {
-    @EnvironmentObject var user_data: UserData
+    @EnvironmentObject var user_data: AlignTime
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()

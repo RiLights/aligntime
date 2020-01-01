@@ -11,7 +11,7 @@ import SwiftUI
 struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @EnvironmentObject var user_data: UserData
+    @EnvironmentObject var user_data: AlignTime
     @State private var ready_setup = false
 
     var body: some View {
