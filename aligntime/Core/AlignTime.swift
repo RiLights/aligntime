@@ -23,7 +23,7 @@ final class AlignTime: ObservableObject {
     @Published var out_timer:String = "00:00:00"
     @Published var start_time:Date = Date()
     @Published var out_time:Date = Date()
-    @Published var elapsed_time:TimeInterval = TimeInterval()
+    @Published var wear_elapsed_time:TimeInterval = TimeInterval()
     @Published var out_elapsed_time:TimeInterval = TimeInterval()
     
     @Published var complete:Bool = false
@@ -32,10 +32,12 @@ final class AlignTime: ObservableObject {
 
     
     @objc func update_timer() {
+        
         if self.play_state{
             let elapsed_time = Date().timeIntervalSince(self.start_time)
             self.wear_timer = self.timer_format(second:elapsed_time)!
-            self.elapsed_time = elapsed_time
+            self.wear_elapsed_time = elapsed_time
+            
         }
         else{
             let elapsed_time = Date().timeIntervalSince(self.out_time)
@@ -49,7 +51,7 @@ final class AlignTime: ObservableObject {
     }
         
     func start_wear(){
-        self.start_time = Date().addingTimeInterval((self.elapsed_time)*(-1))
+        self.start_time = Date().addingTimeInterval((self.wear_elapsed_time)*(-1))
     }
     
     func out_wear(){

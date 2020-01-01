@@ -49,7 +49,7 @@ struct TodayManager: View {
             }
             .padding(.bottom, 10)
             Button(action: {
-                if self.user_data.play_state{
+                if !self.user_data.play_state{
                     self.user_data.start_wear()
                 }
                 else{
