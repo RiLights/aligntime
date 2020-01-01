@@ -52,10 +52,12 @@ final class AlignTime: ObservableObject {
         
     func start_wear(){
         self.start_time = Date().addingTimeInterval((self.wear_elapsed_time)*(-1))
+        self.start_time-=1
     }
     
     func out_wear(){
         self.out_time = Date().addingTimeInterval((self.out_elapsed_time)*(-1))
+        self.out_time-=1
     }
     
     func timer_format(second: TimeInterval) -> String? {
