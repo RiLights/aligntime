@@ -81,7 +81,7 @@ struct TodayManager: View {
                     .foregroundColor(Color.primary)
             }
             HStack(alignment: .center, spacing: 4) {
-                Text("70")
+                Text(self.user_data.days_left)
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                     .padding(.leading, 5)

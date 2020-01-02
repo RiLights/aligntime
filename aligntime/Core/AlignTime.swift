@@ -27,19 +27,21 @@ final class AlignTime: ObservableObject {
     @Published var out_elapsed_time:TimeInterval = TimeInterval()
     
     @Published var wearing_aligners_days:String = "0"
+    @Published var days_left:String = "0"
     
     @Published var complete:Bool = false
     
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
-    var days_string: [String: [String: Double]] = [:]
+    var days_string: [String: [String: Double]] = [:]//["2019/12/08":["wear":0]]
 
     
     @objc func update_timer() {
+        //print(days_string)
         self.update_wear_timer()
         self.update_today_dates()
         //registering data everytime is not so nice
-        self.push_user_defaults()
+        //self.push_user_defaults()
     }
     
     func start_timer(){
@@ -68,8 +70,16 @@ final class AlignTime: ObservableObject {
     func update_today_dates(){
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         let days_formated = self.day_format(days_interval)!.dropLast()
-        if (self.wearing_aligners_days != days_formated){
-            self.wearing_aligners_days = String(days_formated)
+        let days_formated_string = String(days_formated)
+        if (self.wearing_aligners_days != days_formated_string){
+            self.wearing_aligners_days = days_formated_string
+        }
+        
+        
+        let days_left_digit = (self.aligners_count * self.require_count) - Int(days_formated_string)!
+        let days_left_string = String(days_left_digit)
+        if (self.days_left != days_left_string){
+             self.days_left = days_left_string
         }
     }
         
@@ -124,11 +134,13 @@ final class AlignTime: ObservableObject {
     func get_days_to_treatment_end() ->Int{return 0}
     
     func set_wear_time_for_date(date:Date,interval:TimeInterval){
-        self.days_string[self.date_string_format(date)!]!["wear"] = interval
+        let wear = ["wear": interval]
+        self.days_string[self.date_string_format(date)!] = wear
     }
 
     func set_off_time_time_for_date(date:Date,interval:TimeInterval){
-        self.days_string[self.date_string_format(date)!]!["out"] = interval
+        let off_time = ["out": interval]
+        self.days_string[self.date_string_format(date)!] = off_time
     }
     
 //    func set_wear_time_for_date(date:Date,interval:TimeInterval){
@@ -146,6 +158,7 @@ final class AlignTime: ObservableObject {
         defaults.set(align_count_now, forKey: "align_count_now")
         defaults.set(days_wearing, forKey: "days_wearing")
         defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
+        defaults.set(days_left, forKey: "days_left")
         defaults.set(days_string, forKey: "days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
@@ -158,6 +171,7 @@ final class AlignTime: ObservableObject {
         self.align_count_now = defaults.integer(forKey: "align_count_now")
         self.days_wearing = defaults.integer(forKey: "days_wearing")
         self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
+        self.days_left = defaults.string(forKey: "days_left") ?? "0"
         self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
