@@ -26,28 +26,43 @@ final class AlignTime: ObservableObject {
     @Published var wear_elapsed_time:TimeInterval = TimeInterval()
     @Published var out_elapsed_time:TimeInterval = TimeInterval()
     
+    @Published var wearing_aligners_days:String = "0"
+    
     @Published var complete:Bool = false
     
     var days: [Date: [String: TimeInterval]] = [:]
 
     
     @objc func update_timer() {
-        
+        self.update_wear_timer()
+    }
+    
+    func start_timer(){
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update_timer), userInfo: nil, repeats: true)
+    }
+    
+    func update_wear_timer(){
         if self.play_state{
             let elapsed_time = Date().timeIntervalSince(self.start_time)
-            self.wear_timer = self.timer_format(second:elapsed_time)!
+            self.wear_timer = self.timer_format(elapsed_time)!
             self.wear_elapsed_time = elapsed_time
             
         }
         else{
             let elapsed_time = Date().timeIntervalSince(self.out_time)
-            self.out_timer = self.timer_format(second:elapsed_time)!
+            self.out_timer = self.timer_format(elapsed_time)!
             self.out_elapsed_time = elapsed_time
         }
+        self.update_today_dates()
+        
     }
     
-    func start_timer(){
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update_timer), userInfo: nil, repeats: true)
+    func update_today_dates(){
+        let days_interval = Date().timeIntervalSince(self.start_treatment)
+        let days = self.day_format(days_interval)!.dropLast()
+        if (self.wearing_aligners_days != days){
+            self.wearing_aligners_days = String(days)
+        }
     }
         
     func start_wear(){
@@ -60,11 +75,18 @@ final class AlignTime: ObservableObject {
         self.out_time-=1
     }
     
-    func timer_format(second: TimeInterval) -> String? {
+    func timer_format(_ second: TimeInterval) -> String? {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: second)
+    }
+    
+    func day_format(_ second: TimeInterval) -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.day]
         return formatter.string(from: second)
     }
     
@@ -86,6 +108,7 @@ final class AlignTime: ObservableObject {
         defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
         defaults.set(align_count_now, forKey: "align_count_now")
         defaults.set(days_wearing, forKey: "days_wearing")
+        defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
         
@@ -96,6 +119,7 @@ final class AlignTime: ObservableObject {
         self.start_treatment = Date(timeIntervalSince1970:defaults.double(forKey: "start_treatment"))
         self.align_count_now = defaults.integer(forKey: "align_count_now")
         self.days_wearing = defaults.integer(forKey: "days_wearing")
+        self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
     }

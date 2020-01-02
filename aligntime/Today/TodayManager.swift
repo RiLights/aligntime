@@ -73,7 +73,7 @@ struct TodayManager: View {
                 Text("You have been wearing aligners for")
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                Text("3")
+                Text(self.user_data.wearing_aligners_days)
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                 Text("days")
