@@ -31,14 +31,15 @@ final class AlignTime: ObservableObject {
     @Published var complete:Bool = false
     
     // how to save custom data into UserDefaults?
-    //var days: [Date: [String: TimeInterval]] = [:]
+    var days: [Date: [String: TimeInterval]] = [:]
     var days_string: [String: [String: Double]] = [:]
 
     
     @objc func update_timer() {
         self.update_wear_timer()
         self.update_today_dates()
-        print(days_string)
+        //registering data everytime is not so nice
+        self.push_user_defaults()
     }
     
     func start_timer(){
@@ -66,9 +67,9 @@ final class AlignTime: ObservableObject {
     
     func update_today_dates(){
         let days_interval = Date().timeIntervalSince(self.start_treatment)
-        let days = self.day_format(days_interval)!.dropLast()
-        if (self.wearing_aligners_days != days){
-            self.wearing_aligners_days = String(days)
+        let days_formated = self.day_format(days_interval)!.dropLast()
+        if (self.wearing_aligners_days != days_formated){
+            self.wearing_aligners_days = String(days_formated)
         }
     }
         
@@ -124,12 +125,10 @@ final class AlignTime: ObservableObject {
     
     func set_wear_time_for_date(date:Date,interval:TimeInterval){
         self.days_string[self.date_string_format(date)!]!["wear"] = interval
-        //self.days_string.updateValue(["wear" : interval], forKey: self.date_string_format(date)!)
     }
 
     func set_off_time_time_for_date(date:Date,interval:TimeInterval){
         self.days_string[self.date_string_format(date)!]!["out"] = interval
-        //self.days_string.updateValue(["out" : interval], forKey: self.date_string_format(date)!)
     }
     
 //    func set_wear_time_for_date(date:Date,interval:TimeInterval){
@@ -164,15 +163,25 @@ final class AlignTime: ObservableObject {
         self.complete = defaults.bool(forKey: "collecting_data_complete")
     }
     
-//    func add_test_days(){
-//        let formatter_date = DateFormatter()
-//        formatter_date.dateFormat = "yyyy/MM/dd"
-//        let day1 = formatter_date.date(from: "2019/12/08")
-//        let day2 = formatter_date.date(from: "2019/12/09")
-//
-//        let t1 = TimeInterval(exactly: 2000)
-//        let t2 = TimeInterval(exactly: 7000)
-//        let t3 = TimeInterval(exactly: 7000)
-//        self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
-//    }
+    func add_test_days(){
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd"
+        let day1 = formatter_date.date(from: "2019/12/08")
+        let day2 = formatter_date.date(from: "2019/12/09")
+
+        let t1 = TimeInterval(exactly: 2000)
+        let t2 = TimeInterval(exactly: 7000)
+        let t3 = TimeInterval(exactly: 7000)
+        self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
+    }
+    
+    func add_test_days_as_string(){
+        let day1 = "2019/12/08"
+        let day2 = "2019/12/09"
+
+        let t1 = TimeInterval(exactly: 2000)
+        let t2 = TimeInterval(exactly: 7000)
+        let t3 = TimeInterval(exactly: 7000)
+        self.days_string = [day1: ["out":t1!,"wear":t2!],day2:["out":t3!,"wear":t2!]]
+    }
 }
