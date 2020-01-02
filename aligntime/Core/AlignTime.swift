@@ -36,8 +36,8 @@ final class AlignTime: ObservableObject {
 
     
     @objc func update_timer() {
-        //self.update_wear_timer()
-        //self.update_today_dates()
+        self.update_wear_timer()
+        self.update_today_dates()
         print(days_string)
     }
     
