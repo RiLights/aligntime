@@ -7,6 +7,8 @@
 //
 import Combine
 import Foundation
+import UserNotifications
+
 
 final class AlignTime: ObservableObject {
     
@@ -38,8 +40,10 @@ final class AlignTime: ObservableObject {
     
     @objc func update_timer() {
         //print(days_string)
-        self.update_wear_timer()
-        self.update_today_dates()
+        if self.complete{
+            self.update_wear_timer()
+            self.update_today_dates()
+        }
         //registering data everytime is not so nice
         //self.push_user_defaults()
     }
@@ -76,11 +80,11 @@ final class AlignTime: ObservableObject {
         }
         
         
-        let days_left_digit = (self.aligners_count * self.require_count) - Int(days_formated_string)!
-        let days_left_string = String(days_left_digit)
-        if (self.days_left != days_left_string){
-             self.days_left = days_left_string
-        }
+//        let days_left_digit = (self.aligners_count * self.require_count) - Int(days_formated_string)!
+//        let days_left_string = String(days_left_digit)
+//        if (self.days_left != days_left_string){
+//             self.days_left = days_left_string
+//        }
     }
         
     func start_wear(){
@@ -175,6 +179,17 @@ final class AlignTime: ObservableObject {
         self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
+    }
+    
+    func send_notification(time_interval:Double){
+        let content = UNMutableNotificationContent()
+        content.title = "AlignTime Reminder. \(time_interval)s"
+        content.body = "Time to put your aligners on again"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
+        let request = UNNotificationRequest(identifier: "AlignTime.id.01", content: content, trigger: trigger)
+        print("debug send not")
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func add_test_days(){

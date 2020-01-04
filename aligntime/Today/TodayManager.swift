@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TodayManager: View {
     @EnvironmentObject var user_data: AlignTime
+    @State private var show_reminder = false
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -51,12 +52,12 @@ struct TodayManager: View {
             Button(action: {
                 if !self.user_data.play_state{
                     self.user_data.start_wear()
+                    self.user_data.play_state = !self.user_data.play_state
                 }
                 else{
-                    self.user_data.out_wear()
+                    self.show_reminder.toggle()
                 }
-                self.user_data.play_state = !self.user_data.play_state
-                
+                                
                 //haptic feedback
                 self.generator_feedback.impactOccurred()
             }){
@@ -68,6 +69,42 @@ struct TodayManager: View {
                 }
             }
             .frame(width: 120, height: 120, alignment: .bottom)
+            .actionSheet(isPresented: $show_reminder) {
+                ActionSheet(title: Text("Reminder"),
+                            message: Text("You will receive notification in the time interval they’ve selected"),
+                            buttons: [.default(Text("10 Seconds (for debug)"),action: {
+                                        self.user_data.out_wear()
+                                        self.user_data.play_state = !self.user_data.play_state
+                                        self.user_data.send_notification(time_interval: 10)
+                                        }),
+                                      .default(Text("15 Minutes"), action: {
+                                        self.user_data.out_wear()
+                                        self.user_data.play_state = !self.user_data.play_state
+                                        self.user_data.send_notification(time_interval: 900)
+                                      }),
+                                      .default(Text("30 Minutes"), action: {
+                                        self.user_data.out_wear()
+                                        self.user_data.play_state = !self.user_data.play_state
+                                        self.user_data.send_notification(time_interval: 1800)
+                                      }),
+                                      .default(Text("1 Hour"), action: {
+                                        self.user_data.out_wear()
+                                        self.user_data.play_state = !self.user_data.play_state
+                                        self.user_data.send_notification(time_interval: 3600)
+                                      }),
+                                      .cancel(),
+                                               
+                ])
+            }
+//            .alert(isPresented: $isShowingAlert) {
+//                Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("20"))
+//                {
+//                        print("asd")
+//                    }, secondaryButton:.destructive(Text("10")){
+//                        print("asd2")
+//                    }
+//                )
+//            }
             Spacer()
             HStack(alignment: .center, spacing: 4) {
                 Text("You have been wearing aligners for")
