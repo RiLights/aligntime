@@ -10,23 +10,21 @@ import SwiftUI
 
 
 struct CalendarManager: View {
-     
-       @State var singleIsPresented = false
-       @State var startIsPresented = false
-       @State var multipleIsPresented = false
-       @State var deselectedIsPresented = false
+
+       @State var multipleIsPresented = true
        
-       var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+       var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
    
        var body: some View {
-        
-           VStack (spacing: 25) {
-                   RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)
+           VStack () {
+              RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
            }.onAppear(perform: startUp)
                .navigationViewStyle(StackNavigationViewStyle())
        }
        
        func startUp() {
+        self.multipleIsPresented.toggle()
+        
          let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
          rkManager1.selectedDates.append(contentsOf: testOnDates)
          
@@ -38,8 +36,10 @@ struct CalendarManager: View {
        }
 }
 
+#if DEBUG
 struct Calendar_Previews: PreviewProvider {
     static var previews: some View {
         CalendarManager()
     }
 }
+#endif
