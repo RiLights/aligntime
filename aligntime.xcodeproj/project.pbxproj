@@ -23,7 +23,6 @@
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
-		F0FEDB1523C0120400682F85 /* ReminderPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB1423C0120400682F85 /* ReminderPopUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 		F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		F0FEDB1423C0120400682F85 /* ReminderPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */,
-				F0FEDB1423C0120400682F85 /* ReminderPopUp.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */,
-				F0FEDB1523C0120400682F85 /* ReminderPopUp.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
 				F026CA1D23B0C6D1006EC25D /* Home.swift in Sources */,
 			);
@@ -416,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
@@ -427,6 +424,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -437,6 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
@@ -448,6 +447,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

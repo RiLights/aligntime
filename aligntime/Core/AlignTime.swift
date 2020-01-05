@@ -79,12 +79,13 @@ final class AlignTime: ObservableObject {
             self.wearing_aligners_days = days_formated_string
         }
         
-        
-//        let days_left_digit = (self.aligners_count * self.require_count) - Int(days_formated_string)!
-//        let days_left_string = String(days_left_digit)
-//        if (self.days_left != days_left_string){
-//             self.days_left = days_left_string
-//        }
+        //print("days_formated_string:\(days_formated_string)")
+        // need to work with days_formated_string as Int (avoid potentional converting)
+        let days_left_digit = (self.aligners_count * self.require_count) - Int(days_formated_string)!
+        let days_left_string = String(days_left_digit)
+        if (self.days_left != days_left_string){
+             self.days_left = days_left_string
+        }
     }
         
     func start_wear(){
