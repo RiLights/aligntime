@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Home: View {
-    @EnvironmentObject var user_data: UserData
+    @EnvironmentObject var user_data: AlignTime
     @State private var selection = 0
     
     @State var showingProfile = false

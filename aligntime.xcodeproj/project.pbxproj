@@ -28,6 +28,7 @@
 		F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */; };
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
+		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,9 @@
 		F0ADCFC623B45CF300F7A3E7 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
+		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
+		F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,17 +120,19 @@
 			children = (
 				F05B5C50238D0A7800BC10C9 /* aligntime */,
 				F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */,
-				6D4B5DB023BB34C800F4B2CA /* aligntimeTests.xctest */,
+				F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 		F05B5C50238D0A7800BC10C9 /* aligntime */ = {
 			isa = PBXGroup;
 			children = (
+				F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */,
 				F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */,
 				F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */,
 				F05B5C55238D0A7800BC10C9 /* ContentView.swift */,
 				F026CA1C23B0C6D1006EC25D /* Home.swift */,
+				F0ADCFF423BB515900F7A3E7 /* Core */,
 				F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */,
 				F026CA1123B0AF32006EC25D /* Profile */,
 				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
@@ -166,6 +172,14 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
+		F0ADCFF423BB515900F7A3E7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,7 +215,7 @@
 			);
 			name = aligntimeTests;
 			productName = aligntimeTests;
-			productReference = 6D4B5DB023BB34C800F4B2CA /* aligntimeTests.xctest */;
+			productReference = F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -277,6 +291,7 @@
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,
 				F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */,
 				F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */,
+				F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */,
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */,
@@ -425,6 +440,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
@@ -434,10 +451,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.aligntime;
+				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -445,6 +463,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
@@ -454,10 +474,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.aligntime;
+				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
