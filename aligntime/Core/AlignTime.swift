@@ -9,6 +9,10 @@ import Combine
 import Foundation
 import UserNotifications
 
+enum AlignTimeError: Error {
+    case ThereIsNoMakeSenseException(date1: Int, date2: Int)
+}
+
 
 final class AlignTime: ObservableObject {
     
@@ -38,12 +42,17 @@ final class AlignTime: ObservableObject {
     var days_string: [String: [String: Double]] = [:]//["2019/12/08":["wear":0]]
 
     
-    @objc func update_timer() {
+    @objc func update_timer() throws {
         //print(days_string)
-        if self.complete{
-            self.update_wear_timer()
-            self.update_today_dates()
+        do{
+            if self.complete{
+                    self.update_wear_timer()
+                    try self.update_today_dates()
+            }
         }
+        catch AlignTimeError.ThereIsNoMakeSenseException(let date1, let date2) {
+           print ("Exception: ThereIsNoMakeSenseException \(date1) \(date2)!")
+       }
         //registering data everytime is not so nice
         //self.push_user_defaults()
     }
@@ -71,7 +80,7 @@ final class AlignTime: ObservableObject {
         }
     }
     
-    func update_today_dates(){
+    func update_today_dates() throws {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         let days_formated = self.day_format(days_interval)!.dropLast()
         let days_formated_string = String(days_formated)
@@ -81,7 +90,13 @@ final class AlignTime: ObservableObject {
         
         //print("days_formated_string:\(days_formated_string)")
         // need to work with days_formated_string as Int (avoid potentional converting)
+        
+        guard self.aligner_wear_days > self.aligner_number_now else {
+            throw AlignTimeError.ThereIsNoMakeSenseException(date1: self.aligner_wear_days,date2: self.aligner_number_now)
+        }
+        
         let days_left_digit = ((self.aligner_wear_days-self.aligner_number_now) * self.required_aligners_total) - Int(days_formated_string)!-self.current_aligner_days
+        
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
