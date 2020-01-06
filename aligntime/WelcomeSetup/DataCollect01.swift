@@ -30,9 +30,9 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        TextField("",value:$user_data.require_count,formatter: NumberFormatter())
+                        TextField("",value:$user_data.required_aligners_total,formatter: NumberFormatter())
                             //.keyboardType(.numberPad) Make event to hide keyboar when numer is more then ...
-                        Stepper("", value: $user_data.require_count, in: 1...200)
+                        Stepper("", value: $user_data.required_aligners_total, in: 1...200)
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -45,8 +45,8 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(user_data.aligners_count)")
-                        Stepper("", value: $user_data.aligners_count, in: 1...31)
+                        Text("\(user_data.aligner_wear_days)")
+                        Stepper("", value: $user_data.aligner_wear_days, in: 1...31)
                     }
                     .padding(.horizontal, 20)
                     Divider()

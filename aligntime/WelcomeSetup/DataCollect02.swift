@@ -23,8 +23,8 @@ struct DataCollect02: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(user_data.align_count_now)")
-                        Stepper("", value: $user_data.align_count_now, in: 1...200)
+                        Text("\(user_data.aligner_number_now)")
+                        Stepper("", value: $user_data.aligner_number_now, in: 1...200)
                     }
                     .padding(.horizontal, 30)
                     Divider()
@@ -37,8 +37,8 @@ struct DataCollect02: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(user_data.days_wearing)")
-                        Stepper("", value: $user_data.days_wearing, in: 1...31)
+                        Text("\(user_data.current_aligner_days)")
+                        Stepper("", value: $user_data.current_aligner_days, in: 1...31)
                     }
                     .padding(.horizontal, 30)
                     Divider()

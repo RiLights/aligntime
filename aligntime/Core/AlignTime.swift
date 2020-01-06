@@ -14,11 +14,11 @@ final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
     
-    @Published var require_count:Int = 75
-    @Published var aligners_count:Int = 7
+    @Published var required_aligners_total:Int = 75
+    @Published var aligner_wear_days:Int = 7
     @Published var start_treatment:Date = Date()
-    @Published var align_count_now:Int = 4
-    @Published var days_wearing:Int = 6
+    @Published var aligner_number_now:Int = 4
+    @Published var current_aligner_days:Int = 6
     
     @Published var play_state:Bool = true
     @Published var wear_timer:String = "00:00:00"
@@ -81,7 +81,7 @@ final class AlignTime: ObservableObject {
         
         //print("days_formated_string:\(days_formated_string)")
         // need to work with days_formated_string as Int (avoid potentional converting)
-        let days_left_digit = ((self.aligners_count-self.align_count_now) * self.require_count) - Int(days_formated_string)!-self.days_wearing
+        let days_left_digit = ((self.aligner_wear_days-self.aligner_number_now) * self.required_aligners_total) - Int(days_formated_string)!-self.current_aligner_days
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
@@ -157,11 +157,11 @@ final class AlignTime: ObservableObject {
 //    }
     
     func push_user_defaults(){
-        defaults.set(require_count, forKey: "require_count")
-        defaults.set(aligners_count, forKey: "aligners_count")
+        defaults.set(required_aligners_total, forKey: "require_count")
+        defaults.set(aligner_wear_days, forKey: "aligners_count")
         defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
-        defaults.set(align_count_now, forKey: "align_count_now")
-        defaults.set(days_wearing, forKey: "days_wearing")
+        defaults.set(aligner_number_now, forKey: "align_count_now")
+        defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         defaults.set(days_left, forKey: "days_left")
         defaults.set(days_string, forKey: "days")
@@ -170,11 +170,11 @@ final class AlignTime: ObservableObject {
         
     }
     func pull_user_defaults(){
-        self.require_count = defaults.integer(forKey: "require_count")
-        self.aligners_count = defaults.integer(forKey: "aligners_count")
+        self.required_aligners_total = defaults.integer(forKey: "require_count")
+        self.aligner_wear_days = defaults.integer(forKey: "aligners_count")
         self.start_treatment = Date(timeIntervalSince1970:defaults.double(forKey: "start_treatment"))
-        self.align_count_now = defaults.integer(forKey: "align_count_now")
-        self.days_wearing = defaults.integer(forKey: "days_wearing")
+        self.aligner_number_now = defaults.integer(forKey: "align_count_now")
+        self.current_aligner_days = defaults.integer(forKey: "days_wearing")
         self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
         self.days_left = defaults.string(forKey: "days_left") ?? "0"
         self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
