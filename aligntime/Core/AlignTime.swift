@@ -39,8 +39,6 @@ final class AlignTime: ObservableObject {
     
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
-    var days_string: [String: [String: Double]] = [:]//["2019/12/08":["wear":0]]
-
     
     @objc func update_timer() throws {
         //print(days_string)
@@ -155,21 +153,13 @@ final class AlignTime: ObservableObject {
     
     func set_wear_time_for_date(date:Date,interval:TimeInterval){
         let wear = ["wear": interval]
-        self.days_string[self.date_string_format(date)!] = wear
+        self.days[date] = wear
     }
 
     func set_off_time_time_for_date(date:Date,interval:TimeInterval){
         let off_time = ["out": interval]
-        self.days_string[self.date_string_format(date)!] = off_time
+        self.days[date] = off_time
     }
-    
-//    func set_wear_time_for_date(date:Date,interval:TimeInterval){
-//        self.days.updateValue(["wear" : interval], forKey: date)
-//    }
-//
-//    func set_off_time_time_for_date(date:Date,interval:TimeInterval){
-//        self.days.updateValue(["out" : interval], forKey: date)
-//    }
     
     func push_user_defaults(){
         defaults.set(required_aligners_total, forKey: "require_count")
@@ -179,7 +169,7 @@ final class AlignTime: ObservableObject {
         defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         defaults.set(days_left, forKey: "days_left")
-        defaults.set(days_string, forKey: "days")
+        //defaults.set(days_string, forKey: "days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
         
@@ -192,7 +182,7 @@ final class AlignTime: ObservableObject {
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
         self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
         self.days_left = defaults.string(forKey: "days_left") ?? "0"
-        self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
+        //self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
     }
@@ -204,7 +194,6 @@ final class AlignTime: ObservableObject {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
         let request = UNNotificationRequest(identifier: "AlignTime.id.01", content: content, trigger: trigger)
-        print("debug send not")
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
@@ -220,13 +209,4 @@ final class AlignTime: ObservableObject {
         self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
     }
     
-    func add_test_days_as_string(){
-        let day1 = "2019/12/08"
-        let day2 = "2019/12/09"
-
-        let t1 = TimeInterval(exactly: 2000)
-        let t2 = TimeInterval(exactly: 7000)
-        let t3 = TimeInterval(exactly: 7000)
-        self.days_string = [day1: ["out":t1!,"wear":t2!],day2:["out":t3!,"wear":t2!]]
-    }
 }
