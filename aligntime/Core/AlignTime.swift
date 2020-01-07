@@ -80,20 +80,16 @@ final class AlignTime: ObservableObject {
     
     func update_today_dates() throws {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
-        let days_formated = self.day_format(days_interval)!.dropLast()
-        let days_formated_string = String(days_formated)
+        let days_formated_string = String(days_interval.days)
         if (self.wearing_aligners_days != days_formated_string){
             self.wearing_aligners_days = days_formated_string
         }
-        
-        //print("days_formated_string:\(days_formated_string)")
-        // need to work with days_formated_string as Int (avoid potentional converting)
         
         guard self.aligner_wear_days > self.aligner_number_now else {
             throw AlignTimeError.ThereIsNoMakeSenseException(date1: self.aligner_wear_days,date2: self.aligner_number_now)
         }
         
-        let days_left_digit = ((self.aligner_wear_days-self.aligner_number_now) * self.required_aligners_total) - Int(days_formated_string)!-self.current_aligner_days
+        let days_left_digit = ((self.aligner_wear_days-self.aligner_number_now) * self.required_aligners_total) - days_interval.days-self.current_aligner_days
         
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
@@ -123,6 +119,7 @@ final class AlignTime: ObservableObject {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.day]
+        print(second.days)
         return formatter.string(from: second)
     }
     

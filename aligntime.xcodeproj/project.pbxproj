@@ -30,6 +30,7 @@
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
+		F0FEDB3723C40D6200682F85 /* TimeInterval_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3623C40D6200682F85 /* TimeInterval_extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D4B5DB023BB34C800F4B2CA /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4B5DB123BB9F5E00F4B2CA /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKCell.swift; sourceTree = "<group>"; };
 		6D4B5DB223BB9F5E00F4B2CA /* RKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKViewController.swift; sourceTree = "<group>"; };
 		6D4B5DB323BB9F5E00F4B2CA /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
@@ -71,6 +71,7 @@
 		F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F0FEDB3623C40D6200682F85 /* TimeInterval_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval_extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */,
+				F0FEDB3623C40D6200682F85 /* TimeInterval_extension.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -285,6 +287,7 @@
 				6D4B5DBE23BB9F5E00F4B2CA /* RKManager.swift in Sources */,
 				6D4B5DB923BB9F5E00F4B2CA /* RKViewController.swift in Sources */,
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
+				F0FEDB3723C40D6200682F85 /* TimeInterval_extension.swift in Sources */,
 				F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */,
 				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,
