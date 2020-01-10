@@ -9,6 +9,8 @@ import Combine
 import Foundation
 import UserNotifications
 
+
+
 enum AlignTimeError: Error {
     case ThereIsNoMakeSenseException(date1: Int, date2: Int)
 }
@@ -39,9 +41,20 @@ final class AlignTime: ObservableObject {
     
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
+    var days_test: [Date: [String: TimeInterval]] = [:]
+    var days_test2:[String] = ["00:00","07:00"]
+    
+    
+    @Published var day_intervals = create_test_intervals()//[
+        //self.po,
+        //Pokemon(id: 0, name: "00:00", out: "07:00",clock_time:Date()),
+//        Pokemon(id: 1, name: "12:00", out: "13:00",clock_time:Date()),
+//        Pokemon(id: 2, name: "14:30", out: "...",clock_time:Date()),
+    //]
+    
+
     
     @objc func update_timer() throws {
-        //print(days_string)
         do{
             if self.complete{
                     self.update_wear_timer()
@@ -136,6 +149,8 @@ final class AlignTime: ObservableObject {
         return formatter.string(from: date)
     }
     
+
+    
     func get_total_wear_time() ->String{return ""}
     
     func get_total_off_time() ->String{return ""}
@@ -194,7 +209,23 @@ final class AlignTime: ObservableObject {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+    func get_wear_intervals() -> [[String]]{
+        return [["00:00","07:00"], ["12:00","13:00"]]
+    }
+    
     func add_test_days(){
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd"
+        let day1 = formatter_date.date(from: "2019/12/08")
+        let day2 = formatter_date.date(from: "2019/12/09")
+
+        let t1 = TimeInterval(exactly: 2000)
+        let t2 = TimeInterval(exactly: 7000)
+        let t3 = TimeInterval(exactly: 7000)
+        self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
+    }
+    
+    func add_test_days2(){
         let formatter_date = DateFormatter()
         formatter_date.dateFormat = "yyyy/MM/dd"
         let day1 = formatter_date.date(from: "2019/12/08")

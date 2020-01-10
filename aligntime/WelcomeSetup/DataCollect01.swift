@@ -60,8 +60,9 @@ struct DataCollect01: View {
                         .padding(.horizontal, 30)
                         .multilineTextAlignment(.center)
                     DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
-                        Text("")
+                            Text("")
                         }
+                        .labelsHidden()
                     Text("Start date is: \(user_data.start_treatment, formatter: dateFormatter)")
                         .font(.footnote)
                         .foregroundColor(.blue)

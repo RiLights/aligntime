@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var user_data: AlignTime
     
     var body: some View {
+        //TestV()
         Group{
             if user_data.complete == true {
                 NavigationView {

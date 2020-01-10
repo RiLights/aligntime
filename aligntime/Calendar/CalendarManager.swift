@@ -11,18 +11,23 @@ import SwiftUI
 
 struct CalendarManager: View {
 
-       @State var multipleIsPresented = true
+    @State var multipleIsPresented = true
        
-       var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
    
-       var body: some View {
-           VStack () {
-              RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
-           }.onAppear(perform: startUp)
-               .navigationViewStyle(StackNavigationViewStyle())
-       }
+    var body: some View {
+        VStack(alignment: .trailing) {
+            RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
+                //.padding(.bottom, 50)
+            Spacer()
+            WearFields()
+                .padding(.bottom, 200)
+                .padding(.horizontal, 40)
+        }.onAppear(perform: startUp)
+               //.navigationViewStyle(StackNavigationViewStyle())
+    }
        
-       func startUp() {
+    func startUp() {
         self.multipleIsPresented.toggle()
         
          let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]

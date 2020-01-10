@@ -8,14 +8,33 @@
 
 import SwiftUI
 
-struct TimerPicker: View {
+struct TimePicker: View {
+    @Binding var date_time:Date
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct TimerPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerPicker()
+        VStack (spacing:0){
+            HStack{
+                Spacer()
+                Button(action: {
+                    print("not ready yet")
+                }){
+                    Spacer()
+                    Text("Use Next Day")
+                    .padding(.horizontal,8)
+                    .padding(.vertical,5)
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                }
+            }
+            .padding(.horizontal, 5)
+            
+            
+            DatePicker("", selection: $date_time, displayedComponents: .hourAndMinute)
+                .labelsHidden()
+            Text("Please select your wear time")
+        }
+        .font(.subheadline)
+        .frame(height: 230)
     }
 }
