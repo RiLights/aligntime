@@ -50,3 +50,8 @@ func create_test_intervals()->[Day]{
     day_interval02.end_time = date_02e!
     return [day_interval02,day_interval01]
 }
+
+struct DayInterval{
+    var wear:Bool
+    var time:Int
+}

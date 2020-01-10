@@ -35,6 +35,7 @@
 		F0FEDB3E23C8685300682F85 /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3D23C8685300682F85 /* TimerPicker.swift */; };
 		F0FEDB4023C8704D00682F85 /* WearFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3F23C8704D00682F85 /* WearFields.swift */; };
 		F0FEDB4223C8761C00682F85 /* DayInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB4123C8761C00682F85 /* DayInterval.swift */; };
+		F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB4323C9357800682F85 /* AlignTimeError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		F0FEDB3D23C8685300682F85 /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
 		F0FEDB3F23C8704D00682F85 /* WearFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearFields.swift; sourceTree = "<group>"; };
 		F0FEDB4123C8761C00682F85 /* DayInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInterval.swift; sourceTree = "<group>"; };
+		F0FEDB4323C9357800682F85 /* AlignTimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTimeError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */,
 				F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */,
 				F0FEDB4123C8761C00682F85 /* DayInterval.swift */,
+				F0FEDB4323C9357800682F85 /* AlignTimeError.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */,
 				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F0FEDB3923C410A100682F85 /* WearEditFields.swift in Sources */,
+				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,
 				F0FEDB4023C8704D00682F85 /* WearFields.swift in Sources */,
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,

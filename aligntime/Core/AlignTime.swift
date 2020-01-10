@@ -11,11 +11,6 @@ import UserNotifications
 
 
 
-enum AlignTimeError: Error {
-    case ThereIsNoMakeSenseException(date1: Int, date2: Int)
-}
-
-
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
@@ -214,18 +209,6 @@ final class AlignTime: ObservableObject {
     }
     
     func add_test_days(){
-        let formatter_date = DateFormatter()
-        formatter_date.dateFormat = "yyyy/MM/dd"
-        let day1 = formatter_date.date(from: "2019/12/08")
-        let day2 = formatter_date.date(from: "2019/12/09")
-
-        let t1 = TimeInterval(exactly: 2000)
-        let t2 = TimeInterval(exactly: 7000)
-        let t3 = TimeInterval(exactly: 7000)
-        self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
-    }
-    
-    func add_test_days2(){
         let formatter_date = DateFormatter()
         formatter_date.dateFormat = "yyyy/MM/dd"
         let day1 = formatter_date.date(from: "2019/12/08")
