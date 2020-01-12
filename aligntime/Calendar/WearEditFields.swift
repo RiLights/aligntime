@@ -16,12 +16,13 @@ struct WearEditFields: View {
     @State var showing_picker = false
     @State var show_end_time_state:Bool = false
     @State var day_index = 0
+    @Binding var intervals:[Day]
 
     var body: some View {
 
         NavigationView {
             List {
-                ForEach(core_data.day_intervals) { i in
+                ForEach(intervals) { i in
                     HStack(alignment: .center){
                         Spacer()
                         Button(action: {
@@ -29,14 +30,6 @@ struct WearEditFields: View {
                                 self.show_end_time_state = false
                                 self.day_index = i.id
                                 
-                                //min,max assigment
-                                if i.id != 0 {
-                                    self.core_data.day_intervals[self.day_index].min_time = self.core_data.day_intervals[self.day_index-1].end_time
-                                }
-                                if (i.end_time_string != "....     "){
-                                    self.core_data.day_intervals[self.day_index].max_time = i.end_time
-                                }
-                                self.showing_picker.toggle()
                             }
                         }){
                             Text(i.start_time_string)
@@ -51,12 +44,12 @@ struct WearEditFields: View {
                                 
                                 //min,max assigment
                                 //print("mi",self.core_data.day_intervals.count,i.id)
-                                if i.id != self.core_data.day_intervals.count  {
-                                    self.core_data.day_intervals[self.day_index].max_time = self.core_data.day_intervals[self.day_index+1].start_time
-                                }
-                                if (i.start_time_string != "     ...."){
-                                    self.core_data.day_intervals[self.day_index].min_time = i.start_time
-                                }
+//                                if i.id != self.intervals.count  {
+//                                    self.intervals[self.day_index].max_time = self.intervals[self.day_index+1].start_time
+//                                }
+//                                if (i.start_time_string != "     ...."){
+//                                    self.intervals[self.day_index].min_time = i.start_time
+//                                }
                                 
                                 self.showing_picker.toggle()
                             }
@@ -77,26 +70,26 @@ struct WearEditFields: View {
                   trailing: Button(action: addTimeInterval, label: { Text("Add") })
             )
             .navigationBarTitle(self.navigation_label)
-            .sheet(isPresented: $showing_picker) {
-                if self.show_end_time_state{
-                    TimePicker(date_time: self.$core_data.day_intervals[self.day_index].end_time,
-                               min_time:self.$core_data.day_intervals[self.day_index].min_time,
-                               max_time:self.$core_data.day_intervals[self.day_index].max_time)
-                }
-                else{
-                    TimePicker(date_time: self.$core_data.day_intervals[self.day_index].start_time,
-                               min_time:self.$core_data.day_intervals[self.day_index].min_time,
-                               max_time:self.$core_data.day_intervals[self.day_index].max_time)
-
-                }
-            }
+//            .sheet(isPresented: $showing_picker) {
+//
+//                if self.show_end_time_state{
+//                    TimePicker(date_time: intervals[self.day_index].end_time,
+//                               min_time:intervals[self.day_index].min_time,
+//                               max_time:intervals[self.day_index].max_time)
+//                }
+//                else{
+//                    TimePicker(date_time: intervals[self.day_index].start_time,
+//                               min_time:intervals[self.day_index].min_time,
+//                               max_time:intervals[self.day_index].max_time)
+//
+//                }
+//            }
         }
-        
     }
 
     func addTimeInterval() {print("not ready yet")}
     func delete(at offsets: IndexSet) {
-        core_data.day_intervals.remove(atOffsets: offsets)
+        self.intervals.remove(atOffsets: offsets)
     }
 }
 

@@ -96,20 +96,6 @@ func convert_to_off_groups_dates(day_intervals:[DayInterval])->[[Date?]]{
     formatter.dateFormat = "yyyy/MM/dd HH:mm"
     var previos_date:Date?
 
-    var date_groups:[[Date?]] = []
-    
-    for (index,item) in day_intervals.enumerated(){
-        let date = convert_to_date(day_interval:item)
-        var date_group:[Date?] = [previos_date,date]
-        if item.wear == false{
-            let temp_date = convert_to_date(day_interval: day_intervals[index+1])
-            date_group = [date,temp_date]
-        }
-        //print(date)
-        previos_date = date
-        date_groups.append(date_group)
-        
-    }
     
     let date_01s = formatter.date(from: "2020/01/01 00:30")
     let date_01e = formatter.date(from: "2020/01/01 07:30")
@@ -118,7 +104,7 @@ func convert_to_off_groups_dates(day_intervals:[DayInterval])->[[Date?]]{
     let gr = [[nil,date_01s],[date_01e,date_02s]]
     //print(gr)
     return gr
-    return date_groups
+    //return date_groups
 }
 func create_off_intervals(day_intervals:[DayInterval])->[Day]{
 

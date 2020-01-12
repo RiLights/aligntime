@@ -9,10 +9,15 @@ import Combine
 import Foundation
 import UserNotifications
 
-var raw_day_intervals = [
+var ref_day_intervals = [
     DayInterval(wear: true, time: 1800),
     DayInterval(wear: false, time: 27000),
     DayInterval(wear: true, time: 46800)]
+
+var raw_day_intervals = [1578819735:true,
+                         1578829735:false,
+                         1578849735:true,
+                         1578849999:false]
 
 final class AlignTime: ObservableObject {
     
@@ -42,7 +47,8 @@ final class AlignTime: ObservableObject {
     var days_test: [Date: [String: TimeInterval]] = [:]
     var days_test2:[String] = ["00:00","07:00"]
     
-    @Published var day_intervals = create_off_intervals(day_intervals:raw_day_intervals)
+    @Published var day_intervals = create_off_intervals(day_intervals:ref_day_intervals)
+    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals)
     //@Published var day_intervals = create_test_intervals()//[
     
     

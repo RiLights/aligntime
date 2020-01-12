@@ -13,6 +13,7 @@ struct WearFields: View {
     @State var navigation_label = "Wear Times"
     @State var show_modal = false
     
+    
     var body: some View {
         HStack(alignment:.top){
             Button(action: {
@@ -23,24 +24,14 @@ struct WearFields: View {
                     Text("Wear Times:")
                         .foregroundColor(.accentColor)
                         .font(.system(size: 21))
-//                    ForEach(core_data.day_intervals.reversed()) { i in
-//                        Text("\(i.start_time_string)-\(i.end_time_string)")
-//                            .font(.system(size: 18))
-//                            .fontWeight(.light)
-//                            .foregroundColor(.accentColor)
-//                    }
+                    ForEach(core_data.wear_intervals) { i in
+                        Text("\(i.start_time_string)-\(i.end_time_string)")
+                            .font(.system(size: 18))
+                            .fontWeight(.light)
+                            .foregroundColor(.accentColor)
+                    }
                 }
             }
-//                //ForEach((1...12).reversed(), id: \.self) {
-//                    Text("00:00-7:00")
-//                        .font(.system(size: 18))
-//                        .fontWeight(.light)
-//                        .foregroundColor(.blue)
-//                    Text("07:30-12:00")
-//                        .font(.system(size: 18))
-//                        .fontWeight(.light)
-//                        .foregroundColor(.blue)
-                //}
             Spacer()
             Button(action: {
                 self.navigation_label = "Off Times"
@@ -60,7 +51,7 @@ struct WearFields: View {
             }
         }
         .sheet(isPresented: self.$show_modal) {
-            WearEditFields(navigation_label: self.$navigation_label).environmentObject(self.core_data)
+            WearEditFields(navigation_label: self.$navigation_label,intervals:self.$core_data.wear_intervals).environmentObject(self.core_data)
         }
     }
 }
