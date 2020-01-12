@@ -24,7 +24,7 @@ struct CalendarManager: View {
                 .padding(.bottom, 200)
                 .padding(.horizontal, 40)
         }.onAppear(perform: startUp)
-               //.navigationViewStyle(StackNavigationViewStyle())
+         //.navigationViewStyle(StackNavigationViewStyle())
     }
        
     func startUp() {

@@ -24,7 +24,6 @@ struct RKWeekdayHeader : View {
     }
     
     func getWeekdayHeaders(calendar: Calendar) -> [String] {
-        
         let formatter = DateFormatter()
         
         var weekdaySymbols = formatter.shortStandaloneWeekdaySymbols
