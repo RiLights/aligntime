@@ -9,7 +9,10 @@ import Combine
 import Foundation
 import UserNotifications
 
-
+var raw_day_intervals = [
+    DayInterval(wear: true, time: 1800),
+    DayInterval(wear: false, time: 27000),
+    DayInterval(wear: true, time: 46800)]
 
 final class AlignTime: ObservableObject {
     
@@ -39,13 +42,9 @@ final class AlignTime: ObservableObject {
     var days_test: [Date: [String: TimeInterval]] = [:]
     var days_test2:[String] = ["00:00","07:00"]
     
+    @Published var day_intervals = create_off_intervals(day_intervals:raw_day_intervals)
+    //@Published var day_intervals = create_test_intervals()//[
     
-    @Published var day_intervals = create_test_intervals()//[
-        //self.po,
-        //Pokemon(id: 0, name: "00:00", out: "07:00",clock_time:Date()),
-//        Pokemon(id: 1, name: "12:00", out: "13:00",clock_time:Date()),
-//        Pokemon(id: 2, name: "14:30", out: "...",clock_time:Date()),
-    //]
     
 
     

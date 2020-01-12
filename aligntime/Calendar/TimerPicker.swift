@@ -8,8 +8,12 @@
 
 import SwiftUI
 
+
+
 struct TimePicker: View {
     @Binding var date_time:Date
+    @Binding var min_time:Date
+    @Binding var max_time:Date
     
     var body: some View {
         VStack (spacing:0){
@@ -30,7 +34,9 @@ struct TimePicker: View {
             .padding(.horizontal, 5)
             
             
-            DatePicker("", selection: $date_time, displayedComponents: .hourAndMinute)
+            DatePicker("", selection: $date_time,
+                       in: min_time...max_time,
+                       displayedComponents: .hourAndMinute)
                 .labelsHidden()
             Text("Please select your wear time")
         }

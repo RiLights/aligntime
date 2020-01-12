@@ -9,36 +9,48 @@
 import SwiftUI
 
 struct WearFields: View {
-    @State private var show_modal = false
     @EnvironmentObject var core_data: AlignTime
-    
+    @State var navigation_label = "Wear Times"
+    @State var show_modal = false
     
     var body: some View {
-        HStack{
-            VStack{
-                Text("Wear Times:")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 21))
-                //ForEach((1...12).reversed(), id: \.self) {
-                    Text("00:00-7:00")
-                        .font(.system(size: 18))
-                        .fontWeight(.light)
-                        .foregroundColor(.blue)
-                    Text("07:30-12:00")
-                        .font(.system(size: 18))
-                        .fontWeight(.light)
-                        .foregroundColor(.blue)
-                //}
-            }
-            Spacer()
-            Button(action: {self.show_modal.toggle()
-                //print(self.core_data.aligner_number_now)
+        HStack(alignment:.top){
+            Button(action: {
+                self.navigation_label = "Wear Times"
+                self.show_modal.toggle()
             }) {
                 VStack{
+                    Text("Wear Times:")
+                        .foregroundColor(.accentColor)
+                        .font(.system(size: 21))
+//                    ForEach(core_data.day_intervals.reversed()) { i in
+//                        Text("\(i.start_time_string)-\(i.end_time_string)")
+//                            .font(.system(size: 18))
+//                            .fontWeight(.light)
+//                            .foregroundColor(.accentColor)
+//                    }
+                }
+            }
+//                //ForEach((1...12).reversed(), id: \.self) {
+//                    Text("00:00-7:00")
+//                        .font(.system(size: 18))
+//                        .fontWeight(.light)
+//                        .foregroundColor(.blue)
+//                    Text("07:30-12:00")
+//                        .font(.system(size: 18))
+//                        .fontWeight(.light)
+//                        .foregroundColor(.blue)
+                //}
+            Spacer()
+            Button(action: {
+                self.navigation_label = "Off Times"
+                self.show_modal.toggle()
+            }) {
+                VStack(alignment:.center){
                     Text("Off Times:")
                         .foregroundColor(.red)
                         .font(.system(size: 21))
-                    ForEach(core_data.day_intervals.reversed()) { i in
+                    ForEach(core_data.day_intervals) { i in
                         Text("\(i.start_time_string)-\(i.end_time_string)")
                             .font(.system(size: 18))
                             .fontWeight(.light)
@@ -48,7 +60,7 @@ struct WearFields: View {
             }
         }
         .sheet(isPresented: self.$show_modal) {
-            WearEditFields().environmentObject(self.core_data)
+            WearEditFields(navigation_label: self.$navigation_label).environmentObject(self.core_data)
         }
     }
 }
