@@ -16,7 +16,7 @@ struct RKViewController: View {
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
-        ScrollView(.vertical) {
+        Group() {
             HStack {
                 Button("<") {
                     self.mounthOffset -= 1;
