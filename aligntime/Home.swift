@@ -13,6 +13,7 @@ struct Home: View {
     @State private var selection = 1
     
     @State var showingProfile = false
+    @State var isNavigationBarHidden: Bool = true
     
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
@@ -24,7 +25,7 @@ struct Home: View {
         }
     }
     var body: some View {
-        Section {
+        NavigationView {
             TabView(selection: $selection){
                 TodayManager()
                    .font(.title)
@@ -67,6 +68,6 @@ struct Home: View {
             )
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
     }
 }

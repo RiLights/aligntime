@@ -16,7 +16,7 @@ struct RKWeekdayHeader : View {
         HStack(alignment: .center) {
             ForEach(self.getWeekdayHeaders(calendar: self.rkManager.calendar), id: \.self) { weekday in
                 Text(weekday)
-                    .font(.system(size: 20))
+                    .font(.system(size: 15))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .foregroundColor(self.rkManager.colors.weekdayHeaderColor)
             }

@@ -29,6 +29,7 @@ struct RKViewController: View {
             Divider()
             RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset)
         }
+        .padding(.horizontal,20)
     }
     
     func numberOfMonths() -> Int {
