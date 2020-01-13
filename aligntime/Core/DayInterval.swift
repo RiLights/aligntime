@@ -94,7 +94,7 @@ func convert_to_date(day_interval:DayInterval)->Date{
 func convert_to_off_groups_dates(day_intervals:[DayInterval])->[[Date?]]{
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd HH:mm"
-    var previos_date:Date?
+    //var previos_date:Date?
 
     
     let date_01s = formatter.date(from: "2020/01/01 00:30")

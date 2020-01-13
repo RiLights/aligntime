@@ -16,11 +16,11 @@ struct CalendarManager: View {
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
    
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack(alignment: .center) {
             RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
-            Spacer()
+            //Spacer()
             WearFields()
-                .padding(.bottom, 80)
+                .padding(.bottom, 180)
                 .padding(.horizontal, 40)
         }.onAppear(perform: startUp)
          //.navigationViewStyle(StackNavigationViewStyle())
