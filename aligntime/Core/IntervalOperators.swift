@@ -9,29 +9,51 @@
 import Foundation
 
 
-func create_wear_intervals(intervals:[Int: Bool])->[Day]{
-    var day_intervals:[Day] = []
+func create_wear_intervals(intervals:[Int: Bool],type:Bool)->[Day]{
+    var wear_intervals:[Day] = []
+    var off_intervals:[Day] = []
     let sorted_intervals = intervals.sorted(by: { $0.0 < $1.0 } )
-    var temp_index = 0
+    var wear_temp_index = 0
+    var off_temp_index = 0
     
     for (index,item) in sorted_intervals.enumerated(){
-        let day_interval = Day()
+        let wear_interval = Day()
+        let off_interval = Day()
         
         if item.value{
-            day_interval.id = temp_index
+            wear_interval.id = wear_temp_index
             let start_date = Date(timeIntervalSince1970: Double(item.key))
-            day_interval.start_time = start_date
+            wear_interval.start_time = start_date
             
             var end_date = Date()
             if sorted_intervals.count != (index+1){
                 end_date =  Date(timeIntervalSince1970: Double(sorted_intervals[index+1].key))
             }
+            wear_interval.end_time = end_date
             
-            day_interval.end_time = end_date
-            temp_index+=1
-            day_intervals.append(day_interval)
+            wear_temp_index+=1
+            wear_intervals.append(wear_interval)
+        }
+        else{
+            off_interval.id = off_temp_index
+            let start_date = Date(timeIntervalSince1970: Double(item.key))
+            off_interval.start_time = start_date
+            
+            var end_date = Date()
+            if sorted_intervals.count != (index+1){
+                end_date =  Date(timeIntervalSince1970: Double(sorted_intervals[index+1].key))
+            }
+            off_interval.end_time = end_date
+            
+            off_temp_index+=1
+            off_intervals.append(off_interval)
         }
     }
     
-    return day_intervals
+    if type{
+        return wear_intervals
+    }
+    else{
+        return off_intervals
+    }
 }

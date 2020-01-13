@@ -48,7 +48,8 @@ final class AlignTime: ObservableObject {
     var days_test2:[String] = ["00:00","07:00"]
     
     @Published var day_intervals = create_off_intervals(day_intervals:ref_day_intervals)
-    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals)
+    @Published var off_intervals = create_wear_intervals(intervals:raw_day_intervals,type:false)
+    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals,type:true)
     //@Published var day_intervals = create_test_intervals()//[
     
     
