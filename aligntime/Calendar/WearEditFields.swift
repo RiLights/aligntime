@@ -30,6 +30,7 @@ struct WearEditFields: View {
                                 self.show_end_time_state = false
                                 self.day_index = i.id
                                 
+                                self.showing_picker.toggle()
                             }
                         }){
                             Text(i.start_time_string)
@@ -51,7 +52,9 @@ struct WearEditFields: View {
 //                                    self.intervals[self.day_index].min_time = i.start_time
 //                                }
                                 
-                                self.showing_picker.toggle()
+                                if !i.current_date{
+                                    self.showing_picker.toggle()
+                                }
                             }
                         }){
                             Text(i.end_time_string)
@@ -70,20 +73,18 @@ struct WearEditFields: View {
                   trailing: Button(action: addTimeInterval, label: { Text("Add") })
             )
             .navigationBarTitle(self.navigation_label)
-//            .sheet(isPresented: $showing_picker) {
-//
-//                if self.show_end_time_state{
-//                    TimePicker(date_time: intervals[self.day_index].end_time,
-//                               min_time:intervals[self.day_index].min_time,
-//                               max_time:intervals[self.day_index].max_time)
-//                }
-//                else{
-//                    TimePicker(date_time: intervals[self.day_index].start_time,
-//                               min_time:intervals[self.day_index].min_time,
-//                               max_time:intervals[self.day_index].max_time)
-//
-//                }
-//            }
+            .sheet(isPresented: self.$showing_picker) {
+                if self.show_end_time_state{
+                    TimePicker(date_time: self.$intervals[self.day_index].end_time,
+                               min_time:self.$intervals[self.day_index].min_time,
+                               max_time:self.$intervals[self.day_index].max_time)
+                }
+                else{
+                    TimePicker(date_time: self.$intervals[self.day_index].start_time,
+                               min_time:self.$intervals[self.day_index].min_time,
+                               max_time:self.$intervals[self.day_index].max_time)
+                }
+            }
         }
     }
 

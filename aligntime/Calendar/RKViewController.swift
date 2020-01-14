@@ -16,7 +16,7 @@ struct RKViewController: View {
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
-        ScrollView(.vertical) {
+        Group() {
             HStack {
                 Button("<") {
                     self.mounthOffset -= 1;
@@ -29,6 +29,7 @@ struct RKViewController: View {
             Divider()
             RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset)
         }
+        .padding(.horizontal,20)
     }
     
     func numberOfMonths() -> Int {

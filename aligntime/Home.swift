@@ -13,6 +13,7 @@ struct Home: View {
     @State private var selection = 1
     
     @State var showingProfile = false
+    @State var isNavigationBarHidden: Bool = true
     
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
@@ -24,7 +25,7 @@ struct Home: View {
         }
     }
     var body: some View {
-        Section {
+        NavigationView {
             TabView(selection: $selection){
                 TodayManager()
                    .font(.title)
@@ -45,14 +46,6 @@ struct Home: View {
                        }
                    }
                    .tag(1)
-
-                Text("More")
-                    .font(.title)
-                    .tabItem {
-                            Text("More")
-                            Image(systemName: "ellipsis.circle")
-                    }
-                    .tag(2)
            }
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
@@ -60,20 +53,21 @@ struct Home: View {
                 ProfileHost().environmentObject(self.user_data)
             }
             .gesture(DragGesture()
-            .onEnded({ (value) in
-                if (value.translation.width > 0){
-                    if (value.translation.width > 100) && (self.selection>=1){
-                        self.selection-=1
-                    }
-                }
-                else{
-                    if (value.translation.width < -100) && (self.selection<=1){
-                        self.selection+=1
-                    }
-                }
-            }))
+//            .onEnded({ (value) in
+//                if (value.translation.width > 0){
+//                    if (value.translation.width > 100) && (self.selection>=1){
+//                        self.selection-=1
+//                    }
+//                }
+//                else{
+//                    if (value.translation.width < -100) && (self.selection<=1){
+//                        self.selection+=1
+//                    }
+//                }
+//            })
+            )
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
     }
 }

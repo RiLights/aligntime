@@ -17,23 +17,6 @@ struct TimePicker: View {
     
     var body: some View {
         VStack (spacing:0){
-            HStack{
-                Spacer()
-                Button(action: {
-                    print("not ready yet")
-                }){
-                    Spacer()
-                    Text("Use Next Day")
-                    .padding(.horizontal,8)
-                    .padding(.vertical,5)
-                    .background(Color.accentColor)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                }
-            }
-            .padding(.horizontal, 5)
-            
-            
             DatePicker("", selection: $date_time,
                        in: min_time...max_time,
                        displayedComponents: .hourAndMinute)

@@ -9,11 +9,6 @@ import Combine
 import Foundation
 import UserNotifications
 
-var ref_day_intervals = [
-    DayInterval(wear: true, time: 1800),
-    DayInterval(wear: false, time: 27000),
-    DayInterval(wear: true, time: 46800)]
-
 var raw_day_intervals = [1578819735:true,
                          1578829735:false,
                          1578849735:true,
@@ -44,13 +39,9 @@ final class AlignTime: ObservableObject {
     
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
-    var days_test: [Date: [String: TimeInterval]] = [:]
-    var days_test2:[String] = ["00:00","07:00"]
     
-    @Published var day_intervals = create_off_intervals(day_intervals:ref_day_intervals)
-    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals)
-    //@Published var day_intervals = create_test_intervals()//[
-    
+    @Published var off_intervals = create_wear_intervals(intervals:raw_day_intervals,type:false)
+    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals,type:true)
     
 
     
@@ -149,7 +140,6 @@ final class AlignTime: ObservableObject {
         return formatter.string(from: date)
     }
     
-
     
     func get_total_wear_time() ->String{return ""}
     
@@ -207,22 +197,6 @@ final class AlignTime: ObservableObject {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
         let request = UNNotificationRequest(identifier: "AlignTime.id.01", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
-    func get_wear_intervals() -> [[String]]{
-        return [["00:00","07:00"], ["12:00","13:00"]]
-    }
-    
-    func add_test_days(){
-        let formatter_date = DateFormatter()
-        formatter_date.dateFormat = "yyyy/MM/dd"
-        let day1 = formatter_date.date(from: "2019/12/08")
-        let day2 = formatter_date.date(from: "2019/12/09")
-
-        let t1 = TimeInterval(exactly: 2000)
-        let t2 = TimeInterval(exactly: 7000)
-        let t3 = TimeInterval(exactly: 7000)
-        self.days = [day1!: ["out":t1!,"wear":t2!],day2!:["out":t3!,"wear":t2!]]
     }
     
 }

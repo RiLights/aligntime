@@ -41,7 +41,7 @@ struct WearFields: View {
                     Text("Off Times:")
                         .foregroundColor(.red)
                         .font(.system(size: 21))
-                    ForEach(core_data.day_intervals) { i in
+                    ForEach(core_data.off_intervals) { i in
                         Text("\(i.start_time_string)-\(i.end_time_string)")
                             .font(.system(size: 18))
                             .fontWeight(.light)
@@ -51,7 +51,12 @@ struct WearFields: View {
             }
         }
         .sheet(isPresented: self.$show_modal) {
-            WearEditFields(navigation_label: self.$navigation_label,intervals:self.$core_data.wear_intervals).environmentObject(self.core_data)
+            if (self.navigation_label=="Off Times"){
+                WearEditFields(navigation_label: self.$navigation_label,intervals:self.$core_data.off_intervals).environmentObject(self.core_data)
+            }
+            else{
+                WearEditFields(navigation_label: self.$navigation_label,intervals:self.$core_data.wear_intervals).environmentObject(self.core_data)
+            }
         }
     }
 }

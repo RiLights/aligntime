@@ -15,9 +15,7 @@ struct ContentView: View {
         //TestV()
         Group{
             if user_data.complete == true {
-                NavigationView {
-                    Home().environmentObject(user_data)
-                }
+                Home().environmentObject(user_data)
             }
             else{
                 Welcome().environmentObject(user_data)
