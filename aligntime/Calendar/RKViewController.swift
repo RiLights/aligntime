@@ -9,25 +9,18 @@
 import SwiftUI
 
 struct RKViewController: View {
-    
-    @State private var mounthOffset = 0
     @Binding var isPresented: Bool
-    
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
         Group() {
-            HStack {
-                Button("<") {
-                    self.mounthOffset -= 1;
-                }
-                RKWeekdayHeader(rkManager: self.rkManager)
-                Button(">") {
-                    self.mounthOffset += 1;
+            RKWeekdayHeader(rkManager: self.rkManager)
+            Divider()
+            List {
+                ForEach((0...12), id: \.self) {
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: $0)
                 }
             }
-            Divider()
-            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset)
         }
         .padding(.horizontal,20)
     }
