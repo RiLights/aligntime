@@ -19,7 +19,7 @@ func create_wear_intervals(intervals:[Int: Bool],type:Bool)->[Day]{
     for (index,item) in sorted_intervals.enumerated(){
         let wear_interval = Day()
         let off_interval = Day()
-        
+    
         if item.value{
             wear_interval.id = wear_temp_index
             let start_date = Date(timeIntervalSince1970: Double(item.key))
@@ -28,8 +28,12 @@ func create_wear_intervals(intervals:[Int: Bool],type:Bool)->[Day]{
             var end_date = Date()
             if sorted_intervals.count != (index+1){
                 end_date =  Date(timeIntervalSince1970: Double(sorted_intervals[index+1].key))
+                wear_interval.end_time = end_date
             }
-            wear_interval.end_time = end_date
+            else{
+                wear_interval.current_date = true
+            }
+            
             
             wear_temp_index+=1
             wear_intervals.append(wear_interval)
@@ -42,8 +46,11 @@ func create_wear_intervals(intervals:[Int: Bool],type:Bool)->[Day]{
             var end_date = Date()
             if sorted_intervals.count != (index+1){
                 end_date =  Date(timeIntervalSince1970: Double(sorted_intervals[index+1].key))
+                off_interval.end_time = end_date
             }
-            off_interval.end_time = end_date
+            else{
+                off_interval.current_date = true
+            }
             
             off_temp_index+=1
             off_intervals.append(off_interval)

@@ -29,6 +29,7 @@ struct WearEditFields: View {
                             if (i.start_time_string != "     ...."){
                                 self.show_end_time_state = false
                                 self.day_index = i.id
+                                
                                 self.showing_picker.toggle()
                             }
                         }){
@@ -51,7 +52,9 @@ struct WearEditFields: View {
 //                                    self.intervals[self.day_index].min_time = i.start_time
 //                                }
                                 
-                                self.showing_picker.toggle()
+                                if !i.current_date{
+                                    self.showing_picker.toggle()
+                                }
                             }
                         }){
                             Text(i.end_time_string)

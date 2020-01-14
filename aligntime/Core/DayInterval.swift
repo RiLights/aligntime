@@ -32,6 +32,11 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
     var end_time_string: String = "....     "
     var min_time:Date = get_min_time()
     var max_time:Date = get_max_time()
+    @Published var current_date:Bool = false {
+        didSet {
+            self.end_time_string = "Now"
+        }
+    }
     @Published var end_time:Date = Date() {
        didSet {
            self.end_time_string = clock_string_format(self.end_time)!
