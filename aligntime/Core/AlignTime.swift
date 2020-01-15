@@ -14,6 +14,13 @@ var raw_day_intervals:[Dictionary<Int, Bool>] = [[1578819735:true],
                          [1578849735:true],
                          [1578849999:false]]
 
+var days_intervals:[DayInterval] = [
+    DayInterval(wear: true, time: 1578819735),
+    DayInterval(wear: false, time: 1578829735),
+    DayInterval(wear: true, time: 1578849735),
+    DayInterval(wear: false, time: 1578849999),
+]
+
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
@@ -40,9 +47,9 @@ final class AlignTime: ObservableObject {
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
     
-    @Published var off_intervals = create_wear_intervals(intervals:raw_day_intervals,type:false)
-    @Published var wear_intervals = create_wear_intervals(intervals:raw_day_intervals,type:true)
-    
+    @Published var off_intervals = create_wear_intervals(intervals:days_intervals,type:false)
+    @Published var wear_intervals = create_wear_intervals(intervals:days_intervals,type:true)
+    @Published var intervals = create_wear_intervals(intervals:days_intervals,type:true)
 
     
     @objc func update_timer() throws {
@@ -171,7 +178,7 @@ final class AlignTime: ObservableObject {
         defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         defaults.set(days_left, forKey: "days_left")
-        //defaults.set(days_string, forKey: "days")
+        defaults.set(days_intervals, forKey: "days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
         
@@ -185,6 +192,7 @@ final class AlignTime: ObservableObject {
         self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
         self.days_left = defaults.string(forKey: "days_left") ?? "0"
         //self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
+        //var temp_days = defaults.object(forKey: "SavedArray") as? [DayInterval] ?? []
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
     }

@@ -51,3 +51,8 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
     }
 }
 
+struct DayInterval{
+    var wear:Bool
+    var time:Int
+}
+

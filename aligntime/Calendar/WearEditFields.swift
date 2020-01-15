@@ -89,7 +89,8 @@ struct WearEditFields: View {
 
     func addTimeInterval() {print("not ready yet")}
     func delete(at offsets: IndexSet) {
-        self.intervals.remove(atOffsets: offsets)
+        print(offsets.first!)
+        //self.intervals.remove(atOffsets: offsets)
     }
 }
 
