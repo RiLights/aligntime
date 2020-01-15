@@ -29,6 +29,7 @@ struct WearEditFields: View {
                             if (i.start_time_string != "     ...."){
                                 self.show_end_time_state = false
                                 self.day_index = i.id
+                                i.max_time = i.end_time
                                 
                                 self.showing_picker.toggle()
                             }
@@ -42,14 +43,12 @@ struct WearEditFields: View {
                             if (i.end_time_string != "....     "){
                                 self.show_end_time_state = true
                                 self.day_index = i.id
+                                i.min_time = i.start_time
                                 
-                                //min,max assigment
-                                //print("mi",self.core_data.day_intervals.count,i.id)
-//                                if i.id != self.intervals.count  {
-//                                    self.intervals[self.day_index].max_time = self.intervals[self.day_index+1].start_time
-//                                }
-//                                if (i.start_time_string != "     ...."){
-//                                    self.intervals[self.day_index].min_time = i.start_time
+//                                //min,max assigment
+//                                print(self.intervals.count)
+//                                if i.id < self.intervals.count  {
+//                                    self.intervals[self.day_index].max_time = self.intervals[i.id+1].end_time
 //                                }
                                 
                                 if !i.current_date{

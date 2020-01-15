@@ -31,7 +31,8 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
     var start_time_string: String = "     ...."
     var end_time_string: String = "....     "
     var min_time:Date = get_min_time()
-    var max_time:Date = get_max_time()
+    var max_time:Date = Date()
+    var original_date:Int = 0
     @Published var current_date:Bool = false {
         didSet {
             self.end_time_string = "Now"

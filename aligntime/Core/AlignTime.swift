@@ -9,10 +9,10 @@ import Combine
 import Foundation
 import UserNotifications
 
-var raw_day_intervals = [1578819735:true,
-                         1578829735:false,
-                         1578849735:true,
-                         1578849999:false]
+var raw_day_intervals:[Dictionary<Int, Bool>] = [[1578819735:true],
+                         [1578829735:false],
+                         [1578849735:true],
+                         [1578849999:false]]
 
 final class AlignTime: ObservableObject {
     
