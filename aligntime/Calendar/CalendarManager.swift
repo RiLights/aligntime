@@ -13,7 +13,7 @@ struct CalendarManager: View {
 
     @State var multipleIsPresented = true
        
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
    
     var body: some View {
         VStack(alignment: .center) {
