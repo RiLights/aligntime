@@ -13,15 +13,15 @@ struct CalendarManager: View {
 
     @State var multipleIsPresented = true
        
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*30), mode: 3)
    
     var body: some View {
         VStack(alignment: .center) {
             RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
             WearFields()
                 .padding(.top, 20)
-                //.padding(.bottom, 180)
                 .padding(.horizontal, 40)
+                .animation(.spring())
             Spacer()
         }.onAppear(perform: startUp)
          //.navigationViewStyle(StackNavigationViewStyle())
