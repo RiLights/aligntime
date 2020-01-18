@@ -7,11 +7,18 @@
 //
 import SwiftUI
 
+extension AnyTransition {
+    static func moveAndScale(edge: Edge, x: CGFloat) -> AnyTransition {
+        AnyTransition.move(edge: edge).combined(with: .offset(x: x)).combined(with: .scale(scale: 0.5))
+    }
+}
 
 struct RKViewController: View {
     
     @State private var mounthOffset = 0
     @Binding var isPresented: Bool
+    @State private var isAnimation = false
+    @State private var eege = Edge.trailing
     
     @ObservedObject var rkManager: RKManager
     
@@ -20,18 +27,29 @@ struct RKViewController: View {
             HStack {
                 Button("<") {
                     self.mounthOffset -= 1;
+                    self.eege = Edge.leading
+                    withAnimation {
+                        self.isAnimation.toggle()
+                    }
                 }
-               RKWeekdayHeader(rkManager: self.rkManager)
+                RKWeekdayHeader(rkManager: self.rkManager)
                 Button(">") {
                     self.mounthOffset += 1;
+                    self.eege = Edge.trailing
+                    withAnimation {
+                        self.isAnimation.toggle()
+                    }
                 }
             }
-            
             Divider()
-            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset)
-            
+            if isAnimation {
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: 100))
             }
-        
+            else
+            {
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: -100))
+            }
+        }
         .padding(.horizontal,20)
     }
     
