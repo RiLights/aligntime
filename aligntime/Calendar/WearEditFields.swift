@@ -94,3 +94,65 @@ struct WearEditFields: View {
     }
 }
 
+
+struct WearEditFields2: View {
+    @Binding var navigation_label:String
+    @State var showing_picker = false
+    @State var show_end_time_state:Bool = false
+    @State var day_index = 0
+    @Binding var intervals:[DayInterval2]
+
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(intervals.filter{$0.wear == true}) { i in
+                    HStack(alignment: .center){
+                        Spacer()
+                        Button(action: {
+//                            if (i.start_time_string != "     ...."){
+//                                self.show_end_time_state = false
+//                                self.day_index = i.id
+//                                i.max_time = i.end_time
+                                
+                                self.showing_picker.toggle()
+                            
+                        }){
+                            Text(i.time_string)
+                                .frame(width: 50)
+                                .padding(.horizontal,5)
+                        }
+                        Text("-")
+                        Spacer()
+                    }
+                
+                }
+                .onDelete(perform: delete)
+                .buttonStyle(PlainButtonStyle())
+            }
+            //.navigationBarItems(trailing: EditButton())
+            .navigationBarItems(
+                  trailing: Button(action: addTimeInterval, label: { Text("Add") })
+            )
+            .navigationBarTitle(self.navigation_label)
+//            .sheet(isPresented: self.$showing_picker) {
+//                if self.show_end_time_state{
+//                    TimePicker(date_time: self.$intervals[self.day_index].end_time,
+//                               min_time:self.$intervals[self.day_index].min_time,
+//                               max_time:self.$intervals[self.day_index].max_time)
+//                }
+//                else{
+//                    TimePicker(date_time: self.$intervals[self.day_index].start_time,
+//                               min_time:self.$intervals[self.day_index].min_time,
+//                               max_time:self.$intervals[self.day_index].max_time)
+//                }
+//            }
+        }
+    }
+
+    func addTimeInterval() {print("not ready yet")}
+    func delete(at offsets: IndexSet) {
+        print(offsets.first!)
+        //self.intervals.remove(atOffsets: offsets)
+    }
+}
+

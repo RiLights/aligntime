@@ -28,11 +28,13 @@ func get_max_time()->Date{
 
 class Day: Identifiable,ObservableObject { //IntervalRepresentation
     var id: Int = 0
-    var start_time_string: String = "     ...."
-    var end_time_string: String = "....     "
+    var start_time_string: String = "s...."
+    var end_time_string: String = "e...."
     var min_time:Date = get_min_time()
     var max_time:Date = Date()
     var original_date:Int = 0
+    var state:Bool = true
+    var day:String = ""
     @Published var current_date:Bool = false {
         didSet {
             self.end_time_string = "Now"
@@ -54,5 +56,20 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
 struct DayInterval{
     var wear:Bool
     var time:Int
+}
+
+class DayInterval2: Identifiable,ObservableObject {
+    var id: Int = 0
+    var time_string: String = "s...."
+    var min_time:Date = get_min_time()
+    var max_time:Date = Date()
+    var wear:Bool = true
+    var day:String = ""
+
+    @Published var time:Date = Date() {
+        didSet {
+            self.time_string = clock_string_format(self.time)!
+        }
+    }
 }
 

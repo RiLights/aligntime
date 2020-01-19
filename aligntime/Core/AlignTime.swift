@@ -49,7 +49,7 @@ final class AlignTime: ObservableObject {
     
     @Published var off_intervals = create_wear_intervals(intervals:days_intervals,type:false)
     @Published var wear_intervals = create_wear_intervals(intervals:days_intervals,type:true)
-    @Published var intervals = create_wear_intervals(intervals:days_intervals,type:true)
+    @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
 
     
     @objc func update_timer() throws {
