@@ -5,21 +5,49 @@
 //  Created by Raffi Kian on 7/14/19.
 //  Copyright © 2019 Raffi Kian. All rights reserved.
 //
-
 import SwiftUI
 
+extension AnyTransition {
+    static func moveAndScale(edge: Edge, x: CGFloat) -> AnyTransition {
+        AnyTransition.move(edge: edge).combined(with: .offset(x: x)).combined(with: .scale(scale: 0.5))
+    }
+}
+
 struct RKViewController: View {
+    
+    @State private var mounthOffset = 0
     @Binding var isPresented: Bool
+    @State private var isAnimation = false
+    @State private var eege = Edge.trailing
+    
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
         Group() {
-            RKWeekdayHeader(rkManager: self.rkManager)
-            Divider()
-            List {
-                ForEach((0...12), id: \.self) {
-                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: $0)
+            HStack {
+                Button("<") {
+                    self.mounthOffset -= 1;
+                    self.eege = Edge.leading
+                    withAnimation {
+                        self.isAnimation.toggle()
+                    }
                 }
+                RKWeekdayHeader(rkManager: self.rkManager)
+                Button(">") {
+                    self.mounthOffset += 1;
+                    self.eege = Edge.trailing
+                    withAnimation {
+                        self.isAnimation.toggle()
+                    }
+                }
+            }
+            Divider()
+            if isAnimation {
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: 100))
+            }
+            else
+            {
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: -100))
             }
         }
         .padding(.horizontal,20)

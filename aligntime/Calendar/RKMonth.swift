@@ -135,10 +135,10 @@ struct RKMonth: View {
     }
      
     func isSpecialDate(date: Date) -> Bool {
-        return isSelectedDate(date: date) ||
-            isStartDate(date: date) ||
-            isEndDate(date: date) ||
-            isOneOfSelectedDates(date: date)
+        return     isStartDate(date: date)
+                || isEndDate(date: date)
+                || isSelectedDate(date: date)
+                || isOneOfSelectedDates(date: date)
     }
     
     func isOneOfSelectedDates(date: Date) -> Bool {
@@ -151,6 +151,7 @@ struct RKMonth: View {
         }
         return RKFormatAndCompareDate(date: date, referenceDate: rkManager.selectedDate)
     }
+ 
     
     func isStartDate(date: Date) -> Bool {
         if rkManager.startDate == nil {
