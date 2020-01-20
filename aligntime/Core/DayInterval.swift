@@ -53,11 +53,6 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
     }
 }
 
-struct DayInterval{
-    var wear:Bool
-    var time:Int
-}
-
 class DayInterval2: Identifiable,ObservableObject {
     var id: Int = 0
     var time_string: String = "s...."

@@ -14,12 +14,20 @@ var raw_day_intervals:[Dictionary<Int, Bool>] = [[1578819735:true],
                          [1578849735:true],
                          [1578849999:false]]
 
-var days_intervals:[DayInterval] = [
-    DayInterval(wear: true, time: 1578819735),
-    DayInterval(wear: false, time: 1578829735),
-    DayInterval(wear: true, time: 1578849735),
-    DayInterval(wear: false, time: 1578849999),
-]
+
+func get_selected_date()->Date{
+    let formatter_date = DateFormatter()
+    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
+    
+    return formatter_date.date(from: "2019/12/08 15:00")!
+}
+
+func get_selected_previos_date()->Date{
+    let formatter_date = DateFormatter()
+    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
+    
+    return formatter_date.date(from: "2019/12/07 15:00")!
+}
 
 final class AlignTime: ObservableObject {
     
@@ -47,9 +55,11 @@ final class AlignTime: ObservableObject {
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
     
-    @Published var off_intervals = create_wear_intervals(intervals:days_intervals,type:false)
-    @Published var wear_intervals = create_wear_intervals(intervals:days_intervals,type:true)
     @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
+    
+
+    @Published var selected_date:Date = get_selected_date()
+    @Published var selected_previos_date:Date = get_selected_previos_date()
 
     
     @objc func update_timer() throws {
@@ -73,9 +83,10 @@ final class AlignTime: ObservableObject {
     func update_wear_timer(){
         if self.play_state{
             let elapsed_time = Date().timeIntervalSince(self.start_time)
-            self.wear_timer = self.timer_format(elapsed_time)!
-            self.wear_elapsed_time = elapsed_time
-            
+            //why wear_timer is always updating?
+            //self.wear_timer = self.timer_format(elapsed_time)!
+            //self.wear_elapsed_time = elapsed_time
+
             let date = self.date_format(date:Date())
             self.set_wear_time_for_date(date:date,interval: self.wear_elapsed_time)
         }
@@ -130,7 +141,7 @@ final class AlignTime: ObservableObject {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.day]
-        print(second.days)
+        //print(second.days)
         return formatter.string(from: second)
     }
     
@@ -170,6 +181,55 @@ final class AlignTime: ObservableObject {
         self.days[date] = off_time
     }
     
+    func get_wear_day_list()->[DayInterval2]{
+        let interv_previos = self.intervals.filter{
+            Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
+        let lastdate = interv_previos.max { a, b in a.id < b.id }!
+        //print(lastdate.time_string)
+        //Calendar.current.isDate(T##date1: Date##Date, inSameDayAs: <#T##Date#>)
+        let interv = self.intervals.filter{
+            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
+        &&
+        ($0.wear == true)}
+        
+        
+//        for v in interv{
+//            //index+=1
+//            print(v.time_string)
+//        }
+        
+        return interv
+    }
+    
+    func get_off_day_list()->[DayInterval2]{
+        let interv_previos = self.intervals.filter{
+            Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
+        let lastdate = interv_previos.max { a, b in a.id < b.id }!
+
+        let interv = self.intervals.filter{
+            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, inSameDayAs: lastdate.time))
+        &&
+        ($0.wear == false)}
+        
+        return interv
+    }
+    
+    func is_selected_date(date:Date)->Bool{
+        let state = Calendar.current.isDate(date, equalTo: self.selected_date, toGranularity: .day)
+        return state
+    }
+    
+    func get_intervals_for_selected_day()->[DayInterval2]{
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd"
+        let day_c = formatter_date.date(from: "2019/12/08")!
+        
+        return self.intervals.filter{
+            (Calendar.current.isDate($0.time, equalTo: day_c, toGranularity: .day))
+            &&
+            ($0.wear == false)}
+    }
+    
     func push_user_defaults(){
         defaults.set(required_aligners_total, forKey: "require_count")
         defaults.set(aligner_wear_days, forKey: "aligners_count")
@@ -178,7 +238,7 @@ final class AlignTime: ObservableObject {
         defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         defaults.set(days_left, forKey: "days_left")
-        defaults.set(days_intervals, forKey: "days")
+        //defaults.set(days_intervals, forKey: "days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
         
