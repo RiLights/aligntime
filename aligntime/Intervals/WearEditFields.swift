@@ -16,9 +16,9 @@ struct WearEditFields: View {
     @State var showing_picker = false
     @State var show_end_time_state:Bool = false
     @State var day_index = 0
-    @Binding var intervals:[DayInterval2]
+    @Binding var intervals:[DayInterval]
     
-    func get_filtered()->[DayInterval2]{
+    func get_filtered()->[DayInterval]{
         return self.intervals.filter{$0.wear == true}
     }
 

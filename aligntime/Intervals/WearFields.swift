@@ -36,7 +36,7 @@ struct WearFields: View {
 
 struct WearIntervals: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var intervals:[DayInterval2]
+    @Binding var intervals:[DayInterval]
     @Binding var navigation_label:String
     @Binding var show_modal:Bool
     
@@ -93,7 +93,7 @@ struct WearIntervals: View {
 
 struct OffIntervals: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var intervals:[DayInterval2]
+    @Binding var intervals:[DayInterval]
     @Binding var navigation_label:String
     @Binding var show_modal:Bool
     

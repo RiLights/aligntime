@@ -104,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0071CC523D6F035000B5280 /* Intervals */ = {
+			isa = PBXGroup;
+			children = (
+				F0FEDB3F23C8704D00682F85 /* WearFields.swift */,
+				F0FEDB3823C410A100682F85 /* WearEditFields.swift */,
+				F0FEDB3D23C8685300682F85 /* TimerPicker.swift */,
+			);
+			path = Intervals;
+			sourceTree = "<group>";
+		};
 		F026CA0A23B0A7BC006EC25D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +125,6 @@
 				6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */,
 				6D4B5DB223BB9F5E00F4B2CA /* RKViewController.swift */,
 				6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */,
-				F0FEDB3F23C8704D00682F85 /* WearFields.swift */,
-				F0FEDB3823C410A100682F85 /* WearEditFields.swift */,
-				F0FEDB3D23C8685300682F85 /* TimerPicker.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 				F026CA1123B0AF32006EC25D /* Profile */,
 				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
 				F026CA0A23B0A7BC006EC25D /* Calendar */,
+				F0071CC523D6F035000B5280 /* Intervals */,
 				F05B5C57238D0A7900BC10C9 /* Assets.xcassets */,
 				F05B5C5F238D0A7900BC10C9 /* Info.plist */,
 				F05B5C59238D0A7900BC10C9 /* Preview Content */,

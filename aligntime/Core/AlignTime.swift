@@ -181,7 +181,7 @@ final class AlignTime: ObservableObject {
         self.days[date] = off_time
     }
     
-    func get_wear_day_list()->[DayInterval2]{
+    func get_wear_day_list()->[DayInterval]{
         let interv_previos = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
         let lastdate = interv_previos.max { a, b in a.id < b.id }!
@@ -201,7 +201,7 @@ final class AlignTime: ObservableObject {
         return interv
     }
     
-    func get_off_day_list()->[DayInterval2]{
+    func get_off_day_list()->[DayInterval]{
         let interv_previos = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
         let lastdate = interv_previos.max { a, b in a.id < b.id }!
@@ -219,7 +219,7 @@ final class AlignTime: ObservableObject {
         return state
     }
     
-    func get_intervals_for_selected_day()->[DayInterval2]{
+    func get_intervals_for_selected_day()->[DayInterval]{
         let formatter_date = DateFormatter()
         formatter_date.dateFormat = "yyyy/MM/dd"
         let day_c = formatter_date.date(from: "2019/12/08")!

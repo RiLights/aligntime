@@ -53,7 +53,7 @@ class Day: Identifiable,ObservableObject { //IntervalRepresentation
     }
 }
 
-class DayInterval2: Identifiable,ObservableObject {
+class DayInterval: Identifiable,ObservableObject {
     var id: Int = 0
     var time_string: String = "s...."
     var min_time:Date = get_min_time()
