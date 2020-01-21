@@ -10,7 +10,7 @@ import SwiftUI
 
 
 
-struct WearEditFields: View {
+struct IntervalEditList: View {
     @EnvironmentObject var core_data: AlignTime
     @Binding var navigation_label:String
     @State var showing_picker = false

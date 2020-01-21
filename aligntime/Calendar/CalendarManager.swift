@@ -18,13 +18,12 @@ struct CalendarManager: View {
     var body: some View {
         VStack(alignment: .center) {
             RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
-            WearFields()
+            IntervalFields()
                 .padding(.top, 20)
                 .padding(.horizontal, 40)
                 .animation(.spring())
             Spacer()
         }.onAppear(perform: startUp)
-         //.navigationViewStyle(StackNavigationViewStyle())
     }
        
     func startUp() {
