@@ -16,65 +16,60 @@ struct IntervalEditList: View {
     @State var showing_picker = false
     @State var show_end_time_state:Bool = false
     @State var day_index = 0
-    @Binding var intervals:[DayInterval]
     
     func get_filtered()->[DayInterval]{
-        return self.intervals.filter{$0.wear == true}
+        if navigation_label == "Wear Times"{
+            return self.core_data.get_wear_day_list()
+        }
+        return self.core_data.get_off_day_list()
     }
 
     var body: some View {
         NavigationView {
             HStack(spacing:0){
             List {
-                ForEach(core_data.get_wear_day_list()) { i in
+                ForEach(get_filtered()) { i in
                     HStack(alignment: .lastTextBaseline){
                         Spacer()
                         Button(action: {
-//                            if (i.start_time_string != "     ...."){
-//                                self.show_end_time_state = false
-//                                self.day_index = i.id
-//                                i.max_time = i.end_time
                                 self.day_index = i.id
                                 self.showing_picker.toggle()
                             
                         }){
                             Text(i.time_string)
-                                //.frame(width: 50)
-                                //.padding(.horizontal,5)
-                                //.padding(.trailing,5)
+                                .frame(width: 50)
                         }
-                        Text(":")                        
-                    }
-                }
-                .onDelete(perform: delete)
-            }
-                //Text("-")
-                //Spacer()
-            List {
-                ForEach(get_filtered()) { i in
-                    HStack(alignment: .center){
-                        //Spacer()
-                        Text(":")
+                        Text("-")
                         Button(action: {
-
-                                
+                            if (self.core_data.intervals.count<=i.id+1){
+                            }
+                            else{
+                                self.day_index = i.id+1
                                 self.showing_picker.toggle()
+                            }
                             
                         }){
-                            Text(i.time_string)
-                                //.frame(width: 50)
-                                //.padding(.horizontal,5)
+                            if (self.core_data.intervals.count<=i.id+1){
+                                Text("Now")
+                                    .frame(width: 50)
+                                    .padding(.horizontal,2)
+                            }
+                            else{
+                                Text("\(self.core_data.intervals[i.id+1].time_string)")
+                                    .frame(width: 50)
+                                    .padding(.horizontal,2)
+                            }
                         }
                         Spacer()
                     }
                 }
                 .onDelete(perform: delete)
             }
-                //.navigationBarItems(trailing: EditButton())
-                .navigationBarItems(
-                      trailing: Button(action: addTimeInterval, label: { Text("Add") })
-                )
-                .navigationBarTitle(self.navigation_label)
+            .buttonStyle(PlainButtonStyle())
+            .navigationBarItems(
+                trailing: Button(action: addTimeInterval, label: { Text("Add") })
+            )
+            .navigationBarTitle(self.navigation_label)
             }
             .sheet(isPresented: self.$showing_picker) {
                 TimePicker(date_time: self.$core_data.intervals[self.day_index].time)

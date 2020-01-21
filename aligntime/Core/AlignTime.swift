@@ -82,7 +82,7 @@ final class AlignTime: ObservableObject {
     
     func update_wear_timer(){
         if self.play_state{
-            let elapsed_time = Date().timeIntervalSince(self.start_time)
+            //let elapsed_time = Date().timeIntervalSince(self.start_time)
             //why wear_timer is always updating?
             //self.wear_timer = self.timer_format(elapsed_time)!
             //self.wear_elapsed_time = elapsed_time

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct OffIntervals: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var intervals:[DayInterval]
     @Binding var navigation_label:String
     @Binding var show_modal:Bool
     

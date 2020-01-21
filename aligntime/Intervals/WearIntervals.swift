@@ -10,14 +10,15 @@ import SwiftUI
 
 struct WearIntervals: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var intervals:[DayInterval]
     @Binding var navigation_label:String
     @Binding var show_modal:Bool
+    //@Binding var intrevals:[DayInterval]
     
     
     var body: some View {
         Button(action: {
             self.navigation_label = "Wear Times"
+            //self.intrevals = self.core_data.get_wear_day_list()
             self.show_modal.toggle()
         }) {
             VStack{
