@@ -8,6 +8,23 @@
 
 import Foundation
 
+func clock_string_format(_ date: Date) -> String? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "hh:mm"
+    return formatter.string(from: date)
+}
+
+func get_min_time()->Date{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd"
+    return formatter.date(from: "1970/01/01")!
+}
+
+func get_max_time()->Date{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd"
+    return formatter.date(from: "3000/01/01")!
+}
 
 //func intervals_to_raw_intervals(intervals:[Day])->[DayInterval]{
 //    var days:[DayInterval] = []

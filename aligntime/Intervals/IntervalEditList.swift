@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-
+//func get_min_time_for
 
 struct IntervalEditList: View {
     @EnvironmentObject var core_data: AlignTime
@@ -16,6 +16,8 @@ struct IntervalEditList: View {
     @State var showing_picker = false
     @State var show_end_time_state:Bool = false
     @State var day_index = 0
+    @State var min_time:Date = get_min_time()
+    @State var max_time:Date = Date()
     
     func get_filtered()->[DayInterval]{
         if navigation_label == "Wear Times"{
@@ -32,8 +34,15 @@ struct IntervalEditList: View {
                     HStack(alignment: .lastTextBaseline){
                         Spacer()
                         Button(action: {
-                                self.day_index = i.id
-                                self.showing_picker.toggle()
+                            self.day_index = i.id
+                            if i.id != 0{
+                                self.min_time = self.core_data.intervals[i.id-1].time
+                            }
+                            if (self.core_data.intervals.count>i.id+1){
+                                self.max_time = self.core_data.intervals[i.id+1].time
+                            }
+                            
+                            self.showing_picker.toggle()
                             
                         }){
                             Text(i.time_string)
@@ -66,13 +75,15 @@ struct IntervalEditList: View {
                 .onDelete(perform: delete)
             }
             .buttonStyle(PlainButtonStyle())
-            .navigationBarItems(
-                trailing: Button(action: addTimeInterval, label: { Text("Add") })
-            )
+//            .navigationBarItems(
+//                trailing: Button(action: addTimeInterval, label: { Text("Add") })
+//            )
             .navigationBarTitle(self.navigation_label)
             }
             .sheet(isPresented: self.$showing_picker) {
-                TimePicker(date_time: self.$core_data.intervals[self.day_index].time)
+                TimePicker(date_time: self.$core_data.intervals[self.day_index].time,
+                           min_time:self.$min_time,
+                           max_time:self.$max_time)
             }
         }
     }
