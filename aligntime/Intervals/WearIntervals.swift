@@ -14,6 +14,13 @@ struct WearIntervals: View {
     @Binding var show_modal:Bool
     //@Binding var intrevals:[DayInterval]
     
+    func intervals_color_day(date:Date)->Color{
+        if !self.core_data.is_selected_date(date:date){
+            return Color.secondary
+        }
+        return Color.accentColor
+    }
+    
     
     var body: some View {
         Button(action: {
@@ -27,20 +34,11 @@ struct WearIntervals: View {
                     .font(.system(size: 21))
                 ForEach(core_data.get_wear_day_list()) { i in
                     HStack{
-                        if self.core_data.is_selected_date(date:i.time)
-                        {
-                            Text("\(i.time_string )")
-                                .font(.system(size: 18))
-                                .fontWeight(.light)
-                                .foregroundColor(.accentColor)
-                                .frame(width: 50)
-                        }
-                        else{
-                            Text("\(i.time_string )")
-                                .font(.system(size: 18))
-                                .fontWeight(.light)
-                                .foregroundColor(.secondary)
-                        }
+                        Text("\(i.time_string )")
+                            .font(.system(size: 18))
+                            .fontWeight(.light)
+                            .foregroundColor(self.intervals_color_day(date:i.time))
+                            .frame(width: 50)
                         Text("-")
                             .foregroundColor(.accentColor)
                             .font(.system(size: 21))
@@ -55,8 +53,8 @@ struct WearIntervals: View {
                             Text("\(self.core_data.intervals[i.id+1].time_string)")
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
-                                .foregroundColor(.accentColor)
                                 .frame(width: 50)
+                                .foregroundColor(self.intervals_color_day(date:self.core_data.intervals[i.id+1].time))
                         }
                     }
                 }

@@ -210,7 +210,11 @@ final class AlignTime: ObservableObject {
             (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, inSameDayAs: lastdate.time))
         &&
         ($0.wear == false)}
-        
+        print("core")
+//        for v in interv{
+//            //index+=1
+//            print(v.time_string)
+//        }
         return interv
     }
     
@@ -228,6 +232,13 @@ final class AlignTime: ObservableObject {
             (Calendar.current.isDate($0.time, equalTo: day_c, toGranularity: .day))
             &&
             ($0.wear == false)}
+    }
+    
+    func reasign_intervals_id(){
+        print("reasign")
+        for (i,v) in self.intervals.enumerated(){
+            v.id = i
+        }
     }
     
     func push_user_defaults(){

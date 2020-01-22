@@ -79,7 +79,12 @@ struct IntervalEditList: View {
 
     func addTimeInterval() {print("not ready yet")}
     func delete(at offsets: IndexSet) {
-        print(offsets.first!)
+        let interval_index = self.get_filtered()[offsets.first!].id
+        
+        print(interval_index)
+        self.core_data.intervals.remove(at: interval_index)
+        self.core_data.intervals.remove(at: interval_index)
+        self.core_data.reasign_intervals_id()
         //self.intervals.remove(atOffsets: offsets)
     }
 }

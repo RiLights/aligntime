@@ -13,6 +13,12 @@ struct OffIntervals: View {
     @Binding var navigation_label:String
     @Binding var show_modal:Bool
     
+    func intervals_color_day(date:Date)->Color{
+        if !self.core_data.is_selected_date(date:date){
+            return Color.secondary
+        }
+        return Color.red
+    }
     
     var body: some View {
         Button(action: {
@@ -43,11 +49,20 @@ struct OffIntervals: View {
                         Text("-")
                             .foregroundColor(.red)
                             .font(.system(size: 21))
-                        Text("\(self.core_data.intervals[i.id+1].time_string )")
-                            .font(.system(size: 18))
-                            .fontWeight(.light)
-                            .foregroundColor(.red)
-                            .frame(width: 50)
+                        if (self.core_data.intervals.count<=i.id+1){
+                            Text("Now")
+                                .font(.system(size: 18))
+                                .fontWeight(.light)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 50)
+                        }
+                        else{
+                            Text("\(self.core_data.intervals[i.id+1].time_string )")
+                                .font(.system(size: 18))
+                                .fontWeight(.light)
+                                .foregroundColor(self.intervals_color_day(date:self.core_data.intervals[i.id+1].time))
+                                .frame(width: 50)
+                        }
                     }
                 }
             }
