@@ -28,9 +28,9 @@ struct RKMonth: View {
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10){
-            Text(getMonthHeader())
-                .foregroundColor(.white)
-                .font(.system(size:20))
+//            Text(getMonthHeader())
+//                .foregroundColor(.white)
+//                .font(.system(size:20))
             VStack(alignment: .leading, spacing: 5) {
                 ForEach(monthsArray, id:  \.self) { row in
                     HStack() {
