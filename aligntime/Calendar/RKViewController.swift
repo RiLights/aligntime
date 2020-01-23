@@ -20,41 +20,49 @@ struct RKViewController: View {
     
     var body: some View {
         Group() {
-            HStack {
-                Button("<") {
-                    self.mounthOffset -= 1;
-                    //forward_transition.combined(with: backward_transition)
-                    //self.transition = forward_transition
-                    //self.eege = Edge.leading
-                    self.direction = false
-                    withAnimation {
-                        self.isAnimation.toggle()
+            ZStack(alignment: .top){
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.accentColor)
+                VStack {
+                    HStack {
+                        Button("<") {
+                            self.mounthOffset -= 1;
+                            //forward_transition.combined(with: backward_transition)
+                            //self.transition = forward_transition
+                            //self.eege = Edge.leading
+                            self.direction = false
+                            withAnimation {
+                                self.isAnimation.toggle()
+                            }
+                        }
+                        .foregroundColor(.white)
+                        //.padding(.trailing,5)
+                        Button(">") {
+                            self.mounthOffset += 1;
+                            //transition = backward_transition
+                            //self.eege = Edge.trailing
+                            self.direction = true
+                            withAnimation {
+                                self.isAnimation.toggle()
+                            }
+                        }
+                        .foregroundColor(.white)
                     }
-                }
-                //.padding(.trailing,5)
-                //Spacer()
-                RKWeekdayHeader(rkManager: self.rkManager)
-                Button(">") {
-                    self.mounthOffset += 1;
-                    //transition = backward_transition
-                    //self.eege = Edge.trailing
-                    self.direction = true
-                    withAnimation {
-                        self.isAnimation.toggle()
+                    Divider()
+                    RKWeekdayHeader(rkManager: self.rkManager)
+                    if isAnimation {
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
                     }
+                    else
+                    {
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
+                    }
+                    Spacer()
                 }
             }
-            Divider()
-            
-            if isAnimation {
-                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
-            }
-            else
-            {
-                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
-            }
+            .padding(.horizontal,20)
+            .frame(height: 350)
         }
-        .padding(.horizontal,20)
     }
     
     func numberOfMonths() -> Int {

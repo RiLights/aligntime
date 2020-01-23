@@ -18,7 +18,7 @@ struct RKWeekdayHeader : View {
                 Text(weekday)
                     .font(.system(size: 15))
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .foregroundColor(self.rkManager.colors.weekdayHeaderColor)
+                    .foregroundColor(.white)
             }
         }.background(rkManager.colors.weekdayHeaderBackColor)
     }

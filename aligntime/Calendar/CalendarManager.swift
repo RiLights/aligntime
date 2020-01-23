@@ -33,7 +33,7 @@ struct CalendarManager: View {
          //rkManager1.selectedDates.append(contentsOf: testOnDates)
          
          // example of some foreground colors
-         rkManager1.colors.weekdayHeaderColor = Color.blue
+         rkManager1.colors.weekdayHeaderColor = Color.white
          rkManager1.colors.monthHeaderColor = Color.green
          rkManager1.colors.textColor = Color.blue
          rkManager1.colors.disabledColor = Color.red
