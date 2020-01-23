@@ -7,11 +7,6 @@
 //
 import SwiftUI
 
-extension AnyTransition {
-    static func moveAndScale(edge: Edge, x: CGFloat) -> AnyTransition {
-        AnyTransition.move(edge: edge).combined(with: .offset(x: x)).combined(with: .scale(scale: 0.5))
-    }
-}
 
 struct RKViewController: View {
     
@@ -19,6 +14,7 @@ struct RKViewController: View {
     @Binding var isPresented: Bool
     @State private var isAnimation = false
     @State private var eege = Edge.trailing
+    @State var direction:Bool = true
     
     @ObservedObject var rkManager: RKManager
     
@@ -27,27 +23,35 @@ struct RKViewController: View {
             HStack {
                 Button("<") {
                     self.mounthOffset -= 1;
-                    self.eege = Edge.leading
+                    //forward_transition.combined(with: backward_transition)
+                    //self.transition = forward_transition
+                    //self.eege = Edge.leading
+                    self.direction = false
                     withAnimation {
                         self.isAnimation.toggle()
                     }
                 }
+                //.padding(.trailing,5)
+                //Spacer()
                 RKWeekdayHeader(rkManager: self.rkManager)
                 Button(">") {
                     self.mounthOffset += 1;
-                    self.eege = Edge.trailing
+                    //transition = backward_transition
+                    //self.eege = Edge.trailing
+                    self.direction = true
                     withAnimation {
                         self.isAnimation.toggle()
                     }
                 }
             }
             Divider()
+            
             if isAnimation {
-                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: 100))
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
             }
             else
             {
-                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(.moveAndScale(edge: eege, x: -100))
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: self.mounthOffset).transition(self.direction ? forward_transition : backward_transition)
             }
         }
         .padding(.horizontal,20)

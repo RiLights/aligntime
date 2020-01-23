@@ -27,10 +27,10 @@ struct CalendarManager: View {
     }
        
     func startUp() {
-        self.multipleIsPresented.toggle()
+        //self.multipleIsPresented.toggle()
         
-         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
-         rkManager1.selectedDates.append(contentsOf: testOnDates)
+         //let testOnDates = [Date().addingTimeInterval(60*60*24), Date()]
+         //rkManager1.selectedDates.append(contentsOf: testOnDates)
          
          // example of some foreground colors
          rkManager1.colors.weekdayHeaderColor = Color.blue
