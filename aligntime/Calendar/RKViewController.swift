@@ -50,7 +50,7 @@ struct RKViewController: View {
                     HStack {
                         Spacer()
                         HStack{
-                            Button("< ") {
+                            Button("<  ") {
                                 self.monthOffset -= 1;
                                 //forward_transition.combined(with: backward_transition)
                                 //self.transition = forward_transition
@@ -60,8 +60,8 @@ struct RKViewController: View {
                                     self.isAnimation.toggle()
                                 }
                             }
-                            .foregroundColor(.white)
-                            Button(" >") {
+                            .foregroundColor(Color(UIColor.systemBackground))
+                            Button("  >") {
                                 self.monthOffset += 1;
                                 //transition = backward_transition
                                 //self.eege = Edge.trailing
@@ -70,11 +70,11 @@ struct RKViewController: View {
                                     self.isAnimation.toggle()
                                 }
                             }
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(UIColor.systemBackground))
                         }
                         Spacer()
                         Text(self.getMonthHeader2())
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(UIColor.systemBackground))
                             .font(.system(size:20))
                             .frame(width: 170)
                             .padding(.horizontal,10)

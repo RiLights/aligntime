@@ -33,11 +33,11 @@ struct RKDate {
     }
     
     func getTextColor() -> Color {
-        var textColor = Color.white
+        var textColor = Color(UIColor.systemBackground)
         if isDisabled {
-            textColor = Color.white
+            textColor = Color(UIColor.systemBackground)
         } else if isSelected {
-            textColor = Color.white
+            textColor = Color(UIColor.systemBackground)
         } else if isToday {
             textColor = rkManager.colors.todayColor
         } else if isBetweenStartAndEnd {
