@@ -9,11 +9,6 @@ import Combine
 import Foundation
 import UserNotifications
 
-var raw_day_intervals:[Dictionary<Int, Bool>] = [[1578819735:true],
-                         [1578829735:false],
-                         [1578849735:true],
-                         [1578849999:false]]
-
 
 func get_selected_date()->Date{
     let formatter_date = DateFormatter()
@@ -182,9 +177,11 @@ final class AlignTime: ObservableObject {
     }
     
     func get_wear_day_list()->[DayInterval]{
-        let interv_previos = self.intervals.filter{
+        // Get last interval from previous day
+        let previous_interv = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
-        let lastdate = interv_previos.max { a, b in a.id < b.id }!
+        let lastdate = previous_interv.max { a, b in a.id < b.id }!
+        //
         //print(lastdate.time_string)
         //Calendar.current.isDate(T##date1: Date##Date, inSameDayAs: <#T##Date#>)
         let interv = self.intervals.filter{
@@ -202,19 +199,16 @@ final class AlignTime: ObservableObject {
     }
     
     func get_off_day_list()->[DayInterval]{
-        let interv_previos = self.intervals.filter{
+        // Get last interval from previous day
+        let previous_interv = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
-        let lastdate = interv_previos.max { a, b in a.id < b.id }!
-
+        let lastdate = previous_interv.max { a, b in a.id < b.id }!
+        //
         let interv = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, inSameDayAs: lastdate.time))
+            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
         &&
         ($0.wear == false)}
-        //print("core")
-//        for v in interv{
-//            //index+=1
-//            print(v.time_string)
-//        }
+
         return interv
     }
     
@@ -235,7 +229,6 @@ final class AlignTime: ObservableObject {
     }
     
     func reasign_intervals_id(){
-        //print("reasign")
         for (i,v) in self.intervals.enumerated(){
             v.id = i
         }
