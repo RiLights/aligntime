@@ -70,7 +70,7 @@ struct RKDate {
         } else if isSelected {
             fontWeight = Font.Weight.heavy
         } else if isToday {
-            fontWeight = Font.Weight.heavy
+            fontWeight = Font.Weight.medium
         } else if isBetweenStartAndEnd {
             fontWeight = Font.Weight.regular
         }
