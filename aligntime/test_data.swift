@@ -10,7 +10,7 @@ import Foundation
 
 func test_intervals()->[DayInterval]{
     let formatter_date = DateFormatter()
-    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
+    formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
     let day0_2 = formatter_date.date(from: "2019/12/06 15:00")
     let day0_1 = formatter_date.date(from: "2019/12/07 21:20")
     let day0 = formatter_date.date(from: "2019/12/07 22:15")
@@ -27,6 +27,7 @@ func test_intervals()->[DayInterval]{
     d0_2.id = 0
     d0_2.time = day0_2!
     d0_2.wear = false
+    
     
     let d0_1 = DayInterval()
     d0_1.id = 1

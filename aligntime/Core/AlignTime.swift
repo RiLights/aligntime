@@ -12,14 +12,14 @@ import UserNotifications
 
 func get_selected_date()->Date{
     let formatter_date = DateFormatter()
-    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
+    formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
     
     return formatter_date.date(from: "2019/12/08 15:00")!
 }
 
 func get_selected_previos_date()->Date{
     let formatter_date = DateFormatter()
-    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
+    formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
     
     return formatter_date.date(from: "2019/12/07 15:00")!
 }
