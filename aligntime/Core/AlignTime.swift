@@ -17,13 +17,6 @@ func get_selected_date()->Date{
     return formatter_date.date(from: "2019/12/08 15:00")!
 }
 
-func get_selected_previos_date()->Date{
-    let formatter_date = DateFormatter()
-    formatter_date.dateFormat = "yyyy/MM/dd hh:mm"
-    
-    return formatter_date.date(from: "2019/12/07 15:00")!
-}
-
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
@@ -54,7 +47,6 @@ final class AlignTime: ObservableObject {
     
 
     @Published var selected_date:Date = get_selected_date()
-    @Published var selected_previos_date:Date = get_selected_previos_date()
 
     
     @objc func update_timer() throws {
@@ -179,7 +171,7 @@ final class AlignTime: ObservableObject {
     func get_wear_day_list()->[DayInterval]{
         // Get last interval from previous day
         let previous_interv = self.intervals.filter{
-            Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
+            Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
         let lastdate = previous_interv.max { a, b in a.id < b.id }!
         //
         //print(lastdate.time_string)
@@ -200,8 +192,9 @@ final class AlignTime: ObservableObject {
     
     func get_off_day_list()->[DayInterval]{
         // Get last interval from previous day
+        // one day 86400
         let previous_interv = self.intervals.filter{
-            Calendar.current.isDate($0.time, equalTo: self.selected_previos_date, toGranularity: .day)}
+            Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
         let lastdate = previous_interv.max { a, b in a.id < b.id }!
         //
         let interv = self.intervals.filter{
