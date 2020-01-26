@@ -30,7 +30,7 @@ struct WearIntervals: View {
                 Text("Wear Times:")
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
-                ForEach(core_data.get_wear_day_list()) { i in
+                ForEach(core_data.get_wear_days()) { i in
                     HStack{
                         Text("\(i.time_string )")
                             .font(.system(size: 18))

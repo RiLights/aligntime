@@ -19,9 +19,9 @@ struct IntervalEditList: View {
     
     func get_filtered()->[DayInterval]{
         if navigation_label == "Wear Times"{
-            return self.core_data.get_wear_day_list()
+            return self.core_data.get_wear_days()
         }
-        return self.core_data.get_off_day_list()
+        return self.core_data.get_off_days()
     }
 
     var body: some View {
