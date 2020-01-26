@@ -10,4 +10,5 @@ import Foundation
 
 enum AlignTimeError: Error {
     case ThereIsNoMakeSenseException(date1: Int, date2: Int)
+    case DateNotInRange
 }

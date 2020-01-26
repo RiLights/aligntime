@@ -177,6 +177,10 @@ final class AlignTime: ObservableObject {
         // Get last interval from previous day
         let previous_interv = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
+        
+        if previous_interv == [] {
+            return []
+        }
         let lastdate = previous_interv.max { a, b in a.id < b.id }!
         //
 
@@ -189,11 +193,17 @@ final class AlignTime: ObservableObject {
         return interv
     }
     
-    func get_off_days()->[DayInterval]{
+    func get_off_days() ->[DayInterval] {
         // Get last interval from previous day
         // one day 86400
+        
         let previous_interv = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
+        
+        if previous_interv == [] {
+            return [] //throw AlignTimeError.DateNotInRange
+        }
+
         let lastdate = previous_interv.max { a, b in a.id < b.id }!
         //
         let interv = self.intervals.filter{

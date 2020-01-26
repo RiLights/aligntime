@@ -24,6 +24,7 @@ struct RKCell: View {
             .background(rkDate.getBackgroundColor())
             .cornerRadius(cellWidth/2)
             .onTapGesture(count: 1) {
+                print(self.rkDate.getText())
                 self.core_data.selected_date = self.rkDate.date
                 }
     }
