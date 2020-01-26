@@ -11,7 +11,6 @@ import SwiftUI
 
 struct CalendarManager: View {
     @EnvironmentObject var core_data: AlignTime
-    @State var multipleIsPresented = true
    
     var body: some View {
         VStack(alignment: .center) {
