@@ -185,7 +185,6 @@ final class AlignTime: ObservableObject {
         &&
         ($0.wear == true)}
         
-        
         return interv
     }
     
