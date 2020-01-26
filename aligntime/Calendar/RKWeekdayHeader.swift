@@ -9,18 +9,17 @@
 import SwiftUI
 
 struct RKWeekdayHeader : View {
-    
-    var rkManager: RKManager
+    @EnvironmentObject var core_data: AlignTime
      
     var body: some View {
         HStack(alignment: .center) {
-            ForEach(self.getWeekdayHeaders(calendar: self.rkManager.calendar), id: \.self) { weekday in
+            ForEach(self.getWeekdayHeaders(calendar: self.core_data.calendar), id: \.self) { weekday in
                 Text(weekday)
                     .font(.system(size: 15))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .foregroundColor(Color(UIColor.systemBackground))
             }
-        }.background(rkManager.colors.weekdayHeaderBackColor)
+        }.background(core_data.colors.weekdayHeaderBackColor)
     }
     
     func getWeekdayHeaders(calendar: Calendar) -> [String] {
@@ -38,12 +37,4 @@ struct RKWeekdayHeader : View {
         return weekdaySymbols ?? []
     }
 }
-
-#if DEBUG
-struct RKWeekdayHeader_Previews : PreviewProvider {
-    static var previews: some View {
-        RKWeekdayHeader(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
-    }
-}
-#endif
 

@@ -8,8 +8,6 @@
 
 import SwiftUI
 
-//func get_min_time_for
-
 struct IntervalEditList: View {
     @EnvironmentObject var core_data: AlignTime
     @Binding var navigation_label:String
@@ -92,11 +90,9 @@ struct IntervalEditList: View {
     func delete(at offsets: IndexSet) {
         let interval_index = self.get_filtered()[offsets.first!].id
         
-        print(interval_index)
         self.core_data.intervals.remove(at: interval_index)
         self.core_data.intervals.remove(at: interval_index)
         self.core_data.reasign_intervals_id()
-        //self.intervals.remove(atOffsets: offsets)
     }
 }
 

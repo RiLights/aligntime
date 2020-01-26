@@ -49,6 +49,16 @@ final class AlignTime: ObservableObject {
     
     // how to save custom data into UserDefaults?
     var days: [Date: [String: TimeInterval]] = [:]
+    var colors = RKColorSettings()
+    
+    @Published var calendar = Calendar.current
+    @Published var minimumDate: Date = Date()
+    @Published var maximumDate: Date = Date() //.addingTimeInterval(60*60*24*2)
+    @Published var disabledDates: [Date] = [Date]()
+    @Published var selectedDates: [Date] = [Date]()
+    @Published var selectedDate: Date! = nil
+    @Published var startDate: Date! = nil
+    @Published var endDate: Date! = nil
     
     @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
     
@@ -232,6 +242,8 @@ final class AlignTime: ObservableObject {
         for (i,v) in self.intervals.enumerated(){
             v.id = i
         }
+        
+        update_min_max_dates()
     }
     
     func push_user_defaults(){
@@ -259,6 +271,8 @@ final class AlignTime: ObservableObject {
         //var temp_days = defaults.object(forKey: "SavedArray") as? [DayInterval] ?? []
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
+        
+        update_min_max_dates()
     }
     
     func send_notification(time_interval:Double){
@@ -271,4 +285,31 @@ final class AlignTime: ObservableObject {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+    /// Calendar Manager
+    func selectedDatesContains(date: Date) -> Bool {
+        if let _ = self.selectedDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+            return true
+        }
+        return false
+    }
+    
+    func selectedDatesFindIndex(date: Date) -> Int? {
+        return self.selectedDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
+    }
+    
+    func disabledDatesContains(date: Date) -> Bool {
+        if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+            return true
+        }
+        return false
+    }
+    
+    func disabledDatesFindIndex(date: Date) -> Int? {
+        return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
+    }
+    
+    func update_min_max_dates(){
+        self.minimumDate = self.intervals.min()!.time
+        self.maximumDate = self.intervals.max()!.time
+    }
 }

@@ -10,14 +10,12 @@ import SwiftUI
 
 
 struct CalendarManager: View {
-
+    @EnvironmentObject var core_data: AlignTime
     @State var multipleIsPresented = true
-       
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24), mode: 1)
    
     var body: some View {
         VStack(alignment: .center) {
-            RKViewController(isPresented: self.$multipleIsPresented, rkManager: self.rkManager1)
+            RKViewController()
             IntervalFields()
                 .padding(.top, 20)
                 .padding(.horizontal, 40)
@@ -33,10 +31,10 @@ struct CalendarManager: View {
          //rkManager1.selectedDates.append(contentsOf: testOnDates)
          
          // example of some foreground colors
-         rkManager1.colors.weekdayHeaderColor = Color.white
-         rkManager1.colors.monthHeaderColor = Color.green
-         rkManager1.colors.textColor = Color.blue
-         rkManager1.colors.disabledColor = Color.red
+         core_data.colors.weekdayHeaderColor = Color.white
+         core_data.colors.monthHeaderColor = Color.green
+         core_data.colors.textColor = Color.blue
+         core_data.colors.disabledColor = Color.red
        }
 }
 

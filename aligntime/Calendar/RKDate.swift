@@ -9,18 +9,17 @@
 import SwiftUI
 
 struct RKDate {
-    
     var date: Date
-    let rkManager: RKManager
+    let core: AlignTime
     
     var isDisabled: Bool = false
     var isToday: Bool = false
     var isSelected: Bool = false
     var isBetweenStartAndEnd: Bool = false
     
-    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+    init(date: Date, core: AlignTime, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
         self.date = date
-        self.rkManager = rkManager
+        self.core = core
         self.isDisabled = isDisabled
         self.isToday = isToday
         self.isSelected = isSelected
@@ -28,7 +27,7 @@ struct RKDate {
     }
     
     func getText() -> String {
-        let day = formatDate(date: date, calendar: self.rkManager.calendar)
+        let day = formatDate(date: date, calendar: self.core.calendar)
         return day
     }
     
@@ -39,26 +38,26 @@ struct RKDate {
         } else if isSelected {
             textColor = Color(UIColor.systemBackground)
         } else if isToday {
-            textColor = rkManager.colors.todayColor
+            textColor = core.colors.todayColor
         } else if isBetweenStartAndEnd {
-            textColor = rkManager.colors.betweenStartAndEndColor
+            textColor = core.colors.betweenStartAndEndColor
         }
         return textColor
     }
     
     func getBackgroundColor() -> Color {
-        var backgroundColor = rkManager.colors.textBackColor
+        var backgroundColor = core.colors.textBackColor
         if isBetweenStartAndEnd {
-            backgroundColor = rkManager.colors.betweenStartAndEndBackColor
+            backgroundColor = core.colors.betweenStartAndEndBackColor
         }
         if isToday {
-            backgroundColor = rkManager.colors.todayBackColor
+            backgroundColor = core.colors.todayBackColor
         }
         if isDisabled {
-            backgroundColor = rkManager.colors.disabledBackColor
+            backgroundColor = core.colors.disabledBackColor
         }
         if isSelected {
-            backgroundColor = rkManager.colors.selectedBackColor
+            backgroundColor = core.colors.selectedBackColor
         }
         return backgroundColor
     }

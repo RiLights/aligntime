@@ -9,7 +9,7 @@
 import Foundation
 
 
-class DayInterval: Identifiable,ObservableObject {
+class DayInterval: Identifiable,ObservableObject,Comparable {
     var id: Int = 0
     var time_string: String = "...."
     var wear:Bool = true
@@ -19,6 +19,14 @@ class DayInterval: Identifiable,ObservableObject {
         didSet {
             self.time_string = clock_string_format(self.time)!
         }
+    }
+    
+    static func <(lhs: DayInterval, rhs: DayInterval) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    static func == (lhs: DayInterval, rhs: DayInterval) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 
