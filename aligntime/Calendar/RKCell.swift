@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RKCell: View {
     
+    @EnvironmentObject var core_data: AlignTime
     var rkDate: RKDate
     
     var cellWidth: CGFloat
@@ -22,6 +23,9 @@ struct RKCell: View {
             .font(.system(size: 18))
             .background(rkDate.getBackgroundColor())
             .cornerRadius(cellWidth/2)
+            .onTapGesture(count: 1) {
+                self.core_data.selected_date = self.rkDate.date
+                }
     }
 }
 
