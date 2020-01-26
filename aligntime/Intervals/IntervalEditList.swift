@@ -17,7 +17,7 @@ struct IntervalEditList: View {
     @State var min_time:Date = get_min_time()
     @State var max_time:Date = Date()
     
-    func get_filtered()->[DayInterval]{
+    func get_filtered()-> [DayInterval]{
         if navigation_label == "Wear Times"{
             return self.core_data.get_wear_days()
         }
