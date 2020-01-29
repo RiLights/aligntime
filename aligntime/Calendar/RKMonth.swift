@@ -60,11 +60,9 @@ struct RKMonth: View {
      }
     
     func dateTapped(date: Date) {
-        print("hello start")
         if self.isEnabled(date: date) {
             self.core_data.selectedDate = date
             self.core_data.selected_date = date
-            print("hello")
         }
     }
     
@@ -143,11 +141,6 @@ struct RKMonth: View {
         return     isStartDate(date: date)
                 || isEndDate(date: date)
                 || isSelectedDate(date: date)
-                || isOneOfSelectedDates(date: date)
-    }
-    
-    func isOneOfSelectedDates(date: Date) -> Bool {
-        return self.core_data.selectedDatesContains(date: date)
     }
 
     func isSelectedDate(date: Date) -> Bool {
