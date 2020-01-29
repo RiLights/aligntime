@@ -40,15 +40,13 @@ final class AlignTime: ObservableObject {
     @Published var calendar = Calendar.current
     @Published var minimumDate: Date = Date()
     @Published var maximumDate: Date = Date() //.addingTimeInterval(60*60*24*2)
-    @Published var disabledDates: [Date] = [Date]()
-    @Published var selectedDate: Date! = nil
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     
     @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
     
 
-    @Published var selected_date:Date! = nil
+    @Published var selected_date: Date! = nil
 
     
     @objc func update_timer() throws {
@@ -263,17 +261,6 @@ final class AlignTime: ObservableObject {
     }
     
     /// Calendar Manager
-    
-    func disabledDatesContains(date: Date) -> Bool {
-        if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
-            return true
-        }
-        return false
-    }
-    
-    func disabledDatesFindIndex(date: Date) -> Int? {
-        return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
-    }
     
     func update_min_max_dates(){
         self.minimumDate = self.intervals.min()!.time

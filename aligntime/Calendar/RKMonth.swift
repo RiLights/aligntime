@@ -61,7 +61,6 @@ struct RKMonth: View {
     
     func dateTapped(date: Date) {
         if self.isEnabled(date: date) {
-            self.core_data.selectedDate = date
             self.core_data.selected_date = date
         }
     }
@@ -144,10 +143,10 @@ struct RKMonth: View {
     }
 
     func isSelectedDate(date: Date) -> Bool {
-        if core_data.selectedDate == nil {
+        if core_data.selected_date == nil {
             return false
         }
-        return RKFormatAndCompareDate(date: date, referenceDate: core_data.selectedDate)
+        return RKFormatAndCompareDate(date: date, referenceDate: core_data.selected_date)
     }
  
     
@@ -178,16 +177,12 @@ struct RKMonth: View {
         return true
     }
     
-    func isOneOfDisabledDates(date: Date) -> Bool {
-        return self.core_data.disabledDatesContains(date: date)
-    }
-    
     func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
         if core_data.calendar.compare(clampedDate, to: core_data.minimumDate, toGranularity: .day) == .orderedAscending || core_data.calendar.compare(clampedDate, to: core_data.maximumDate, toGranularity: .day) == .orderedDescending {
             return false
         }
-        return !isOneOfDisabledDates(date: date)
+        return true
     }
     
     func isStartDateAfterEndDate() -> Bool {
