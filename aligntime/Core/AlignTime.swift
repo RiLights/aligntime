@@ -51,7 +51,7 @@ final class AlignTime: ObservableObject {
     @Published var maximumDate: Date = Date() //.addingTimeInterval(60*60*24*2)
     @Published var disabledDates: [Date] = [Date]()
     @Published var selectedDates: [Date] = [Date]()
-    @Published var selectedDate: Date! = nil
+    @Published var selectedDate: Date = Date()
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     

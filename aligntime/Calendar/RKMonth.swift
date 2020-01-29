@@ -41,6 +41,7 @@ struct RKMonth: View {
                                             isSelected: self.isSpecialDate(date: column),
                                             isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
                                         cellWidth: self.cellWidth)
+                                        .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("")
                                         .frame(width: self.cellWidth, height: self.cellWidth)
@@ -58,7 +59,15 @@ struct RKMonth: View {
          return self.core_data.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
      }
     
-     
+    func dateTapped(date: Date) {
+        print("hello start")
+        if self.isEnabled(date: date) {
+            self.core_data.selectedDate = date
+            self.core_data.selected_date = date
+            print("hello")
+        }
+    }
+    
     func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
