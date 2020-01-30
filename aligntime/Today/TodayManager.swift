@@ -11,6 +11,8 @@ import SwiftUI
 struct TodayManager: View {
     @EnvironmentObject var user_data: AlignTime
     @State private var show_reminder = false
+    @State var currentDate = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -23,6 +25,10 @@ struct TodayManager: View {
     
     var body: some View {
         VStack(alignment: .center) {
+//            Text("\(currentDate)")
+//                .onReceive(timer) { input in
+//                    self.currentDate = input
+//                }
             Text("Today: \(today_date, formatter: date_formatter)")
                 .font(.system(size: 23))
                 .foregroundColor(Color.primary)

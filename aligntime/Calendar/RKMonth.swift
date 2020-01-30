@@ -40,6 +40,7 @@ struct RKMonth: View {
                                             isSelected: self.isSpecialDate(date: column),
                                             isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
                                         cellWidth: self.cellWidth)
+                                        .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("")
                                         .frame(width: self.cellWidth, height: self.cellWidth)
@@ -57,7 +58,12 @@ struct RKMonth: View {
          return self.core_data.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
      }
     
-     
+    func dateTapped(date: Date) {
+        if self.isEnabled(date: date) {
+            self.core_data.selected_date = date
+        }
+    }
+    
     func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
@@ -133,18 +139,13 @@ struct RKMonth: View {
         return     isStartDate(date: date)
                 || isEndDate(date: date)
                 || isSelectedDate(date: date)
-                || isOneOfSelectedDates(date: date)
-    }
-    
-    func isOneOfSelectedDates(date: Date) -> Bool {
-        return self.core_data.selectedDatesContains(date: date)
     }
 
     func isSelectedDate(date: Date) -> Bool {
-        if core_data.selectedDate == nil {
+        if core_data.selected_date == nil {
             return false
         }
-        return RKFormatAndCompareDate(date: date, referenceDate: core_data.selectedDate)
+        return RKFormatAndCompareDate(date: date, referenceDate: core_data.selected_date)
     }
  
     
@@ -175,16 +176,12 @@ struct RKMonth: View {
         return true
     }
     
-    func isOneOfDisabledDates(date: Date) -> Bool {
-        return self.core_data.disabledDatesContains(date: date)
-    }
-    
     func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
         if core_data.calendar.compare(clampedDate, to: core_data.minimumDate, toGranularity: .day) == .orderedAscending || core_data.calendar.compare(clampedDate, to: core_data.maximumDate, toGranularity: .day) == .orderedDescending {
             return false
         }
-        return !isOneOfDisabledDates(date: date)
+        return true
     }
     
     func isStartDateAfterEndDate() -> Bool {

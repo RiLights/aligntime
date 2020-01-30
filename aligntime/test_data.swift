@@ -22,6 +22,8 @@ func test_intervals()->[DayInterval]{
     let day6 = formatter_date.date(from: "2019/12/08 20:00")
     let day7 = formatter_date.date(from: "2019/12/09 01:00")
     let day8 = formatter_date.date(from: "2019/12/09 02:00")
+    let day9 = formatter_date.date(from: "2020/01/01 02:00")
+    let day10 = formatter_date.date(from: "2020/01/31 02:00")
     
     let d0_2 = DayInterval()
     d0_2.id = 0
@@ -79,6 +81,15 @@ func test_intervals()->[DayInterval]{
     d08.time = day8!
     d08.wear = false
 
+    let d09 = DayInterval()
+    d09.id = 11
+    d09.time = day9!
+    d09.wear = true
     
-    return [d0_2,d0_1,d00,d01,d02,d03,d04,d05,d06,d07,d08]
+    let d10 = DayInterval()
+    d10.id = 12
+    d10.time = day10!
+    d10.wear = false
+    
+    return [d0_2,d0_1,d00,d01,d02,d03,d04,d05,d06,d07,d08,d09,d10]
 }

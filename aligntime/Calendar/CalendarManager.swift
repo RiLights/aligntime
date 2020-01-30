@@ -24,11 +24,6 @@ struct CalendarManager: View {
     }
        
     func startUp() {
-        //self.multipleIsPresented.toggle()
-        
-         //let testOnDates = [Date().addingTimeInterval(60*60*24), Date()]
-         //rkManager1.selectedDates.append(contentsOf: testOnDates)
-         
          // example of some foreground colors
          core_data.colors.weekdayHeaderColor = Color.white
          core_data.colors.monthHeaderColor = Color.green

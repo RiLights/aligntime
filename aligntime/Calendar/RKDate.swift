@@ -64,11 +64,11 @@ struct RKDate {
     
     func getFontWeight() -> Font.Weight {
         var fontWeight = Font.Weight.medium
-        if isDisabled {
+        if isToday || isToday {
+            fontWeight = Font.Weight.heavy
+        } else if isDisabled {
             fontWeight = Font.Weight.thin
         } else if isSelected {
-            fontWeight = Font.Weight.heavy
-        } else if isToday {
             fontWeight = Font.Weight.medium
         } else if isBetweenStartAndEnd {
             fontWeight = Font.Weight.regular
