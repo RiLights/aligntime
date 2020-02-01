@@ -53,7 +53,7 @@ struct OffIntervals: View {
                             Text("Now")
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.red)
                                 .frame(width: 50)
                         }
                         else{

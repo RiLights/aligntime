@@ -166,21 +166,29 @@ final class AlignTime: ObservableObject {
         if self.selected_date == nil {
             return []
         }
-        let previous_interv = self.intervals.filter{
+        
+        // -86400 is yesterday
+        let previous_interval = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
         
-        if previous_interv == [] {
-            return []
+        if previous_interval != [] {
+            let lastdate = previous_interval.max { a, b in a.id < b.id }!
+            
+            let interval = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
+            &&
+            ($0.wear == true)}
+            
+            return interval
         }
-        let lastdate = previous_interv.max { a, b in a.id < b.id }!
-        //
-
-        let intervals = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
-        &&
-        ($0.wear == true)}
-        
-        return intervals
+        else{
+            let interval = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
+            &&
+            ($0.wear == true)}
+            
+            return interval
+        }
     }
     
     func get_off_days() ->[DayInterval] {
@@ -188,21 +196,29 @@ final class AlignTime: ObservableObject {
         if self.selected_date == nil {
             return []
         }
-        let previous_interv = self.intervals.filter{
+        
+        // -86400 is yesterday
+        let previous_interval = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
         
-        if previous_interv == [] {
-            return [] //throw AlignTimeError.DateNotInRange
+        if previous_interval != [] {
+            let lastdate = previous_interval.max { a, b in a.id < b.id }!
+            
+            let interval = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
+            &&
+            ($0.wear == false)}
+            
+            return interval
         }
-
-        let lastdate = previous_interv.max { a, b in a.id < b.id }!
-        //
-        let interv = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
-        &&
-        ($0.wear == false)}
-
-        return interv
+        else{
+            let interval = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
+            &&
+            ($0.wear == false)}
+            
+            return interval
+        }
     }
     
     func is_selected_date(date:Date)->Bool{

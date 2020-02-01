@@ -61,6 +61,7 @@ struct RKMonth: View {
     
     func dateTapped(date: Date) {
         if self.isEnabled(date: date) {
+            //print("dateTapped")
             self.core_data.selected_date = date
         }
     }
