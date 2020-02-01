@@ -22,7 +22,7 @@ struct RKCell: View {
             .frame(width: cellWidth, height: cellWidth)
             .font(.system(size: 18))
             .background(rkDate.getBackgroundColor())
-            .cornerRadius(cellWidth)
+            .cornerRadius(cellWidth/2)
     }
 }
 

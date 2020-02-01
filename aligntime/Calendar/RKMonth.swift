@@ -22,8 +22,7 @@ struct RKMonth: View {
     let cellWidth = CGFloat(32)
     
     @State var showTime = false
-    
-    
+        
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10){
             VStack(alignment: .leading, spacing: 5) {
