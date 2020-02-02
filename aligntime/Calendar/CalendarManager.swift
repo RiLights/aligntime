@@ -31,11 +31,3 @@ struct CalendarManager: View {
          core_data.colors.disabledColor = Color.red
        }
 }
-
-#if DEBUG
-struct Calendar_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarManager()
-    }
-}
-#endif

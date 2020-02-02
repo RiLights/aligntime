@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var user_data: AlignTime
+    //@State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         //TestV()

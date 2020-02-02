@@ -46,8 +46,75 @@ final class AlignTime: ObservableObject {
     @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
     
 
-    @Published var selected_date: Date! = nil
-
+    @Published var selected_date: Date! = Date()//nil
+    
+    @Published var current_state = true
+    @Published var last_interval_date = Date()
+    
+    func get_wear_timer_for_today(d:Date? = nil) -> String{
+        let intervals = self.intervals.filter{
+            (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
+        &&
+        ($0.wear == true)}
+        
+        //intervals.append(contentsOf: )
+        var total:TimeInterval = 0
+        for i in intervals{
+            if self.intervals.count > i.id+1{
+                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
+                total+=t
+            }
+            else{
+                if d != nil{
+                    let t = d!.timeIntervalSince(i.time)
+                    total+=t
+                }
+            }
+        }
+        //print(self.timer_format(total)!)
+        return self.timer_format(total)!
+    }
+    func get_off_timer_for_today(d:Date? = nil) -> String{
+        let intervals = self.intervals.filter{
+            (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
+        &&
+        ($0.wear == false)}
+        
+        //intervals.append(contentsOf: )
+        var total:TimeInterval = 0
+        for i in intervals{
+            if self.intervals.count > i.id+1{
+                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
+                total+=t
+            }
+            else{
+                if d != nil{
+                    let t = d!.timeIntervalSince(i.time)
+                    total+=t
+                }
+            }
+        }
+        //print(self.timer_format(total)!)
+        return self.timer_format(total)!
+    }
+    
+    func get_off_timer_for_date(d:Date) -> String{
+        if !current_state{
+            return self.timer_format(d.timeIntervalSince(self.last_interval_date))!
+        }
+        return wear_timer
+    }
+    
+    func switch_timer(){
+        self.last_interval_date = self.intervals[self.intervals.count-1].time
+        let interval = DayInterval()
+        interval.time=Date()
+        interval.id = self.intervals.count
+        interval.wear = current_state
+        self.intervals.append(interval)
+        update_min_max_dates()
+        //print(self.intervals.count)
+    }
     
     @objc func update_timer() throws {
         do{
@@ -68,23 +135,23 @@ final class AlignTime: ObservableObject {
     }
     
     func update_wear_timer(){
-        if self.play_state{
-            //let elapsed_time = Date().timeIntervalSince(self.start_time)
-            //why wear_timer is always updating?
-            //self.wear_timer = self.timer_format(elapsed_time)!
-            //self.wear_elapsed_time = elapsed_time
-
-            let date = self.date_format(date:Date())
-            self.set_wear_time_for_date(date:date,interval: self.wear_elapsed_time)
-        }
-        else{
-            let elapsed_time = Date().timeIntervalSince(self.out_time)
-            self.out_timer = self.timer_format(elapsed_time)!
-            self.out_elapsed_time = elapsed_time
-            
-            let date = self.date_format(date:Date())
-            self.set_off_time_time_for_date(date:date,interval: self.out_elapsed_time)
-        }
+//        if self.play_state{
+//            //let elapsed_time = Date().timeIntervalSince(self.start_time)
+//            //why wear_timer is always updating?
+//            //self.wear_timer = self.timer_format(elapsed_time)!
+//            //self.wear_elapsed_time = elapsed_time
+//
+//            let date = self.date_format(date:Date())
+//            self.set_wear_time_for_date(date:date,interval: self.wear_elapsed_time)
+//        }
+//        else{
+//            let elapsed_time = Date().timeIntervalSince(self.out_time)
+//            self.out_timer = self.timer_format(elapsed_time)!
+//            self.out_elapsed_time = elapsed_time
+//
+//            let date = self.date_format(date:Date())
+//            self.set_off_time_time_for_date(date:date,interval: self.out_elapsed_time)
+//        }
     }
     
     func update_today_dates() throws {

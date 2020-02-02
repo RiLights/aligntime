@@ -9,14 +9,23 @@
 import SwiftUI
 
 struct TodayManager: View {
-    @EnvironmentObject var user_data: AlignTime
+    @EnvironmentObject var core_data: AlignTime
     @State private var show_reminder = false
     @State var currentDate = Date()
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var test = ""
+    @State var wear_time = "00:00:00"
+    @State var off_time = "00:00:00"
+    //@Binding var timer:Int
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
+        return formatter
+    }
+    var date_formatter_time: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
         return formatter
     }
     
@@ -25,9 +34,12 @@ struct TodayManager: View {
     
     var body: some View {
         VStack(alignment: .center) {
-//            Text("\(currentDate)")
-//                .onReceive(timer) { input in
-//                    self.currentDate = input
+//            Text(test)
+//                .onReceive(self.timer) { input in
+//                    self.test = self.core_data.timer_format(input.timeIntervalSince(self.currentDate))!
+//                }
+//                .onAppear() {
+//                    //self.currentDate = Date()
 //                }
             Text("Today: \(today_date, formatter: date_formatter)")
                 .font(.system(size: 23))
@@ -40,7 +52,7 @@ struct TodayManager: View {
                         .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                         .padding(.bottom, 5)
-                    Text("\(self.user_data.wear_timer)")
+                    Text(wear_time)
                         .font(.system(size: 24))
                         .foregroundColor(Color.blue)
                         .padding(.bottom, 5)
@@ -49,20 +61,43 @@ struct TodayManager: View {
                     Text("Out time: ")
                         .font(.system(size: 24))
                         .foregroundColor(Color.primary)
-                    Text("\(self.user_data.out_timer)")
+                    Text(off_time)
                         .font(.system(size: 24))
                         .foregroundColor(Color.blue)
                 }
             }
             .padding(.bottom, 10)
-            Button(action: {
-                if !self.user_data.play_state{
-                    self.user_data.start_wear()
-                    self.user_data.play_state = !self.user_data.play_state
+            .onReceive(self.timer) { input in
+                if self.core_data.current_state{
+                    self.wear_time = self.core_data.get_wear_timer_for_today(d: input)
                 }
                 else{
-                    self.show_reminder.toggle()
+                    self.off_time = self.core_data.get_off_timer_for_today(d: input)
                 }
+            }
+            .onAppear() {
+                if self.core_data.current_state{
+                    self.wear_time = self.core_data.get_wear_timer_for_today(d:Date())
+                    self.off_time = self.core_data.get_off_timer_for_today()
+                }
+                else{
+                    self.wear_time = self.core_data.get_wear_timer_for_today()
+                    self.off_time = self.core_data.get_off_timer_for_today(d:Date())
+                }
+            }
+            Button(action: {
+                self.core_data.current_state = !self.core_data.current_state
+                self.core_data.play_state = !self.core_data.play_state
+                
+                self.core_data.switch_timer()
+                //self.off_time = self.core_data.get_off_timer_for_today()
+//                if !self.core_data.play_state{
+//                    self.core_data.start_wear()
+//                    self.core_data.play_state = !self.core_data.play_state
+//                }
+//                else{
+//                    self.show_reminder.toggle()
+//                }
                                 
                 //haptic feedback
                 self.generator_feedback.impactOccurred()
@@ -70,7 +105,7 @@ struct TodayManager: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.primary, lineWidth: 2)
-                    Image(systemName: self.user_data.play_state ? "pause.circle" : "play.circle" )
+                    Image(systemName: self.core_data.play_state ? "pause.circle" : "play.circle" )
                         .font(.system(size: 90))
                 }
             }
@@ -79,24 +114,24 @@ struct TodayManager: View {
                 ActionSheet(title: Text("Reminder"),
                             message: Text("You will receive notification in the time interval they’ve selected"),
                             buttons: [.default(Text("10 Seconds (for debug)"),action: {
-                                        self.user_data.out_wear()
-                                        self.user_data.play_state = !self.user_data.play_state
-                                        self.user_data.send_notification(time_interval: 10)
+                                        self.core_data.out_wear()
+                                        self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.send_notification(time_interval: 10)
                                         }),
                                       .default(Text("15 Minutes"), action: {
-                                        self.user_data.out_wear()
-                                        self.user_data.play_state = !self.user_data.play_state
-                                        self.user_data.send_notification(time_interval: 900)
+                                        self.core_data.out_wear()
+                                        self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.send_notification(time_interval: 900)
                                       }),
                                       .default(Text("30 Minutes"), action: {
-                                        self.user_data.out_wear()
-                                        self.user_data.play_state = !self.user_data.play_state
-                                        self.user_data.send_notification(time_interval: 1800)
+                                        self.core_data.out_wear()
+                                        self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.send_notification(time_interval: 1800)
                                       }),
                                       .default(Text("1 Hour"), action: {
-                                        self.user_data.out_wear()
-                                        self.user_data.play_state = !self.user_data.play_state
-                                        self.user_data.send_notification(time_interval: 3600)
+                                        self.core_data.out_wear()
+                                        self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.send_notification(time_interval: 3600)
                                       }),
                                       .cancel(),
                                                
@@ -116,7 +151,7 @@ struct TodayManager: View {
                 Text("You have been wearing aligners for")
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                Text(self.user_data.wearing_aligners_days)
+                Text(self.core_data.wearing_aligners_days)
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                 Text("days")
@@ -124,7 +159,7 @@ struct TodayManager: View {
                     .foregroundColor(Color.primary)
             }
             HStack(alignment: .center, spacing: 4) {
-                Text(self.user_data.days_left)
+                Text(self.core_data.days_left)
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
                     .padding(.leading, 5)
@@ -140,8 +175,8 @@ struct TodayManager: View {
         }
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                self.user_data.complete = true
-                self.user_data.push_user_defaults()
+                self.core_data.complete = true
+                self.core_data.push_user_defaults()
             })
         }
     }
