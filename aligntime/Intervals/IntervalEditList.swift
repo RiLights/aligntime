@@ -52,6 +52,13 @@ struct IntervalEditList: View {
                             }
                             else{
                                 self.day_index = i.id+1
+                                self.min_time = i.time
+                                if (self.core_data.intervals.count>i.id+2){
+                                    self.max_time = self.core_data.intervals[i.id+2].time
+                                }
+                                else{
+                                    self.max_time = self.core_data.intervals[i.id+2].time
+                                }
                                 self.showing_picker.toggle()
                             }
                             
