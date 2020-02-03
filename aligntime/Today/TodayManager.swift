@@ -41,10 +41,17 @@ struct TodayManager: View {
 //                .onAppear() {
 //                    //self.currentDate = Date()
 //                }
-            Text("Today: \(today_date, formatter: date_formatter)")
-                .font(.system(size: 23))
-                .foregroundColor(Color.primary)
-                .fontWeight(Font.Weight.light)
+            HStack {
+                Text("Today:")
+                    .font(.system(size: 23))
+                    .foregroundColor(Color.primary)
+                    .fontWeight(Font.Weight.light)
+                Text("\(today_date, formatter: date_formatter)")
+                    .font(.system(size: 23))
+                    .foregroundColor(Color.accentColor)
+                    .fontWeight(Font.Weight.light)
+            }
+            
             Spacer()
             VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 4) {
@@ -86,18 +93,19 @@ struct TodayManager: View {
                 }
             }
             Button(action: {
-                self.core_data.current_state = !self.core_data.current_state
-                self.core_data.play_state = !self.core_data.play_state
-                
-                self.core_data.switch_timer()
+//                self.core_data.current_state = !self.core_data.current_state
+//                self.core_data.play_state = !self.core_data.play_state
+//
+//                self.core_data.switch_timer()
                 //self.off_time = self.core_data.get_off_timer_for_today()
-//                if !self.core_data.play_state{
-//                    self.core_data.start_wear()
-//                    self.core_data.play_state = !self.core_data.play_state
-//                }
-//                else{
-//                    self.show_reminder.toggle()
-//                }
+                if !self.core_data.play_state{
+                    self.core_data.current_state = !self.core_data.current_state
+                    self.core_data.play_state = !self.core_data.play_state
+                    self.core_data.switch_timer()
+                }
+                else{
+                    self.show_reminder.toggle()
+                }
                                 
                 //haptic feedback
                 self.generator_feedback.impactOccurred()
@@ -114,23 +122,27 @@ struct TodayManager: View {
                 ActionSheet(title: Text("Reminder"),
                             message: Text("You will receive notification in the time interval they’ve selected"),
                             buttons: [.default(Text("10 Seconds (for debug)"),action: {
-                                        self.core_data.out_wear()
+                                        self.core_data.current_state = !self.core_data.current_state
                                         self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.switch_timer()
                                         self.core_data.send_notification(time_interval: 10)
                                         }),
                                       .default(Text("15 Minutes"), action: {
-                                        self.core_data.out_wear()
+                                        self.core_data.current_state = !self.core_data.current_state
                                         self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.switch_timer()
                                         self.core_data.send_notification(time_interval: 900)
                                       }),
                                       .default(Text("30 Minutes"), action: {
-                                        self.core_data.out_wear()
+                                        self.core_data.current_state = !self.core_data.current_state
                                         self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.switch_timer()
                                         self.core_data.send_notification(time_interval: 1800)
                                       }),
                                       .default(Text("1 Hour"), action: {
-                                        self.core_data.out_wear()
+                                        self.core_data.current_state = !self.core_data.current_state
                                         self.core_data.play_state = !self.core_data.play_state
+                                        self.core_data.switch_timer()
                                         self.core_data.send_notification(time_interval: 3600)
                                       }),
                                       .cancel(),
@@ -174,6 +186,12 @@ struct TodayManager: View {
             }
         }
         .onAppear() {
+            do {
+                try self.core_data.update_today_dates()
+            } catch {
+                print ("Exception: ThereIsNoMakeSenseException!")
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.core_data.complete = true
                 self.core_data.push_user_defaults()

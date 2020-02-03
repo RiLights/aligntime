@@ -82,6 +82,9 @@ final class AlignTime: ObservableObject {
         
         //intervals.append(contentsOf: )
         var total:TimeInterval = 0
+        if intervals.count == 0{
+            switch_timer()
+        }
         for i in intervals{
             if self.intervals.count > i.id+1{
                 let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
@@ -106,7 +109,12 @@ final class AlignTime: ObservableObject {
     }
     
     func switch_timer(){
-        self.last_interval_date = self.intervals[self.intervals.count-1].time
+        if self.intervals.count != 0{
+            self.last_interval_date = self.intervals[self.intervals.count-1].time
+        }
+        else{
+            self.last_interval_date = Date()
+        }
         let interval = DayInterval()
         interval.time=Date()
         interval.id = self.intervals.count

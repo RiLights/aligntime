@@ -34,6 +34,7 @@
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0E15CD923B1CE97009BA6DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E15CD823B1CE97009BA6DB /* UserData.swift */; };
+		F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E3882123E8204400B758C7 /* AlignTimeTests.swift */; };
 		F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */; };
 		F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3823C410A100682F85 /* IntervalEditList.swift */; };
 		F0FEDB3E23C8685300682F85 /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3D23C8685300682F85 /* TimerPicker.swift */; };
@@ -43,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F05B5C65238D0A7900BC10C9 /* PBXContainerItemProxy */ = {
+		F0E3882423E8204400B758C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F05B5C46238D0A7800BC10C9 /* Project object */;
 			proxyType = 1;
@@ -81,9 +82,11 @@
 		F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlignTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
-		F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aligntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
 		F0E15CD823B1CE97009BA6DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlignTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E3882123E8204400B758C7 /* AlignTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTimeTests.swift; sourceTree = "<group>"; };
+		F0E3882323E8204400B758C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F0FEDB3823C410A100682F85 /* IntervalEditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEditList.swift; sourceTree = "<group>"; };
 		F0FEDB3D23C8685300682F85 /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
@@ -100,7 +103,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F05B5C61238D0A7900BC10C9 /* Frameworks */ = {
+		F0E3881C23E8204400B758C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -151,7 +154,8 @@
 			children = (
 				F05B5C50238D0A7800BC10C9 /* aligntime */,
 				F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */,
-				F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */,
+				F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */,
+				F0E3882023E8204400B758C7 /* AlignTimeTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +221,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		F0E3882023E8204400B758C7 /* AlignTimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0E3882123E8204400B758C7 /* AlignTimeTests.swift */,
+				F0E3882323E8204400B758C7 /* Info.plist */,
+			);
+			path = AlignTimeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,22 +252,22 @@
 			productReference = F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F05B5C63238D0A7900BC10C9 /* aligntimeTests */ = {
+		F0E3881E23E8204400B758C7 /* AlignTimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F05B5C70238D0A7900BC10C9 /* Build configuration list for PBXNativeTarget "aligntimeTests" */;
+			buildConfigurationList = F0E3882623E8204400B758C7 /* Build configuration list for PBXNativeTarget "AlignTimeTests" */;
 			buildPhases = (
-				F05B5C60238D0A7900BC10C9 /* Sources */,
-				F05B5C61238D0A7900BC10C9 /* Frameworks */,
-				F05B5C62238D0A7900BC10C9 /* Resources */,
+				F0E3881B23E8204400B758C7 /* Sources */,
+				F0E3881C23E8204400B758C7 /* Frameworks */,
+				F0E3881D23E8204400B758C7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F05B5C66238D0A7900BC10C9 /* PBXTargetDependency */,
+				F0E3882523E8204400B758C7 /* PBXTargetDependency */,
 			);
-			name = aligntimeTests;
-			productName = aligntimeTests;
-			productReference = F0ADCFF823BC722B00F7A3E7 /* aligntimeTests.xctest */;
+			name = AlignTimeTests;
+			productName = AlignTimeTests;
+			productReference = F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -263,15 +276,15 @@
 		F05B5C46238D0A7800BC10C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = Ostap;
 				TargetAttributes = {
 					F05B5C4D238D0A7800BC10C9 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
-					F05B5C63238D0A7900BC10C9 = {
-						CreatedOnToolsVersion = 11.2.1;
+					F0E3881E23E8204400B758C7 = {
+						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = F05B5C4D238D0A7800BC10C9;
 					};
 				};
@@ -292,7 +305,7 @@
 			projectRoot = "";
 			targets = (
 				F05B5C4D238D0A7800BC10C9 /* aligntime */,
-				F05B5C63238D0A7900BC10C9 /* aligntimeTests */,
+				F0E3881E23E8204400B758C7 /* AlignTimeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -307,7 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F05B5C62238D0A7900BC10C9 /* Resources */ = {
+		F0E3881D23E8204400B758C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,20 +368,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F05B5C60238D0A7900BC10C9 /* Sources */ = {
+		F0E3881B23E8204400B758C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F05B5C66238D0A7900BC10C9 /* PBXTargetDependency */ = {
+		F0E3882523E8204400B758C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F05B5C4D238D0A7800BC10C9 /* aligntime */;
-			targetProxy = F05B5C65238D0A7900BC10C9 /* PBXContainerItemProxy */;
+			targetProxy = F0E3882423E8204400B758C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -533,47 +547,43 @@
 			};
 			name = Release;
 		};
-		F05B5C71238D0A7900BC10C9 /* Debug */ = {
+		F0E3882723E8204400B758C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
-				INFOPLIST_FILE = aligntimeTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = AlignTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.aligntimeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AlignTimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aligntime.app/aligntime";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlignTime.app/AlignTime";
 			};
 			name = Debug;
 		};
-		F05B5C72238D0A7900BC10C9 /* Release */ = {
+		F0E3882823E8204400B758C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
-				INFOPLIST_FILE = aligntimeTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = AlignTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = test.aligntimeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AlignTimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aligntime.app/aligntime";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlignTime.app/AlignTime";
 			};
 			name = Release;
 		};
@@ -598,11 +608,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F05B5C70238D0A7900BC10C9 /* Build configuration list for PBXNativeTarget "aligntimeTests" */ = {
+		F0E3882623E8204400B758C7 /* Build configuration list for PBXNativeTarget "AlignTimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F05B5C71238D0A7900BC10C9 /* Debug */,
-				F05B5C72238D0A7900BC10C9 /* Release */,
+				F0E3882723E8204400B758C7 /* Debug */,
+				F0E3882823E8204400B758C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
