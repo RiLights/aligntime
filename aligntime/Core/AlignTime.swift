@@ -44,7 +44,6 @@ final class AlignTime: ObservableObject {
     @Published var endDate: Date! = nil
     
     @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
-    
 
     @Published var selected_date: Date! = Date()//nil
     
@@ -59,19 +58,12 @@ final class AlignTime: ObservableObject {
         
         //intervals.append(contentsOf: )
         var total:TimeInterval = 0
-        
-        if (wear == false) // get_off_timer_for_today
-        {
-            if intervals.count == 0{
-                switch_timer()
-            }
-        }
-        for i in intervals{
+        for i in intervals {
             if self.intervals.count > i.id+1{
                 let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
                 total+=t
             }
-            else{
+            else {
                 if d != nil{
                     let t = d!.timeIntervalSince(i.time)
                     total+=t
@@ -271,7 +263,7 @@ final class AlignTime: ObservableObject {
         let previous_interval = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
         
-        return _interval_filter(previous_interval: previous_interval, wear: false)
+        return _interval_filter(previous_intervals: previous_interval, wear: false)
     }
     
     func is_selected_date(date:Date)->Bool{
