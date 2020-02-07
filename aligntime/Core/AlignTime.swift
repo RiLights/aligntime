@@ -218,52 +218,48 @@ final class AlignTime: ObservableObject {
 //        self.days[date] = off_time
     }
     
-    func _interval_filter(previous_intervals: [DayInterval], wear: Bool) -> [DayInterval] {
+    func _interval_filter(wear: Bool) -> [DayInterval] {
+        // Get last interval from previous day
+        if self.selected_date == nil {
+            return []
+        }
+        
+        var previous_intervals:[DayInterval] = []
+        
+        if (wear == true) {
+            previous_intervals = self.intervals.filter{
+                Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
+        }
+        else {
+            previous_intervals = self.intervals.filter{ // -86400 is yesterday
+                Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
+        }
+        
         if previous_intervals != [] {
             let lastdate = previous_intervals.max { a, b in a.id < b.id }!
-            
-            let intervals = self.intervals.filter{
+            let intervals = self.intervals.filter {
                 (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
-            &&
-            ($0.wear == true)}
-            
+                    &&
+                    ($0.wear == wear)
+            }
             return intervals
         }
-        else{
-            let intervals = self.intervals.filter{
+        else {
+            let intervals = self.intervals.filter {
                 (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
-            &&
-            ($0.wear == wear)}
-            
+                &&
+                ($0.wear == wear)
+            }
             return intervals
         }
     }
     
     func get_wear_days()->[DayInterval]{
-        // Get last interval from previous day
-        if self.selected_date == nil {
-            return []
-        }
-        
-        // -86400 is yesterday
-        let previous_intervals = self.intervals.filter{
-            Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
-        
-        return _interval_filter(previous_intervals: previous_intervals, wear: true)
-        
+        return _interval_filter(wear: true)
     }
     
     func get_off_days() ->[DayInterval] {
-        // Get last interval from previous day
-        if self.selected_date == nil {
-            return []
-        }
-        
-        // -86400 is yesterday
-        let previous_interval = self.intervals.filter{
-            Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
-        
-        return _interval_filter(previous_intervals: previous_interval, wear: false)
+        return _interval_filter(wear: false)
     }
     
     func is_selected_date(date:Date)->Bool{
