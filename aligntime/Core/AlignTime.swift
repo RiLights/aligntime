@@ -50,15 +50,22 @@ final class AlignTime: ObservableObject {
     
     @Published var current_state = true
     @Published var last_interval_date = Date()
-    
-    func get_wear_timer_for_today(d:Date? = nil) -> String{
+      
+    func _get_timer_for_today(d:Date? = nil, wear: Bool) -> String{
         let intervals = self.intervals.filter{
             (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
         &&
-        ($0.wear == true)}
+        ($0.wear == wear)}
         
         //intervals.append(contentsOf: )
         var total:TimeInterval = 0
+        
+        if (wear == false) // get_off_timer_for_today
+        {
+            if intervals.count == 0{
+                switch_timer()
+            }
+        }
         for i in intervals{
             if self.intervals.count > i.id+1{
                 let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
@@ -74,31 +81,13 @@ final class AlignTime: ObservableObject {
         //print(self.timer_format(total)!)
         return self.timer_format(total)!
     }
+  
     func get_off_timer_for_today(d:Date? = nil) -> String{
-        let intervals = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
-        &&
-        ($0.wear == false)}
-        
-        //intervals.append(contentsOf: )
-        var total:TimeInterval = 0
-        if intervals.count == 0{
-            switch_timer()
-        }
-        for i in intervals{
-            if self.intervals.count > i.id+1{
-                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
-                total+=t
-            }
-            else{
-                if d != nil{
-                    let t = d!.timeIntervalSince(i.time)
-                    total+=t
-                }
-            }
-        }
-        //print(self.timer_format(total)!)
-        return self.timer_format(total)!
+        return _get_timer_for_today(d: d, wear: false)
+    }
+
+    func get_wear_timer_for_today(d:Date? = nil) -> String{
+        return _get_timer_for_today(d: d, wear: true)
     }
     
     func get_off_timer_for_date(d:Date) -> String{
@@ -123,6 +112,7 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
         //print(self.intervals.count)
     }
+  
     
     @objc func update_timer() throws {
         do{
@@ -236,6 +226,27 @@ final class AlignTime: ObservableObject {
 //        self.days[date] = off_time
     }
     
+    func _interval_filter(previous_intervals: [DayInterval], wear: Bool) -> [DayInterval] {
+        if previous_intervals != [] {
+            let lastdate = previous_intervals.max { a, b in a.id < b.id }!
+            
+            let intervals = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
+            &&
+            ($0.wear == true)}
+            
+            return intervals
+        }
+        else{
+            let intervals = self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
+            &&
+            ($0.wear == wear)}
+            
+            return intervals
+        }
+    }
+    
     func get_wear_days()->[DayInterval]{
         // Get last interval from previous day
         if self.selected_date == nil {
@@ -243,27 +254,11 @@ final class AlignTime: ObservableObject {
         }
         
         // -86400 is yesterday
-        let previous_interval = self.intervals.filter{
+        let previous_intervals = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
         
-        if previous_interval != [] {
-            let lastdate = previous_interval.max { a, b in a.id < b.id }!
-            
-            let interval = self.intervals.filter{
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
-            &&
-            ($0.wear == true)}
-            
-            return interval
-        }
-        else{
-            let interval = self.intervals.filter{
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
-            &&
-            ($0.wear == true)}
-            
-            return interval
-        }
+        return _interval_filter(previous_intervals: previous_intervals, wear: true)
+        
     }
     
     func get_off_days() ->[DayInterval] {
@@ -276,24 +271,7 @@ final class AlignTime: ObservableObject {
         let previous_interval = self.intervals.filter{
             Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
         
-        if previous_interval != [] {
-            let lastdate = previous_interval.max { a, b in a.id < b.id }!
-            
-            let interval = self.intervals.filter{
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
-            &&
-            ($0.wear == false)}
-            
-            return interval
-        }
-        else{
-            let interval = self.intervals.filter{
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
-            &&
-            ($0.wear == false)}
-            
-            return interval
-        }
+        return _interval_filter(previous_interval: previous_interval, wear: false)
     }
     
     func is_selected_date(date:Date)->Bool{
@@ -323,8 +301,8 @@ final class AlignTime: ObservableObject {
         //defaults.set(days_intervals, forKey: "days")
         
         defaults.set(complete, forKey: "collecting_data_complete")
-        
     }
+  
     func pull_user_defaults(){
         self.required_aligners_total = defaults.integer(forKey: "require_count")
         self.aligner_wear_days = defaults.integer(forKey: "aligners_count")
@@ -358,3 +336,4 @@ final class AlignTime: ObservableObject {
         self.maximumDate = self.intervals.max()!.time
     }
 }
+
