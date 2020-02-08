@@ -92,16 +92,4 @@ struct RKViewController: View {
         }
     }
     
-    func numberOfMonths() -> Int {
-        
-        return core_data.calendar.dateComponents([.month], from: core_data.minimumDate, to: RKMaximumDateMonthLastDay()).month! + 1
-    }
-    
-    func RKMaximumDateMonthLastDay() -> Date {
-        var components = core_data.calendar.dateComponents([.year, .month, .day], from: core_data.maximumDate)
-        components.month! += 1
-        components.day = 0
-        
-        return core_data.calendar.date(from: components)!
-    }
 }
