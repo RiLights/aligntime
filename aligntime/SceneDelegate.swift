@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         self.align_time.pull_user_defaults()
-        self.align_time.start_timer()
         // Create the SwiftUI view that provides the window contents.
         let content_view = ContentView()
         // Use a UIHostingController as window root view controller.

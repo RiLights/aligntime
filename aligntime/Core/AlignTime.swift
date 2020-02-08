@@ -106,56 +106,20 @@ final class AlignTime: ObservableObject {
     }
   
     
-    @objc func update_timer() throws {
-        do{
-            if self.complete{
-                    self.update_wear_timer()
-                    try self.update_today_dates()
-            }
-        }
-        catch AlignTimeError.ThereIsNoMakeSenseException(let date1, let date2) {
-           print ("Exception: ThereIsNoMakeSenseException \(date1) \(date2)!")
-       }
-        //registering data everytime is not so nice
-        //self.push_user_defaults()
-    }
-    
-    func start_timer(){
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update_timer), userInfo: nil, repeats: true)
-    }
-    
-    func update_wear_timer(){
-//        if self.play_state{
-//            //let elapsed_time = Date().timeIntervalSince(self.start_time)
-//            //why wear_timer is always updating?
-//            //self.wear_timer = self.timer_format(elapsed_time)!
-//            //self.wear_elapsed_time = elapsed_time
-//
-//            let date = self.date_format(date:Date())
-//            self.set_wear_time_for_date(date:date,interval: self.wear_elapsed_time)
-//        }
-//        else{
-//            let elapsed_time = Date().timeIntervalSince(self.out_time)
-//            self.out_timer = self.timer_format(elapsed_time)!
-//            self.out_elapsed_time = elapsed_time
-//
-//            let date = self.date_format(date:Date())
-//            self.set_off_time_time_for_date(date:date,interval: self.out_elapsed_time)
-//        }
-    }
-    
     func update_today_dates() throws {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         let days_formated_string = String(days_interval.days)
         if (self.wearing_aligners_days != days_formated_string){
             self.wearing_aligners_days = days_formated_string
         }
+        print(self.aligner_wear_days)
+        print(self.aligner_number_now)
+        print("((\(self.required_aligners_total)-\(self.aligner_number_now))*\(self.aligner_wear_days))-\(days_interval.days)-\(self.current_aligner_days)")
+//        guard self.aligner_wear_days > self.aligner_number_now else {
+//            throw AlignTimeError.ThereIsNoMakeSenseException(date1: self.aligner_wear_days,date2: self.aligner_number_now)
+//        }
         
-        guard self.aligner_wear_days > self.aligner_number_now else {
-            throw AlignTimeError.ThereIsNoMakeSenseException(date1: self.aligner_wear_days,date2: self.aligner_number_now)
-        }
-        
-        let days_left_digit = ((self.aligner_wear_days-self.aligner_number_now) * self.required_aligners_total) - days_interval.days-self.current_aligner_days
+        let days_left_digit = ((self.required_aligners_total) * self.aligner_wear_days) - days_interval.days-self.current_aligner_days
         
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
