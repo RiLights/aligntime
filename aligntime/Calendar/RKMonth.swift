@@ -66,8 +66,13 @@ struct RKMonth: View {
     }
     
     func monthArray() -> [[Date]] {
+        let firstOfMonth = firstOfMonthForOffset()
+        let rangeOfWeeks = core_data.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
+        
+        let numberOfDays = (rangeOfWeeks?.count)! * daysPerWeek
+        
         var rowArray = [[Date]]()
-        for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
+        for row in 0 ..< (numberOfDays / 7) {
             var columnArray = [Date]()
             for column in 0 ... 6 {
                 let abc = self.getDateAtIndex(index: (row * 7) + column)
@@ -97,18 +102,16 @@ struct RKMonth: View {
         return core_data.calendar.date(byAdding: dateComponents, to: firstOfMonth)!
     }
     
-    func numberOfDays(offset : Int) -> Int {
-        let firstOfMonth = firstOfMonthForOffset()
-        let rangeOfWeeks = core_data.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
-        
-        return (rangeOfWeeks?.count)! * daysPerWeek
-    }
-    
     func firstOfMonthForOffset() -> Date {
         var offset = DateComponents()
         offset.month = monthOffset
         
-        return core_data.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
+        var components = core_data.calendar.dateComponents(calendarUnitYMD, from: core_data.minimumDate)
+        components.day = 1
+        
+        let first_month = core_data.calendar.date(from: components)!
+        
+        return core_data.calendar.date(byAdding: offset, to: first_month)!
     }
     
     func RKFormatDate(date: Date) -> Date {
@@ -123,12 +126,6 @@ struct RKMonth: View {
         return refDate == clampedDate
     }
     
-    func RKFirstDateMonth() -> Date {
-        var components = core_data.calendar.dateComponents(calendarUnitYMD, from: core_data.minimumDate)
-        components.day = 1
-        
-        return core_data.calendar.date(from: components)!
-    }
     
     // MARK: - Date Property Checkers
     
@@ -185,15 +182,5 @@ struct RKMonth: View {
         return true
     }
     
-    func isStartDateAfterEndDate() -> Bool {
-        if core_data.startDate == nil {
-            return false
-        } else if core_data.endDate == nil {
-            return false
-        } else if core_data.calendar.compare(core_data.endDate, to: core_data.startDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
-    }
 }
 
