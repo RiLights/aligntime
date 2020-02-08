@@ -44,11 +44,10 @@ struct RKViewController: View {
     var body: some View {
         Group() {
             ZStack(alignment: .top){
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 0)
                     .foregroundColor(.accentColor)
                 VStack {
                     HStack {
-                        Spacer()
                         HStack{
                             Button("<  ") {
                                 self.monthOffset -= 1;
@@ -58,24 +57,24 @@ struct RKViewController: View {
                                 }
                             }
                             .foregroundColor(Color(UIColor.systemBackground))
-                            Button("  >") {
-                                self.monthOffset += 1;
-                                self.direction = true
-                                withAnimation {
-                                    self.isAnimation.toggle()
-                                }
-                            }
-                            .foregroundColor(Color(UIColor.systemBackground))
                         }
-                        Spacer()
                         Text(self.getMonthHeader2())
                             .foregroundColor(Color(UIColor.systemBackground))
                             .font(.system(size:20))
                             .frame(width: 170)
                             .padding(.horizontal,10)
+                        Button("  >") {
+                            self.monthOffset += 1;
+                            self.direction = true
+                            withAnimation {
+                                self.isAnimation.toggle()
+                            }
+                        }
+                        .foregroundColor(Color(UIColor.systemBackground))
                     }
                     Divider()
                     RKWeekdayHeader()
+                        .padding(.horizontal,4)
                     if isAnimation {
                         RKMonth(isPresented: self.$isPresented, monthOffset: self.monthOffset).transition(self.direction ? forward_transition : backward_transition)
                     }
@@ -86,8 +85,9 @@ struct RKViewController: View {
                     Spacer()
                 }
                 .padding(.top,10)
+                .padding(.horizontal,10)
             }
-            .padding(.horizontal,20)
+            .padding(.horizontal,0)
             .frame(height: 320)
         }
     }
