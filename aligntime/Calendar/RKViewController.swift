@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RKViewController: View {
     @EnvironmentObject var core_data: AlignTime
-    @State private var monthOffset = 0
+    @State private var monthOffset = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     //@Binding var isPresented: Bool
     @State var isPresented: Bool = false
     @State private var isAnimation = false
