@@ -54,9 +54,10 @@ final class AlignTime: ObservableObject {
     func _get_timer_for_today(d:Date? = nil, wear: Bool) -> String{
         let intervals = self.intervals.filter{
             (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
-        &&
-        ($0.wear == wear)}
-        
+                &&
+            ($0.wear == wear)
+        }
+
         //intervals.append(contentsOf: )
         var total:TimeInterval = 0
         for i in intervals {
