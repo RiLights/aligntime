@@ -102,7 +102,6 @@ final class AlignTime: ObservableObject {
         interval.wear = current_state
         self.intervals.append(interval)
         update_min_max_dates()
-        //print(self.intervals.count)
     }
   
     
@@ -112,12 +111,6 @@ final class AlignTime: ObservableObject {
         if (self.wearing_aligners_days != days_formated_string){
             self.wearing_aligners_days = days_formated_string
         }
-        print(self.aligner_wear_days)
-        print(self.aligner_number_now)
-        print("((\(self.required_aligners_total)-\(self.aligner_number_now))*\(self.aligner_wear_days))-\(days_interval.days)-\(self.current_aligner_days)")
-//        guard self.aligner_wear_days > self.aligner_number_now else {
-//            throw AlignTimeError.ThereIsNoMakeSenseException(date1: self.aligner_wear_days,date2: self.aligner_number_now)
-//        }
         
         let days_left_digit = ((self.required_aligners_total) * self.aligner_wear_days) - days_interval.days-self.current_aligner_days
         
