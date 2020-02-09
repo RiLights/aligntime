@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RKViewController: View {
     @EnvironmentObject var core_data: AlignTime
-    @State private var monthOffset = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     //@Binding var isPresented: Bool
     @State var isPresented: Bool = false
     @State private var isAnimation = false
@@ -29,7 +28,7 @@ struct RKViewController: View {
     
     func firstOfMonthForOffset() -> Date {
         var offset = DateComponents()
-        offset.month = self.monthOffset
+        offset.month = self.core_data.selected_month
         
         return self.core_data.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
     }
@@ -50,7 +49,7 @@ struct RKViewController: View {
                     HStack {
                         HStack{
                             Button("<  ") {
-                                self.monthOffset -= 1;
+                                self.core_data.selected_month -= 1;
                                 self.direction = false
                                 withAnimation {
                                     self.isAnimation.toggle()
@@ -64,7 +63,7 @@ struct RKViewController: View {
                             .frame(width: 170)
                             .padding(.horizontal,10)
                         Button("  >") {
-                            self.monthOffset += 1;
+                            self.core_data.selected_month += 1;
                             self.direction = true
                             withAnimation {
                                 self.isAnimation.toggle()
@@ -76,11 +75,11 @@ struct RKViewController: View {
                     RKWeekdayHeader()
                         .padding(.horizontal,4)
                     if isAnimation {
-                        RKMonth(isPresented: self.$isPresented, monthOffset: self.monthOffset).transition(self.direction ? forward_transition : backward_transition)
+                        RKMonth(isPresented: self.$isPresented, monthOffset: self.core_data.selected_month).transition(self.direction ? forward_transition : backward_transition)
                     }
                     else
                     {
-                        RKMonth(isPresented: self.$isPresented, monthOffset: self.monthOffset).transition(self.direction ? forward_transition : backward_transition)
+                        RKMonth(isPresented: self.$isPresented, monthOffset: self.core_data.selected_month).transition(self.direction ? forward_transition : backward_transition)
                     }
                     Spacer()
                 }
