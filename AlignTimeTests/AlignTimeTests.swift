@@ -70,17 +70,25 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(test, "00:00:00") //  ("-3 041:55:00") ????
           
     }
-/*
+
     func test_days_left() {
         let align_time:AlignTime = AlignTime()
-        do {
-            try align_time.update_today_dates()
-        } catch {}
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
+        let day = formatter_date.date(from: "2019/07/12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligner_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        align_time.update_today_dates()
 
         let days_result = align_time.days_left
-        XCTAssertEqual(days_result, "219")
+        XCTAssertEqual(days_result, "328")
     }
-*/
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         measure {

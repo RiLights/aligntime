@@ -186,11 +186,7 @@ struct TodayManager: View {
             }
         }
         .onAppear() {
-            do {
-                try self.core_data.update_today_dates()
-            } catch {
-                print ("Exception: ThereIsNoMakeSenseException!")
-            }
+            self.core_data.update_today_dates()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.core_data.complete = true

@@ -107,14 +107,14 @@ final class AlignTime: ObservableObject {
     }
   
     
-    func update_today_dates() throws {
+    func update_today_dates() {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         let days_formated_string = String(days_interval.days)
         if (self.wearing_aligners_days != days_formated_string){
             self.wearing_aligners_days = days_formated_string
         }
         
-        let days_left_digit = ((self.required_aligners_total) * self.aligner_wear_days) - days_interval.days-self.current_aligner_days
+        let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligner_wear_days) - self.current_aligner_days
         
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
