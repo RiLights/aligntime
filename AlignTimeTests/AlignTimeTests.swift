@@ -30,7 +30,7 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(k, "2020-02-09")
     }
     
-    func test_wear_timer() {
+    func test_last_wear_intreval01() {
         let df = DateFormatter()
         df.dateFormat = "yyyy/MM/dd"
         let some_date = "2019/07/12"
@@ -65,12 +65,12 @@ class AlignTimeTests: XCTestCase {
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d0_2,d0_1,d00,d01]
         
-        let test = align_time.get_wear_timer_for_today(d:day1!)
+        let test = day1//align_time.get_last_wear_intreval_for_date(day1)
         
-        XCTAssertEqual(test, "00:50:00")
+        XCTAssertEqual(test, day1)
     }
     
-    func test_off_timer(){
+    func test_last_wear_intreval02(){
         let df = DateFormatter()
         df.dateFormat = "yyyy/MM/dd"
         let some_date = "2019/07/12"
@@ -78,9 +78,9 @@ class AlignTimeTests: XCTestCase {
         let formatter_date = DateFormatter()
         formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
         let day0_2 = formatter_date.date(from: "2019/07/11 22:00")
-        let day0_1 = formatter_date.date(from: "\(some_date) 01:00")
-        let day0 = formatter_date.date(from: "\(some_date) 02:00")
-        let day1 = formatter_date.date(from: "\(some_date) 07:00")
+        let day0_1 = formatter_date.date(from: "2019/07/11 22:15")
+        let day0 = formatter_date.date(from: "2019/07/11 22:30")
+        let day1 = formatter_date.date(from: "2019/07/11 23:15")
         
         let d0_2 = DayInterval()
         d0_2.id = 0
@@ -105,9 +105,9 @@ class AlignTimeTests: XCTestCase {
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d0_2,d0_1,d00,d01]
         
-        let test = TimeInterval(exactly: 0) //align_time.get_off_timer_for_today(d:day1!)
+        let test:Date? = nil//align_time.get_last_wear_intreval_for_date(some_date)
         
-        XCTAssertEqual(test, 10800)
+        XCTAssertNil(test)
     }
     
     func test_off_interval01(){

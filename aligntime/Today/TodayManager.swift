@@ -8,11 +8,34 @@
 
 import SwiftUI
 
+func timer_format(_ second: TimeInterval) -> String? {
+    let formatter = DateComponentsFormatter()
+    formatter.unitsStyle = .positional
+    formatter.allowedUnits = [.hour, .minute, .second]
+    formatter.zeroFormattingBehavior = .pad
+    return formatter.string(from: second)
+}
+
+func get_last_wear_date_for_date_test()->Date?{
+    let formatter_date = DateFormatter()
+    formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
+    let day = formatter_date.date(from: "2020/02/10 20:15")
+    return day
+}
+
+func get_wear_timer_for_today(update_time:Date)->String{
+    var last_time = get_last_wear_date_for_date_test()
+    if last_time == nil{
+        last_time = Calendar.current.startOfDay(for: update_time)
+    }
+    let timer = update_time.timeIntervalSince(last_time!)
+    return timer_format(timer)!
+}
+
 struct TodayManager: View {
     @EnvironmentObject var core_data: AlignTime
     @State private var show_reminder = false
     @State var currentDate = Date()
-    @State var test = ""
     @State var wear_time = "00:00:00"
     @State var off_time = "00:00:00"
     //@Binding var timer:Int
@@ -30,17 +53,11 @@ struct TodayManager: View {
     }
     
     var today_date = Date()
+    @State var last_date:Date = Date()
     let generator_feedback = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         VStack(alignment: .center) {
-//            Text(test)
-//                .onReceive(self.timer) { input in
-//                    self.test = self.core_data.timer_format(input.timeIntervalSince(self.currentDate))!
-//                }
-//                .onAppear() {
-//                    //self.currentDate = Date()
-//                }
             HStack {
                 Text("Today:")
                     .font(.system(size: 23))
@@ -75,12 +92,7 @@ struct TodayManager: View {
             }
             .padding(.bottom, 10)
             .onReceive(self.timer) { input in
-                if self.core_data.current_state{
-                    self.wear_time = self.core_data.get_wear_timer_for_today(d: input)
-                }
-                else{
-                    self.off_time = self.core_data.get_off_timer_for_today(d: input)
-                }
+                self.wear_time = get_wear_timer_for_today(update_time: input)
             }
             .onAppear() {
                 if self.core_data.current_state{
@@ -93,11 +105,6 @@ struct TodayManager: View {
                 }
             }
             Button(action: {
-//                self.core_data.current_state = !self.core_data.current_state
-//                self.core_data.play_state = !self.core_data.play_state
-//
-//                self.core_data.switch_timer()
-                //self.off_time = self.core_data.get_off_timer_for_today()
                 if !self.core_data.play_state{
                     self.core_data.current_state = !self.core_data.current_state
                     self.core_data.play_state = !self.core_data.play_state
@@ -149,15 +156,6 @@ struct TodayManager: View {
                                                
                 ])
             }
-//            .alert(isPresented: $isShowingAlert) {
-//                Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("20"))
-//                {
-//                        print("asd")
-//                    }, secondaryButton:.destructive(Text("10")){
-//                        print("asd2")
-//                    }
-//                )
-//            }
             Spacer()
             HStack(alignment: .center, spacing: 4) {
                 Text("You have been wearing aligners for")
