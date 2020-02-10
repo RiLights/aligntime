@@ -30,7 +30,7 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(k, "2020-02-09")
     }
     
-    func test_intervals() {
+    func test_wear_timer() {
         let df = DateFormatter()
         df.dateFormat = "yyyy/MM/dd"
         let some_date = "2019/07/12"
@@ -64,13 +64,102 @@ class AlignTimeTests: XCTestCase {
         
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d0_2,d0_1,d00,d01]
-        //align_time.$intervals
-        //print("align_time.intervals",align_time.intervals)
         
         let test = align_time.get_wear_timer_for_today(d:day1!)
         
-        XCTAssertEqual(test, "00:50:00") //  ("-3 041:55:00") ????
+        XCTAssertEqual(test, "00:50:00")
+    }
+    
+    func test_off_timer(){
+        let df = DateFormatter()
+        df.dateFormat = "yyyy/MM/dd"
+        let some_date = "2019/07/12"
+        
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
+        let day0_2 = formatter_date.date(from: "2019/07/11 22:00")
+        let day0_1 = formatter_date.date(from: "\(some_date) 01:00")
+        let day0 = formatter_date.date(from: "\(some_date) 02:00")
+        let day1 = formatter_date.date(from: "\(some_date) 07:00")
+        
+        let d0_2 = DayInterval()
+        d0_2.id = 0
+        d0_2.time = day0_2!
+        d0_2.wear = false
           
+        let d0_1 = DayInterval()
+        d0_1.id = 1
+        d0_1.time = day0_1!
+        d0_1.wear = true
+
+        let d00 = DayInterval()
+        d00.id = 2
+        d00.time = day0!
+        d00.wear = false
+
+        let d01 = DayInterval()
+        d01.id = 3
+        d01.time = day1!
+        d01.wear = true
+        
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = [d0_2,d0_1,d00,d01]
+        
+        let test = TimeInterval(exactly: 0) //align_time.get_off_timer_for_today(d:day1!)
+        
+        XCTAssertEqual(test, 10800)
+    }
+    
+    func test_off_interval01(){
+        let df = DateFormatter()
+        df.dateFormat = "yyyy/MM/dd"
+        let some_date = "2019/07/12"
+        
+        let formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
+        let day0_4 = formatter_date.date(from: "2019/07/11 20:15")
+        let day0_3 = formatter_date.date(from: "2019/07/11 21:00")
+        let day0_2 = formatter_date.date(from: "2019/07/11 22:00")
+        let day0_1 = formatter_date.date(from: "\(some_date) 01:00")
+        let day0 = formatter_date.date(from: "\(some_date) 02:00")
+        let day1 = formatter_date.date(from: "\(some_date) 07:00")
+        
+        let d0_4 = DayInterval()
+        d0_4.id = 0
+        d0_4.time = day0_4!
+        d0_4.wear = false
+        
+        let d0_3 = DayInterval()
+        d0_3.id = 1
+        d0_3.time = day0_3!
+        d0_3.wear = true
+        
+        let d0_2 = DayInterval()
+        d0_2.id = 2
+        d0_2.time = day0_2!
+        d0_2.wear = false
+          
+        let d0_1 = DayInterval()
+        d0_1.id = 3
+        d0_1.time = day0_1!
+        d0_1.wear = true
+
+        let d00 = DayInterval()
+        d00.id = 4
+        d00.time = day0!
+        d00.wear = false
+
+        let d01 = DayInterval()
+        d01.id = 5
+        d01.time = day1!
+        d01.wear = true
+        
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = [d0_4,d0_3,d0_2,d0_1,d00,d01]
+        
+        let test:[DayInterval] = [d01] // _interval_filter(wear: false)
+        
+        XCTAssertEqual(test, [d0_2,d00])
     }
 
     func test_days_left() {
