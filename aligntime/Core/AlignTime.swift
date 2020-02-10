@@ -43,7 +43,7 @@ final class AlignTime: ObservableObject {
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     
-    @Published var intervals = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
+    @Published var intervals:[DayInterval] = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
 
     @Published var selected_date: Date! = Date()//nil
     @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
@@ -51,14 +51,14 @@ final class AlignTime: ObservableObject {
     @Published var current_state = true
     @Published var last_interval_date = Date()
       
-    func _get_timer_for_today(d:Date? = nil, wear: Bool) -> String{
+    func _get_timer_for_today(d:Date, wear: Bool) -> String{
         let intervals = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: Date(), toGranularity: .day))
+            (Calendar.current.isDate($0.time, equalTo: d, toGranularity: .day))
                 &&
             ($0.wear == wear)
         }
-
-        //intervals.append(contentsOf: )
+        if self.intervals.count == 4{
+            print("intervals.count",intervals)}
         var total:TimeInterval = 0
         for i in intervals {
             if self.intervals.count > i.id+1{
@@ -66,21 +66,19 @@ final class AlignTime: ObservableObject {
                 total+=t
             }
             else {
-                if d != nil{
-                    let t = d!.timeIntervalSince(i.time)
-                    total+=t
-                }
+                let t = d.timeIntervalSince(i.time)
+                total+=t
             }
         }
         //print(self.timer_format(total)!)
         return self.timer_format(total)!
     }
   
-    func get_off_timer_for_today(d:Date? = nil) -> String{
+    func get_off_timer_for_today(d:Date) -> String{
         return _get_timer_for_today(d: d, wear: false)
     }
 
-    func get_wear_timer_for_today(d:Date? = nil) -> String{
+    func get_wear_timer_for_today(d:Date) -> String{
         return _get_timer_for_today(d: d, wear: true)
     }
     

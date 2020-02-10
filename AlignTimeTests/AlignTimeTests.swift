@@ -33,41 +33,43 @@ class AlignTimeTests: XCTestCase {
     func test_intervals() {
         let df = DateFormatter()
         df.dateFormat = "yyyy/MM/dd"
-        let now = df.string(from: Date())
+        let some_date = "2019/07/12"
         
         let formatter_date = DateFormatter()
         formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
-        let day0_2 = formatter_date.date(from: "\(now) 00:15")
-        let day0_1 = formatter_date.date(from: "\(now) 02:20")
-        let day0 = formatter_date.date(from: "\(now) 15:15")
-        let day1 = formatter_date.date(from: "\(now) 23:15")
+        let day0_2 = formatter_date.date(from: "2019/07/11 22:15")
+        let day0_1 = formatter_date.date(from: "\(some_date) 01:10")
+        let day0 = formatter_date.date(from: "\(some_date) 02:00")
+        let day1 = formatter_date.date(from: "\(some_date) 07:00")
         
         let d0_2 = DayInterval()
         d0_2.id = 0
         d0_2.time = day0_2!
-        d0_2.wear = true
+        d0_2.wear = false
           
         let d0_1 = DayInterval()
         d0_1.id = 1
         d0_1.time = day0_1!
-        d0_1.wear = false
+        d0_1.wear = true
 
         let d00 = DayInterval()
         d00.id = 2
         d00.time = day0!
-        d00.wear = true
+        d00.wear = false
 
         let d01 = DayInterval()
         d01.id = 3
         d01.time = day1!
-        d01.wear = false
+        d01.wear = true
         
         let align_time:AlignTime = AlignTime()
-        align_time.intervals.append(contentsOf: [d0_2,d0_1,d00,d01])
+        align_time.intervals = [d0_2,d0_1,d00,d01]
+        //align_time.$intervals
+        //print("align_time.intervals",align_time.intervals)
         
-        let test = align_time.get_wear_timer_for_today()
+        let test = align_time.get_wear_timer_for_today(d:day1!)
         
-        XCTAssertEqual(test, "00:00:00") //  ("-3 041:55:00") ????
+        XCTAssertEqual(test, "00:50:00") //  ("-3 041:55:00") ????
           
     }
 

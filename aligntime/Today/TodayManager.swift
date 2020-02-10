@@ -85,10 +85,10 @@ struct TodayManager: View {
             .onAppear() {
                 if self.core_data.current_state{
                     self.wear_time = self.core_data.get_wear_timer_for_today(d:Date())
-                    self.off_time = self.core_data.get_off_timer_for_today()
+                    self.off_time = "test"//self.core_data.get_off_timer_for_today()
                 }
                 else {
-                    self.wear_time = self.core_data.get_wear_timer_for_today()
+                    self.wear_time = "test"//self.core_data.get_wear_timer_for_today()
                     self.off_time = self.core_data.get_off_timer_for_today(d:Date())
                 }
             }
