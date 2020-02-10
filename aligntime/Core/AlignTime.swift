@@ -50,15 +50,17 @@ final class AlignTime: ObservableObject {
     
     @Published var current_state = true
     @Published var last_interval_date = Date()
+    
+    func _filter(d:Date, wear: Bool) -> [DayInterval] {
+        return self.intervals.filter{
+                (Calendar.current.isDate($0.time, equalTo: d, toGranularity: .day))
+                    &&
+                ($0.wear == wear)
+        }
+    }
       
     func _get_timer_for_today(d:Date, wear: Bool) -> String{
-        let intervals = self.intervals.filter{
-            (Calendar.current.isDate($0.time, equalTo: d, toGranularity: .day))
-                &&
-            ($0.wear == wear)
-        }
-        if self.intervals.count == 4{
-            print("intervals.count",intervals)}
+        let intervals = _filter(d: d, wear: wear)
         var total:TimeInterval = 0
         for i in intervals {
             if self.intervals.count > i.id+1{
@@ -181,16 +183,10 @@ final class AlignTime: ObservableObject {
             return []
         }
         
-        var previous_intervals:[DayInterval] = []
+        let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
         
-        if (wear == true) {
-            previous_intervals = self.intervals.filter{
-                Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day)}
-        }
-        else {
-            previous_intervals = self.intervals.filter{ // -86400 is yesterday
-                Calendar.current.isDate($0.time, equalTo: self.selected_date.advanced(by: -86400), toGranularity: .day)}
-        }
+        let previous_intervals = self.intervals.filter{
+                Calendar.current.isDate($0.time, equalTo: selected_date, toGranularity: .day)}
         
         if previous_intervals != [] {
             let lastdate = previous_intervals.max { a, b in a.id < b.id }!
@@ -202,12 +198,7 @@ final class AlignTime: ObservableObject {
             return intervals
         }
         else {
-            let intervals = self.intervals.filter {
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day))
-                &&
-                ($0.wear == wear)
-            }
-            return intervals
+            return _filter(d: self.selected_date, wear: wear)
         }
     }
     

@@ -167,7 +167,6 @@ struct TodayManager: View {
                                         self.core_data.send_notification(time_interval: 3600)
                                       }),
                                       .cancel(),
-                                               
                 ])
             }
             Spacer()
