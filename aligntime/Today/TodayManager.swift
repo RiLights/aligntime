@@ -19,17 +19,26 @@ func timer_format(_ second: TimeInterval) -> String? {
 func get_last_wear_date_for_date_test()->Date?{
     let formatter_date = DateFormatter()
     formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
-    let day = formatter_date.date(from: "2020/02/10 20:15")
+    let day = formatter_date.date(from: "2020/02/11 05:00")
     return day
 }
 
-func get_wear_timer_for_today(update_time:Date)->String{
+func get_wear_timer_for_date(date:Date)->TimeInterval{
+    return TimeInterval(3800)
+}
+
+func get_wear_timer_for_today_test(update_time:Date? = nil)->String{
     var last_time = get_last_wear_date_for_date_test()
-    if last_time == nil{
-        last_time = Calendar.current.startOfDay(for: update_time)
+    if update_time == nil{
+        let timer = get_wear_timer_for_date(date:Date())
+        return timer_format(timer)!
     }
-    let timer = update_time.timeIntervalSince(last_time!)
-    return timer_format(timer)!
+    if last_time == nil{
+        last_time = Calendar.current.startOfDay(for: update_time!)
+    }
+    let timer = update_time!.timeIntervalSince(last_time!)
+    let total_timer = timer + get_wear_timer_for_date(date:Date())
+    return timer_format(total_timer)!
 }
 
 struct TodayManager: View {
@@ -92,12 +101,17 @@ struct TodayManager: View {
             }
             .padding(.bottom, 10)
             .onReceive(self.timer) { input in
-                self.wear_time = get_wear_timer_for_today(update_time: input)
+                if self.core_data.current_state{
+                    self.wear_time = get_wear_timer_for_today_test(update_time: input)
+                }
+                else {
+                    self.off_time = "not yet"
+                }
             }
             .onAppear() {
                 if self.core_data.current_state{
-                    self.wear_time = self.core_data.get_wear_timer_for_today(d:Date())
-                    self.off_time = "test"//self.core_data.get_off_timer_for_today()
+                    self.wear_time = get_wear_timer_for_today_test(update_time:Date())
+                    self.off_time = get_wear_timer_for_today_test()
                 }
                 else {
                     self.wear_time = "test"//self.core_data.get_wear_timer_for_today()
