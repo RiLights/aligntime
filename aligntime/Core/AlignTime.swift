@@ -22,8 +22,8 @@ extension Date {
         return cal.date(from: components)
     }
     
-    public func belongTo(date: Date) -> Bool {
-        return (Calendar.current.isDate(self, equalTo: date, toGranularity: .day))
+    public func belongTo(date: Date, toGranularity: Calendar.Component = .day) -> Bool {
+        return (Calendar.current.isDate(self, equalTo: date, toGranularity: toGranularity))
     }
     
     public func isCurrent() -> Bool {
@@ -45,8 +45,16 @@ extension Array {
         return (0..<(self.count/2 + self.count%2)).map { pair(at: $0*2) }
     }
     
+    mutating func prepend(_ newElement: Element) {
+        self.insert(newElement, at: 0)
+    }
+    
     var last: Element {
         return self[self.endIndex - 1]
+    }
+    
+    var first: Element {
+        return self[0]
     }
 }
 
@@ -92,11 +100,7 @@ final class AlignTime: ObservableObject {
     @Published var last_interval_date = Date()
     
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
-        return self.intervals.filter{
-                (Calendar.current.isDate($0.time, equalTo: d, toGranularity: .day))
-                    &&
-                ($0.wear == wear)
-        }
+        return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
     }
       
     func _get_timer_for_today(d:Date, wear: Bool) -> String{
@@ -126,8 +130,8 @@ final class AlignTime: ObservableObject {
             return total
         }
         
-        if intervals[0].wear != wear {
-            intervals.insert(DayInterval(id: intervals[0].id-1, wear: wear,time: local), at: 0)
+        if intervals.first.wear != wear {
+            intervals.prepend(DayInterval(id: intervals.first.id-1, wear: wear,time: local))
         }
         
         if intervals.last.wear == wear {
@@ -262,13 +266,12 @@ final class AlignTime: ObservableObject {
         
         let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
         
-        let previous_intervals = self.intervals.filter{
-                Calendar.current.isDate($0.time, equalTo: selected_date, toGranularity: .day)}
+        let previous_intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
         
         if previous_intervals != [] {
             let lastdate = previous_intervals.max { a, b in a.id < b.id }!
             let intervals = self.intervals.filter {
-                (Calendar.current.isDate($0.time, equalTo: self.selected_date, toGranularity: .day) || Calendar.current.isDate($0.time, equalTo: lastdate.time,toGranularity: .minute))
+                ($0.time.belongTo(date: self.selected_date) || $0.time.belongTo(date: lastdate.time,toGranularity: .minute))
                     &&
                     ($0.wear == wear)
             }
@@ -291,8 +294,7 @@ final class AlignTime: ObservableObject {
         if self.selected_date == nil {
             return false
         }
-        let state = Calendar.current.isDate(date, equalTo: self.selected_date, toGranularity: .day)
-        return state
+        return date.belongTo(date: self.selected_date)
     }
     
     func reasign_intervals_id(){
