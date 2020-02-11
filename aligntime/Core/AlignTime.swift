@@ -9,6 +9,46 @@ import Combine
 import Foundation
 import UserNotifications
 
+extension Date {
+    public func setTime(hour: Int, min: Int, sec: Int) -> Date? {
+        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let cal = Calendar.current
+        var components = cal.dateComponents(x, from: self)
+        components.timeZone = .current
+        components.hour = hour
+        components.minute = min
+        components.second = sec
+
+        return cal.date(from: components)
+    }
+    
+    public func belongTo(date: Date) -> Bool {
+        return (Calendar.current.isDate(self, equalTo: date, toGranularity: .day))
+    }
+    
+    public func isCurrent() -> Bool {
+        return (Calendar.current.isDate(self, equalTo: Date(), toGranularity: .day))
+    }
+    
+    public func addDay(value: Int) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: value, to: self)!
+    }
+}
+
+extension Array {
+    func pair(at i: Index) -> (Element, Element?) {
+        return (self[i], i < self.count - 1 ? self[i+1] : nil)
+    }
+
+    func pairs() -> [(Element, Element?)] {
+        guard !isEmpty else { return [] }
+        return (0..<(self.count/2 + self.count%2)).map { pair(at: $0*2) }
+    }
+    
+    var last: Element {
+        return self[self.endIndex - 1]
+    }
+}
 
 final class AlignTime: ObservableObject {
     
@@ -77,19 +117,30 @@ final class AlignTime: ObservableObject {
     }
     
     func _get_timer_for_date(d:Date, wear: Bool) -> TimeInterval{
-        let intervals = _filter(d: d, wear: wear)
+        let local = d.setTime(hour: 0, min: 0, sec: 0)!
         var total:TimeInterval = 0
-        for i in intervals {
-            if self.intervals.count > i.id+1{
-                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
-                total+=t
-            }
-            else {
-                let t = d.timeIntervalSince(i.time)
-                total+=t
-            }
+        
+        var intervals = self.intervals.filter{ $0.time.belongTo(date: local) }
+        
+        if intervals == [] {
+            return total
         }
-        //print(self.timer_format(total)!)
+        
+        if intervals[0].wear != wear {
+            intervals.insert(DayInterval(id: intervals[0].id-1, wear: wear,time: local), at: 0)
+        }
+        
+        if intervals.last.wear == wear {
+            let next = local.isCurrent() ? Date() : local.addDay(value: 1)!
+            intervals.append(DayInterval(id: intervals.last.id+1, wear: !wear,time: next))
+        }
+            
+        for pair in intervals.pairs() {
+            let s = pair.0
+            let e = pair.1!
+            total += e.time.timeIntervalSince(s.time)
+        }
+        
         return total
     }
     
@@ -99,7 +150,7 @@ final class AlignTime: ObservableObject {
     }
     
     func get_off_timer_for_date(update_time:Date?)->TimeInterval{
-        return TimeInterval(12)
+        return  _get_timer_for_date(d: update_time!, wear: false)
     }
   
     func get_off_timer_for_today(d:Date) -> String{

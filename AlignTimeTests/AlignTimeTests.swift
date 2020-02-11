@@ -83,7 +83,7 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_get_wear_timer_for_date_02() {
-        let today_date = "2019-07-12"
+         let today_date = "2019-07-12"
          let align_time:AlignTime = AlignTime()
          align_time.intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
          let provided_time = dateFormatter.date(from: "\(today_date) 05:00")
@@ -117,13 +117,13 @@ class AlignTimeTests: XCTestCase {
     
     func test_get_off_timer_for_date_01() {
         let today_date = "2019-07-12"
-         let align_time:AlignTime = AlignTime()
-         align_time.intervals = get_dayintervals(today_date: today_date, wears: [false,true,false,true])
-         let provided_time = dateFormatter.date(from: "\(today_date) 05:00")
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = get_dayintervals(today_date: today_date, wears: [false,true,false,true])
+        let provided_time = dateFormatter.date(from: "\(today_date) 05:00")
 
         let test = align_time.get_off_timer_for_date(update_time: provided_time)
-         
-         XCTAssertEqual(test, 10800)
+
+        XCTAssertEqual(test, 10800)
     }
     
     func test_days_left() {

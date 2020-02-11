@@ -10,7 +10,7 @@ import Foundation
 
 func clock_string_format(_ date: Date) -> String? {
     let formatter = DateFormatter()
-    formatter.dateFormat = "hh:mm"
+    formatter.dateFormat = "HH:mm"
     return formatter.string(from: date)
 }
 

@@ -14,6 +14,13 @@ class DayInterval: Identifiable,ObservableObject,Comparable {
     var time_string: String = "...."
     var wear:Bool = true
     var day:String = ""
+    
+    init() {}
+    init(id: Int, wear: Bool, time: Date) {
+        self.id = id
+        self.wear = wear
+        self.time = time
+    }
 
     @Published var time:Date = Date() {
         didSet {
