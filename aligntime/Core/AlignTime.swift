@@ -75,6 +75,14 @@ final class AlignTime: ObservableObject {
         //print(self.timer_format(total)!)
         return self.timer_format(total)!
     }
+    
+    func get_wear_timer_for_date(update_time:Date?)->TimeInterval{
+        return TimeInterval(12)
+    }
+    
+    func get_off_timer_for_date(update_time:Date?)->TimeInterval{
+        return TimeInterval(12)
+    }
   
     func get_off_timer_for_today(d:Date) -> String{
         return _get_timer_for_today(d: d, wear: false)

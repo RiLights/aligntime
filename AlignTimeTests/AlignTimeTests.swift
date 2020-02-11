@@ -67,7 +67,7 @@ class AlignTimeTests: XCTestCase {
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d0_2,d0_1,d00,d01]
         
-        let test = TimeInterval(exactly: 8100) // get_wear_timer_for_date(update_time:provided_time)
+        let test = align_time.get_wear_timer_for_date(update_time:provided_time)
         
         XCTAssertEqual(test, 8100)
     }
@@ -109,7 +109,7 @@ class AlignTimeTests: XCTestCase {
          let align_time:AlignTime = AlignTime()
          align_time.intervals = [d0_2,d0_1,d00,d01]
          
-         let test = TimeInterval(exactly: 10800) // get_wear_timer_for_date(update_time:provided_time)
+         let test = align_time.get_wear_timer_for_date(update_time:provided_time)
          
          XCTAssertEqual(test, 10800)
     }
