@@ -68,6 +68,7 @@ class AlignTimeTests: XCTestCase {
         let align_time:AlignTime = AlignTime()
         align_time.intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
         XCTAssertEqual(align_time._filter(d: provided_time!, wear: true).count, 1)
+        XCTAssertEqual(align_time._filter(d: provided_time!, wear: false).count, 2)
     }
     
     func test_get_wear_timer_for_date_01(){
@@ -87,7 +88,7 @@ class AlignTimeTests: XCTestCase {
         align_time.intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
          let provided_time = dateFormatter.date(from: "\(some_date) 05:00")
 
-         let test = TimeInterval(exactly: 10800) // get_wear_timer_for_date(update_time:provided_time)
+         let test = TimeInterval(exactly: 10800) // get_wear_timer_for_date(update_time: provided_time)
          
          XCTAssertEqual(test, 10800)
     }
