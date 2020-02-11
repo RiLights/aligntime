@@ -105,17 +105,17 @@ struct TodayManager: View {
                     self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
                 }
                 else {
-                    self.off_time = "not yet"
+                    self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
                 }
             }
             .onAppear() {
                 if self.core_data.current_state{
                     self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!
-                    self.off_time = ""//get_wear_timer_for_today_test()
+                    self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
                 }
                 else {
-                    self.wear_time = "test"//self.core_data.get_wear_timer_for_today()
-                    self.off_time = ""//self.core_data.get_off_timer_for_today(d:Date())
+                    self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!
+                    self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
                 }
             }
             Button(action: {
