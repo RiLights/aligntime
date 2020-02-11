@@ -76,8 +76,26 @@ final class AlignTime: ObservableObject {
         return self.timer_format(total)!
     }
     
+    func _get_timer_for_date(d:Date, wear: Bool) -> TimeInterval{
+        let intervals = _filter(d: d, wear: wear)
+        var total:TimeInterval = 0
+        for i in intervals {
+            if self.intervals.count > i.id+1{
+                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
+                total+=t
+            }
+            else {
+                let t = d.timeIntervalSince(i.time)
+                total+=t
+            }
+        }
+        //print(self.timer_format(total)!)
+        return total
+    }
+    
+    
     func get_wear_timer_for_date(update_time:Date?)->TimeInterval{
-        return TimeInterval(12)
+        return _get_timer_for_date(d: update_time!, wear: true)
     }
     
     func get_off_timer_for_date(update_time:Date?)->TimeInterval{
