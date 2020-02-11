@@ -135,8 +135,7 @@ final class AlignTime: ObservableObject {
         }
         
         if intervals.last.wear == wear {
-            let next = local.isCurrent() ? Date() : local.addDay(value: 1)!
-            intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: next))
+            intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: d))
         }
             
         for (start, end) in intervals.pairs() {
