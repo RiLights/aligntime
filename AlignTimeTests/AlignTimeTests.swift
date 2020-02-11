@@ -94,9 +94,7 @@ class AlignTimeTests: XCTestCase {
     
     func test_days_left() {
         let align_time:AlignTime = AlignTime()
-        let formatter_date = DateFormatter()
-        formatter_date.dateFormat = "yyyy-MM-dd HH:mm"
-        let day = formatter_date.date(from: "2019-07-12 00:00")
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
         
         align_time.required_aligners_total = 74
         align_time.aligner_wear_days = 7
