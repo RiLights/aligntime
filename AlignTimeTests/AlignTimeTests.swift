@@ -32,11 +32,11 @@ class AlignTimeTests: XCTestCase {
     }
     
     
-    func get_dayintervals(some_date: String, wears: [Bool]) -> [DayInterval] {
+    func get_dayintervals(today_date: String, wears: [Bool]) -> [DayInterval] {
         let day0_2 = dateFormatter.date(from: "2019-07-11 22:00")
-        let day0_1 = dateFormatter.date(from: "\(some_date) 01:00")
-        let day0 = dateFormatter.date(from: "\(some_date) 02:00")
-        let day1 = dateFormatter.date(from: "\(some_date) 04:00")
+        let day0_1 = dateFormatter.date(from: "\(today_date) 01:00")
+        let day0 = dateFormatter.date(from: "\(today_date) 02:00")
+        let day1 = dateFormatter.date(from: "\(today_date) 04:00")
         
         let d0_2 = DayInterval()
         d0_2.id = 0
@@ -62,20 +62,20 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_filter(){
-        let some_date = "2019-07-12"
-        let provided_time = dateFormatter.date(from: "\(some_date) 05:15")
+        let today_date = "2019-07-12"
+        let provided_time = dateFormatter.date(from: "\(today_date) 05:15")
 
         let align_time:AlignTime = AlignTime()
-        align_time.intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
+        align_time.intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
         XCTAssertEqual(align_time._filter(d: provided_time!, wear: true).count, 1)
         XCTAssertEqual(align_time._filter(d: provided_time!, wear: false).count, 2)
     }
     
     func test_get_wear_timer_for_date_01(){
-        let some_date = "2019-07-12"
+        let today_date = "2019-07-12"
         let align_time:AlignTime = AlignTime()
-        align_time.intervals = get_dayintervals(some_date: some_date, wears: [false,true,false,true])
-        let provided_time = dateFormatter.date(from: "\(some_date) 05:15")
+        align_time.intervals = get_dayintervals(today_date: today_date, wears: [false,true,false,true])
+        let provided_time = dateFormatter.date(from: "\(today_date) 05:15")
 
         let test = align_time.get_wear_timer_for_date(update_time:provided_time)
         
@@ -83,12 +83,37 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_get_wear_timer_for_date_02() {
-        let some_date = "2019-07-12"
+        let today_date = "2019-07-12"
          let align_time:AlignTime = AlignTime()
-         align_time.intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
-         let provided_time = dateFormatter.date(from: "\(some_date) 05:00")
+         align_time.intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
+         let provided_time = dateFormatter.date(from: "\(today_date) 05:00")
 
         let test = align_time.get_wear_timer_for_date(update_time: provided_time)
+         
+         XCTAssertEqual(test, 10800)
+    }
+    
+//    func test_get_wear_timer_for_date_03() {
+//        let some_date = "2019-07-12"
+//
+//        let base_intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
+//
+//        let align_time:AlignTime = AlignTime()
+//        align_time.intervals =
+//        let provided_time = dateFormatter.date(from: "\(some_date) 05:00")
+//
+//        let test = align_time.get_wear_timer_for_date(update_time: provided_time)
+//
+//        XCTAssertEqual(test, 10800)
+//    }
+    
+    func test_get_off_timer_for_date_01() {
+        let today_date = "2019-07-12"
+         let align_time:AlignTime = AlignTime()
+         align_time.intervals = get_dayintervals(today_date: today_date, wears: [false,true,false,true])
+         let provided_time = dateFormatter.date(from: "\(today_date) 05:00")
+
+        let test = align_time.get_off_timer_for_date(update_time: provided_time)
          
          XCTAssertEqual(test, 10800)
     }
