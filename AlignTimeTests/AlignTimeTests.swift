@@ -93,19 +93,27 @@ class AlignTimeTests: XCTestCase {
          XCTAssertEqual(test, 10800)
     }
     
-//    func test_get_wear_timer_for_date_03() {
-//        let some_date = "2019-07-12"
-//
-//        let base_intervals = get_dayintervals(some_date: some_date, wears: [true,false,true,false])
-//
-//        let align_time:AlignTime = AlignTime()
-//        align_time.intervals =
-//        let provided_time = dateFormatter.date(from: "\(some_date) 05:00")
-//
-//        let test = align_time.get_wear_timer_for_date(update_time: provided_time)
-//
-//        XCTAssertEqual(test, 10800)
-//    }
+    func test_get_wear_timer_for_date_03() {
+        let today_date = "2019-07-12"
+
+        var base_intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
+        let day0 = dateFormatter.date(from: "\(today_date) 20:00")
+        
+        let d00 = DayInterval()
+        d00.id = 4
+        d00.time = day0!
+        d00.wear = true
+        
+        base_intervals.append(d00)
+
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = base_intervals
+        let provided_time = dateFormatter.date(from: "\(today_date) 23:00")
+
+        let test = align_time.get_wear_timer_for_date(update_time: provided_time)
+
+        XCTAssertEqual(test, 21600)
+    }
     
     func test_get_off_timer_for_date_01() {
         let today_date = "2019-07-12"
