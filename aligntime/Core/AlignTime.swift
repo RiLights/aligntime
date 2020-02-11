@@ -131,18 +131,16 @@ final class AlignTime: ObservableObject {
         }
         
         if intervals.first.wear != wear {
-            intervals.prepend(DayInterval(id: intervals.first.id-1, wear: wear,time: local))
+            intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: local))
         }
         
         if intervals.last.wear == wear {
             let next = local.isCurrent() ? Date() : local.addDay(value: 1)!
-            intervals.append(DayInterval(id: intervals.last.id+1, wear: !wear,time: next))
+            intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: next))
         }
             
-        for pair in intervals.pairs() {
-            let s = pair.0
-            let e = pair.1!
-            total += e.time.timeIntervalSince(s.time)
+        for (start, end) in intervals.pairs() {
+            total += end!.time.timeIntervalSince(start.time)
         }
         
         return total
@@ -271,7 +269,7 @@ final class AlignTime: ObservableObject {
         if previous_intervals != [] {
             let lastdate = previous_intervals.max { a, b in a.id < b.id }!
             let intervals = self.intervals.filter {
-                ($0.time.belongTo(date: self.selected_date) || $0.time.belongTo(date: lastdate.time,toGranularity: .minute))
+                ($0.time.belongTo(date: self.selected_date) || $0.time.belongTo(date: lastdate.time, toGranularity: .minute))
                     &&
                     ($0.wear == wear)
             }

@@ -16,7 +16,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable {
     var day:String = ""
     
     init() {}
-    init(id: Int, wear: Bool, time: Date) {
+    init(_ id: Int, wear: Bool, time: Date) {
         self.id = id
         self.wear = wear
         self.time = time
