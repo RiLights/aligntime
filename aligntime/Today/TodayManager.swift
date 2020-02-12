@@ -16,7 +16,9 @@ func timer_format(_ second: TimeInterval) -> String? {
     return formatter.string(from: second)
 }
 
-struct TodayManager: View {    
+struct TodayManager: View {
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         VStack(alignment: .center) {
             TodayHeader()
