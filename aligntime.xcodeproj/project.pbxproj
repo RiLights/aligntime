@@ -28,6 +28,9 @@
 		F08BCD4523D987F500659118 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08BCD4423D987F500659118 /* Transitions.swift */; };
 		F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A92E1123F3B6BD00874E00 /* ArrayExtension.swift */; };
 		F0A92E1423F3B6CF00874E00 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A92E1323F3B6CF00874E00 /* DateExtension.swift */; };
+		F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A92E1523F3BFF900874E00 /* TodayHeader.swift */; };
+		F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A92E1723F3C2B200874E00 /* TodayDaysLeft.swift */; };
+		F0A92E1A23F3C3BF00874E00 /* TodayTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A92E1923F3C3BF00874E00 /* TodayTimer.swift */; };
 		F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFBF23B33BCD00F7A3E7 /* WelcomeInfo.swift */; };
 		F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC223B3F67400F7A3E7 /* DataCollect01.swift */; };
 		F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */; };
@@ -77,6 +80,9 @@
 		F08BCD4423D987F500659118 /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		F0A92E1123F3B6BD00874E00 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F0A92E1323F3B6CF00874E00 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		F0A92E1523F3BFF900874E00 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
+		F0A92E1723F3C2B200874E00 /* TodayDaysLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDaysLeft.swift; sourceTree = "<group>"; };
+		F0A92E1923F3C3BF00874E00 /* TodayTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTimer.swift; sourceTree = "<group>"; };
 		F0ADCFBF23B33BCD00F7A3E7 /* WelcomeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInfo.swift; sourceTree = "<group>"; };
 		F0ADCFC223B3F67400F7A3E7 /* DataCollect01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollect01.swift; sourceTree = "<group>"; };
 		F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollect02.swift; sourceTree = "<group>"; };
@@ -207,6 +213,9 @@
 			isa = PBXGroup;
 			children = (
 				F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */,
+				F0A92E1523F3BFF900874E00 /* TodayHeader.swift */,
+				F0A92E1723F3C2B200874E00 /* TodayDaysLeft.swift */,
+				F0A92E1923F3C3BF00874E00 /* TodayTimer.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -344,12 +353,14 @@
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
 				F0FEDB4223C8761C00682F85 /* DayInterval.swift in Sources */,
 				F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */,
+				F0A92E1A23F3C3BF00874E00 /* TodayTimer.swift in Sources */,
 				F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */,
 				F08BCD4523D987F500659118 /* Transitions.swift in Sources */,
 				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */,
 				F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */,
 				F046274423D6F19D00980A0E /* OffIntervals.swift in Sources */,
+				F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */,
 				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,
 				F0FEDB4023C8704D00682F85 /* IntervalFields.swift in Sources */,
@@ -358,6 +369,7 @@
 				F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */,
 				F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */,
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
+				F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileHost.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
