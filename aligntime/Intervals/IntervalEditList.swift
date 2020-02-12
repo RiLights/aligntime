@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+func get_min_time()->Date{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd"
+    return formatter.date(from: "1970/01/01")!
+}
+
 struct IntervalEditList: View {
     @EnvironmentObject var core_data: AlignTime
     @Binding var navigation_label:String

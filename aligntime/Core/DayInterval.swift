@@ -8,6 +8,12 @@
 
 import Foundation
 
+func clock_string_format(_ date: Date) -> String? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    return formatter.string(from: date)
+}
+
 
 class DayInterval: Identifiable,ObservableObject,Comparable {
     var id: Int = 0

@@ -16,31 +16,6 @@ func timer_format(_ second: TimeInterval) -> String? {
     return formatter.string(from: second)
 }
 
-//func get_last_wear_date_for_date_test()->Date?{
-//    let formatter_date = DateFormatter()
-//    formatter_date.dateFormat = "yyyy/MM/dd HH:mm"
-//    let day = formatter_date.date(from: "2020/02/11 05:00")
-//    return day
-//}
-//
-//func get_wear_timer_for_date(date:Date)->TimeInterval{
-//    return TimeInterval(3800)
-//}
-//
-//func get_wear_timer_for_today_test(update_time:Date? = nil)->String{
-//    var last_time = get_last_wear_date_for_date_test()
-//    if update_time == nil{
-//        let timer = get_wear_timer_for_date(date:Date())
-//        return timer_format(timer)!
-//    }
-//    if last_time == nil{
-//        last_time = Calendar.current.startOfDay(for: update_time!)
-//    }
-//    let timer = update_time!.timeIntervalSince(last_time!)
-//    let total_timer = timer + get_wear_timer_for_date(date:Date())
-//    return timer_format(total_timer)!
-//}
-
 struct TodayManager: View {
     @EnvironmentObject var core_data: AlignTime
     @State private var show_reminder = false
