@@ -20,6 +20,7 @@ struct TodayTimer: View {
     func start_timer(){
         self.core_data.current_state = true
         self.core_data.switch_timer()
+        self.core_data.remove_notification()
     }
     func pause_timer(time_interval:Double){
         self.core_data.current_state = false

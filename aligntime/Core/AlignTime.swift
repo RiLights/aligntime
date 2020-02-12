@@ -99,6 +99,8 @@ final class AlignTime: ObservableObject {
     @Published var current_state = true
     @Published var last_interval_date = Date()
     
+    let notification_identifier = "AlignTime.id.01"
+    
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
         return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
     }
@@ -337,8 +339,14 @@ final class AlignTime: ObservableObject {
         content.body = "Time to put your aligners on again"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
-        let request = UNNotificationRequest(identifier: "AlignTime.id.01", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: notification_identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func remove_notification(){
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier])
+        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier])
     }
     
     /// Calendar Manager
