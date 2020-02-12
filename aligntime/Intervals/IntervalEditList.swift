@@ -63,7 +63,7 @@ struct IntervalEditList: View {
                                     self.max_time = self.core_data.intervals[i.id+2].time
                                 }
                                 else{
-                                    self.max_time = self.core_data.intervals[i.id+2].time
+                                    self.max_time = Date()//self.core_data.intervals[i.id+1].time
                                 }
                                 self.showing_picker.toggle()
                             }

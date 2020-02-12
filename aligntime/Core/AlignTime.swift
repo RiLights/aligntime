@@ -103,6 +103,10 @@ final class AlignTime: ObservableObject {
     @Published var current_state = true
     @Published var last_interval_date = Date()
     
+    let notification_identifier01 = "AlignTime.id.01"
+    let notification_identifier02 = "AlignTime.id.02"
+    let notification_identifier03 = "AlignTime.id.03"
+    
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
         return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
     }
@@ -350,9 +354,31 @@ final class AlignTime: ObservableObject {
         content.title = "AlignTime Reminder. \(time_interval)s"
         content.body = "Time to put your aligners on again"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
-        let request = UNNotificationRequest(identifier: "AlignTime.id.01", content: content, trigger: trigger)
+        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
+        var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        content.body = "Don’t forget to put your aligners on"
+
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+120, repeats: false)
+        request = UNNotificationRequest(identifier: notification_identifier02, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
+        content.body = "Your aligners have been out for a while now. It’s time to put them back on"
+
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
+        request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func remove_notification(){
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier01])
+        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier01])
+        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier02])
+        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier02])
+        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier03])
+        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier03])
     }
     
     /// Calendar Manager

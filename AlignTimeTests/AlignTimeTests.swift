@@ -22,16 +22,6 @@ class AlignTimeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_date_string_format() {
-        let align_time:AlignTime = AlignTime()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: "2020-02-09")!
-        
-        let k = align_time.date_string_format(date)
-        XCTAssertEqual(k, "2020-02-09")
-    }
-    
-    
     func get_dayintervals(today_date: String, wears: [Bool]) -> [DayInterval] {
         let day0_2 = dateFormatter.date(from: "2019-07-11 22:00")
         let day0_1 = dateFormatter.date(from: "\(today_date) 01:00")
@@ -59,6 +49,37 @@ class AlignTimeTests: XCTestCase {
         d01.wear = wears[3]
         
         return [d0_2,d0_1,d00,d01]
+    }
+    
+    func fill_9000_Intervals()->AlignTime{
+        let align_time:AlignTime = AlignTime()
+        
+        var id = 0
+        var state = false
+        for d in Range(1...20){
+            for h in Range(10...20){
+                for m in Range(10...50){
+                    let time = dateFormatter.date(from: "2019-07-\(d) \(h):\(m)")
+                    let d00 = DayInterval()
+                    d00.id = id
+                    d00.time = time!
+                    d00.wear = state
+                    id+=1
+                    state = !state
+                    align_time.intervals.append(d00)
+                }
+            }
+        }
+        return align_time
+    }
+    
+    func test_date_string_format() {
+        let align_time:AlignTime = AlignTime()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: "2020-02-09")!
+        
+        let k = align_time.date_string_format(date)
+        XCTAssertEqual(k, "2020-02-09")
     }
     
     func test_filter(){
@@ -157,11 +178,11 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(days_result, "328")
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testFilterPerformance() {
+        let align_time:AlignTime = fill_9000_Intervals()
+        let provided_time = dateFormatter.date(from: "2019-07-12 05:15")!
         measure {
-            // Put the code you want to measure the time of here.
+            _ = align_time.get_wear_timer_for_date(update_time: provided_time)
         }
     }
-
 }
