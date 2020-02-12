@@ -20,16 +20,19 @@ class DayInterval: Identifiable,ObservableObject,Comparable {
     var time_string: String = "...."
     var wear:Bool = true
     var day:String = ""
+    var timestamp: Int64 = 0
     
     init() {}
-    init(_ id: Int, wear: Bool, time: Date) {
-        self.id = id
+    init(_ id: Int, wear: Bool, time: Date ) {
+        self.timestamp = time.timestamp()
         self.wear = wear
         self.time = time
+        self.id = id
     }
 
     @Published var time:Date = Date() {
         didSet {
+            self.timestamp = time.timestamp()
             self.time_string = clock_string_format(self.time)!
         }
     }

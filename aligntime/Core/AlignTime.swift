@@ -23,15 +23,19 @@ extension Date {
     }
     
     public func belongTo(date: Date, toGranularity: Calendar.Component = .day) -> Bool {
-        return (Calendar.current.isDate(self, equalTo: date, toGranularity: toGranularity))
+       return (Calendar.current.isDate(self, inSameDayAs: date))
     }
-    
+       
     public func isCurrent() -> Bool {
         return (Calendar.current.isDate(self, equalTo: Date(), toGranularity: .day))
     }
     
     public func addDay(value: Int) -> Date? {
         return Calendar.current.date(byAdding: .day, value: value, to: self)!
+    }
+    
+    func timestamp() -> Int64 {
+        return Int64(self.timeIntervalSince1970 * 1000)
     }
 }
 
@@ -120,22 +124,32 @@ final class AlignTime: ObservableObject {
         return self.timer_format(total)!
     }
     
-    func _get_timer_for_date(d:Date, wear: Bool) -> TimeInterval{
-        let local = d.setTime(hour: 0, min: 0, sec: 0)!
+    func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
         var total:TimeInterval = 0
-        
-        var intervals = self.intervals.filter{ $0.time.belongTo(date: local) }
-        
-        if intervals == [] {
+        if self.intervals.count == 0 {
             return total
         }
         
-        if intervals.first.wear != wear {
-            intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: local))
-        }
+        var intervals = self.intervals.filter{ $0.time.belongTo(date: request) }
         
-        if intervals.last.wear == wear {
-            intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: d))
+        if intervals == [] {
+            let tmp = self.intervals.filter{ $0.timestamp < request.timestamp() }
+            if tmp == [] {
+                return total
+            }
+            let local = request.setTime(hour: 0, min: 0, sec: 0)!
+            intervals.append(DayInterval(tmp.last.id+1, wear: wear,time: local))
+            intervals.append(DayInterval(tmp.last.id+2, wear: wear,time: request))
+        }
+        else {
+            if intervals.first.wear != wear {
+                let local = request.setTime(hour: 0, min: 0, sec: 0)!
+                intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: local))
+            }
+            
+            if intervals.last.wear == wear {
+                intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: request))
+            }
         }
             
         for (start, end) in intervals.pairs() {
@@ -147,11 +161,11 @@ final class AlignTime: ObservableObject {
     
     
     func get_wear_timer_for_date(update_time:Date?)->TimeInterval{
-        return _get_timer_for_date(d: update_time!, wear: true)
+        return _get_timer_for_date(update_time!, wear: true)
     }
     
     func get_off_timer_for_date(update_time:Date?)->TimeInterval{
-        return  _get_timer_for_date(d: update_time!, wear: false)
+        return  _get_timer_for_date(update_time!, wear: false)
     }
   
     func get_off_timer_for_today(d:Date) -> String{

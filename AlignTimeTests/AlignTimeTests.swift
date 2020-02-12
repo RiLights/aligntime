@@ -117,13 +117,10 @@ class AlignTimeTests: XCTestCase {
     
     func test_get_wear_timer_for_date_04() {
         let today_date = "2019-07-12"
-        let day0 = dateFormatter.date(from: "2019-07-05 20:00")
+        let day0 = dateFormatter.date(from: "2019-07-05 20:00")!
         
-        let d00 = DayInterval()
-        d00.id = 4
-        d00.time = day0!
-        d00.wear = true
-
+        let d00 = DayInterval(0, wear: true, time: day0)
+    
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d00]
         let provided_time = dateFormatter.date(from: "\(today_date) 01:00")
