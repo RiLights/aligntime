@@ -247,7 +247,7 @@ class AlignTimeTests: XCTestCase {
         
         let test = align_time.get_wear_days()
 
-        let correct_data = [d01]
+        let correct_data = [d01,d03]
         XCTAssertEqual(test, correct_data)
     }
     
