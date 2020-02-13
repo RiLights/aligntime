@@ -153,7 +153,7 @@ final class AlignTime: ObservableObject {
             return []
         }
         
-        let selected_date = self.selected_date! //(wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
+        let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
         
         let previous_intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
         

@@ -286,8 +286,7 @@ class AlignTimeTests: XCTestCase {
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d01,d02,d03]
-        let provided_time = dateFormatter.date(from: "2019-12-07 01:00")
-        align_time.selected_date = provided_time
+        align_time.selected_date = dateFormatter.date(from: "2019-12-07 01:00")
         
         let test = align_time.get_off_days()
         
