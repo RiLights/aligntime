@@ -271,7 +271,8 @@ class AlignTimeTests: XCTestCase {
         
         let test = align_time.get_off_days()
         
-        XCTAssertEqual(test.count, 2)
+        let correct_data:[DayInterval] = [d02,d04]
+        XCTAssertEqual(test, correct_data)
     }
     
     func test_get_off_days_03(){
