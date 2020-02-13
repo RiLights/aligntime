@@ -152,6 +152,7 @@ final class AlignTime: ObservableObject {
         if self.selected_date == nil {
             return []
         }
+        return _filter(d: self.selected_date, wear: wear)
         
         let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
         
