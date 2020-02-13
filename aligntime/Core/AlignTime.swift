@@ -20,14 +20,6 @@ final class AlignTime: ObservableObject {
     @Published var aligner_number_now:Int = 4
     @Published var current_aligner_days:Int = 6
     
-    @Published var play_state:Bool = true
-    @Published var wear_timer:String = "00:00:00"
-    @Published var out_timer:String = "00:00:00"
-    @Published var start_time:Date = Date()
-    @Published var out_time:Date = Date()
-    @Published var wear_elapsed_time:TimeInterval = TimeInterval()
-    @Published var out_elapsed_time:TimeInterval = TimeInterval()
-    
     @Published var wearing_aligners_days:String = "0"
     @Published var days_left:String = "0"
     
@@ -54,6 +46,7 @@ final class AlignTime: ObservableObject {
     let notification_identifier01 = "AlignTime.id.01"
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
+
     
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
         return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
@@ -128,12 +121,6 @@ final class AlignTime: ObservableObject {
         return _get_timer_for_today(d: d, wear: true)
     }
     
-    func get_off_timer_for_date(d:Date) -> String{
-        if !current_state{
-            return self.timer_format(d.timeIntervalSince(self.last_interval_date))!
-        }
-        return wear_timer
-    }
     
     func switch_timer(){
         if self.intervals.count != 0{
@@ -164,16 +151,6 @@ final class AlignTime: ObservableObject {
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
         }
-    }
-        
-    func start_wear(){
-        self.start_time = Date().addingTimeInterval((self.wear_elapsed_time)*(-1))
-        self.start_time-=1
-    }
-    
-    func out_wear(){
-        self.out_time = Date().addingTimeInterval((self.out_elapsed_time)*(-1))
-        self.out_time-=1
     }
     
     func timer_format(_ second: TimeInterval) -> String? {
