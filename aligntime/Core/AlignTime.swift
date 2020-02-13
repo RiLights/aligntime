@@ -26,7 +26,6 @@ final class AlignTime: ObservableObject {
     @Published var complete:Bool = false
     
     // how to save custom data into UserDefaults?
-    var days: [Date: [String: TimeInterval]] = [:]
     var colors = RKColorSettings()
     
     @Published var calendar = Calendar.current
@@ -41,32 +40,20 @@ final class AlignTime: ObservableObject {
     @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     
     @Published var current_state = true
-    @Published var last_interval_date = Date()
     
     let notification_identifier01 = "AlignTime.id.01"
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
+    
+    init() {
+        if intervals.count != 0{
+            current_state = intervals[intervals.count-1].wear
+        }
+    }
 
     
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
         return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
-    }
-      
-    func _get_timer_for_today(d:Date, wear: Bool) -> String{
-        let intervals = _filter(d: d, wear: wear)
-        var total:TimeInterval = 0
-        for i in intervals {
-            if self.intervals.count > i.id+1{
-                let t =  self.intervals[i.id+1].time.timeIntervalSince(i.time)
-                total+=t
-            }
-            else {
-                let t = d.timeIntervalSince(i.time)
-                total+=t
-            }
-        }
-        //print(self.timer_format(total)!)
-        return self.timer_format(total)!
     }
     
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
@@ -112,23 +99,9 @@ final class AlignTime: ObservableObject {
     func get_off_timer_for_date(update_time:Date?)->TimeInterval{
         return  _get_timer_for_date(update_time!, wear: false)
     }
-  
-    func get_off_timer_for_today(d:Date) -> String{
-        return _get_timer_for_today(d: d, wear: false)
-    }
-
-    func get_wear_timer_for_today(d:Date) -> String{
-        return _get_timer_for_today(d: d, wear: true)
-    }
     
     
     func switch_timer(){
-        if self.intervals.count != 0{
-            self.last_interval_date = self.intervals[self.intervals.count-1].time
-        }
-        else{
-            self.last_interval_date = Date()
-        }
         let interval = DayInterval()
         interval.time=Date()
         interval.id = self.intervals.count
@@ -152,22 +125,7 @@ final class AlignTime: ObservableObject {
              self.days_left = days_left_string
         }
     }
-    
-    func timer_format(_ second: TimeInterval) -> String? {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.zeroFormattingBehavior = .pad
-        return formatter.string(from: second)
-    }
-    
-    func day_format(_ second: TimeInterval) -> String? {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [.day]
-        //print(second.days)
-        return formatter.string(from: second)
-    }
+
     
     func date_format(date: Date) -> Date {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
@@ -187,16 +145,7 @@ final class AlignTime: ObservableObject {
     func get_total_off_time() ->String{return ""}
         
     func get_days_to_treatment_end() ->Int{return 0}
-    
-    func set_wear_time_for_date(date:Date,interval:TimeInterval){
-//        let wear = ["wear": interval]
-//        self.days[date] = wear
-    }
 
-    func set_off_time_time_for_date(date:Date,interval:TimeInterval){
-//        let off_time = ["out": interval]
-//        self.days[date] = off_time
-    }
     
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
