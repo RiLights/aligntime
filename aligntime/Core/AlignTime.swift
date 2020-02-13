@@ -138,7 +138,7 @@ final class AlignTime: ObservableObject {
         
         if intervals == [] {
             let tmp = self.intervals.filter{ $0.timestamp < request.timestamp() }
-            if tmp == [] {
+            if (tmp == []) || (tmp.last.wear != wear) {
                 return total
             }
             let local = request.setTime(hour: 0, min: 0, sec: 0)!
