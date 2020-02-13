@@ -294,6 +294,7 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(test, correct_data)
     }
     
+    
     func test_days_left() {
         let align_time:AlignTime = AlignTime()
         let day = dateFormatter.date(from: "2019-07-12 00:00")

@@ -26,7 +26,6 @@ final class AlignTime: ObservableObject {
     @Published var complete:Bool = false
     
     // how to save custom data into UserDefaults?
-    var days: [Date: [String: TimeInterval]] = [:]
     var colors = RKColorSettings()
     
     @Published var calendar = Calendar.current
@@ -41,11 +40,16 @@ final class AlignTime: ObservableObject {
     @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     
     @Published var current_state = true
-    @Published var last_interval_date = Date()
     
     let notification_identifier01 = "AlignTime.id.01"
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
+    
+    init() {
+        if intervals.count != 0{
+            current_state = intervals[intervals.count-1].wear
+        }
+    }
 
     
     func _filter(d:Date, wear: Bool) -> [DayInterval] {
