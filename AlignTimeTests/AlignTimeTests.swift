@@ -250,8 +250,8 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_get_wear_days_03(){
-        let day0 = dateFormatter.date(from: "2019-07-11 10:00")!
-        let day1 = dateFormatter.date(from: "2019-07-11 20:00")!
+        let day0 = dateFormatter.date(from: "2019-07-10 10:00")!
+        let day1 = dateFormatter.date(from: "2019-07-10 20:00")!
         let day2 = dateFormatter.date(from: "2019-07-12 10:00")!
         let day3 = dateFormatter.date(from: "2019-07-12 20:00")!
         
