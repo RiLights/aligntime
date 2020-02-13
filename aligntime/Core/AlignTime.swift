@@ -146,24 +146,51 @@ final class AlignTime: ObservableObject {
         
     func get_days_to_treatment_end() ->Int{return 0}
 
-    
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
         if self.selected_date == nil {
             return []
         }
-        var intervals = _filter(d: self.selected_date, wear: wear)
+        let intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
         if intervals == [] {
             return []
         }
-        
+        /*
         let previous_intervals = self.intervals.filter{ $0.timestamp < self.selected_date.timestamp() }
         if previous_intervals == [] {
             return intervals
         }
-        intervals.prepend(previous_intervals.last)
+        intervals.prepend(previous_intervals.last)*/
         
         return intervals
+    }
+    
+    func _interval_filter2(wear: Bool) -> [DayInterval] {
+        // Get last interval from previous day
+        if self.selected_date == nil {
+            return []
+        }
+        let intervals = _filter(d: self.selected_date, wear: wear)
+        if intervals == [] {
+            return []
+        }
+        
+        let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
+        
+        let previous_intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
+        
+        if previous_intervals != [] {
+            let lastdate = previous_intervals.max { a, b in a.id < b.id }!
+            let intervals = self.intervals.filter {
+                ($0.time.belongTo(date: self.selected_date) || $0.time.belongTo(date: lastdate.time, toGranularity: .minute))
+                    &&
+                    ($0.wear == wear)
+            }
+            return intervals
+        }
+        else {
+            return _filter(d: self.selected_date, wear: wear)
+        }
     }
     
     func get_wear_days()->[DayInterval]{
