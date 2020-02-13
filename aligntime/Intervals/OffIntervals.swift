@@ -31,21 +31,11 @@ struct OffIntervals: View {
                     .font(.system(size: 21))
                 ForEach(core_data.get_off_days()) { i in
                     HStack{
-                        if self.core_data.is_selected_date(date:i.time)
-                        {
-                            Text("\(i.time_string)")
-                                .font(.system(size: 18))
-                                .fontWeight(.light)
-                                .foregroundColor(.red)
-                                .frame(width: 50)
-                        }
-                        else{
-                            Text("\(i.time_string)")
-                                .font(.system(size: 18))
-                                .fontWeight(.light)
-                                .foregroundColor(.secondary)
-                                .frame(width: 50)
-                        }
+                        Text("\(i.time_string )")
+                            .font(.system(size: 18))
+                            .fontWeight(.light)
+                            .foregroundColor(self.intervals_color_day(date:i.time))
+                            .frame(width: 50)
                         Text("-")
                             .foregroundColor(.red)
                             .font(.system(size: 21))
