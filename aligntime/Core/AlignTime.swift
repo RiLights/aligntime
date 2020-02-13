@@ -9,58 +9,6 @@ import Combine
 import Foundation
 import UserNotifications
 
-extension Date {
-    public func setTime(hour: Int, min: Int, sec: Int) -> Date? {
-        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-        let cal = Calendar.current
-        var components = cal.dateComponents(x, from: self)
-        components.timeZone = .current
-        components.hour = hour
-        components.minute = min
-        components.second = sec
-
-        return cal.date(from: components)
-    }
-    
-    public func belongTo(date: Date, toGranularity: Calendar.Component = .day) -> Bool {
-       return (Calendar.current.isDate(self, inSameDayAs: date))
-    }
-       
-    public func isCurrent() -> Bool {
-        return (Calendar.current.isDate(self, equalTo: Date(), toGranularity: .day))
-    }
-    
-    public func addDay(value: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: value, to: self)!
-    }
-    
-    func timestamp() -> Int64 {
-        return Int64(self.timeIntervalSince1970 * 1000)
-    }
-}
-
-extension Array {
-    func pair(at i: Index) -> (Element, Element?) {
-        return (self[i], i < self.count - 1 ? self[i+1] : nil)
-    }
-
-    func pairs() -> [(Element, Element?)] {
-        guard !isEmpty else { return [] }
-        return (0..<(self.count/2 + self.count%2)).map { pair(at: $0*2) }
-    }
-    
-    mutating func prepend(_ newElement: Element) {
-        self.insert(newElement, at: 0)
-    }
-    
-    var last: Element {
-        return self[self.endIndex - 1]
-    }
-    
-    var first: Element {
-        return self[0]
-    }
-}
 
 final class AlignTime: ObservableObject {
     
