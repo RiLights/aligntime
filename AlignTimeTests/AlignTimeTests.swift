@@ -243,8 +243,7 @@ class AlignTimeTests: XCTestCase {
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d00,d01,d02,d03]
-        let provided_time = dateFormatter.date(from: "2019-07-12 01:00")
-        align_time.selected_date = provided_time
+        align_time.selected_date = dateFormatter.date(from: "2019-07-12 01:00")
         
         let test = align_time.get_off_days()
 
@@ -252,24 +251,23 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_get_off_days_02(){
-        let day1 = dateFormatter.date(from: "2019/12/08 08:40")
-        let day2 = dateFormatter.date(from: "2019/12/08 15:00")
-        let day3 = dateFormatter.date(from: "2019/12/08 20:00")
-        let day4 = dateFormatter.date(from: "2019/12/09 01:00")
-        let day5 = dateFormatter.date(from: "2019/12/09 02:00")
-        let day6 = dateFormatter.date(from: "2020/02/02 05:00")
+        let day0 = dateFormatter.date(from: "2019/12/08 08:40")
+        let day1 = dateFormatter.date(from: "2019/12/08 15:00")
+        let day2 = dateFormatter.date(from: "2019/12/08 20:00")
+        let day3 = dateFormatter.date(from: "2019/12/09 01:00")
+        let day4 = dateFormatter.date(from: "2019/12/09 02:00")
+        let day5 = dateFormatter.date(from: "2020/02/02 05:00")
         
-        let d00 = DayInterval(0, wear: false, time: day1!)
-        let d01 = DayInterval(1, wear: true, time: day2!)
-        let d02 = DayInterval(2, wear: false, time: day3!)
-        let d03 = DayInterval(3, wear: true, time: day4!)
-        let d04 = DayInterval(4, wear: false, time: day5!)
-        let d05 = DayInterval(5, wear: true, time: day6!)
+        let d00 = DayInterval(0, wear: false, time: day0!)
+        let d01 = DayInterval(1, wear: true, time: day1!)
+        let d02 = DayInterval(2, wear: false, time: day2!)
+        let d03 = DayInterval(3, wear: true, time: day3!)
+        let d04 = DayInterval(4, wear: false, time: day4!)
+        let d05 = DayInterval(5, wear: true, time: day5!)
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d00,d01,d02,d03,d04,d05]
-        let provided_time = dateFormatter.date(from: "2019-12-09 01:00")
-        align_time.selected_date = provided_time
+        align_time.selected_date = dateFormatter.date(from: "2019-12-09 01:00")
         
         let test = align_time.get_off_days()
         
