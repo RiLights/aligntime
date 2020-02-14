@@ -82,16 +82,6 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(k, "2020-02-09")
     }
     
-    func test_filter(){
-        let today_date = "2019-07-12"
-        let provided_time = dateFormatter.date(from: "\(today_date) 05:15")
-
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
-        XCTAssertEqual(align_time._filter(d: provided_time!, wear: true).count, 1)
-        XCTAssertEqual(align_time._filter(d: provided_time!, wear: false).count, 2)
-    }
-    
     func test_get_wear_timer_for_date_01(){
         let today_date = "2019-07-12"
         let align_time:AlignTime = AlignTime()
@@ -209,7 +199,6 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_get_wear_days_01(){
-        let selected_date = "2019-07-12"
         let day0 = dateFormatter.date(from: "2019-07-11 10:00")!
         let day1 = dateFormatter.date(from: "2019-07-11 20:00")!
         let day2 = dateFormatter.date(from: "2019-07-13 10:00")!
@@ -222,8 +211,7 @@ class AlignTimeTests: XCTestCase {
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d00,d01,d02,d03]
-        let provided_time = dateFormatter.date(from: "\(selected_date) 01:00")
-        align_time.selected_date = provided_time
+        align_time.selected_date = dateFormatter.date(from: "2019-07-12 01:00")
         
         let test = align_time.get_wear_days()
 
@@ -236,18 +224,18 @@ class AlignTimeTests: XCTestCase {
         let day2 = dateFormatter.date(from: "2019-07-12 10:00")!
         let day3 = dateFormatter.date(from: "2019-07-12 20:00")!
         
-        let d00 = DayInterval(0, wear: false, time: day0)
-        let d01 = DayInterval(1, wear: true, time: day1)
-        let d02 = DayInterval(2, wear: false, time: day2)
-        let d03 = DayInterval(3, wear: true, time: day3)
+        let off00 = DayInterval(0, wear: false, time: day0)
+        let wear01 = DayInterval(1, wear: true, time: day1)
+        let off02 = DayInterval(2, wear: false, time: day2)
+        let wear03 = DayInterval(3, wear: true, time: day3)
     
         let align_time:AlignTime = AlignTime()
-        align_time.intervals = [d00,d01,d02,d03]
+        align_time.intervals = [off00,wear01,off02,wear03]
         align_time.selected_date = day3
         
         let test = align_time.get_wear_days()
 
-        let correct_data = [d01,d03]
+        let correct_data = [wear01,wear03]
         XCTAssertEqual(test, correct_data)
     }
     
@@ -309,7 +297,7 @@ class AlignTimeTests: XCTestCase {
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d00,d01,d02,d03,d04,d05]
-        align_time.selected_date = day3
+        align_time.selected_date = dateFormatter.date(from: "2019/12/09 01:00")
         
         let test = align_time.get_off_days()
         
