@@ -82,16 +82,6 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(k, "2020-02-09")
     }
     
-    func test_filter(){
-        let today_date = "2019-07-12"
-        let provided_time = dateFormatter.date(from: "\(today_date) 05:15")
-
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = get_dayintervals(today_date: today_date, wears: [true,false,true,false])
-        XCTAssertEqual(align_time._filter(d: provided_time!, wear: true).count, 1)
-        XCTAssertEqual(align_time._filter(d: provided_time!, wear: false).count, 2)
-    }
-    
     func test_get_wear_timer_for_date_01(){
         let today_date = "2019-07-12"
         let align_time:AlignTime = AlignTime()

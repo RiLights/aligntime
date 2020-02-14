@@ -142,10 +142,6 @@ final class AlignTime: ObservableObject {
         
     func get_days_to_treatment_end() ->Int{return 0}
     
-    func _filter(d:Date, wear: Bool) -> [DayInterval] {
-        return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
-    }
-    
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
         if self.selected_date == nil {
