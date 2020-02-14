@@ -52,10 +52,6 @@ final class AlignTime: ObservableObject {
     }
 
     
-    func _filter(d:Date, wear: Bool) -> [DayInterval] {
-        return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
-    }
-    
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
         var total:TimeInterval = 0
         if self.intervals.count == 0 {
@@ -145,52 +141,48 @@ final class AlignTime: ObservableObject {
     func get_total_off_time() ->String{return ""}
         
     func get_days_to_treatment_end() ->Int{return 0}
-
+    
+    func _filter(d:Date, wear: Bool) -> [DayInterval] {
+        return self.intervals.filter{ ($0.time.belongTo(date: d)) && ($0.wear == wear) }
+    }
+    
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
         if self.selected_date == nil {
             return []
         }
-        let intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
+        
+        var intervals = self.intervals.filter{ $0.time.belongTo(date: self.selected_date) }
         if intervals == [] {
             return []
         }
-        /*
-        let previous_intervals = self.intervals.filter{ $0.timestamp < self.selected_date.timestamp() }
-        if previous_intervals == [] {
-            return intervals
-        }
-        intervals.prepend(previous_intervals.last)*/
-        
-        return intervals
-    }
-    
-    func _interval_filter2(wear: Bool) -> [DayInterval] {
-        // Get last interval from previous day
-        if self.selected_date == nil {
-            return []
-        }
-        let intervals = _filter(d: self.selected_date, wear: wear)
-        if intervals == [] {
-            return []
-        }
-        
-        let selected_date = (wear == true) ? self.selected_date! : self.selected_date.advanced(by: -86400)
-        
-        let previous_intervals = self.intervals.filter{ $0.time.belongTo(date: selected_date) }
-        
+                
+        let previous_intervals = self.intervals.filter{ $0.timestamp < intervals.first.timestamp }
         if previous_intervals != [] {
-            let lastdate = previous_intervals.max { a, b in a.id < b.id }!
-            let intervals = self.intervals.filter {
-                ($0.time.belongTo(date: self.selected_date) || $0.time.belongTo(date: lastdate.time, toGranularity: .minute))
-                    &&
-                    ($0.wear == wear)
-            }
-            return intervals
+            intervals.prepend(previous_intervals.last)
+        }
+        
+        let next_intervals = self.intervals.filter{ $0.timestamp > intervals.last.timestamp }
+        if next_intervals != [] {
+            intervals.append(next_intervals.first)
         }
         else {
-            return _filter(d: self.selected_date, wear: wear)
+            let time = Date()
+            intervals.append(DayInterval(intervals.last.id+1,wear: !intervals.last.wear,time: time ) )
         }
+        
+        if intervals.first.wear != wear {
+            intervals.remove(at: 0)
+        }
+        
+        var result:[DayInterval] = []
+        for (s,e) in intervals.pairs() {
+            if s.wear == wear && e != nil {
+                result.append(s)
+            }
+        }
+        
+        return result
     }
     
     func get_wear_days()->[DayInterval]{
