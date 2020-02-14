@@ -60,7 +60,7 @@ struct TodayTimer: View {
                 }
             }
             .onAppear() {
-                print("apear")
+                //print("apear")
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
             }

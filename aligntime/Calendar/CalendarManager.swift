@@ -11,6 +11,7 @@ import SwiftUI
 
 struct CalendarManager: View {
     @EnvironmentObject var core_data: AlignTime
+    var isAnimation:Bool = true
    
     var body: some View {
         VStack(alignment: .center) {
