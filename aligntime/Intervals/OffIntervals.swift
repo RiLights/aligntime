@@ -29,6 +29,7 @@ struct OffIntervals: View {
                 Text("Off Times:")
                     .foregroundColor(.red)
                     .font(.system(size: 21))
+                    .frame(width: 120)
                 ForEach(core_data.get_off_days()) { i in
                     HStack{
                         Text("\(i.time_string )")
