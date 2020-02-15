@@ -25,8 +25,6 @@ final class AlignTime: ObservableObject {
     
     @Published var complete:Bool = false
     
-    // how to save custom data into UserDefaults?
-    var colors = RKColorSettings()
     
     @Published var calendar = Calendar.current
     @Published var minimumDate: Date = Date()
@@ -45,12 +43,7 @@ final class AlignTime: ObservableObject {
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
     
-    init() {
-        
-        if intervals.count != 0{
-            current_state = intervals[intervals.count-1].wear
-        }
-    }
+    var colors = RKColorSettings()
 
     
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
@@ -120,7 +113,6 @@ final class AlignTime: ObservableObject {
         }
     }
 
-    
     func date_format(date: Date) -> Date {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
             fatalError("Failed to strip time from Date object")
@@ -133,12 +125,6 @@ final class AlignTime: ObservableObject {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
     }
-    
-    func get_total_wear_time() ->String{return ""}
-    
-    func get_total_off_time() ->String{return ""}
-        
-    func get_days_to_treatment_end() ->Int{return 0}
     
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
