@@ -15,11 +15,10 @@ func clock_string_format(_ date: Date) -> String? {
 }
 
 
-class DayInterval: Identifiable,ObservableObject,Comparable,NSCoding {
+class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     var id: Int = 0
     var time_string: String = "...."
     var wear:Bool = true
-    var day:String = ""
     var timestamp: Int64 = 0
     
     init() {}
@@ -30,11 +29,11 @@ class DayInterval: Identifiable,ObservableObject,Comparable,NSCoding {
         self.id = id
     }
     
-    init(_ id: Int, wear: Bool, timestamp: Int64 ) {
-        self.timestamp = timestamp
-        self.wear = wear
-        self.time = Date(timeIntervalSince1970:TimeInterval(timestamp))
-        self.id = id
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case timestamp
+        case wear
+        case time_string
     }
 
     @Published var time:Date = Date() {
@@ -50,19 +49,6 @@ class DayInterval: Identifiable,ObservableObject,Comparable,NSCoding {
     
     static func == (lhs: DayInterval, rhs: DayInterval) -> Bool {
         return lhs.id == rhs.id
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(id, forKey: "id")
-        aCoder.encode(wear, forKey: "state")
-        aCoder.encode(timestamp, forKey: "timestamp")
-    }
-    
-    required convenience init(coder aDecoder: NSCoder) {
-        let id:Int = aDecoder.decodeInteger(forKey: "id")
-        let state:Bool = aDecoder.decodeBool(forKey: "state")
-        let timestamp:Int64 = aDecoder.decodeInt64(forKey: "timestamp")
-        self.init(id, wear: state, timestamp: timestamp)
     }
 }
 

@@ -97,6 +97,7 @@ final class AlignTime: ObservableObject {
         interval.id = self.intervals.count
         interval.wear = current_state
         self.intervals.append(interval)
+        push_user_defaults()
         update_min_max_dates()
     }
   
@@ -196,12 +197,10 @@ final class AlignTime: ObservableObject {
         defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(complete, forKey: "collecting_data_complete")
         
-//        do{
-//            let colorAsData = try NSKeyedArchiver.archivedData(withRootObject: self.intervals[0], requiringSecureCoding: false)
-//        }catch (let error){
-//            print("Failed to convert UIColor to Data : \(error.localizedDescription)")
-//        }
-        //defaults.set(self.intervals, forKey: "intervals")
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(self.intervals) {
+            defaults.set(encoded, forKey: "intervals")
+        }
     }
   
     func pull_user_defaults(){
@@ -225,9 +224,22 @@ final class AlignTime: ObservableObject {
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
         }
         
-        //let temp_intervals = defaults.object(forKey: "intervals") as? [DayInterval] ?? []
-        //print("temp_days",temp_intervals)
-        
+        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
+            let decoder = JSONDecoder()
+            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
+                if temp_intervals != [] {
+                    self.intervals = temp_intervals
+                    self.current_state = self.intervals[self.intervals.count-1].wear
+                    for i in self.intervals{
+                        print("timestamp",i.timestamp)
+                        print("wear",i.wear)
+                    }
+                }
+                else{
+                    self.intervals = [DayInterval(0, wear: true, time: Date())]
+                }
+            }
+        }
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
         
