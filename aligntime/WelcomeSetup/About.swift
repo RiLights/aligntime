@@ -14,10 +14,7 @@ struct About: View {
     var body: some View {
         Section {
             VStack(alignment: .center){
-                //Image("AppIcon")
-                Image("iter02_2_welcome")
-                //Image("AppIcon.appiconset.iphone-60x60@3x")
-                //Image("icon_512x512")
+                Image("iter02_2_welcome_small")
                 Text("AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.")
                     .font(.system(size: 17))
                     .fontWeight(.regular)
