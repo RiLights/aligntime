@@ -39,7 +39,7 @@ struct Welcome: View {
                         .foregroundColor(.white)
                 }
                 .padding(8)
-                
+
                 NavigationLink(destination: About()) {
                     Text("About AlignTime")
                         .font(.headline)
@@ -52,10 +52,6 @@ struct Welcome: View {
                 }
                 .padding(15)
             }
-
-//            .onAppear {
-//                self.isNavigationBarHidden = true
-//            }
         }
     }
 }

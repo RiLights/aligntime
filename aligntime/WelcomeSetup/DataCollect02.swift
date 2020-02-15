@@ -52,7 +52,7 @@ struct DataCollect02: View {
                             Rectangle()
                                 .frame(height: 40)
                                 .foregroundColor(Color.secondary)
-                                .padding(0)
+                                .opacity(0.5)
                             Text("Back")
                                 .foregroundColor(Color.white)
                         }
