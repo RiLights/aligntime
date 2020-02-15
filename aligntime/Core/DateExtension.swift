@@ -24,14 +24,6 @@ extension Date {
     public func belongTo(date: Date, toGranularity: Calendar.Component = .day) -> Bool {
        return (Calendar.current.isDate(self, inSameDayAs: date))
     }
-       
-    public func isCurrent() -> Bool {
-        return (Calendar.current.isDate(self, equalTo: Date(), toGranularity: .day))
-    }
-    
-    public func addDay(value: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: value, to: self)!
-    }
     
     func timestamp() -> Int64 {
         return Int64(self.timeIntervalSince1970 * 1000)
