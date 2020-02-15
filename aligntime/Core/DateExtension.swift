@@ -21,6 +21,11 @@ extension Date {
         return cal.date(from: components)
     }
     
+    public func fromTimestamp(_ time: Int64) -> Date {
+        return Date(timeIntervalSince1970:TimeInterval(time/1000))
+    }
+    
+    
     public func belongTo(date: Date, toGranularity: Calendar.Component = .day) -> Bool {
        return (Calendar.current.isDate(self, inSameDayAs: date))
     }

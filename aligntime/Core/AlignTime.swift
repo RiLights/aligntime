@@ -133,7 +133,7 @@ final class AlignTime: ObservableObject {
             return []
         }
         
-        var intervals = self.intervals.filter{ $0.time.belongTo(date: self.selected_date) }
+        var intervals = self.intervals.filter{ $0.belongTo(self.selected_date) }
         if intervals == [] {
             return []
         }
@@ -231,7 +231,8 @@ final class AlignTime: ObservableObject {
                     self.intervals = temp_intervals
                     self.current_state = self.intervals[self.intervals.count-1].wear
                     for i in self.intervals{
-                        print("timestamp",i.timestamp)
+                        let ddd = try! JSONEncoder().encode(i)
+                        print("timestamp",String(data: ddd, encoding: .utf8)!)
                         print("wear",i.wear)
                     }
                 }
@@ -242,8 +243,7 @@ final class AlignTime: ObservableObject {
         }
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
-        
-        update_min_max_dates()
+        self.update_min_max_dates()
     }
     
     func send_notification(time_interval:Double){
