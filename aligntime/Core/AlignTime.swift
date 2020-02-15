@@ -15,10 +15,10 @@ final class AlignTime: ObservableObject {
     let defaults = UserDefaults.standard
     
     @Published var required_aligners_total:Int = 75
-    @Published var aligner_wear_days:Int = 7
+    @Published var aligners_wear_days:Int = 7
     @Published var start_treatment:Date = Date()
-    @Published var aligner_number_now:Int = 4
-    @Published var current_aligner_days:Int = 6
+    @Published var aligner_number_now:Int = 1
+    @Published var current_aligner_days:Int = 1
     
     @Published var days_left:String = "0"
     @Published var wearing_aligners_days:String = "0"
@@ -105,7 +105,7 @@ final class AlignTime: ObservableObject {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         self.wearing_aligners_days = String(days_interval.days)
         
-        let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligner_wear_days) - self.current_aligner_days
+        let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligners_wear_days) - self.current_aligner_days
         
         let days_left_string = String(days_left_digit)
         if (self.days_left != days_left_string){
@@ -190,7 +190,7 @@ final class AlignTime: ObservableObject {
     
     func push_user_defaults(){
         defaults.set(required_aligners_total, forKey: "require_count")
-        defaults.set(aligner_wear_days, forKey: "aligners_count")
+        defaults.set(aligners_wear_days, forKey: "aligners_count")
         defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
         defaults.set(aligner_number_now, forKey: "align_count_now")
         defaults.set(current_aligner_days, forKey: "days_wearing")
@@ -202,16 +202,28 @@ final class AlignTime: ObservableObject {
   
     func pull_user_defaults(){
         self.required_aligners_total = defaults.integer(forKey: "require_count")
-        if self.required_aligners_total == 0{self.required_aligners_total = 75 }
-        self.aligner_wear_days = defaults.integer(forKey: "aligners_count")
-        //self.start_treatment = Date(timeIntervalSince1970:defaults.double(forKey: "start_treatment"))
+        if self.required_aligners_total == 0 {self.required_aligners_total = 75 }
+        
+        self.aligners_wear_days = defaults.integer(forKey: "aligners_count")
+        if self.aligners_wear_days == 0 {self.aligners_wear_days = 7 }
+        
         self.aligner_number_now = defaults.integer(forKey: "align_count_now")
+        if self.aligner_number_now == 0 {self.aligner_number_now = 1 }
+        
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
-        self.days_left = defaults.string(forKey: "days_left") ?? "0"
-        //self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
+        if self.current_aligner_days == 0 {self.current_aligner_days = 1 }
+        
+        let start_treatment_raw = defaults.double(forKey: "start_treatment")
+        if start_treatment_raw == 0{
+            self.start_treatment = Date()
+        }
+        else{
+            self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
+        }
+        
         //var temp_days = defaults.object(forKey: "SavedArray") as? [DayInterval] ?? []
         
-        //self.complete = defaults.bool(forKey: "collecting_data_complete")
+        self.complete = defaults.bool(forKey: "collecting_data_complete")
         
         update_min_max_dates()
     }

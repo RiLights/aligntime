@@ -22,7 +22,7 @@ struct ProfileHost: View {
                 .font(.largeTitle)
             List {
                 Text("How many aligners do you require:  \(user_data.required_aligners_total)")
-                Text("Number of days for each aligners:  \(user_data.aligner_wear_days)")
+                Text("Number of days for each aligners:  \(user_data.aligners_wear_days)")
                 Text("Start your treatment:  \(user_data.start_treatment,formatter: date_formatter)")
                 Text("Aligner number you are wearing:  \(user_data.aligner_number_now)")
                 Text("Days have you been wearing:  \(user_data.current_aligner_days)")
