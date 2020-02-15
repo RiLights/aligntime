@@ -52,7 +52,7 @@ final class AlignTime: ObservableObject {
             return total
         }
         
-        var intervals = self.intervals.filter{ $0.time.belongTo(date: request) }
+        var intervals = self.intervals.filter{ $0.belongTo(request) }
         
         if intervals == [] {
             let tmp = self.intervals.filter{ $0.timestamp < request.timestamp() }
