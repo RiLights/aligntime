@@ -194,10 +194,14 @@ final class AlignTime: ObservableObject {
         defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
         defaults.set(aligner_number_now, forKey: "align_count_now")
         defaults.set(current_aligner_days, forKey: "days_wearing")
-        defaults.set(days_left, forKey: "days_left")
-        //defaults.set(days_intervals, forKey: "days")
-        
         defaults.set(complete, forKey: "collecting_data_complete")
+        
+//        do{
+//            let colorAsData = try NSKeyedArchiver.archivedData(withRootObject: self.intervals[0], requiringSecureCoding: false)
+//        }catch (let error){
+//            print("Failed to convert UIColor to Data : \(error.localizedDescription)")
+//        }
+        //defaults.set(self.intervals, forKey: "intervals")
     }
   
     func pull_user_defaults(){
@@ -221,7 +225,9 @@ final class AlignTime: ObservableObject {
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
         }
         
-        //var temp_days = defaults.object(forKey: "SavedArray") as? [DayInterval] ?? []
+        //let temp_intervals = defaults.object(forKey: "intervals") as? [DayInterval] ?? []
+        //print("temp_days",temp_intervals)
+        
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
         

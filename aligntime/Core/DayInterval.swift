@@ -15,7 +15,7 @@ func clock_string_format(_ date: Date) -> String? {
 }
 
 
-class DayInterval: Identifiable,ObservableObject,Comparable {
+class DayInterval: Identifiable,ObservableObject,Comparable,NSCoding {
     var id: Int = 0
     var time_string: String = "...."
     var wear:Bool = true
@@ -27,6 +27,13 @@ class DayInterval: Identifiable,ObservableObject,Comparable {
         self.timestamp = time.timestamp()
         self.wear = wear
         self.time = time
+        self.id = id
+    }
+    
+    init(_ id: Int, wear: Bool, timestamp: Int64 ) {
+        self.timestamp = timestamp
+        self.wear = wear
+        self.time = Date(timeIntervalSince1970:TimeInterval(timestamp))
         self.id = id
     }
 
@@ -43,6 +50,19 @@ class DayInterval: Identifiable,ObservableObject,Comparable {
     
     static func == (lhs: DayInterval, rhs: DayInterval) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(wear, forKey: "state")
+        aCoder.encode(timestamp, forKey: "timestamp")
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let id:Int = aDecoder.decodeInteger(forKey: "id")
+        let state:Bool = aDecoder.decodeBool(forKey: "state")
+        let timestamp:Int64 = aDecoder.decodeInt64(forKey: "timestamp")
+        self.init(id, wear: state, timestamp: timestamp)
     }
 }
 

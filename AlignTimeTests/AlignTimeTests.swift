@@ -372,7 +372,7 @@ class AlignTimeTests: XCTestCase {
         let day = dateFormatter.date(from: "2019-07-12 00:00")
         
         align_time.required_aligners_total = 74
-        align_time.aligner_wear_days = 7
+        align_time.aligners_wear_days = 7
         align_time.start_treatment = day!
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
