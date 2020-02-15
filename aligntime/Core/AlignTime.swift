@@ -230,11 +230,6 @@ final class AlignTime: ObservableObject {
                 if temp_intervals != [] {
                     self.intervals = temp_intervals
                     self.current_state = self.intervals[self.intervals.count-1].wear
-                    for i in self.intervals{
-                        let ddd = try! JSONEncoder().encode(i)
-                        print("timestamp",String(data: ddd, encoding: .utf8)!)
-                        print("wear",i.wear)
-                    }
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
