@@ -20,6 +20,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     var time_string: String = "...."
     var wear:Bool = true
     var timestamp: Int64 = 0
+    var time_hidden:Date = Date()
     
     init() {}
     init(_ id: Int, wear: Bool, time: Date ) {

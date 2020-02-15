@@ -22,6 +22,52 @@ class AlignTimeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func test_DayInterval() {
+        let json = """
+        {
+            "id": 0,
+            "timestamp": 1581774489061,
+            "wear": true,
+            "time_string": "12:00",
+            "time_hidden": 1581774489061
+        }
+        """.data(using: .utf8)!
+                
+        let day0 = try! JSONDecoder().decode(DayInterval.self, from: json)
+        
+        XCTAssertEqual(day0.id, 0)
+    }
+    
+    func test_DayIntervals() {
+        let day0 = dateFormatter.date(from: "2018-07-11 10:00")!
+        let day1 = dateFormatter.date(from: "2019-07-12 20:00")!
+        let day2 = dateFormatter.date(from: "2019-07-13 10:00")!
+        let day3 = dateFormatter.date(from: "2019-07-13 20:00")!
+        
+        let d00 = DayInterval(0, wear: true, time: day0)
+        let d01 = DayInterval(1, wear: false, time: day1)
+        let d02 = DayInterval(2, wear: true, time: day2)
+        let d03 = DayInterval(3, wear: false, time: day3)
+      
+        let d00_encoded = try! JSONEncoder().encode(d00)
+        let d01_encoded = try! JSONEncoder().encode(d01)
+        let d02_encoded = try! JSONEncoder().encode(d02)
+        let d03_encoded = try! JSONEncoder().encode(d03)
+        
+        let test_d00 = try! JSONDecoder().decode(DayInterval.self, from: d00_encoded)
+        let test_d01 = try! JSONDecoder().decode(DayInterval.self, from: d01_encoded)
+        let test_d02 = try! JSONDecoder().decode(DayInterval.self, from: d02_encoded)
+        let test_d03 = try! JSONDecoder().decode(DayInterval.self, from: d03_encoded)
+        
+        let intervals = [d00,d01,d02,d03]
+        let encoded = try? JSONEncoder().encode(intervals)
+        let decoded = try? JSONDecoder().decode([DayInterval].self, from: encoded!)
+                      
+        XCTAssertEqual(intervals, decoded)
+        //XCTAssertEqual(test_d00.timestamp, d00.timestamp)
+        XCTAssertEqual([d00,d01,d02,d03], [test_d00,test_d01,test_d02,test_d03])
+    }
+    
     func get_dayintervals(today_date: String, wears: [Bool]) -> [DayInterval] {
         let day0_2 = dateFormatter.date(from: "2019-07-11 22:00")
         let day0_1 = dateFormatter.date(from: "\(today_date) 01:00")
