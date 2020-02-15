@@ -20,14 +20,8 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     var time_string: String = "...."
     var wear:Bool = true
     var timestamp: Int64 = 0
-//        didSet{
-//            self.time = Date(timeIntervalSince1970:TimeInterval(timestamp))
-//        }
-//    }
+
     
-//    func update_data() {
-//        self.time = Date(timeIntervalSince1970:TimeInterval(timestamp))
-//    }
     init(){}
     init(_ id: Int, wear: Bool, time: Date ) {
         self.timestamp = time.timestamp()
