@@ -67,7 +67,43 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual([d00,d01,d02,d03], [test_d00,test_d01,test_d02,test_d03])
     }
     
-    func testDayIntervalsFilter() {
+    func get_dayintervals2() -> [DayInterval] {
+        /*
+         timestamp 2019-12-06 14:00:00 +0000
+         wear false
+         timestamp 2019-12-07 20:20:00 +0000
+         wear true
+         timestamp 2019-12-07 21:15:00 +0000
+         wear false
+         timestamp 2019-12-07 23:15:00 +0000
+         wear true
+         timestamp 2019-12-07 23:20:00 +0000
+         wear false
+         timestamp 2019-12-08 00:40:00 +0000
+         wear true
+         timestamp 2019-12-08 07:40:00 +0000
+         wear false
+         timestamp 2019-12-08 14:00:00 +0000
+         wear true
+         timestamp 2019-12-08 19:00:00 +0000
+         wear false
+         timestamp 2019-12-09 00:00:00 +0000
+         wear true
+         timestamp 2019-12-09 01:00:00 +0000
+         wear false
+         timestamp 2020-02-02 04:00:00 +0000
+         wear true
+         timestamp 2020-02-02 06:15:00 +0000
+         wear false
+         timestamp 2020-02-02 08:12:00 +0000
+         wear true
+         timestamp 2020-02-15 14:38:45 +0000
+         wear false
+         timestamp 2020-02-15 14:38:57 +0000
+         wear true
+         timestamp 2020-02-15 14:38:59 +0000
+         wear false
+         */
         let json_objects = [ "{\"id\":0,\"timestamp\":1575640800000,\"wear\":false,\"time_string\":\"15:00\"}"
         ,"{\"id\":1,\"timestamp\":1575750000000,\"wear\":true,\"time_string\":\"21:20\"} "
         ,"{\"id\":2,\"timestamp\":1575753300000,\"wear\":false,\"time_string\":\"22:15\"} "
@@ -92,11 +128,33 @@ class AlignTimeTests: XCTestCase {
             let d00 = try! JSONDecoder().decode(DayInterval.self, from: json)
             intervals.append(d00)
         }
+        
+        return intervals
+    }
+    
+    func testDayIntervalsFilter() {
+        let intervals = get_dayintervals2()
         let align_time:AlignTime = AlignTime()
         align_time.intervals = intervals
         align_time.selected_date = dateFormatter.date(from: "2019-12-07 21:15")
         let test = align_time.get_wear_days()
         XCTAssertEqual(test, [ intervals[1] ])
+    }
+    
+    func test_is_present() {
+        let intervals = get_dayintervals2()
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = intervals
+        let selected_date = dateFormatter.date(from: "2019-12-07 23:15")!
+        XCTAssertEqual(true, align_time.is_present(selected_date) )
+    }
+    
+    func test_is_between() {
+        let intervals = get_dayintervals2()
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = intervals
+        let selected_date = dateFormatter.date(from: "2019-12-08 23:15")!
+        XCTAssertEqual(true, align_time.is_between(selected_date) )
     }
     
     func get_dayintervals(today_date: String, wears: [Bool]) -> [DayInterval] {
