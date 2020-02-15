@@ -292,5 +292,25 @@ final class AlignTime: ObservableObject {
         self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
         self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
     }
+    
+    func is_between(_ date: Date) -> Bool {
+        if self.startDate == nil {
+            return false
+        } else if self.endDate == nil {
+            return false
+        } else if self.calendar.compare(date, to: self.startDate, toGranularity: .day) == .orderedAscending {
+            return false
+        } else if self.calendar.compare(date, to: self.endDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
+    
+    func is_present(_ date: Date) -> Bool {
+        if self.calendar.compare(date, to: self.minimumDate, toGranularity: .day) == .orderedAscending || self.calendar.compare(date, to: self.maximumDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
 }
 

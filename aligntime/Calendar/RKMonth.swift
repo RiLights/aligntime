@@ -162,24 +162,12 @@ struct RKMonth: View {
     }
     
     func isBetweenStartAndEnd(date: Date) -> Bool {
-        if core_data.startDate == nil {
-            return false
-        } else if core_data.endDate == nil {
-            return false
-        } else if core_data.calendar.compare(date, to: core_data.startDate, toGranularity: .day) == .orderedAscending {
-            return false
-        } else if core_data.calendar.compare(date, to: core_data.endDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
+        return core_data.is_between(date)
     }
     
     func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
-        if core_data.calendar.compare(clampedDate, to: core_data.minimumDate, toGranularity: .day) == .orderedAscending || core_data.calendar.compare(clampedDate, to: core_data.maximumDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
+        return core_data.is_present(clampedDate)
     }
     
 }
