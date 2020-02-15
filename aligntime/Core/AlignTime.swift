@@ -52,7 +52,7 @@ final class AlignTime: ObservableObject {
             return total
         }
         
-        var intervals = self.intervals.filter{ $0.time.belongTo(date: request) }
+        var intervals = self.intervals.filter{ $0.belongTo(request) }
         
         if intervals == [] {
             let tmp = self.intervals.filter{ $0.timestamp < request.timestamp() }
@@ -133,7 +133,7 @@ final class AlignTime: ObservableObject {
             return []
         }
         
-        var intervals = self.intervals.filter{ $0.time.belongTo(date: self.selected_date) }
+        var intervals = self.intervals.filter{ $0.belongTo(self.selected_date) }
         if intervals == [] {
             return []
         }
@@ -230,10 +230,11 @@ final class AlignTime: ObservableObject {
                 if temp_intervals != [] {
                     //self.intervals = temp_intervals
                     self.current_state = self.intervals[self.intervals.count-1].wear
-//                    for i in temp_intervals{
-//                        i.time = Date(timeIntervalSince1970: TimeInterval(i.timestamp))
-//                        self.intervals.append(i)
-//                    }
+                    for i in self.intervals{
+                        let ddd = try! JSONEncoder().encode(i)
+                        print("timestamp",String(data: ddd, encoding: .utf8)!)
+                        print("wear",i.wear)
+                    }
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
@@ -242,8 +243,7 @@ final class AlignTime: ObservableObject {
         }
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
-        
-        update_min_max_dates()
+        self.update_min_max_dates()
     }
     
     func send_notification(time_interval:Double){
@@ -289,8 +289,28 @@ final class AlignTime: ObservableObject {
     /// Calendar Manager
     
     func update_min_max_dates(){
-        self.minimumDate = self.intervals.min()!.time
-        self.maximumDate = self.intervals.max()!.time
+        self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
+        self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
+    }
+    
+    func is_between(_ date: Date) -> Bool {
+        if self.startDate == nil {
+            return false
+        } else if self.endDate == nil {
+            return false
+        } else if self.calendar.compare(date, to: self.startDate, toGranularity: .day) == .orderedAscending {
+            return false
+        } else if self.calendar.compare(date, to: self.endDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
+    
+    func is_present(_ date: Date) -> Bool {
+        if self.calendar.compare(date, to: self.minimumDate, toGranularity: .day) == .orderedAscending || self.calendar.compare(date, to: self.maximumDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
     }
 }
 

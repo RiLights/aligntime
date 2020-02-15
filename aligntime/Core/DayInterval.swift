@@ -56,5 +56,10 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     static func == (lhs: DayInterval, rhs: DayInterval) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    public func belongTo(_ date:Date) -> Bool {
+        let test = Date().fromTimestamp(self.timestamp)
+        return test.belongTo(date: date)
+    }
 }
 
