@@ -289,8 +289,8 @@ final class AlignTime: ObservableObject {
     /// Calendar Manager
     
     func update_min_max_dates(){
-        self.minimumDate = self.intervals.min()!.time
-        self.maximumDate = self.intervals.max()!.time
+        self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
+        self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
     }
 }
 
