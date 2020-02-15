@@ -40,6 +40,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
         case id
         case timestamp
         case wear
+        case time_string
     }
 
     @Published var time:Date = Date() {
