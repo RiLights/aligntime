@@ -39,8 +39,9 @@ struct ProfileHost: View {
             
             
             Button(action: {
+                self.user_data.resetDefaults()
                 self.user_data.complete = false
-                self.user_data.push_user_defaults()
+                //self.user_data.push_user_defaults()
             }){
                 ZStack(alignment: .center){
                     Rectangle()

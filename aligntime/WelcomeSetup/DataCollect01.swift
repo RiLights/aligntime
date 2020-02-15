@@ -26,7 +26,6 @@ struct DataCollect01: View {
                 VStack(alignment: .center){
                     Text("How many aligners do you require for your treatment?")
                         .font(.headline)
-                        //.fontWeight(.regular)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {

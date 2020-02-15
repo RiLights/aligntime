@@ -52,6 +52,10 @@ struct Welcome: View {
                 }
                 .padding(15)
             }
+
+//            .onAppear {
+//                self.isNavigationBarHidden = true
+//            }
         }
     }
 }

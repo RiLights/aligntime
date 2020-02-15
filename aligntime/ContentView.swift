@@ -13,14 +13,13 @@ struct ContentView: View {
     //@State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        //TestV()
         Group{
             if user_data.complete == true {
                 Home().environmentObject(user_data)
             }
             else{
                 Welcome().environmentObject(user_data)
-            }
+                }
         }
     }
 }

@@ -10,9 +10,7 @@ import SwiftUI
 
 struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     @EnvironmentObject var user_data: AlignTime
-    @State private var ready_setup = false
 
     var body: some View {
         Section {
@@ -29,6 +27,7 @@ struct DataCollect02: View {
                     .padding(.horizontal, 30)
                     Divider()
                 }
+                .padding(.top,85)
                 .padding(.bottom,40)
                 VStack(alignment: .center){
                     Text("How many days have you been wearing current aligner for?")
@@ -71,7 +70,8 @@ struct DataCollect02: View {
                 .padding(.horizontal,20)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

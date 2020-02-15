@@ -20,8 +20,8 @@ final class AlignTime: ObservableObject {
     @Published var aligner_number_now:Int = 4
     @Published var current_aligner_days:Int = 6
     
-    @Published var wearing_aligners_days:String = "0"
     @Published var days_left:String = "0"
+    @Published var wearing_aligners_days:String = "0"
     
     @Published var complete:Bool = false
     
@@ -46,6 +46,7 @@ final class AlignTime: ObservableObject {
     let notification_identifier03 = "AlignTime.id.03"
     
     init() {
+        
         if intervals.count != 0{
             current_state = intervals[intervals.count-1].wear
         }
@@ -109,10 +110,7 @@ final class AlignTime: ObservableObject {
     
     func update_today_dates() {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
-        let days_formated_string = String(days_interval.days)
-        if (self.wearing_aligners_days != days_formated_string){
-            self.wearing_aligners_days = days_formated_string
-        }
+        self.wearing_aligners_days = String(days_interval.days)
         
         let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligner_wear_days) - self.current_aligner_days
         
@@ -210,7 +208,6 @@ final class AlignTime: ObservableObject {
         defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
         defaults.set(aligner_number_now, forKey: "align_count_now")
         defaults.set(current_aligner_days, forKey: "days_wearing")
-        defaults.set(wearing_aligners_days, forKey: "wearing_aligners_days")
         defaults.set(days_left, forKey: "days_left")
         //defaults.set(days_intervals, forKey: "days")
         
@@ -219,16 +216,16 @@ final class AlignTime: ObservableObject {
   
     func pull_user_defaults(){
         self.required_aligners_total = defaults.integer(forKey: "require_count")
+        if self.required_aligners_total == 0{self.required_aligners_total = 75 }
         self.aligner_wear_days = defaults.integer(forKey: "aligners_count")
-        self.start_treatment = Date(timeIntervalSince1970:defaults.double(forKey: "start_treatment"))
+        //self.start_treatment = Date(timeIntervalSince1970:defaults.double(forKey: "start_treatment"))
         self.aligner_number_now = defaults.integer(forKey: "align_count_now")
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
-        self.wearing_aligners_days = defaults.string(forKey: "wearing_aligners_days") ?? "0"
         self.days_left = defaults.string(forKey: "days_left") ?? "0"
         //self.days_string = defaults.dictionary(forKey: "days") as? [String : [String : Double]] ?? days_string
         //var temp_days = defaults.object(forKey: "SavedArray") as? [DayInterval] ?? []
         
-        self.complete = defaults.bool(forKey: "collecting_data_complete")
+        //self.complete = defaults.bool(forKey: "collecting_data_complete")
         
         update_min_max_dates()
     }
@@ -253,6 +250,14 @@ final class AlignTime: ObservableObject {
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
     
     func remove_notification(){
