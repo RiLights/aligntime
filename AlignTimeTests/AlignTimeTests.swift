@@ -28,8 +28,7 @@ class AlignTimeTests: XCTestCase {
             "id": 0,
             "timestamp": 1581774489061,
             "wear": true,
-            "time_string": "12:00",
-            "time_hidden": 1581774489061
+            "time_string": "12:00"
         }
         """.data(using: .utf8)!
                 
