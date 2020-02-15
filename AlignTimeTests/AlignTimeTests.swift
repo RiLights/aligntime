@@ -63,7 +63,7 @@ class AlignTimeTests: XCTestCase {
         let decoded = try? JSONDecoder().decode([DayInterval].self, from: encoded!)
                       
         XCTAssertEqual(intervals, decoded)
-        //XCTAssertEqual(test_d00.timestamp, d00.timestamp)
+        XCTAssertEqual(test_d00.timestamp, d00.timestamp)
         XCTAssertEqual([d00,d01,d02,d03], [test_d00,test_d01,test_d02,test_d03])
     }
     
