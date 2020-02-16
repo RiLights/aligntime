@@ -24,6 +24,13 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
 
     
     init(){}
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
+        wear = try values.decode(Bool.self, forKey: .wear)
+        timestamp = try values.decode(Int64.self, forKey: .timestamp)
+        time = Date().fromTimestamp(timestamp)
+    }
     init(_ id: Int, wear: Bool, time: Date ) {
         self.timestamp = time.timestamp()
         self.wear = wear
@@ -58,4 +65,3 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
         return test.belongTo(date: date)
     }
 }
-
