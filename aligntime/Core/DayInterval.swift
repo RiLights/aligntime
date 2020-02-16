@@ -20,6 +20,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     var time_string: String = "...."
     var wear:Bool = true
     var timestamp: Int64 = 0
+    var timezone: TimeZone = .current
 
     
     init(){}
@@ -34,6 +35,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
         case id
         case timestamp
         case wear
+        case timezone
     }
 
     @Published var time:Date = Date() {

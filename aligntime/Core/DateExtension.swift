@@ -13,7 +13,7 @@ extension Date {
         let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
         let cal = Calendar.current
         var components = cal.dateComponents(x, from: self)
-        components.timeZone = .current
+        components.timeZone = .autoupdatingCurrent
         components.hour = hour
         components.minute = min
         components.second = sec
