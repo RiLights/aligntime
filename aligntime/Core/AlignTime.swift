@@ -231,11 +231,6 @@ final class AlignTime: ObservableObject {
                     self.intervals = temp_intervals
                     for i in self.intervals{
                         i.time = Date().fromTimestamp(i.timestamp)
-                        //let ddd = try! JSONEncoder().encode(i)
-                        //print("timestamp",String(data: ddd, encoding: .utf8)!)
-                        //print("wear",i.timestamp)
-                        //let interval = DayInterval(i.id, wear: i.wear, time: Date().fromTimestamp(i.timestamp))
-                        //self.intervals.append(interval)
                     }
                     self.current_state = self.intervals[self.intervals.count-1].wear
                 }

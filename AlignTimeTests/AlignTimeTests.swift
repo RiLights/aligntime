@@ -137,7 +137,7 @@ class AlignTimeTests: XCTestCase {
         let intervals = get_dayintervals2()
         let align_time:AlignTime = AlignTime()
         align_time.intervals = intervals
-        align_time.selected_date = dateFormatter.date(from: "2019-12-07 21:15")
+        align_time.selected_date = Date().fromTimestamp(1575750000000)//dateFormatter.date(from: "2019-12-07 21:15")
         let test = align_time.get_wear_days()
         XCTAssertEqual(test, [ intervals[1] ])
     }
