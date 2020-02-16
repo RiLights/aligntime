@@ -16,7 +16,7 @@ class AlignTimeTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        //dateFormatter.timeZone = TimeZone(secondsFromGMT: 3600*2)
+        //dateFormatter.timeZone = TimeZone(identifier: "Europe/Warsaw")!
     }
 
     override func tearDown() {
@@ -71,59 +71,42 @@ class AlignTimeTests: XCTestCase {
     
     func get_dayintervals2() -> [DayInterval] {
         /*
-         timestamp 2019-12-06 14:00:00 +0000
-         wear false
-         timestamp 2019-12-07 20:20:00 +0000
-         wear true
-         timestamp 2019-12-07 21:15:00 +0000
-         wear false
-         timestamp 2019-12-07 23:15:00 +0000
-         wear true
-         timestamp 2019-12-07 23:20:00 +0000
-         wear false
-         timestamp 2019-12-08 00:40:00 +0000
-         wear true
-         timestamp 2019-12-08 07:40:00 +0000
-         wear false
-         timestamp 2019-12-08 14:00:00 +0000
-         wear true
-         timestamp 2019-12-08 19:00:00 +0000
-         wear false
-         timestamp 2019-12-09 00:00:00 +0000
-         wear true
-         timestamp 2019-12-09 01:00:00 +0000
-         wear false
-         timestamp 2020-02-02 04:00:00 +0000
-         wear true
-         timestamp 2020-02-02 06:15:00 +0000
-         wear false
-         timestamp 2020-02-02 08:12:00 +0000
-         wear true
-         timestamp 2020-02-15 14:38:45 +0000
-         wear false
-         timestamp 2020-02-15 14:38:57 +0000
-         wear true
-         timestamp 2020-02-15 14:38:59 +0000
-         wear false
+         timestamp 2019-12-06 14:00:00 +0000 wear false
+         timestamp 2019-12-07 20:20:00 +0000 wear true
+         timestamp 2019-12-07 21:15:00 +0000 wear false
+         timestamp 2019-12-07 23:15:00 +0000 wear true
+         timestamp 2019-12-07 23:20:00 +0000 wear false
+         timestamp 2019-12-08 00:40:00 +0000 wear true
+         timestamp 2019-12-08 07:40:00 +0000 wear false
+         timestamp 2019-12-08 14:00:00 +0000 wear true
+         timestamp 2019-12-08 19:00:00 +0000 wear false
+         timestamp 2019-12-09 00:00:00 +0000 wear true
+         timestamp 2019-12-09 01:00:00 +0000 wear false
+         timestamp 2020-02-02 04:00:00 +0000 wear true
+         timestamp 2020-02-02 06:15:00 +0000 wear false
+         timestamp 2020-02-02 08:12:00 +0000 wear true
+         timestamp 2020-02-15 14:38:45 +0000 wear false
+         timestamp 2020-02-15 14:38:57 +0000 wear true
+         timestamp 2020-02-15 14:38:59 +0000 wear false
          */
         let json_objects = [
-        "{\"id\":0,\"timestamp\":1575640800000,\"wear\":false,\"time_string\":\"15:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":1,\"timestamp\":1575750000000,\"wear\":true,\"time_string\":\"21:20\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":2,\"timestamp\":1575753300000,\"wear\":false,\"time_string\":\"22:15\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":3,\"timestamp\":1575760500000,\"wear\":true,\"time_string\":\"00:15\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":4,\"timestamp\":1575760800000,\"wear\":false,\"time_string\":\"00:20\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":5,\"timestamp\":1575765600000,\"wear\":true,\"time_string\":\"01:40\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":6,\"timestamp\":1575790800000,\"wear\":false,\"time_string\":\"08:40\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":7,\"timestamp\":1575813600000,\"wear\":true,\"time_string\":\"15:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":8,\"timestamp\":1575831600000,\"wear\":false,\"time_string\":\"20:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":9,\"timestamp\":1575849600000,\"wear\":true,\"time_string\":\"01:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":10,\"timestamp\":1575853200000,\"wear\":false,\"time_string\":\"02:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":11,\"timestamp\":1580616000000,\"wear\":true,\"time_string\":\"05:00\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":12,\"timestamp\":1580624100000,\"wear\":false,\"time_string\":\"07:15\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":13,\"timestamp\":1580631120000,\"wear\":true,\"time_string\":\"09:12\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":14,\"timestamp\":1581777525215,\"wear\":false,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":15,\"timestamp\":1581777537065,\"wear\":true,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }"
-        ,"{\"id\":16,\"timestamp\":1581777539921,\"wear\":false,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"Europe/Warsaw\"} }" ]
+        "{\"id\":0,\"timestamp\":1575640800000,\"wear\":false,\"time_string\":\"15:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":1,\"timestamp\":1575750000000,\"wear\":true,\"time_string\":\"21:20\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":2,\"timestamp\":1575753300000,\"wear\":false,\"time_string\":\"22:15\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":3,\"timestamp\":1575760500000,\"wear\":true,\"time_string\":\"00:15\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":4,\"timestamp\":1575760800000,\"wear\":false,\"time_string\":\"00:20\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":5,\"timestamp\":1575765600000,\"wear\":true,\"time_string\":\"01:40\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":6,\"timestamp\":1575790800000,\"wear\":false,\"time_string\":\"08:40\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":7,\"timestamp\":1575813600000,\"wear\":true,\"time_string\":\"15:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":8,\"timestamp\":1575831600000,\"wear\":false,\"time_string\":\"20:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":9,\"timestamp\":1575849600000,\"wear\":true,\"time_string\":\"01:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":10,\"timestamp\":1575853200000,\"wear\":false,\"time_string\":\"02:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":11,\"timestamp\":1580616000000,\"wear\":true,\"time_string\":\"05:00\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":12,\"timestamp\":1580624100000,\"wear\":false,\"time_string\":\"07:15\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":13,\"timestamp\":1580631120000,\"wear\":true,\"time_string\":\"09:12\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":14,\"timestamp\":1581777525215,\"wear\":false,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":15,\"timestamp\":1581777537065,\"wear\":true,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"GMT\"} }"
+        ,"{\"id\":16,\"timestamp\":1581777539921,\"wear\":false,\"time_string\":\"15:38\",\"timezone\":{\"identifier\":\"GMT\"} }" ]
         
         var intervals:[DayInterval] = []
         for str in json_objects {
@@ -141,6 +124,10 @@ class AlignTimeTests: XCTestCase {
         align_time.intervals = intervals
         align_time.selected_date = dateFormatter.date(from: "2019-12-07 21:15")
         let test = align_time.get_wear_days()
+        
+        for n in intervals {
+            print("\(n.timezone)")
+        }
         XCTAssertEqual(test, [ intervals[1],intervals[3] ])
     }
     

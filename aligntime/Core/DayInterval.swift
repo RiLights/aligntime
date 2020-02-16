@@ -30,6 +30,8 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
         wear = try values.decode(Bool.self, forKey: .wear)
         timestamp = try values.decode(Int64.self, forKey: .timestamp)
         time = Date().fromTimestamp(timestamp)
+        timezone = try values.decode(TimeZone.self, forKey: .timezone)
+        
     }
     init(_ id: Int, wear: Bool, time: Date ) {
         self.timestamp = time.timestamp()
@@ -61,7 +63,7 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
     }
     
     public func belongTo(_ date:Date) -> Bool {
-        let test = Date().fromTimestamp(self.timestamp)
+        let test = Date().fromTimestamp(self.timestamp).convertToTimeZone(initTimeZone: .current, timeZone: self.timezone)
         return test.belongTo(date: date)
     }
 }

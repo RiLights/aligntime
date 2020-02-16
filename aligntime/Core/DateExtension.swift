@@ -13,12 +13,17 @@ extension Date {
         let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
         let cal = Calendar.current
         var components = cal.dateComponents(x, from: self)
-        components.timeZone = .autoupdatingCurrent
+        //components.timeZone = .current
         components.hour = hour
         components.minute = min
         components.second = sec
 
         return cal.date(from: components)
+    }
+    
+    func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
+         let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - initTimeZone.secondsFromGMT(for: self))
+         return addingTimeInterval(delta)
     }
     
     public func fromTimestamp(_ time: Int64) -> Date {
