@@ -16,7 +16,7 @@ class AlignTimeTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 3600*2)
+        //dateFormatter.timeZone = TimeZone(secondsFromGMT: 3600*2)
     }
 
     override func tearDown() {

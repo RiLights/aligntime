@@ -244,12 +244,30 @@ final class AlignTime: ObservableObject {
         self.update_min_max_dates()
     }
     
+
     func send_notification(time_interval:Double){
+        // Define the custom actions.
+        let startAction = UNNotificationAction(identifier: "START_ACTION",
+              title: "Start Wear Time",
+              options: UNNotificationActionOptions(rawValue: 0))
+        // Define the notification type
+        let meetingInviteCategory =
+              UNNotificationCategory(identifier: notification_identifier01,
+              actions: [startAction],
+              intentIdentifiers: [],
+              hiddenPreviewsBodyPlaceholder: "",
+              options: .customDismissAction)
+        // Register the notification type.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.setNotificationCategories([meetingInviteCategory])
+        
         let content = UNMutableNotificationContent()
         content.title = "AlignTime Reminder. \(time_interval)s"
         content.body = "Time to put your aligners on again"
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = notification_identifier01
         
-        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
+        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         

@@ -9,11 +9,10 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         return true
     }
 
@@ -30,7 +29,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+           didReceive response: UNNotificationResponse,
+           withCompletionHandler completionHandler:
+             @escaping () -> Void) {
+           
+       // Get the meeting ID from the original notification.
 
-
+       // Perform the task associated with the action.
+       switch response.actionIdentifier {
+       case "ACCEPT_ACTION":
+            print("DECLINE_ACTION")
+          break
+            
+       case "DECLINE_ACTION":
+            print("DECLINE_ACTION")
+          break
+            
+       // Handle other actions…
+     
+       default:
+          break
+       }
+        
+       // Always call the completion handler when done.
+       completionHandler()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Transform each favorite contact into a UIApplicationShortcutItem.
+        application.shortcutItems = [UIApplicationShortcutItem(type: "FavoriteAction",
+                                             localizedTitle: "asd",
+                                             localizedSubtitle: "aqq",
+                                             icon: UIApplicationShortcutIcon(type: .contact))]
+        
+    }
+    
 }
 
