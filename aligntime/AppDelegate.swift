@@ -30,41 +30,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-           didReceive response: UNNotificationResponse,
-           withCompletionHandler completionHandler:
-             @escaping () -> Void) {
-           
-       // Get the meeting ID from the original notification.
-
-       // Perform the task associated with the action.
-       switch response.actionIdentifier {
-       case "ACCEPT_ACTION":
-            print("DECLINE_ACTION")
-          break
-            
-       case "DECLINE_ACTION":
-            print("DECLINE_ACTION")
-          break
-            
-       // Handle other actions…
-     
-       default:
-          break
-       }
-        
-       // Always call the completion handler when done.
-       completionHandler()
-    }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Transform each favorite contact into a UIApplicationShortcutItem.
-        application.shortcutItems = [UIApplicationShortcutItem(type: "FavoriteAction",
-                                             localizedTitle: "asd",
-                                             localizedSubtitle: "aqq",
-                                             icon: UIApplicationShortcutIcon(type: .contact))]
-        
-    }
-    
 }
 

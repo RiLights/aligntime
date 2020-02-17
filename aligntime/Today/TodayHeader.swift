@@ -10,7 +10,6 @@ import SwiftUI
 
 struct TodayHeader: View {
     @EnvironmentObject var core_data: AlignTime
-    var today_date = Date()
     
     var date_formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -24,7 +23,7 @@ struct TodayHeader: View {
                 .font(.system(size: 23))
                 .foregroundColor(Color.primary)
                 .fontWeight(Font.Weight.light)
-            Text("\(today_date, formatter: date_formatter)")
+            Text("\(Date(), formatter: date_formatter)")
                 .font(.system(size: 23))
                 .foregroundColor(Color.accentColor)
                 .fontWeight(Font.Weight.light)
