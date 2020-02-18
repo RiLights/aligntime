@@ -7,10 +7,52 @@
 //
 
 import SwiftUI
+import UIKit
+
+struct CustomTextField: UIViewRepresentable {
+    class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: Int
+        var didBecomeFirstResponder = false
+
+        init(text: Binding<Int>) {
+            _text = text
+        }
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = Int(textField.text!) ?? 0
+        }
+    }
+
+    @Binding var text: Int
+    var isFirstResponder: Bool = false
+
+    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
+        let textField = UITextField(frame: .zero)
+        textField.delegate = context.coordinator
+        return textField
+    }
+
+    func makeCoordinator() -> CustomTextField.Coordinator {
+        return Coordinator(text: $text)
+    }
+
+    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
+        uiView.text = String(text)
+        if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        }
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
 
 struct DataCollect01: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
     @EnvironmentObject var user_data: AlignTime
     
     var dateFormatter: DateFormatter {
@@ -18,8 +60,9 @@ struct DataCollect01: View {
         formatter.dateStyle = .long
         return formatter
     }
+    
     let min_date = Calendar.current.date(byAdding: .year, value: -3, to: Date())
-
+    
     var body: some View {
         Section() {
             VStack(alignment: .center){
@@ -29,9 +72,30 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        TextField("",value:$user_data.required_aligners_total,formatter: NumberFormatter())
-                            //.keyboardType(.numberPad) Make event to hide keyboar when numer is more then ...
-                        Stepper("", value: $user_data.required_aligners_total, in: 1...200)
+                        CustomTextField(text: $user_data.required_aligners_total, isFirstResponder: false)
+                        .keyboardType(.asciiCapableNumberPad)
+                        Button(action: { self.user_data.required_aligners_total -= 1})
+                        {
+                            HStack {
+                                Image(systemName: "minus")
+                            }.onTapGesture {
+                                   UIApplication.shared.endEditing()
+                            }
+                            .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
+                            .background(Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                        }
+                        Button(action: { self.user_data.required_aligners_total += 1})
+                        {
+                            HStack {
+                                Image(systemName: "plus")
+                            }
+                            .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
+                            .background(Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                        }
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -44,8 +108,28 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        Text("\(user_data.aligners_wear_days)")
-                        Stepper("", value: $user_data.aligners_wear_days, in: 1...31)
+                        CustomTextField(text: $user_data.aligners_wear_days, isFirstResponder: false)
+                            .keyboardType(.asciiCapableNumberPad)
+                            Button(action: { self.user_data.aligners_wear_days -= 1})
+                            {
+                                HStack {
+                                    Image(systemName: "minus")
+                                }
+                                .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                            }
+                            Button(action: { self.user_data.aligners_wear_days += 1})
+                            {
+                                HStack {
+                                    Image(systemName: "plus")
+                                }
+                                .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                            }
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -93,6 +177,9 @@ struct DataCollect01: View {
                     }
                 }
                 .padding(.horizontal,20)
+            }
+            .onTapGesture {
+                   UIApplication.shared.endEditing()
             }
         }
         .navigationBarBackButtonHidden(true)

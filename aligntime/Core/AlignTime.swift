@@ -9,7 +9,6 @@ import Combine
 import Foundation
 import UserNotifications
 
-
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
