@@ -228,10 +228,9 @@ final class AlignTime: ObservableObject {
             if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
                 if temp_intervals != [] {
                     self.intervals = temp_intervals
-                    //for i in self.intervals{
-                        //let ddd = try! JSONEncoder().encode(i)
-                        //print(String(data: ddd, encoding: .utf8)!)
-                    //}
+                    for i in self.intervals{
+                        i.time = Date().fromTimestamp(i.timestamp)
+                    }
                     self.current_state = self.intervals[self.intervals.count-1].wear
                 }
                 else{
@@ -244,10 +243,14 @@ final class AlignTime: ObservableObject {
         self.update_min_max_dates()
     }
     
+
     func send_notification(time_interval:Double){
+        
         let content = UNMutableNotificationContent()
         content.title = "AlignTime Reminder. \(time_interval)s"
         content.body = "Time to put your aligners on again"
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = notification_identifier01
         
         var trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
         var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)

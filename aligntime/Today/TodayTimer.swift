@@ -52,15 +52,10 @@ struct TodayTimer: View {
             }
             .padding(.bottom, 10)
             .onReceive(self.timer) { input in
-                if self.core_data.current_state{
-                    self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
-                }
-                else {
-                    self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: input))!
-                }
+                self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
+                self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: input))!
             }
             .onAppear() {
-                //print("apear")
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
             }

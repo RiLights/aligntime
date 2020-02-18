@@ -1,13 +1,13 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A view that hosts the profile viewer and editor.
-*/
-
+//
+//  TreatmentPlan.swift
+//  aligntime
+//
+//  Created by Ostap on 18/02/20.
+//  Copyright © 2020 Ostap. All rights reserved.
+//
 import SwiftUI
 
-struct ProfileHost: View {
+struct TreatmentPlan: View {
     @EnvironmentObject var user_data: AlignTime
     
     var date_formatter: DateFormatter {
@@ -18,26 +18,14 @@ struct ProfileHost: View {
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 18) {
-            Image(systemName: "person.crop.circle")
-                .font(.largeTitle)
             List {
                 Text("How many aligners do you require:  \(user_data.required_aligners_total)")
                 Text("Number of days for each aligners:  \(user_data.aligners_wear_days)")
                 Text("Start your treatment:  \(user_data.start_treatment,formatter: date_formatter)")
                 Text("Aligner number you are wearing:  \(user_data.aligner_number_now)")
-                Text("Days have you been wearing:  \(user_data.current_aligner_days)")
+                Text("Days wearing current aligner:  \(user_data.current_aligner_days)")
                 Text("Complete (Debug):  \(String(user_data.complete))")
             }
-            
-//            ForEach(0 ..< 7) {
-//                Text("\($0)")
-//                HStack {
-//                    Text("Value")
-//                    EditButton()
-//                }
-//            }
-            
-            
             Button(action: {
                 self.user_data.resetDefaults()
                 self.user_data.complete = false
@@ -52,13 +40,7 @@ struct ProfileHost: View {
                 }
             }
         }
-        .padding()
-        .navigationBarItems(trailing: EditButton())
+        .navigationBarTitle(Text("Treatment Plan"), displayMode: .large)
     }
 }
 
-struct ProfileHost_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileHost()
-    }
-}
