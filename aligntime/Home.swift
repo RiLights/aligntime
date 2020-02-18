@@ -50,7 +50,7 @@ struct Home: View {
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
             .sheet(isPresented: $showingProfile) {
-                ProfileHost().environmentObject(self.user_data)
+                ProfileManager().environmentObject(self.user_data)
             }
             .gesture(DragGesture()
 //            .onEnded({ (value) in

@@ -253,7 +253,7 @@ final class AlignTime: ObservableObject {
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = notification_identifier01
         
-        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        var trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
         var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
