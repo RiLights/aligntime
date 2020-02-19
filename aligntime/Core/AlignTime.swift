@@ -247,7 +247,7 @@ final class AlignTime: ObservableObject {
     func send_notification(time_interval:Double){
         
         let content = UNMutableNotificationContent()
-        content.title = "AlignTime Reminder. \(time_interval)s"
+        content.title = "AlignTime Reminder"
         content.body = "Time to put your aligners on again"
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = notification_identifier01

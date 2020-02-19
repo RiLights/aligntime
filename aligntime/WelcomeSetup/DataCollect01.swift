@@ -54,6 +54,7 @@ extension UIApplication {
 struct DataCollect01: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
+    @State var view_mode:Bool = true
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -73,7 +74,7 @@ struct DataCollect01: View {
                         .multilineTextAlignment(.center)
                     HStack {
                         CustomTextField(text: $user_data.required_aligners_total, isFirstResponder: false)
-                        .keyboardType(.asciiCapableNumberPad)
+                            .keyboardType(.numberPad)
                         Button(action: { self.user_data.required_aligners_total -= 1})
                         {
                             HStack {
@@ -151,37 +152,49 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .padding(.horizontal, 30)
                 }
-
+                
                 Spacer()
-                HStack(alignment: .center,spacing: 0){
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .foregroundColor(Color.secondary)
-                                .opacity(0.5)
-                            Text("Back")
-                                .foregroundColor(Color.white)
-                        }
-                    }
-                    NavigationLink(destination: DataCollect02()) {
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .padding(0)
-                            Text("Next")
-                                .foregroundColor(.white)
-                        }
-                    }
+                if self.view_mode{
+                    DataCollectControllButton01()
+                        .padding(.horizontal,20)
                 }
-                .padding(.horizontal,20)
+                
             }
             .onTapGesture {
                    UIApplication.shared.endEditing()
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(view_mode)
+    }
+}
+
+struct DataCollectControllButton01: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var user_data: AlignTime
+
+    var body: some View {
+        HStack(alignment: .center,spacing: 0){
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }){
+                ZStack(alignment: .center){
+                    Rectangle()
+                        .frame(height: 40)
+                        .foregroundColor(Color.secondary)
+                        .opacity(0.5)
+                    Text("Back")
+                        .foregroundColor(Color.white)
+                }
+            }
+            NavigationLink(destination: DataCollect02()) {
+                ZStack(alignment: .center){
+                    Rectangle()
+                        .frame(height: 40)
+                        .padding(0)
+                    Text("Next")
+                        .foregroundColor(.white)
+                }
+            }
+        }
     }
 }

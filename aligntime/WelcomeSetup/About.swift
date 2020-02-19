@@ -10,6 +10,7 @@ import SwiftUI
 
 struct About: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var view_mode:Bool = true
     
     var body: some View {
         Section {
@@ -23,23 +24,33 @@ struct About: View {
                     .padding(12)
                     .multilineTextAlignment(.center)
                 Spacer()
-                HStack(alignment: .firstTextBaseline,spacing: 0){
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .foregroundColor(Color.secondary)
-                                .opacity(0.5)
-                            Text("Back")
-                                .foregroundColor(Color.white)
-                        }
-                    }
+                if self.view_mode{
+                    AboutControllButton()
+                        .padding(.horizontal,20)
                 }
-                .padding(.horizontal,20)
             }
-            .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(view_mode)
+        }
+    }
+}
+
+struct AboutControllButton: View {
+@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline,spacing: 0){
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }){
+                ZStack(alignment: .center){
+                    Rectangle()
+                        .frame(height: 40)
+                        .foregroundColor(Color.secondary)
+                        .opacity(0.5)
+                    Text("Back")
+                        .foregroundColor(Color.white)
+                }
+            }
         }
     }
 }
