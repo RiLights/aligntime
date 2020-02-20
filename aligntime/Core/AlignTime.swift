@@ -32,6 +32,8 @@ final class AlignTime: ObservableObject {
     @Published var endDate: Date! = nil
     
     @Published var intervals:[DayInterval] = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
+    @Published var aligners:[IndividualAligner] = [
+        IndividualAligner(0,days:7,aligner_number:1)]
 
     @Published var selected_date: Date! = Date()//nil
     @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0

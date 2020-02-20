@@ -8,26 +8,26 @@
 
 import SwiftUI
 
-struct IndividualAligner: View {
+struct IndividualAlignerManager: View {
+    @EnvironmentObject var user_data: AlignTime
     @State var locations = [1, 2, 3]
     @State var test_number = 7
     
     var body: some View {
         List {
-            ForEach(locations, id: \.self) { location in
+            ForEach(user_data.aligners) { aligner in
                 //Text("\(user_data.aligner_number_now)")
                 VStack{
                     HStack{
-                        Text("Aligner #\(location)")
+                        Text("Aligner #")
+                        TextField("",value:self.$user_data.aligners[aligner.id].aligner_number,formatter: NumberFormatter())
                         Spacer()
                     }
-                    Stepper("Day \(self.test_number)", value: self.$test_number, in: 1...20)
+                    Stepper("Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
                 }
             }
             .onDelete { _ in }
         }
-        //.navigationBarTitle(Text("Locations"))
-        // 3.
         .navigationBarItems(trailing: Button(action: {
             self.addRow()
         }) {
@@ -60,6 +60,8 @@ struct IndividualAligner: View {
             .navigationBarTitle(Text("Aligner Adjustment"))
     }
     private func addRow() {
-        self.locations.append(7)
+        let count = self.user_data.aligners.count
+        let v = IndividualAligner(count,days:7,aligner_number:count+1)
+        self.user_data.aligners.append(v)
     }
 }
