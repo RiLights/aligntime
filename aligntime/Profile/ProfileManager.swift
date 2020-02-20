@@ -17,7 +17,7 @@ struct ProfileManager: View {
                 List {
                     LinkMenu(icon: "chart.pie", label: "View Wear Time Statistics", destination: StatisticsView())
                     LinkMenu(icon: "doc.plaintext", label: "Modify Treatment Plan", destination: TreatmentPlan())
-                    LinkMenu(icon: "list.bullet.indent", label: "Individual Aligner Adjust", destination: IndividualAligner())
+                    LinkMenu(icon: "list.bullet.indent", label: "Individual Aligner Adjust", destination: IndividualAlignerManager())
                     LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     LinkMenu(icon: "slowmo", label: "About", destination: About(view_mode: false))
                     Button(action: {
