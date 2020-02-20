@@ -75,27 +75,33 @@ struct DataCollect01: View {
                     HStack {
                         CustomTextField(text: $user_data.required_aligners_total, isFirstResponder: false)
                             .keyboardType(.numberPad)
-                        Button(action: { self.user_data.required_aligners_total -= 1})
-                        {
-                            HStack {
-                                Image(systemName: "minus")
-                            }.onTapGesture {
-                                   UIApplication.shared.endEditing()
+                        HStack (spacing: 0) {
+                            Button(action: { self.user_data.required_aligners_total -= 1})
+                            {
+                                HStack {
+                                    Image(systemName: "minus")
+                                }.padding(0)
+                                .onTapGesture {
+                                       UIApplication.shared.endEditing()
+                                }
+                                .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
+                                .background(Color.secondary.opacity(0.2))
+                                .foregroundColor(.secondary)
+                                .cornerRadius(5)
                             }
-                            .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
-                            .background(Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(5)
-                        }
-                        Button(action: { self.user_data.required_aligners_total += 1})
-                        {
-                            HStack {
-                                Image(systemName: "plus")
+                            Divider()
+                                .background(Color.secondary.opacity(0.3))
+                                .frame(maxHeight: 20)
+                            Button(action: { self.user_data.required_aligners_total += 1})
+                            {
+                                HStack {
+                                    Image(systemName: "plus")
+                                }.padding(0)
+                                .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
+                                .background(Color.secondary.opacity(0.2))
+                                .foregroundColor(.secondary)
+                                .cornerRadius(5)
                             }
-                            .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
-                            .background(Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(5)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -111,26 +117,31 @@ struct DataCollect01: View {
                     HStack {
                         CustomTextField(text: $user_data.aligners_wear_days, isFirstResponder: false)
                             .keyboardType(.asciiCapableNumberPad)
+                        HStack (spacing: 0) {
                             Button(action: { self.user_data.aligners_wear_days -= 1})
                             {
                                 HStack {
                                     Image(systemName: "minus")
                                 }
                                 .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
-                                .background(Color.gray)
-                                .foregroundColor(.white)
+                                .background(Color.secondary.opacity(0.2))
+                                .foregroundColor(.secondary)
                                 .cornerRadius(5)
                             }
+                            Divider()
+                            .background(Color.secondary.opacity(0.3))
+                            .frame(maxHeight: 20)
                             Button(action: { self.user_data.aligners_wear_days += 1})
                             {
                                 HStack {
                                     Image(systemName: "plus")
                                 }
                                 .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
-                                .background(Color.gray)
-                                .foregroundColor(.white)
+                                .background(Color.secondary.opacity(0.2))
+                                .foregroundColor(.secondary)
                                 .cornerRadius(5)
                             }
+                        }
                     }
                     .padding(.horizontal, 20)
                     Divider()
