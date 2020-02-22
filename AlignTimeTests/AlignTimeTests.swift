@@ -492,7 +492,24 @@ class AlignTimeTests: XCTestCase {
     }
     
     
-    func test_days_left() {
+    func test_days_left01() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        align_time.aligners = []
+        
+        align_time.update_today_dates()
+
+        let days_result = align_time.days_left
+        XCTAssertEqual(days_result, "328")
+    }
+    
+    func test_days_left02() {
         let align_time:AlignTime = AlignTime()
         let day = dateFormatter.date(from: "2019-07-12 00:00")
         
@@ -502,10 +519,76 @@ class AlignTimeTests: XCTestCase {
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
         
+        let a01:IndividualAligner = IndividualAligner(0,days:7,aligner_number:1)
+        
+        align_time.aligners = [a01]
+        
         align_time.update_today_dates()
 
         let days_result = align_time.days_left
         XCTAssertEqual(days_result, "328")
+    }
+    
+    func test_days_left03() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        let a01:IndividualAligner = IndividualAligner(0,days:8,aligner_number:1)
+        
+        align_time.aligners = [a01]
+        
+        align_time.update_today_dates()
+
+        let days_result = align_time.days_left
+        XCTAssertEqual(days_result, "329")
+    }
+    
+    func test_days_left04() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        let a01:IndividualAligner = IndividualAligner(0,days:5,aligner_number:1)
+        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:10)
+        
+        align_time.aligners = [a01,a02]
+        
+        align_time.update_today_dates()
+
+        let days_result = align_time.days_left
+        XCTAssertEqual(days_result, "328")
+    }
+    
+    func test_days_left05() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        let a01:IndividualAligner = IndividualAligner(0,days:3,aligner_number:1)
+        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:10)
+        
+        align_time.aligners = [a01,a02]
+        
+        align_time.update_today_dates()
+
+        let days_result = align_time.days_left
+        XCTAssertEqual(days_result, "330")
     }
 
     func testFilterPerformance() {

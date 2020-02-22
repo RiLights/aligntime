@@ -18,11 +18,11 @@ struct IntervalFields: View {
     var body: some View {
         ScrollView(.vertical) {
             HStack(alignment:.top){
-                WearIntervals(navigation_label:self.$navigation_label,
+                OffEvents(navigation_label:self.$navigation_label,
                                   show_modal: self.$show_modal)
-                Spacer()
-                OffIntervals(navigation_label:self.$navigation_label,
-                             show_modal: self.$show_modal)
+//                Spacer()
+//                OffIntervals(navigation_label:self.$navigation_label,
+//                             show_modal: self.$show_modal)
             }
         }
         .sheet(isPresented: self.$show_modal) {
