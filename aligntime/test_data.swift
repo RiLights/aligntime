@@ -23,8 +23,8 @@ func test_intervals()->[DayInterval]{
     let day7   = formatter_date.date(from: "2019/12/09 01:00")
     let day8   = formatter_date.date(from: "2019/12/09 02:00")
     let day9   = formatter_date.date(from: "2020/02/02 05:00")
-    let day10  = formatter_date.date(from: "2020/02/02 07:15")
-    let day11  = formatter_date.date(from: "2020/02/02 09:12")
+    let day10  = formatter_date.date(from: "2020/02/23 07:15")
+    let day11  = formatter_date.date(from: "2020/02/23 08:12")
     
     let d0_2 = DayInterval()
     d0_2.id = 0

@@ -225,21 +225,21 @@ final class AlignTime: ObservableObject {
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
         }
         
-        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
-            let decoder = JSONDecoder()
-            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
-                if temp_intervals != [] {
-                    self.intervals = temp_intervals
-                    for i in self.intervals{
-                        i.time = Date().fromTimestamp(i.timestamp)
-                    }
-                    self.current_state = self.intervals[self.intervals.count-1].wear
-                }
-                else{
-                    self.intervals = [DayInterval(0, wear: true, time: Date())]
-                }
-            }
-        }
+//        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
+//            let decoder = JSONDecoder()
+//            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
+//                if temp_intervals != [] {
+//                    self.intervals = temp_intervals
+//                    for i in self.intervals{
+//                        i.time = Date().fromTimestamp(i.timestamp)
+//                    }
+//                    self.current_state = self.intervals[self.intervals.count-1].wear
+//                }
+//                else{
+//                    self.intervals = [DayInterval(0, wear: true, time: Date())]
+//                }
+//            }
+//        }
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
         self.update_min_max_dates()

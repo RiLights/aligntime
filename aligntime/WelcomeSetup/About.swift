@@ -19,7 +19,7 @@ struct About: View {
                 Text("AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.")
                     .font(.system(size: 17))
                     .fontWeight(.regular)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.secondary)
                     .padding(.horizontal, 12)
                     .padding(12)
                     .multilineTextAlignment(.center)

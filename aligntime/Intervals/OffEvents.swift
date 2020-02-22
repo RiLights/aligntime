@@ -23,15 +23,15 @@ struct OffEvents: View {
     
     var body: some View {
         Button(action: {
-            self.navigation_label = "Wear Times"
+            self.navigation_label = "Off Times"
             self.show_modal.toggle()
         }) {
             VStack{
-                Text("Wear Times:")
+                Text("Off Times At:")
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
                     .frame(width: 120)
-                ForEach(core_data.get_wear_days()) { i in
+                ForEach(core_data.get_off_days()) { i in
                     HStack{
                         Text("\(i.time_string )")
                             .font(.system(size: 18))

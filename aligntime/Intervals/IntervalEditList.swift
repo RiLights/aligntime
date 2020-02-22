@@ -86,9 +86,12 @@ struct IntervalEditList: View {
                 .onDelete(perform: delete)
             }
             .buttonStyle(PlainButtonStyle())
-//            .navigationBarItems(
-//                trailing: Button(action: addTimeInterval, label: { Text("Add") })
-//            )
+            .navigationBarItems(
+                trailing: Button(action: addOffEvent, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 20))
+                        .padding()})
+            )
             .navigationBarTitle(self.navigation_label)
             }
             .sheet(isPresented: self.$showing_picker) {
@@ -99,7 +102,12 @@ struct IntervalEditList: View {
         }
     }
 
-    func addTimeInterval() {print("not ready yet")}
+    func addOffEvent() {
+        let d = DayInterval(self.core_data.intervals.count,
+                            wear: false, time: Date())
+        self.core_data.intervals.append(d)
+        print("not ready yet")
+    }
     func delete(at offsets: IndexSet) {
         let interval_index = self.get_filtered()[offsets.first!].id
         
