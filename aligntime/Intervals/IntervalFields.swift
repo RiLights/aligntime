@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+func hour_timer_format(_ second: TimeInterval) -> String? {
+    let formatter = DateComponentsFormatter()
+    formatter.unitsStyle = .positional
+    formatter.allowedUnits = [.hour, .minute]
+    formatter.zeroFormattingBehavior = .pad
+    return formatter.string(from: second+1)
+}
+
 
 struct IntervalFields: View {
     @EnvironmentObject var core_data: AlignTime
@@ -24,7 +32,7 @@ struct IntervalFields: View {
                 }
             }
             Divider()
-            Text("Total Wear Time For Today: 10:11")
+            Text("Total Wear Time: \(hour_timer_format(total_wear_time())!)")
                 .foregroundColor(.accentColor)
                 .font(.system(size: 18))
                 .padding(.bottom, 5)
@@ -33,6 +41,16 @@ struct IntervalFields: View {
                 IntervalEditList(navigation_label: self.$navigation_label).environmentObject(self.core_data)
             
         }
+    }
+    
+    func total_wear_time()->TimeInterval{
+        var selected_date = Date()
+        if !self.core_data.is_selected_date(date:Date()){
+            selected_date = Calendar.current.startOfDay(for: self.core_data.selected_date)
+            selected_date = selected_date.advanced(by: 86399)
+        }
+        let val = self.core_data.get_wear_timer_for_date(update_time: selected_date)
+        return val
     }
 }
 

@@ -87,7 +87,7 @@ struct IntervalEditList: View {
             }
             .buttonStyle(PlainButtonStyle())
             .navigationBarItems(
-                trailing: Button(action: addOffEvent, label: {
+                trailing: Button(action: add_off_event, label: {
                     Image(systemName: "plus")
                         .font(.system(size: 20))
                         .padding()})
@@ -102,10 +102,8 @@ struct IntervalEditList: View {
         }
     }
 
-    func addOffEvent() {
-        let d = DayInterval(self.core_data.intervals.count,
-                            wear: false, time: Date())
-        self.core_data.intervals.append(d)
+    func add_off_event() {
+        self.core_data.add_new_event()
         print("not ready yet")
     }
     func delete(at offsets: IndexSet) {

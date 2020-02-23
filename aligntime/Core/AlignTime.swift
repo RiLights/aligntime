@@ -175,6 +175,7 @@ final class AlignTime: ObservableObject {
         return _interval_filter(wear: false)
     }
     
+    
     func is_selected_date(date:Date)->Bool{
         if self.selected_date == nil {
             return false
@@ -188,6 +189,12 @@ final class AlignTime: ObservableObject {
         }
         
         update_min_max_dates()
+    }
+    
+    func add_new_event(){
+        let d = DayInterval(self.intervals.count,
+                            wear: false, time: Date())
+        self.intervals.append(d)
     }
     
     func push_user_defaults(){
