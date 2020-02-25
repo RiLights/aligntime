@@ -191,6 +191,11 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
     }
     
+    func get_first_event_for_selected_date()->DayInterval{
+        let previous_intervals = self.intervals.filter{ $0.timestamp < self.selected_date.timestamp()}
+        return previous_intervals.last
+    }
+    
     func reasign_intervals_date_id(){
         let sorted = self.intervals.sorted(by: { $0.time < $1.time })
         for (i,_) in sorted.enumerated(){
@@ -201,12 +206,19 @@ final class AlignTime: ObservableObject {
     }
     
     func add_new_event(to:[DayInterval]){
+        var local_id:Int = 0
+        var time:Date = Date()
         if to == []{
-            return
+            let interval = get_first_event_for_selected_date()
+            local_id = interval.id
+            time = self.selected_date
         }
-        let local_id = to.last.id
-        let time = to.last.time
-        if self.intervals[local_id].wear{
+        else{
+            local_id = to.last.id
+            time = to.last.time
+        }
+        let wear_state = self.intervals[local_id].wear
+        if wear_state{
             let d_off = DayInterval(local_id+1,
                                 wear: false, time: time.advanced(by: 1))
             self.intervals.insert(d_off,at: local_id+1)
@@ -222,7 +234,7 @@ final class AlignTime: ObservableObject {
                                     wear: false, time: time.advanced(by: 1))
             self.intervals.insert(d_off, at: local_id+2)
         }
-        print("self.intervals[local_id].wear",self.intervals[local_id].wear)
+        print("local_id",time)
         reasign_intervals_date_id()
         //reasign_intervals_id()
     }
