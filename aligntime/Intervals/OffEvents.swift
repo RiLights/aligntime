@@ -27,7 +27,7 @@ struct OffEvents: View {
             self.show_modal.toggle()
         }) {
             VStack{
-                Text("Off Times At:")
+                Text("Off Times:")
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
                     .frame(width: 120)
@@ -38,6 +38,23 @@ struct OffEvents: View {
                             .fontWeight(.light)
                             .foregroundColor(self.intervals_color_day(date:i.time))
                             .frame(width: 50)
+                        Text("-")
+                            .foregroundColor(.accentColor)
+                            .font(.system(size: 21))
+                        if (self.core_data.intervals.count<=i.id+1){
+                            Text("Now")
+                                .font(.system(size: 18))
+                                .fontWeight(.light)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 50)
+                        }
+                        else{
+                            Text("\(self.core_data.intervals[i.id+1].time_string )")
+                                .font(.system(size: 18))
+                                .fontWeight(.light)
+                                .foregroundColor(self.intervals_color_day(date:self.core_data.intervals[i.id+1].time))
+                                .frame(width: 50)
+                        }
                     }
                 }
             }

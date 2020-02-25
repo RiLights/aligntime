@@ -191,10 +191,40 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
     }
     
-    func add_new_event(){
-        let d = DayInterval(self.intervals.count,
-                            wear: false, time: Date())
-        self.intervals.append(d)
+    func reasign_intervals_date_id(){
+        let sorted = self.intervals.sorted(by: { $0.time < $1.time })
+        for (i,_) in sorted.enumerated(){
+            self.intervals[i].id = i
+        }
+        
+        update_min_max_dates()
+    }
+    
+    func add_new_event(to:[DayInterval]){
+        if to == []{
+            return
+        }
+        let local_id = to.last.id
+        let time = to.last.time
+        if self.intervals[local_id].wear{
+            let d_off = DayInterval(local_id+1,
+                                wear: false, time: time.advanced(by: 1))
+            self.intervals.insert(d_off,at: local_id+1)
+            let d_wear = DayInterval(local_id+2,
+                                wear: true, time: time.advanced(by: 1))
+            self.intervals.insert(d_wear, at: local_id+2)
+        }
+        else{
+            let d_wear = DayInterval(local_id+1,
+                                wear: true, time: time.advanced(by: 1))
+            self.intervals.insert(d_wear, at: local_id+1)
+            let d_off = DayInterval(local_id+2,
+                                    wear: false, time: time.advanced(by: 1))
+            self.intervals.insert(d_off, at: local_id+2)
+        }
+        print("self.intervals[local_id].wear",self.intervals[local_id].wear)
+        reasign_intervals_date_id()
+        //reasign_intervals_id()
     }
     
     func push_user_defaults(){
@@ -232,21 +262,21 @@ final class AlignTime: ObservableObject {
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
         }
         
-//        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
-//            let decoder = JSONDecoder()
-//            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
-//                if temp_intervals != [] {
-//                    self.intervals = temp_intervals
-//                    for i in self.intervals{
-//                        i.time = Date().fromTimestamp(i.timestamp)
-//                    }
-//                    self.current_state = self.intervals[self.intervals.count-1].wear
-//                }
-//                else{
-//                    self.intervals = [DayInterval(0, wear: true, time: Date())]
-//                }
-//            }
-//        }
+        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
+            let decoder = JSONDecoder()
+            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
+                if temp_intervals != [] {
+                    self.intervals = temp_intervals
+                    for i in self.intervals{
+                        i.time = Date().fromTimestamp(i.timestamp)
+                    }
+                    self.current_state = self.intervals[self.intervals.count-1].wear
+                }
+                else{
+                    self.intervals = [DayInterval(0, wear: true, time: Date())]
+                }
+            }
+        }
         
         self.complete = defaults.bool(forKey: "collecting_data_complete")
         self.update_min_max_dates()

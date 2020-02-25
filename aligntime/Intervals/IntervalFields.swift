@@ -38,7 +38,7 @@ struct IntervalFields: View {
                 .padding(.bottom, 5)
         }
         .sheet(isPresented: self.$show_modal) {
-                IntervalEditList(navigation_label: self.$navigation_label).environmentObject(self.core_data)
+            IntervalEditList(navigation_label: self.$navigation_label,dismiss:self.$show_modal).environmentObject(self.core_data)
             
         }
     }

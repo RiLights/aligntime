@@ -17,6 +17,7 @@ func get_min_time()->Date{
 struct IntervalEditList: View {
     @EnvironmentObject var core_data: AlignTime
     @Binding var navigation_label:String
+    @Binding var dismiss:Bool
     @State var showing_picker = false
     @State var show_end_time_state:Bool = false
     @State var day_index = 0
@@ -29,83 +30,88 @@ struct IntervalEditList: View {
         }
         return self.core_data.get_off_days()
     }
+    
+    func get_filtered_all()-> [DayInterval]{
+        let combined = self.core_data.get_wear_days() + self.core_data.get_off_days()
+        return combined
+    }
 
     var body: some View {
         NavigationView {
-            HStack(spacing:0){
-            List {
-                ForEach(get_filtered()) { i in
-                    HStack(alignment: .lastTextBaseline){
-                        Spacer()
-                        Button(action: {
-                            self.day_index = i.id
-                            if i.id != 0{
-                                self.min_time = self.core_data.intervals[i.id-1].time
-                            }
-                            if (self.core_data.intervals.count>i.id+1){
-                                self.max_time = self.core_data.intervals[i.id+1].time
-                            }
-                            
-                            self.showing_picker.toggle()
-                            
-                        }){
-                            Text(i.time_string)
-                                .frame(width: 50)
-                        }
-                        Text("-")
-                        Button(action: {
-                            if (self.core_data.intervals.count<=i.id+1){
-                            }
-                            else{
-                                self.day_index = i.id+1
-                                self.min_time = i.time
-                                if (self.core_data.intervals.count>i.id+2){
-                                    self.max_time = self.core_data.intervals[i.id+2].time
+            VStack{
+                HStack(spacing:0){
+                List {
+                    ForEach(get_filtered()) { i in
+                        HStack(alignment: .lastTextBaseline){
+                            Spacer()
+                            Button(action: {
+                                self.day_index = i.id
+                                self.showing_picker=true
+                                
+                            }){
+                                HStack(alignment: .center){
+                                    Text(i.time_string)
+                                        .frame(width: 50)
+                                    Text("-")
+                                    if (self.core_data.intervals.count<=i.id+1){
+                                        Text("Now")
+                                            .frame(width: 50)
+                                            .padding(.horizontal,2)
+                                    }
+                                    else{
+                                        Text("\(self.core_data.intervals[i.id+1].time_string)")
+                                            .frame(width: 50)
+                                            .padding(.horizontal,2)
+                                    }
                                 }
-                                else{
-                                    self.max_time = Date()//self.core_data.intervals[i.id+1].time
-                                }
-                                self.showing_picker.toggle()
                             }
-                            
-                        }){
-                            if (self.core_data.intervals.count<=i.id+1){
-                                Text("Now")
-                                    .frame(width: 50)
-                                    .padding(.horizontal,2)
-                            }
-                            else{
-                                Text("\(self.core_data.intervals[i.id+1].time_string)")
-                                    .frame(width: 50)
-                                    .padding(.horizontal,2)
-                            }
+                            Spacer()
                         }
-                        Spacer()
+                    }
+                    .onDelete(perform: delete)
+                }
+                //.buttonStyle(PlainButtonStyle())
+                .navigationBarItems(
+                    trailing: Button(action: add_off_event, label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 20))
+                            .padding()})
+                )
+                .navigationBarTitle(self.navigation_label)
+                }
+                Button(action: {
+                    self.dismiss = false
+                }){
+                    ZStack(alignment: .center){
+                        Rectangle()
+                           .frame(height: 35)
+                           .foregroundColor(Color.blue)
+                        Text("Return")
+                            .foregroundColor(Color.white)
                     }
                 }
-                .onDelete(perform: delete)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .navigationBarItems(
-                trailing: Button(action: add_off_event, label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 20))
-                        .padding()})
-            )
-            .navigationBarTitle(self.navigation_label)
             }
             .sheet(isPresented: self.$showing_picker) {
                 TimePicker(date_time: self.$core_data.intervals[self.day_index].time,
+                           selected_id: self.$day_index,
                            min_time:self.$min_time,
-                           max_time:self.$max_time)
+                           max_time:self.$max_time,
+                           dismiss:self.$showing_picker).environmentObject(self.core_data)
             }
         }
     }
 
     func add_off_event() {
-        self.core_data.add_new_event()
-        print("not ready yet")
+        let unsorted = get_filtered_all()
+        let sorted = unsorted.sorted(by: { $0.id < $1.id })
+        for i in sorted{
+            print(i.id)
+        }
+        
+        
+        self.core_data.add_new_event(to:sorted)
     }
+    
     func delete(at offsets: IndexSet) {
         let interval_index = self.get_filtered()[offsets.first!].id
         
