@@ -39,7 +39,6 @@ struct IntervalFields: View {
         }
         .sheet(isPresented: self.$show_modal) {
             IntervalEditList(navigation_label: self.$navigation_label,dismiss:self.$show_modal).environmentObject(self.core_data)
-            
         }
     }
     

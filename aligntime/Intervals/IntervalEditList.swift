@@ -19,7 +19,6 @@ struct IntervalEditList: View {
     @Binding var navigation_label:String
     @Binding var dismiss:Bool
     @State var showing_picker = false
-    @State var show_end_time_state:Bool = false
     @State var day_index = 0
     @State var min_time:Date = get_min_time()
     @State var max_time:Date = Date()
@@ -47,7 +46,6 @@ struct IntervalEditList: View {
                             Button(action: {
                                 self.day_index = i.id
                                 self.showing_picker=true
-                                
                             }){
                                 HStack(alignment: .center){
                                     Text(i.time_string)
@@ -92,11 +90,18 @@ struct IntervalEditList: View {
                 }
             }
             .sheet(isPresented: self.$showing_picker) {
-                TimePicker(date_time: self.$core_data.intervals[self.day_index].time,
-                           selected_id: self.$day_index,
-                           min_time:self.$min_time,
-                           max_time:self.$max_time,
-                           dismiss:self.$showing_picker).environmentObject(self.core_data)
+                if (self.core_data.intervals.count<=self.day_index+1){
+                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
+                               end_time:self.$max_time,
+                               dismiss:self.$showing_picker,
+                               is_now_time:true).environmentObject(self.core_data)
+                }
+                else{
+                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
+                               end_time:self.$core_data.intervals[self.day_index+1].time,
+                               dismiss:self.$showing_picker,
+                               is_now_time:false).environmentObject(self.core_data)
+                }
             }
         }
     }

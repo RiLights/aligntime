@@ -12,11 +12,10 @@ import SwiftUI
 
 struct TimePicker: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var date_time:Date
-    @Binding var selected_id:Int
-    @Binding var min_time:Date
-    @Binding var max_time:Date
+    @Binding var start_time:Date
+    @Binding var end_time:Date
     @Binding var dismiss:Bool
+    @State var is_now_time:Bool = false
     
     var body: some View {
         VStack (spacing:0){
@@ -26,8 +25,8 @@ struct TimePicker: View {
                     .padding()
                 Spacer()
             }
-            DatePicker("", selection: $date_time,
-                       in: min_time...max_time,
+            DatePicker("", selection: self.$start_time,
+                       in: ...self.end_time,
                        displayedComponents: .hourAndMinute)
                 .labelsHidden()
             Divider()
@@ -36,27 +35,17 @@ struct TimePicker: View {
                     .padding()
                 Spacer()
             }
-            //Text(". .")
-            if (self.core_data.intervals.count<=selected_id+1){
+            if (is_now_time){
                  Text("Now")
                     .font(.title)
                     .padding(40)
              }
             else{
-                DatePicker("", selection: self.$core_data.intervals[selected_id+1].time,
-                           in: min_time...max_time,
+                DatePicker("", selection: self.$end_time,
+                           in: self.start_time...Date(),
                            displayedComponents: .hourAndMinute)
                     .labelsHidden()
              }
-//            Text(". .")
-//            Text("End")
-//            DatePicker("", selection: $date_time,
-//                       in: min_time...max_time,
-//                       displayedComponents: .hourAndMinute)
-//                .labelsHidden()
-//            Text("Please select your off time interval")
-//                .font(.subheadline)
-//                .padding()
             Spacer()
             Button(action: {
                 self.dismiss = false
@@ -70,7 +59,5 @@ struct TimePicker: View {
                 }
             }
         }
-        //.font(.subheadline)
-        //.frame(height: 230)
     }
 }
