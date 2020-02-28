@@ -8,14 +8,6 @@
 
 import SwiftUI
 
-func hour_timer_format(_ second: TimeInterval) -> String? {
-    let formatter = DateComponentsFormatter()
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [.hour, .minute]
-    formatter.zeroFormattingBehavior = .pad
-    return formatter.string(from: second+1)
-}
-
 
 struct IntervalFields: View {
     @EnvironmentObject var core_data: AlignTime
@@ -36,6 +28,7 @@ struct IntervalFields: View {
                 .foregroundColor(.accentColor)
                 .font(.system(size: 18))
                 .padding(.bottom, 5)
+                .animation(.none)
         }
         .sheet(isPresented: self.$show_modal) {
             IntervalEditList(navigation_label: self.$navigation_label,dismiss:self.$show_modal).environmentObject(self.core_data)

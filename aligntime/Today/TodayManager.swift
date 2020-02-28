@@ -8,13 +8,6 @@
 
 import SwiftUI
 
-func timer_format(_ second: TimeInterval) -> String? {
-    let formatter = DateComponentsFormatter()
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [.hour, .minute, .second]
-    formatter.zeroFormattingBehavior = .pad
-    return formatter.string(from: second)
-}
 
 struct TodayManager: View {
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()

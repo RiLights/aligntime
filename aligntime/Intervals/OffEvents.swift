@@ -20,6 +20,10 @@ struct OffEvents: View {
         return Color.accentColor
     }
     
+    func get_interval_time(start:Date,end:Date)->String{
+        let interval = end.timeIntervalSince(start)
+        return hour_timer_format(interval)!
+    }
     
     var body: some View {
         Button(action: {
@@ -54,6 +58,16 @@ struct OffEvents: View {
                                 .fontWeight(.light)
                                 .foregroundColor(self.intervals_color_day(date:self.core_data.intervals[i.id+1].time))
                                 .frame(width: 50)
+                        }
+                        if (self.core_data.intervals.count<=i.id+1){
+                            Text("")
+                        }
+                        else{
+                            Text("(\(self.get_interval_time(start: self.core_data.intervals[i.id].time, end: self.core_data.intervals[i.id+1].time)))")
+                                .font(.system(size: 18))
+                                .fontWeight(.light)
+                                .foregroundColor(.accentColor)
+                                .animation(.none)
                         }
                     }
                 }
