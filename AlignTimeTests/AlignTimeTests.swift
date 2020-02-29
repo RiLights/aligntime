@@ -445,9 +445,9 @@ class AlignTimeTests: XCTestCase {
         let day2 = dateFormatter.date(from: "2019-12-07 21:20")!
         let day3 = dateFormatter.date(from: "2019-12-07 22:15")!
 
-        let d01 = DayInterval(1, wear: false, time: day1)
-        let d02 = DayInterval(2, wear: true, time: day2)
-        let d03 = DayInterval(3, wear: false, time: day3)
+        let d01 = DayInterval(0, wear: false, time: day1)
+        let d02 = DayInterval(1, wear: true, time: day2)
+        let d03 = DayInterval(2, wear: false, time: day3)
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [d01,d02,d03]
@@ -611,11 +611,11 @@ class AlignTimeTests: XCTestCase {
         let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
         let date_e = dateFormatter.date(from: "2019-12-07 14:25")!
 
-        let event1 = DayInterval(1, wear: true, time: date1)
-        let event2 = DayInterval(2, wear: false, time: date2)
-        let event3 = DayInterval(3, wear: true, time: date3)
-        let event4 = DayInterval(4, wear: false, time: date4)
-        let event5 = DayInterval(5, wear: true, time: date5)
+        let event1 = DayInterval(0, wear: true, time: date1)
+        let event2 = DayInterval(1, wear: false, time: date2)
+        let event3 = DayInterval(2, wear: true, time: date3)
+        let event4 = DayInterval(3, wear: false, time: date4)
+        let event5 = DayInterval(4, wear: true, time: date5)
         
         event2.time = date_s
         event3.time = date_e

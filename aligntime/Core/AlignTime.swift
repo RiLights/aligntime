@@ -239,7 +239,27 @@ final class AlignTime: ObservableObject {
     }
     
     func remove_interesected_events(start:DayInterval,end:DayInterval){
-        
+        for i in self.intervals{
+            if (i.time>start.time) && (i.time<end.time){
+                print("deleted ",i.id,i.wear)
+                self.intervals.remove(at: i.id)
+                reasign_intervals_date_id()
+            }
+        }
+        force_event_order()
+    }
+    
+    func force_event_order(){
+        var previos_state = !self.intervals[0].wear
+        for i in self.intervals{
+            print("ss ",i.wear,i.time.description(with: .current))
+            if (i.wear == previos_state){
+                self.intervals.remove(at: i.id)
+                reasign_intervals_date_id()
+                print("ddddddddddddddd")
+            }
+            previos_state = i.wear
+        }
     }
     
     func push_user_defaults(){

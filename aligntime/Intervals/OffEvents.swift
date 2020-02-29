@@ -71,6 +71,7 @@ struct OffEvents: View {
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
                                 .foregroundColor(.accentColor)
+                                .frame(width: 70)
                                 .animation(.none)
                         }
                     }
