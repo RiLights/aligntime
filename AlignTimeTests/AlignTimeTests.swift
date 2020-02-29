@@ -622,7 +622,7 @@ class AlignTimeTests: XCTestCase {
     
         let align_time:AlignTime = AlignTime()
         align_time.intervals = [event1,event2,event3,event4,event5]
-        align_time.remove_interesected_events(start:event2,end:event3)
+        align_time.remove_interesected_events(event_index:1)
         let result = [event1,event2,event3]
         XCTAssertEqual(result, align_time.intervals)
     }

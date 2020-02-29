@@ -89,7 +89,7 @@ struct IntervalEditList: View {
                     }
                 }
             }
-            .sheet(isPresented: self.$showing_picker) {
+            .sheet(isPresented: self.$showing_picker, onDismiss: { self.core_data.remove_interesected_events(event_index: self.day_index) }) {
                 if (self.core_data.intervals.count<=self.day_index+1){
                     TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
                                end_time:self.$max_time,
@@ -106,13 +106,12 @@ struct IntervalEditList: View {
         }
     }
 
+    func test()->Void{
+        print("hello")
+    }
     func add_off_event() {
         let unsorted = get_filtered_all()
         let sorted = unsorted.sorted(by: { $0.id < $1.id })
-        for i in sorted{
-            print(i.id)
-        }
-        
         
         self.core_data.add_new_event(to:sorted)
     }

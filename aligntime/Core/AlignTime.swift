@@ -238,9 +238,16 @@ final class AlignTime: ObservableObject {
         reasign_intervals_date_id()
     }
     
-    func remove_interesected_events(start:DayInterval,end:DayInterval){
+    func remove_interesected_events(event_index:Int){
+        if self.intervals.count<=event_index+1{
+            return
+        }
+        
+        let start_event:DayInterval = self.intervals[event_index]
+        let end_event:DayInterval = self.intervals[event_index+1]
+        
         for i in self.intervals{
-            if (i.time>start.time) && (i.time<end.time){
+            if (i.time>start_event.time) && (i.time<end_event.time){
                 print("deleted ",i.id,i.wear)
                 self.intervals.remove(at: i.id)
                 reasign_intervals_date_id()
@@ -254,7 +261,10 @@ final class AlignTime: ObservableObject {
         for i in self.intervals{
             print("ss ",i.wear,i.time.description(with: .current))
             if (i.wear == previos_state){
-                self.intervals.remove(at: i.id)
+                let new_event = i
+                new_event.wear = false
+                //add_new_event(to:[new_event])
+                //self.intervals.remove(at: i.id)
                 reasign_intervals_date_id()
                 print("ddddddddddddddd")
             }
