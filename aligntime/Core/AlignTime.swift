@@ -236,7 +236,10 @@ final class AlignTime: ObservableObject {
         }
         print("local_id",time)
         reasign_intervals_date_id()
-        //reasign_intervals_id()
+    }
+    
+    func remove_interesected_events(start:DayInterval,end:DayInterval){
+        
     }
     
     func push_user_defaults(){

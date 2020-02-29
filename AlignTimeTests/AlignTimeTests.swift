@@ -125,9 +125,6 @@ class AlignTimeTests: XCTestCase {
         align_time.selected_date = dateFormatter.date(from: "2019-12-07 21:15")
         let test = align_time.get_wear_days()
         
-        for n in intervals {
-            print("\(n.timezone)")
-        }
         XCTAssertEqual(test, [ intervals[1],intervals[3] ])
     }
     
@@ -605,8 +602,29 @@ class AlignTimeTests: XCTestCase {
     }
     
     func test_remove_interesected_events01(){
-        let result = "330"
-        XCTAssertEqual(result, "330")
+        let date1 = dateFormatter.date(from: "2019-12-06 15:00")!
+        let date2 = dateFormatter.date(from: "2019-12-07 13:20")!
+        let date3 = dateFormatter.date(from: "2019-12-07 14:15")!
+        let date4 = dateFormatter.date(from: "2019-12-07 14:20")!
+        let date5 = dateFormatter.date(from: "2019-12-07 14:50")!
+        
+        let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
+        let date_e = dateFormatter.date(from: "2019-12-07 14:25")!
+
+        let event1 = DayInterval(1, wear: true, time: date1)
+        let event2 = DayInterval(2, wear: false, time: date2)
+        let event3 = DayInterval(3, wear: true, time: date3)
+        let event4 = DayInterval(4, wear: false, time: date4)
+        let event5 = DayInterval(5, wear: true, time: date5)
+        
+        event2.time = date_s
+        event3.time = date_e
+    
+        let align_time:AlignTime = AlignTime()
+        align_time.intervals = [event1,event2,event3,event4,event5]
+        align_time.remove_interesected_events(start:event2,end:event3)
+        let result = [event1,event2,event3]
+        XCTAssertEqual(result, align_time.intervals)
     }
 
     func testFilterPerformance() {
