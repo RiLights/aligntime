@@ -197,8 +197,8 @@ final class AlignTime: ObservableObject {
     }
     
     func reasign_intervals_date_id(){
-        let sorted = self.intervals.sorted(by: { $0.time < $1.time })
-        for (i,_) in sorted.enumerated(){
+        self.intervals.sort(by: { $0.timestamp < $1.timestamp })
+        for (i,_) in self.intervals.enumerated(){
             self.intervals[i].id = i
         }
         
@@ -234,7 +234,6 @@ final class AlignTime: ObservableObject {
                                     wear: false, time: time.advanced(by: 1))
             self.intervals.insert(d_off, at: local_id+2)
         }
-        print("local_id",time)
         reasign_intervals_date_id()
     }
     
@@ -248,7 +247,6 @@ final class AlignTime: ObservableObject {
         
         for i in self.intervals{
             if (i.time>start_event.time) && (i.time<end_event.time){
-                print("deleted ",i.id,i.wear)
                 self.intervals.remove(at: i.id)
                 reasign_intervals_date_id()
             }
@@ -257,19 +255,22 @@ final class AlignTime: ObservableObject {
     }
     
     func force_event_order(){
-        var previos_state = !self.intervals[0].wear
+        var previos_event = DayInterval(self.intervals[0].id,
+                                        wear:!self.intervals[0].wear,
+                                        time: self.intervals[0].time)
         for i in self.intervals{
-            print("ss ",i.wear,i.time.description(with: .current))
-            if (i.wear == previos_state){
-                let new_event = i
-                new_event.wear = false
-                //add_new_event(to:[new_event])
-                //self.intervals.remove(at: i.id)
-                reasign_intervals_date_id()
-                print("ddddddddddddddd")
+            print("ss ",i.wear,i.id,i.time.description(with: .current))
+            if (i.wear == previos_event.wear){
+                let new_event = DayInterval(previos_event.id,
+                                            wear:!previos_event.wear,
+                                            time:previos_event.time)
+                //new_event.wear = !new_event.wear
+                new_event.time = new_event.time.advanced(by: 100)
+                self.intervals.insert(new_event, at: new_event.id)
             }
-            previos_state = i.wear
+            previos_event = i
         }
+        reasign_intervals_date_id()
     }
     
     func push_user_defaults(){
