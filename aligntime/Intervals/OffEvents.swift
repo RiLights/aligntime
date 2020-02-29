@@ -21,6 +21,10 @@ struct OffEvents: View {
     }
     
     func get_interval_time(start:Date,end:Date)->String{
+        if !end.belongTo(date: start, toGranularity: Calendar.Component.day){
+            let selected_date = Calendar.current.startOfDay(for: end)
+            return hour_timer_format(end.timeIntervalSince(selected_date))!
+        }
         let interval = end.timeIntervalSince(start)
         return hour_timer_format(interval)!
     }

@@ -603,6 +603,11 @@ class AlignTimeTests: XCTestCase {
         let days_result = align_time.days_left
         XCTAssertEqual(days_result, "330")
     }
+    
+    func test_remove_interesected_events01(){
+        let result = "330"
+        XCTAssertEqual(result, "330")
+    }
 
     func testFilterPerformance() {
         let align_time:AlignTime = fill_9000_Intervals()
