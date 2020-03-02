@@ -113,6 +113,15 @@ final class AlignTime: ObservableObject {
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
         }
+        update_individual_aligners()
+    }
+    
+    func update_individual_aligners(){
+        var res:[IndividualAligner] = []
+        for i in 0..<self.required_aligners_total-1{
+            res.append(IndividualAligner(i,days:7,aligner_number:i+1))
+        }
+        self.aligners = res
     }
 
     func date_format(date: Date) -> Date {

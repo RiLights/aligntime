@@ -17,16 +17,18 @@ struct IndividualAlignerManager: View {
         List {
             ForEach(user_data.aligners) { aligner in
                 //Text("\(user_data.aligner_number_now)")
-                VStack{
-                    HStack{
-                        Text("Aligner #")
-                        TextField("",value:self.$user_data.aligners[aligner.id].aligner_number,formatter: NumberFormatter())
-                        Spacer()
-                    }
-                    Stepper("Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
-                }
+//                VStack{
+//                    HStack{
+//                        Text("Aligner #\(aligner.aligner_number)")
+//                        //TextField("",value:self.$user_data.aligners[aligner.id].aligner_number,formatter: NumberFormatter())
+//                        Spacer()
+//                        Text("Day \(aligner.days)")
+//                    }
+//                    //Stepper("Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
+//                }
+                Stepper("Aligner #\(aligner.aligner_number): Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
             }
-            .onDelete { _ in }
+            //.onDelete { _ in }
         }
         .navigationBarItems(trailing: Button(action: {
             self.addRow()
