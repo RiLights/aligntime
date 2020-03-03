@@ -36,20 +36,22 @@ struct ProfileManager: View {
             Alert(title: Text("Test"), message: Text("Not Implemented Yet"), dismissButton: .default(Text("Ok")))
         }
     }
-}
-
-
-private var profileButton: some View {
-    Button(action: { }) {
-        Image(systemName: "person.crop.circle")
-    }
-}
-
-func LinkMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
-    return NavigationLink(destination: destination) {
-        HStack {
-            Image(systemName: icon)
-            Text(label)
+    private var profileButton: some View {
+        Button(action: { }) {
+            Image(systemName: "person.crop.circle")
         }
     }
+
+    func LinkMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
+        //self.user_data.update_today_dates()
+        return NavigationLink(destination: destination) {
+            HStack {
+                Image(systemName: icon)
+                Text(label)
+            }
+        }
+    }
+
 }
+
+

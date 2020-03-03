@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct Home: View {
-    @EnvironmentObject var user_data: AlignTime
-    @State private var selection = 1
+    @EnvironmentObject var core_data: AlignTime
+    @State private var selection = 0
     
     @State var showingProfile = false
     @State var isNavigationBarHidden: Bool = true
@@ -49,8 +49,8 @@ struct Home: View {
            }
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
-            .sheet(isPresented: $showingProfile) {
-                ProfileManager().environmentObject(self.user_data)
+            .sheet(isPresented: $showingProfile, onDismiss:{self.core_data.update_today_dates()}) {
+                ProfileManager().environmentObject(self.core_data)
             }
             .gesture(DragGesture()
 //            .onEnded({ (value) in

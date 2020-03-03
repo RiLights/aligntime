@@ -32,8 +32,7 @@ final class AlignTime: ObservableObject {
     @Published var endDate: Date! = nil
     
     @Published var intervals:[DayInterval] = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
-    @Published var aligners:[IndividualAligner] = [
-        IndividualAligner(0,days:7,aligner_number:1)]
+    @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
     @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
@@ -102,26 +101,52 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
     }
   
-    
+    func get_custom_aligners_days_left(start_aligner:Int)->Int{
+        var days:Int = 0
+        var skip_default = false
+        for i in (1...self.required_aligners_total){
+            
+            if i>start_aligner{
+                for custom_aligner in self.aligners{
+                    if custom_aligner.aligner_number == i{
+                        days += custom_aligner.days
+                        skip_default = true
+                        continue
+                    }
+                }
+                if skip_default{
+                    skip_default = false
+                    continue
+                }
+                days += self.aligners_wear_days
+            }
+        }
+        return days
+    }
     func update_today_dates() {
+        update_individual_aligners()
+        
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         self.wearing_aligners_days = String(days_interval.days)
         
-        let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligners_wear_days) - self.current_aligner_days
+        let aligners_days_left:Int = get_custom_aligners_days_left(start_aligner:self.aligner_number_now-1)
+        //let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligners_wear_days) - self.current_aligner_days
+        let total_days_left_digit:Int = aligners_days_left - self.current_aligner_days
         
-        let days_left_string = String(days_left_digit)
+        let days_left_string = String(total_days_left_digit)
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
         }
-        update_individual_aligners()
     }
     
     func update_individual_aligners(){
         var res:[IndividualAligner] = []
-        for i in 0..<self.required_aligners_total-1{
-            res.append(IndividualAligner(i,days:7,aligner_number:i+1))
+        if self.aligners.count == 0{
+            for i in 1..<self.required_aligners_total{
+                res.append(IndividualAligner(i-1,days:7,aligner_number:i))
+            }
+            self.aligners = res
         }
-        self.aligners = res
     }
 
     func date_format(date: Date) -> Date {

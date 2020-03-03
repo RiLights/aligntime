@@ -128,22 +128,6 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(test, [ intervals[1],intervals[3] ])
     }
     
-    func test_is_present() {
-        let intervals = get_dayintervals2()
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = intervals
-        let selected_date = dateFormatter.date(from: "2019-12-07 23:15")!
-        XCTAssertEqual(true, align_time.is_present(selected_date) )
-    }
-    
-    func test_is_between() {
-        let intervals = get_dayintervals2()
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = intervals
-        let selected_date = dateFormatter.date(from: "2019-12-08 23:15")!
-        XCTAssertEqual(true, align_time.is_between(selected_date) )
-    }
-    
     func get_dayintervals(today_date: String, wears: [Bool]) -> [DayInterval] {
         let day0_2 = dateFormatter.date(from: "2019-07-11 22:00")
         let day0_1 = dateFormatter.date(from: "\(today_date) 01:00")
@@ -529,7 +513,7 @@ class AlignTimeTests: XCTestCase {
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
         
-        let a01:IndividualAligner = IndividualAligner(0,days:7,aligner_number:1)
+        let a01:IndividualAligner = IndividualAligner(0,days:7,aligner_number:30)
         
         align_time.aligners = [a01]
         
@@ -549,7 +533,7 @@ class AlignTimeTests: XCTestCase {
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
         
-        let a01:IndividualAligner = IndividualAligner(0,days:8,aligner_number:1)
+        let a01:IndividualAligner = IndividualAligner(0,days:8,aligner_number:30)
         
         align_time.aligners = [a01]
         
@@ -569,8 +553,8 @@ class AlignTimeTests: XCTestCase {
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
         
-        let a01:IndividualAligner = IndividualAligner(0,days:5,aligner_number:1)
-        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:10)
+        let a01:IndividualAligner = IndividualAligner(0,days:5,aligner_number:29)
+        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:30)
         
         align_time.aligners = [a01,a02]
         
@@ -590,15 +574,38 @@ class AlignTimeTests: XCTestCase {
         align_time.aligner_number_now = 28
         align_time.current_aligner_days = 1
         
-        let a01:IndividualAligner = IndividualAligner(0,days:3,aligner_number:1)
-        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:10)
+        let a01:IndividualAligner = IndividualAligner(0,days:3,aligner_number:34)
+        let a02:IndividualAligner = IndividualAligner(1,days:9,aligner_number:35)
         
         align_time.aligners = [a01,a02]
         
         align_time.update_today_dates()
 
         let days_result = align_time.days_left
-        XCTAssertEqual(days_result, "330")
+        XCTAssertEqual(days_result, "326")
+    }
+    
+    func test_days_left06() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        let a01:IndividualAligner = IndividualAligner(0,days:10,aligner_number:34)
+        let a02:IndividualAligner = IndividualAligner(1,days:10,aligner_number:35)
+        let a03:IndividualAligner = IndividualAligner(2,days:10,aligner_number:36)
+        let a04:IndividualAligner = IndividualAligner(3,days:10,aligner_number:37)
+        
+        align_time.aligners = [a01,a02,a03,a04]
+        
+        align_time.update_today_dates()
+
+        let days_result = align_time.days_left
+        XCTAssertEqual(days_result, "340")
     }
     
     func test_remove_interesected_events01(){
