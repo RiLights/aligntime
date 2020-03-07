@@ -19,15 +19,7 @@ struct IndividualAlignerManager: View {
                 Stepper("Aligner #\(aligner.aligner_number): Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
             }
         }
-//        .navigationBarItems(trailing: Button(action: {
-//            self.addRow()
-//        }) {
-//            //Text("Add Aligner")
-//            Image(systemName: "plus")
-//                .font(.system(size: 20))
-//                .padding()
-//        })
-            .navigationBarTitle(Text("Aligner Adjustment"))
+        .navigationBarTitle(Text("Aligner Adjustment"))
     }
     private func addRow() {
         let count = self.user_data.aligners.count

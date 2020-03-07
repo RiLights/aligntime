@@ -75,6 +75,17 @@ struct DataCollect01: View {
                     DataCollectControllButton01()
                         .padding(.horizontal,20)
                 }
+                else{
+                    NavigationLink(destination: DataCollect02(view_mode:false)) {
+                        ZStack(alignment: .center){
+                            Rectangle()
+                                .frame(height: 40)
+                                .padding(0)
+                            Text("Next")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
             }
         }
         .navigationBarBackButtonHidden(view_mode)

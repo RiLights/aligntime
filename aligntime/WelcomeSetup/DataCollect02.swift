@@ -11,6 +11,7 @@ import SwiftUI
 struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
+    @State var view_mode:Bool = true
 
     var body: some View {
         Section {
@@ -44,34 +45,45 @@ struct DataCollect02: View {
                 }
                 .padding(.bottom,40)
                 Spacer()
-                HStack(alignment: .center,spacing: 0){
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .foregroundColor(Color.secondary)
-                                .opacity(0.5)
-                            Text("Back")
-                                .foregroundColor(Color.white)
-                        }
-                    }
-                    NavigationLink(destination: Home()) {
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .padding(0)
-                            Text("Ready")
-                                .foregroundColor(.white)
-                        }
-                    }
+                if self.view_mode{
+                    DataCollectControllButton02()
+                        .padding(.horizontal,20)
                 }
-                .padding(.horizontal,20)
             }
         }
         .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(view_mode)
+        .navigationBarHidden(view_mode)
     }
 }
 
+struct DataCollectControllButton02: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var user_data: AlignTime
+
+    var body: some View {
+        HStack(alignment: .center,spacing: 0){
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }){
+                ZStack(alignment: .center){
+                    Rectangle()
+                        .frame(height: 40)
+                        .foregroundColor(Color.secondary)
+                        .opacity(0.5)
+                    Text("Back")
+                        .foregroundColor(Color.white)
+                }
+            }
+            NavigationLink(destination: Home()) {
+                ZStack(alignment: .center){
+                    Rectangle()
+                        .frame(height: 40)
+                        .padding(0)
+                    Text("Ready")
+                        .foregroundColor(.white)
+                }
+            }
+        }
+    }
+}
