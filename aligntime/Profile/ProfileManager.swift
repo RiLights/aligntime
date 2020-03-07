@@ -15,10 +15,10 @@ struct ProfileManager: View {
         VStack(alignment: .trailing, spacing: 18) {
             NavigationView {
                 List {
-                    LinkMenu(icon: "chart.pie", label: "View Wear Time Statistics", destination: StatisticsView())
+                    //LinkMenu(icon: "chart.pie", label: "View Wear Time Statistics", destination: StatisticsView())
                     LinkMenu(icon: "doc.plaintext", label: "Modify Treatment Plan", destination: TreatmentPlan())
                     LinkMenu(icon: "list.bullet.indent", label: "Individual Aligner Adjust", destination: IndividualAlignerManager())
-                    LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
+                    //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     LinkMenu(icon: "slowmo", label: "About", destination: About(view_mode: false))
                     Button(action: {
                         self.showingAlert = true

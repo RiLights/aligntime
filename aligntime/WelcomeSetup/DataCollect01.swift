@@ -9,48 +9,6 @@
 import SwiftUI
 import UIKit
 
-struct CustomTextField: UIViewRepresentable {
-    class Coordinator: NSObject, UITextFieldDelegate {
-        @Binding var text: Int
-        var didBecomeFirstResponder = false
-
-        init(text: Binding<Int>) {
-            _text = text
-        }
-
-        func textFieldDidChangeSelection(_ textField: UITextField) {
-            text = Int(textField.text!) ?? 0
-        }
-    }
-
-    @Binding var text: Int
-    var isFirstResponder: Bool = false
-
-    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
-        let textField = UITextField(frame: .zero)
-        textField.delegate = context.coordinator
-        textField.keyboardType = UIKeyboardType.asciiCapableNumberPad
-        return textField
-    }
-
-    func makeCoordinator() -> CustomTextField.Coordinator {
-        return Coordinator(text: $text)
-    }
-
-    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
-        uiView.text = String(text)
-        if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
-            uiView.becomeFirstResponder()
-            context.coordinator.didBecomeFirstResponder = true
-        }
-    }
-}
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
 
 struct DataCollect01: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -74,36 +32,8 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        CustomTextField(text: $user_data.required_aligners_total, isFirstResponder: false)
-                            .keyboardType(.numberPad)
-                        HStack (spacing: 0) {
-                            Button(action: { self.user_data.required_aligners_total -= 1})
-                            {
-                                HStack {
-                                    Image(systemName: "minus")
-                                }.padding(0)
-                                .onTapGesture {
-                                       UIApplication.shared.endEditing()
-                                }
-                                .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
-                                .background(Color.secondary.opacity(0.2))
-                                .foregroundColor(.secondary)
-                                .cornerRadius(5)
-                            }
-                            Divider()
-                                .background(Color.secondary.opacity(0.3))
-                                .frame(maxHeight: 20)
-                            Button(action: { self.user_data.required_aligners_total += 1})
-                            {
-                                HStack {
-                                    Image(systemName: "plus")
-                                }.padding(0)
-                                .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
-                                .background(Color.secondary.opacity(0.2))
-                                .foregroundColor(.secondary)
-                                .cornerRadius(5)
-                            }
-                        }
+                        Text("\(user_data.required_aligners_total)")
+                        Stepper("", value: $user_data.required_aligners_total, in: 1...200)
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -116,33 +46,8 @@ struct DataCollect01: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
-                        CustomTextField(text: $user_data.aligners_wear_days, isFirstResponder: false)
-                            .keyboardType(.asciiCapableNumberPad)
-                        HStack (spacing: 0) {
-                            Button(action: { self.user_data.aligners_wear_days -= 1})
-                            {
-                                HStack {
-                                    Image(systemName: "minus")
-                                }
-                                .frame(minWidth: 0, maxWidth: 50,  minHeight: 30)
-                                .background(Color.secondary.opacity(0.2))
-                                .foregroundColor(.secondary)
-                                .cornerRadius(5)
-                            }
-                            Divider()
-                            .background(Color.secondary.opacity(0.3))
-                            .frame(maxHeight: 20)
-                            Button(action: { self.user_data.aligners_wear_days += 1})
-                            {
-                                HStack {
-                                    Image(systemName: "plus")
-                                }
-                                .frame(minWidth: 0, maxWidth: 50, minHeight: 30)
-                                .background(Color.secondary.opacity(0.2))
-                                .foregroundColor(.secondary)
-                                .cornerRadius(5)
-                            }
-                        }
+                        Text("\(user_data.aligners_wear_days)")
+                        Stepper("", value: $user_data.aligners_wear_days, in: 1...31)
                     }
                     .padding(.horizontal, 20)
                     Divider()
@@ -170,10 +75,6 @@ struct DataCollect01: View {
                     DataCollectControllButton01()
                         .padding(.horizontal,20)
                 }
-                
-            }
-            .onTapGesture {
-                   UIApplication.shared.endEditing()
             }
         }
         .navigationBarBackButtonHidden(view_mode)
