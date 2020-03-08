@@ -294,7 +294,6 @@ final class AlignTime: ObservableObject {
                                         wear:!self.intervals[0].wear,
                                         time: self.intervals[0].time)
         for i in self.intervals{
-            print("ss ",i.wear,i.id,i.time.description(with: .current))
             if (i.wear == previos_event.wear){
                 let new_event = DayInterval(previos_event.id,
                                             wear:!previos_event.wear,
@@ -310,7 +309,7 @@ final class AlignTime: ObservableObject {
     
     func total_wear_time_for_date(date:Date)->TimeInterval{
         var selected_date = Date()
-        if !self.is_selected_date(date:Date()){
+        if self.calendar.compare(selected_date, to: date, toGranularity: .day) == .orderedDescending {
             selected_date = Calendar.current.startOfDay(for: date)
             selected_date = selected_date.advanced(by: 86399)
         }
