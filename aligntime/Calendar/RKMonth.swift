@@ -60,7 +60,7 @@ struct RKMonth: View {
         //print(self.core_data.total_wear_time())
         if self.isEnabled(date: date){
             if !self.isToday(date: date){
-                if self.core_data.total_wear_time_for_date(date:date)<72000{
+                if Int(self.core_data.total_wear_time_for_date(date:date))<((self.core_data.wear_hours*60*60)-1){
                     return Color.orange
                 }
             }
