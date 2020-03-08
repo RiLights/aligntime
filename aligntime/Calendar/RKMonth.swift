@@ -57,8 +57,11 @@ struct RKMonth: View {
     
     func rim_color(date: Date)->Color{
         
+        //print(self.core_data.total_wear_time())
         if self.isEnabled(date: date){
-            return Color.orange
+            if self.core_data.total_wear_time_for_date(date:date)<72000{
+                return Color.orange
+            }
         }
         
         return Color.clear

@@ -308,6 +308,16 @@ final class AlignTime: ObservableObject {
         reasign_intervals_date_id()
     }
     
+    func total_wear_time_for_date(date:Date)->TimeInterval{
+        var selected_date = Date()
+        if !self.is_selected_date(date:Date()){
+            selected_date = Calendar.current.startOfDay(for: date)
+            selected_date = selected_date.advanced(by: 86399)
+        }
+        let val = self.get_wear_timer_for_date(update_time: selected_date)
+        return val
+    }
+    
     func push_user_defaults(){
         defaults.set(required_aligners_total, forKey: "require_count")
         defaults.set(aligners_wear_days, forKey: "aligners_count")
