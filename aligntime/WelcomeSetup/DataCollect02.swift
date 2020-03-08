@@ -44,6 +44,20 @@ struct DataCollect02: View {
                     Divider()
                 }
                 .padding(.bottom,40)
+                VStack(alignment: .center){
+                    Text("Preferred aligners wear hours per day")
+                        .font(.headline)
+                        .padding(.horizontal, 20)
+                        .foregroundColor(.blue)
+                        .multilineTextAlignment(.center)
+                    HStack {
+                        Text("\(user_data.wear_hours)")
+                        Stepper("", value: $user_data.wear_hours, in: 12...24)
+                    }
+                    .padding(.horizontal, 30)
+                    Divider()
+                }
+                .padding(.bottom,40)
                 Spacer()
                 if self.view_mode{
                     DataCollectControllButton02()

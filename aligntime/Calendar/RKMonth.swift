@@ -39,7 +39,8 @@ struct RKMonth: View {
                                             isToday: self.isToday(date: column),
                                             isSelected: self.isSpecialDate(date: column),
                                             isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                        cellWidth: self.cellWidth)
+                                        cellWidth: self.cellWidth,
+                                        rim_color: self.rim_color(date: column))
                                         .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("")
@@ -52,6 +53,15 @@ struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(core_data.colors.monthBackColor)
+    }
+    
+    func rim_color(date: Date)->Color{
+        
+        if self.isEnabled(date: date){
+            return Color.orange
+        }
+        
+        return Color.clear
     }
 
      func isThisMonth(date: Date) -> Bool {
@@ -169,6 +179,5 @@ struct RKMonth: View {
         let clampedDate = RKFormatDate(date: date)
         return core_data.is_present(clampedDate)
     }
-    
 }
 

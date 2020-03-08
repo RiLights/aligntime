@@ -14,6 +14,7 @@ struct RKCell: View {
     var rkDate: RKDate
     
     var cellWidth: CGFloat
+    var rim_color: Color = Color.clear
     
     var body: some View {
         Text(rkDate.getText())
@@ -22,7 +23,12 @@ struct RKCell: View {
             .frame(width: cellWidth, height: cellWidth)
             .font(.system(size: 18))
             .background(rkDate.getBackgroundColor())
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(rim_color, lineWidth: 2)
+            )
             .cornerRadius(cellWidth/2)
+            
     }
 }
 

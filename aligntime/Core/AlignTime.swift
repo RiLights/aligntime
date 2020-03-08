@@ -18,6 +18,7 @@ final class AlignTime: ObservableObject {
     @Published var start_treatment:Date = Date()
     @Published var aligner_number_now:Int = 1
     @Published var current_aligner_days:Int = 1
+    @Published var wear_hours:Int = 20
     
     @Published var days_left:String = "0"
     @Published var wearing_aligners_days:String = "0"

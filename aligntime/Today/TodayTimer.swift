@@ -75,7 +75,7 @@ struct TodayTimer: View {
                         .stroke(Color.primary, lineWidth: 2)
                     Image(systemName: self.core_data.current_state ? "pause.circle" : "play.circle" )
                         .font(.system(size: 90))
-                        .foregroundColor(self.core_data.current_state ? Color.accentColor : Color.red)
+                        .foregroundColor(self.core_data.current_state ? Color.accentColor : Color.orange)
                 }
             }
             .frame(width: 120, height: 120, alignment: .bottom)
