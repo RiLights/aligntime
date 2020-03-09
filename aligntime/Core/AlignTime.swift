@@ -277,19 +277,19 @@ final class AlignTime: ObservableObject {
             return
         }
         
-        let start_event:DayInterval = self.intervals[event_index]
-        let end_event:DayInterval = self.intervals[event_index+1]
+        let start_event = self.intervals[event_index].timestamp
+        let end_event = self.intervals[event_index+1].timestamp
         
-        for i in self.intervals{
-            if (i.time>start_event.time) && (i.time<end_event.time){
-                self.intervals.remove(at: i.id)
-                reasign_intervals_date_id()
-            }
-        }
+        
+        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
+        reasign_intervals_date_id()
         force_event_order()
     }
     
     func force_event_order(){
+        if self.intervals.count == 0{
+            return
+        }
         var previos_event = DayInterval(self.intervals[0].id,
                                         wear:!self.intervals[0].wear,
                                         time: self.intervals[0].time)
@@ -299,7 +299,7 @@ final class AlignTime: ObservableObject {
                                             wear:!previos_event.wear,
                                             time:previos_event.time)
                 //new_event.wear = !new_event.wear
-                new_event.time = new_event.time.advanced(by: 100)
+                new_event.time = new_event.time.advanced(by: 1)
                 self.intervals.insert(new_event, at: new_event.id)
             }
             previos_event = i
@@ -360,7 +360,7 @@ final class AlignTime: ObservableObject {
                     for i in self.intervals{
                         i.time = Date().fromTimestamp(i.timestamp)
                     }
-                    self.current_state = self.intervals[self.intervals.count-1].wear
+                    self.current_state = self.intervals.last.wear
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
@@ -419,8 +419,10 @@ final class AlignTime: ObservableObject {
     /// Calendar Manager
     
     func update_min_max_dates(){
-        self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
-        self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
+        if self.intervals.count != 0{
+            self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
+            self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
+        }
     }
     
     func is_between(_ date: Date) -> Bool {

@@ -12,7 +12,8 @@ import SwiftUICharts
 struct StatisticsView: View {
     var body: some View {
         VStack{
-            LineChartView(data: [80,23,54,32,12,37,7,23,43], title: "Test",rateValue:0,dropShadow:false)
+            Text("ChartView")
+            //LineChartView(data: [80,23,54,32,12,37,7,23,43], title: "Test",rateValue:0,dropShadow:false)
         }
     }
 }

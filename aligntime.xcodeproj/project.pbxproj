@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971423FBCE48006605C5 /* TreatmentPlan.swift */; };
 		F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971623FBCE74006605C5 /* StatisticsView.swift */; };
 		F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */; };
-		F005971C23FBDB4D006605C5 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = F005971B23FBDB4D006605C5 /* SwiftUICharts */; };
 		F005971E23FD2D33006605C5 /* IndividualAlignerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971D23FD2D33006605C5 /* IndividualAlignerManager.swift */; };
 		F005972023FE07B1006605C5 /* IndividualAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971F23FE07B1006605C5 /* IndividualAligner.swift */; };
 		F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */; };
@@ -115,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F005971C23FBDB4D006605C5 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +268,6 @@
 			);
 			name = aligntime;
 			packageProductDependencies = (
-				F005971B23FBDB4D006605C5 /* SwiftUICharts */,
 			);
 			productName = aligntime;
 			productReference = F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */;
@@ -323,7 +320,6 @@
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
 			packageReferences = (
-				F005971A23FBDB4D006605C5 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = F05B5C45238D0A7800BC10C9;
 			projectDirPath = "";
@@ -654,25 +650,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F005971A23FBDB4D006605C5 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.8;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F005971B23FBDB4D006605C5 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F005971A23FBDB4D006605C5 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F05B5C46238D0A7800BC10C9 /* Project object */;
 }
