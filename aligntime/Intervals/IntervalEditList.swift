@@ -89,7 +89,8 @@ struct IntervalEditList: View {
                     }
                 }
             }
-            .sheet(isPresented: self.$showing_picker, onDismiss: { self.core_data.remove_interesected_events(event_index: self.day_index) }) {
+            .sheet(isPresented: self.$showing_picker, onDismiss: {
+                self.core_data.remove_interesected_events(event_index: 80) }) {
                 if (self.core_data.intervals.count<=self.day_index+1){
                     TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
                                end_time:self.$max_time,

@@ -74,9 +74,12 @@ final class AlignTime: ObservableObject {
                 intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: request))
             }
         }
-            
+        
+        
         for (start, end) in intervals.pairs() {
-            total += end!.time.timeIntervalSince(start.time)
+            if end != nil{
+                total += end!.time.timeIntervalSince(start.time)
+            }
         }
         
         return total
@@ -273,15 +276,30 @@ final class AlignTime: ObservableObject {
     }
     
     func remove_interesected_events(event_index:Int){
+        print("event_index",self.intervals[80].timestamp)
+
+//        self.intervals.remove(at: 73)
+//        self.intervals.remove(at: 73)
+//        self.intervals.remove(at: 73)
+//        self.intervals.remove(at: 73)
+//        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+//        self.intervals.remove(at: 73)
+//        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+//        self.intervals.remove(at: 73)
+//        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+//        self.intervals.remove(at: 73)
+//        reasign_intervals_date_id()
+        //force_event_order()
+        
         if self.intervals.count<=event_index+1{
             return
         }
         
         let start_event = self.intervals[event_index].timestamp
-        let end_event = self.intervals[event_index+1].timestamp
+        let end_event = self.intervals[81].timestamp
         
         
-        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
+        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < 1583569776000)) }
         reasign_intervals_date_id()
         force_event_order()
     }
