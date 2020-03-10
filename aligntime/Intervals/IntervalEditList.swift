@@ -22,6 +22,7 @@ struct IntervalEditList: View {
     @State var day_index = 0
     @State var min_time:Date = get_min_time()
     @State var max_time:Date = Date()
+    @State var t:Date = Date()
     
     func get_filtered()-> [DayInterval]{
         if navigation_label == "Wear Times"{
@@ -46,6 +47,7 @@ struct IntervalEditList: View {
                             Button(action: {
                                 self.day_index = i.id
                                 self.showing_picker=true
+                                self.t = i.time
                             }){
                                 HStack(alignment: .center){
                                     Text(i.time_string)
@@ -63,6 +65,25 @@ struct IntervalEditList: View {
                                     }
                                 }
                             }
+                            .sheet(isPresented: self.$showing_picker, onDismiss: {
+                                //let temp = Int(self.day_index)
+                                //self.day_index = 1
+                                self.core_data.remove_interesected_events(event_index: i.id)
+                            }
+                            ) {
+                                if (self.core_data.intervals.count<=self.day_index+1){
+                                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
+                                               end_time:self.$max_time,
+                                               dismiss:self.$showing_picker,
+                                               is_now_time:true).environmentObject(self.core_data)
+                                }
+                                else{
+                                    TimePicker(start_time:self.$t,
+                                               end_time:self.$t,
+                                               dismiss:self.$showing_picker,
+                                               is_now_time:false).environmentObject(self.core_data)
+                                }
+                            }
                             Spacer()
                         }
                     }
@@ -78,6 +99,7 @@ struct IntervalEditList: View {
                 .navigationBarTitle(self.navigation_label)
                 }
                 Button(action: {
+                    //self.core_data.remove_interesected_events(event_index: self.day_index)
                     self.dismiss = false
                 }){
                     ZStack(alignment: .center){
@@ -87,21 +109,6 @@ struct IntervalEditList: View {
                         Text("Return")
                             .foregroundColor(Color.white)
                     }
-                }
-            }
-            .sheet(isPresented: self.$showing_picker, onDismiss: {
-                self.core_data.remove_interesected_events(event_index: 80) }) {
-                if (self.core_data.intervals.count<=self.day_index+1){
-                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
-                               end_time:self.$max_time,
-                               dismiss:self.$showing_picker,
-                               is_now_time:true).environmentObject(self.core_data)
-                }
-                else{
-                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
-                               end_time:self.$core_data.intervals[self.day_index+1].time,
-                               dismiss:self.$showing_picker,
-                               is_now_time:false).environmentObject(self.core_data)
                 }
             }
         }
