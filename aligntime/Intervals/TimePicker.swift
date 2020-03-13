@@ -9,13 +9,10 @@
 import SwiftUI
 
 
-
 struct TimePicker: View {
     @EnvironmentObject var core_data: AlignTime
-    @Binding var start_time:Date
-    @Binding var end_time:Date
     @Binding var dismiss:Bool
-    @State var is_now_time:Bool = false
+    var event_id:Int = 0
     
     var body: some View {
         VStack (spacing:0){
@@ -25,27 +22,35 @@ struct TimePicker: View {
                     .padding()
                 Spacer()
             }
-            DatePicker("", selection: self.$start_time,
-                       in: ...self.end_time,
-                       displayedComponents: .hourAndMinute)
-                .labelsHidden()
+            if (self.core_data.intervals.count > self.event_id+1){
+                DatePicker("", selection: self.$core_data.intervals[event_id].time,
+                           in: ...self.core_data.intervals[event_id+1].time,
+                           displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+            }
+            else if (self.core_data.intervals.count > self.event_id){
+                DatePicker("", selection: self.$core_data.intervals[event_id].time,
+                           in: ...Date(),
+                           displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+            }
             Divider()
             HStack{
                 Text("End Time")
                     .padding()
                 Spacer()
             }
-            if (is_now_time){
+            if (self.core_data.intervals.count<=self.event_id+1){
                  Text("Now")
                     .font(.title)
                     .padding(40)
-             }
+            }
             else{
-                DatePicker("", selection: self.$end_time,
-                           in: self.start_time...Date(),
+                DatePicker("", selection: self.$core_data.intervals[event_id+1].time,
+                           in: self.core_data.intervals[event_id].time...Date(),
                            displayedComponents: .hourAndMinute)
                     .labelsHidden()
-             }
+            }
             Spacer()
             Button(action: {
                 self.dismiss = false

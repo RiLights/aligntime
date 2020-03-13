@@ -21,7 +21,8 @@ struct ProfileManager: View {
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     LinkMenu(icon: "slowmo", label: "About", destination: About(view_mode: false))
                     Button(action: {
-                        self.showingAlert = true
+                        self.rateApp(id:"1497677812")
+                        //self.showingAlert = true
                     }){
                         HStack {
                             Image(systemName: "paperplane")
@@ -36,6 +37,14 @@ struct ProfileManager: View {
             Alert(title: Text("Test"), message: Text("Not Implemented Yet"), dismissButton: .default(Text("Ok")))
         }
     }
+    func rateApp(id : String) {
+        guard let url = URL(string : "itms-apps://itunes.apple.com/app/id\(id)?mt=8&action=write-review") else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
     private var profileButton: some View {
         Button(action: { }) {
             Image(systemName: "person.crop.circle")
@@ -43,7 +52,7 @@ struct ProfileManager: View {
     }
 
     func LinkMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
-        //self.user_data.update_today_dates()
+        self.user_data.update_individual_aligners()
         return NavigationLink(destination: destination) {
             HStack {
                 Image(systemName: icon)

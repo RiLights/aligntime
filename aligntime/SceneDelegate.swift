@@ -44,11 +44,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
             (granted, error) in
-            if granted {
-                print("debug: granted Notification")
-            } else {
-                print("debug: not granted Notification")
-            }
         }
         
     }

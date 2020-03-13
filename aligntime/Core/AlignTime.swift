@@ -36,7 +36,7 @@ final class AlignTime: ObservableObject {
     @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
-    @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
+    @Published var selected_month = 0//Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     
     @Published var current_state = true
     
@@ -134,13 +134,14 @@ final class AlignTime: ObservableObject {
         self.wearing_aligners_days = String(days_interval.days)
         
         let aligners_days_left:Int = get_custom_aligners_days_left(start_aligner:self.aligner_number_now-1)
-        //let days_left_digit = ((self.required_aligners_total-(self.aligner_number_now-1)) * self.aligners_wear_days) - self.current_aligner_days
         let total_days_left_digit:Int = aligners_days_left - self.current_aligner_days
         
         let days_left_string = String(total_days_left_digit)
         if (self.days_left != days_left_string){
              self.days_left = days_left_string
         }
+        
+        current_state = self.intervals.last.wear
     }
     
     func update_individual_aligners(){
@@ -276,29 +277,15 @@ final class AlignTime: ObservableObject {
     }
     
     func remove_interesected_events(event_index:Int){
-        print("event_index",self.intervals.count)
-        //print("event_index81",self.intervals[81].timestamp)
-
-        self.intervals.remove(at: 73)
-        self.intervals.remove(at: 73)
-        self.intervals.remove(at: 73)
-        self.intervals.remove(at: 73)
-        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
-        self.intervals.remove(at: 73)
-        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
-        self.intervals.remove(at: 73)
-        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
-        self.intervals.remove(at: 73)
-        //reasign_intervals_date_id()
-        //force_event_order()
-        return
-        if self.intervals.count<=event_index+1{
-             return
-        }
-        
+//        if self.intervals.count<event_index{
+//             return
+//        }
+        print(self.intervals.count,event_index)
         let start_event = self.intervals[event_index].timestamp
-        let end_event = self.intervals[81].timestamp
-        
+        var end_event = Date().timestamp()
+        if self.intervals.count>event_index+1{
+             end_event = self.intervals[event_index+1].timestamp
+        }
         
         self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
         reasign_intervals_date_id()
@@ -316,7 +303,7 @@ final class AlignTime: ObservableObject {
             if (i.wear == previos_event.wear){
                 let new_event = DayInterval(previos_event.id,
                                             wear:!previos_event.wear,
-                                            time:previos_event.time)
+                                            time:i.time.advanced(by: -2))
                 //new_event.wear = !new_event.wear
                 new_event.time = new_event.time.advanced(by: 1)
                 self.intervals.insert(new_event, at: new_event.id)
@@ -348,6 +335,11 @@ final class AlignTime: ObservableObject {
         if let encoded = try? encoder.encode(self.intervals) {
             defaults.set(encoded, forKey: "intervals")
         }
+        
+        let encoder_aligners = JSONEncoder()
+        if let encoded_aligners = try? encoder_aligners.encode(self.aligners) {
+            defaults.set(encoded_aligners, forKey: "aligners")
+        }
     }
   
     func pull_user_defaults(){
@@ -371,6 +363,7 @@ final class AlignTime: ObservableObject {
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
         }
         
+        // Event
         if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
             let decoder = JSONDecoder()
             if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
@@ -383,6 +376,19 @@ final class AlignTime: ObservableObject {
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
+                }
+            }
+        }
+        
+        // Aligners
+        if let temp_data_aligners = defaults.object(forKey: "aligners") as? Data {
+            let decoder_aligners = JSONDecoder()
+            if let temp_aligners = try? decoder_aligners.decode([IndividualAligner].self, from: temp_data_aligners) {
+                if temp_aligners.count != 0 {
+                    self.aligners = temp_aligners
+                }
+                else{
+                    self.update_individual_aligners()
                 }
             }
         }
@@ -438,7 +444,7 @@ final class AlignTime: ObservableObject {
     /// Calendar Manager
     
     func update_min_max_dates(){
-        if self.intervals.count != 0{
+        if self.intervals.count != 0 {
             self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
             self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
         }

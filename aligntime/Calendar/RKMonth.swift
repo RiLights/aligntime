@@ -57,7 +57,6 @@ struct RKMonth: View {
     
     func rim_color(date: Date)->Color{
         
-        //print(self.core_data.total_wear_time())
         if self.isEnabled(date: date){
             if !self.isToday(date: date){
                 if Int(self.core_data.total_wear_time_for_date(date:date))<((self.core_data.wear_hours*60*60)-1){
@@ -75,7 +74,6 @@ struct RKMonth: View {
     
     func dateTapped(date: Date) {
         if self.isEnabled(date: date) {
-            //print("dateTapped")
             self.core_data.selected_date = date
         }
     }

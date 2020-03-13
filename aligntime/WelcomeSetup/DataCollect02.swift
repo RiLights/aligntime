@@ -63,6 +63,20 @@ struct DataCollect02: View {
                     DataCollectControllButton02()
                         .padding(.horizontal,20)
                 }
+                else{
+                    Button(action: {
+                        self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
+                        self.user_data.update_min_max_dates()
+                    }){
+                        ZStack(alignment: .center){
+                            Rectangle()
+                               .frame(height: 35)
+                               .foregroundColor(Color.blue)
+                            Text("Reset All History")
+                                .foregroundColor(Color.white)
+                        }
+                    }
+                }
             }
         }
         .navigationBarTitle("")

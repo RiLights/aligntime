@@ -80,7 +80,6 @@ struct IntervalEditList: View {
                 .navigationBarTitle(self.navigation_label)
                 }
                 Button(action: {
-                    //self.core_data.remove_interesected_events(event_index: self.day_index)
                     self.dismiss = false
                 }){
                     ZStack(alignment: .center){
@@ -93,31 +92,14 @@ struct IntervalEditList: View {
                 }
             }
             .sheet(isPresented: self.$showing_picker, onDismiss: {
-                //let temp = Int(self.day_index)
-                //self.day_index = 1
                 self.core_data.remove_interesected_events(event_index: self.day_index)
             }
             ) {
-                TimePicker2(event_id:self.day_index).environmentObject(self.core_data)
-//                                if (self.core_data.intervals.count<=self.day_index+1){
-//                                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
-//                                               end_time:self.$max_time,
-//                                               dismiss:self.$showing_picker,
-//                                               is_now_time:true).environmentObject(self.core_data)
-//                                }
-//                                else{
-//                                    TimePicker(start_time:self.$t,
-//                                               end_time:self.$t,
-//                                               dismiss:self.$showing_picker,
-//                                               is_now_time:false).environmentObject(self.core_data)
-//                                }
+                TimePicker(dismiss:self.$showing_picker,event_id:self.day_index).environmentObject(self.core_data)
             }
         }
     }
 
-    func test()->Void{
-        print("hello")
-    }
     func add_off_event() {
         let unsorted = get_filtered_all()
         let sorted = unsorted.sorted(by: { $0.id < $1.id })

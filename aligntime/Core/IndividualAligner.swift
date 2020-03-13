@@ -8,10 +8,10 @@
 
 import Foundation
 
-class IndividualAligner: Identifiable,ObservableObject{
+class IndividualAligner: Identifiable,ObservableObject,Codable{
     var id: Int = 0
-    @Published var days:Int = 7
-    @Published var aligner_number:Int = 1
+    var days:Int = 7
+    var aligner_number:Int = 1
     
     init(){}
     init(_ id: Int, days: Int, aligner_number: Int ) {
@@ -20,4 +20,16 @@ class IndividualAligner: Identifiable,ObservableObject{
         self.id = id
     }
     
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case days
+        case aligner_number
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
+        days = try values.decode(Int.self, forKey: .days)
+        aligner_number = try values.decode(Int.self, forKey: .aligner_number)
+    }
 }

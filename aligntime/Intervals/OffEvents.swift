@@ -38,14 +38,13 @@ struct OffEvents: View {
                 Text("Off Times:")
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
-                    .frame(width: 220)
                 ForEach(core_data.get_off_days()) { i in
                     HStack{
                         Text("\(i.time_string )")
                             .font(.system(size: 18))
                             .fontWeight(.light)
                             .foregroundColor(self.intervals_color_day(date:i.time))
-                            //.frame(width: 50)
+                            .frame(width: 50)
                         Text("-")
                             .foregroundColor(.accentColor)
                             .font(.system(size: 21))
@@ -77,6 +76,7 @@ struct OffEvents: View {
                     }
                 }
             }
+            .frame(width: 220)
         }
     }
 }
