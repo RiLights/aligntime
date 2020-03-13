@@ -16,7 +16,18 @@ struct TimePicker2: View {
     var body: some View {
         VStack (spacing:0){
             Spacer()
-            Text("qwe")
+            HStack{
+                Text("Start Time")
+                    .padding()
+                Spacer()
+            }
+            if (self.core_data.intervals.count > self.event_id){
+                DatePicker("", selection: self.$core_data.intervals[event_id].time,
+                           in: ...Date(),
+                           displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+            }
+            Divider()
         }
     }
 }

@@ -293,7 +293,7 @@ final class AlignTime: ObservableObject {
         //force_event_order()
         return
         if self.intervals.count<=event_index+1{
-            return
+             return
         }
         
         let start_event = self.intervals[event_index].timestamp
