@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SwiftUICharts
 
 struct StatisticsView: View {
     var body: some View {
