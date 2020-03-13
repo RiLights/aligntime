@@ -40,6 +40,7 @@
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
+		F0D255A32417990A0005B749 /* TimePicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D255A22417990A0005B749 /* TimePicker2.swift */; };
 		F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E3882123E8204400B758C7 /* AlignTimeTests.swift */; };
 		F0FCAF1D24009B5B00378FAB /* OffEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAF1C24009B5B00378FAB /* OffEvents.swift */; };
 		F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */; };
@@ -97,6 +98,7 @@
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
+		F0D255A22417990A0005B749 /* TimePicker2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker2.swift; sourceTree = "<group>"; };
 		F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlignTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E3882123E8204400B758C7 /* AlignTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTimeTests.swift; sourceTree = "<group>"; };
 		F0E3882323E8204400B758C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				F0FCAF1C24009B5B00378FAB /* OffEvents.swift */,
 				F0FEDB3823C410A100682F85 /* IntervalEditList.swift */,
 				F0FEDB3D23C8685300682F85 /* TimerPicker.swift */,
+				F0D255A22417990A0005B749 /* TimePicker2.swift */,
 			);
 			path = Intervals;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */,
 				F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */,
 				F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */,
+				F0D255A32417990A0005B749 /* TimePicker2.swift in Sources */,
 				F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */,
 				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,

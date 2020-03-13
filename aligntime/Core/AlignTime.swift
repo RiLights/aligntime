@@ -276,18 +276,18 @@ final class AlignTime: ObservableObject {
     }
     
     func remove_interesected_events(event_index:Int){
-        //print("event_index",self.intervals[80].timestamp)
+        print("event_index",self.intervals.count)
         //print("event_index81",self.intervals[81].timestamp)
 
         self.intervals.remove(at: 73)
         self.intervals.remove(at: 73)
         self.intervals.remove(at: 73)
         self.intervals.remove(at: 73)
-        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
         self.intervals.remove(at: 73)
-        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
         self.intervals.remove(at: 73)
-        print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
+        //print("self.intervals",self.intervals[73].time.description(with: .current),self.intervals[73].wear)
         self.intervals.remove(at: 73)
         //reasign_intervals_date_id()
         //force_event_order()

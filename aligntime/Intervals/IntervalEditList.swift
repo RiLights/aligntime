@@ -65,25 +65,6 @@ struct IntervalEditList: View {
                                     }
                                 }
                             }
-                            .sheet(isPresented: self.$showing_picker, onDismiss: {
-                                //let temp = Int(self.day_index)
-                                //self.day_index = 1
-                                self.core_data.remove_interesected_events(event_index: i.id)
-                            }
-                            ) {
-                                if (self.core_data.intervals.count<=self.day_index+1){
-                                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
-                                               end_time:self.$max_time,
-                                               dismiss:self.$showing_picker,
-                                               is_now_time:true).environmentObject(self.core_data)
-                                }
-                                else{
-                                    TimePicker(start_time:self.$t,
-                                               end_time:self.$t,
-                                               dismiss:self.$showing_picker,
-                                               is_now_time:false).environmentObject(self.core_data)
-                                }
-                            }
                             Spacer()
                         }
                     }
@@ -110,6 +91,26 @@ struct IntervalEditList: View {
                             .foregroundColor(Color.white)
                     }
                 }
+            }
+            .sheet(isPresented: self.$showing_picker, onDismiss: {
+                //let temp = Int(self.day_index)
+                //self.day_index = 1
+                self.core_data.remove_interesected_events(event_index: self.day_index)
+            }
+            ) {
+                TimePicker2(event_id:self.day_index).environmentObject(self.core_data)
+//                                if (self.core_data.intervals.count<=self.day_index+1){
+//                                    TimePicker(start_time:self.$core_data.intervals[self.day_index].time,
+//                                               end_time:self.$max_time,
+//                                               dismiss:self.$showing_picker,
+//                                               is_now_time:true).environmentObject(self.core_data)
+//                                }
+//                                else{
+//                                    TimePicker(start_time:self.$t,
+//                                               end_time:self.$t,
+//                                               dismiss:self.$showing_picker,
+//                                               is_now_time:false).environmentObject(self.core_data)
+//                                }
             }
         }
     }
