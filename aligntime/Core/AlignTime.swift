@@ -376,6 +376,7 @@ final class AlignTime: ObservableObject {
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
+                    self.current_state = true
                 }
             }
         }

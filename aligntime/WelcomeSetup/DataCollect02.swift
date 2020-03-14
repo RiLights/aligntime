@@ -12,6 +12,7 @@ struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
+    @State var reset_alert = false
 
     var body: some View {
         Section {
@@ -65,8 +66,9 @@ struct DataCollect02: View {
                 }
                 else{
                     Button(action: {
-                        self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
-                        self.user_data.update_min_max_dates()
+                        self.reset_alert.toggle()
+                        //self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
+                        //self.user_data.update_min_max_dates()
                     }){
                         ZStack(alignment: .center){
                             Rectangle()
@@ -82,6 +84,13 @@ struct DataCollect02: View {
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(view_mode)
         .navigationBarHidden(view_mode)
+        .alert(isPresented: self.$reset_alert) {
+            Alert(title: Text("Test"), message: Text("Do you want to erase all history?"), primaryButton: .destructive(Text("Erase")) {
+                self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
+                self.user_data.current_state = true
+                self.user_data.update_min_max_dates()
+                },secondaryButton: .cancel())
+        }
     }
 }
 

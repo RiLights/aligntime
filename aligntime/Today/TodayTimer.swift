@@ -25,7 +25,9 @@ struct TodayTimer: View {
     func pause_timer(time_interval:Double){
         self.core_data.current_state = false
         self.core_data.switch_timer()
-        self.core_data.send_notification(time_interval: time_interval)
+        if time_interval != 0 {
+            self.core_data.send_notification(time_interval: time_interval)
+        }
     }
     
     var body: some View {
@@ -83,9 +85,7 @@ struct TodayTimer: View {
         .actionSheet(isPresented: $show_reminder) {
             ActionSheet(title: Text("Reminder"),
                         message: Text("You will receive notification in the time interval they’ve selected"),
-                        buttons: [.default(Text("10 Seconds (for debug)"),action: {
-                                        self.pause_timer(time_interval: 10)
-                                    }),
+                        buttons: [
                                   .default(Text("15 Minutes"), action: {
                                         self.pause_timer(time_interval: 900)
                                   }),
@@ -94,6 +94,9 @@ struct TodayTimer: View {
                                   }),
                                   .default(Text("1 Hour"), action: {
                                         self.pause_timer(time_interval: 3600)
+                                  }),
+                                  .default(Text("No Reminder"),action: {
+                                      self.pause_timer(time_interval: 0)
                                   }),
                                   .cancel(),
             ])
