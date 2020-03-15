@@ -49,6 +49,7 @@ final class AlignTime: ObservableObject {
     
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
         var total:TimeInterval = 0
+        
         if self.intervals.count == 0 {
             return total
         }
@@ -66,16 +67,19 @@ final class AlignTime: ObservableObject {
         }
         else {
             if intervals.first.wear != wear {
-                let local = request.setTime(hour: 0, min: 0, sec: 0)!
-                intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: local))
+                if intervals.count != self.intervals.count {
+                    let local = request.setTime(hour: 0, min: 0, sec: 0)!
+                    intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: local))
+                }
+                else{
+                    intervals.prepend(DayInterval(intervals.first.id-1, wear: wear,time: intervals.first.time))
+                }
             }
-            
             if intervals.last.wear == wear {
                 intervals.append(DayInterval(intervals.last.id+1, wear: !wear,time: request))
             }
         }
-        
-        
+
         for (start, end) in intervals.pairs() {
             if end != nil{
                 total += end!.time.timeIntervalSince(start.time)
@@ -277,10 +281,10 @@ final class AlignTime: ObservableObject {
     }
     
     func remove_interesected_events(event_index:Int){
-//        if self.intervals.count<event_index{
-//             return
-//        }
-        print(self.intervals.count,event_index)
+        if self.intervals.count==1{
+             return
+        }
+        
         let start_event = self.intervals[event_index].timestamp
         var end_event = Date().timestamp()
         if self.intervals.count>event_index+1{

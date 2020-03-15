@@ -108,6 +108,10 @@ struct IntervalEditList: View {
     }
     
     func delete(at offsets: IndexSet) {
+        if self.core_data.intervals.count==2{
+             return
+        }
+        
         let interval_index = self.get_filtered()[offsets.first!].id
         
         if self.core_data.intervals.count > interval_index{
