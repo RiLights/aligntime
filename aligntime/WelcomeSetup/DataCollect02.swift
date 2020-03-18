@@ -85,7 +85,7 @@ struct DataCollect02: View {
         .navigationBarBackButtonHidden(view_mode)
         .navigationBarHidden(view_mode)
         .alert(isPresented: self.$reset_alert) {
-            Alert(title: Text("Test"), message: Text("Do you want to erase all history?"), primaryButton: .destructive(Text("Erase")) {
+            Alert(title: Text("Reset All History"), message: Text("Do you want to erase all history?"), primaryButton: .destructive(Text("Erase")) {
                 self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
                 self.user_data.current_state = true
                 self.user_data.update_min_max_dates()

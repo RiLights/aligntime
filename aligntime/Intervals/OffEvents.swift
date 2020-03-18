@@ -76,7 +76,7 @@ struct OffEvents: View {
                     }
                 }
             }
-            .frame(width: 220)
+            .frame(width: 250)
         }
     }
 }

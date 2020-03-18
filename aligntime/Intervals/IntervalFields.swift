@@ -15,6 +15,13 @@ struct IntervalFields: View {
     @State var show_modal = false
     @State var intervals:[DayInterval] = []
     
+    var date_formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        //formatter.dateFormat = "dd MMMM"
+        return formatter
+    }
+    
     var body: some View {
         VStack{
             ScrollView(.vertical) {
@@ -24,6 +31,11 @@ struct IntervalFields: View {
                 }
             }
             Divider()
+            Text("Selected Date: \(self.core_data.selected_date, formatter: date_formatter)")
+                .foregroundColor(.accentColor)
+                .font(.system(size: 15))
+                .padding(.bottom,5)
+                .animation(.none)
             Text("Total Wear Time: \(hour_timer_format(self.core_data.total_wear_time_for_date(date:self.core_data.selected_date))!)")
                 .foregroundColor(.accentColor)
                 .font(.system(size: 18))
