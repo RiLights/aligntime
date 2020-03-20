@@ -43,6 +43,7 @@ final class AlignTime: ObservableObject {
     let notification_identifier01 = "AlignTime.id.01"
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
+    let notification_identifier04 = "AlignTime.id.04"
     
     var colors = RKColorSettings()
 
@@ -426,6 +427,12 @@ final class AlignTime: ObservableObject {
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        content.body = "Did you forgot to start the timer?"
+
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+1200, repeats: false)
+        request = UNNotificationRequest(identifier: notification_identifier04, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func resetDefaults() {
@@ -444,6 +451,8 @@ final class AlignTime: ObservableObject {
         center.removeDeliveredNotifications(withIdentifiers: [notification_identifier02])
         center.removePendingNotificationRequests(withIdentifiers: [notification_identifier03])
         center.removeDeliveredNotifications(withIdentifiers: [notification_identifier03])
+        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier04])
+        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier04])
     }
     
     /// Calendar Manager

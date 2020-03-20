@@ -16,7 +16,7 @@ struct IndividualAlignerManager: View {
     var body: some View {
         List {
             ForEach(user_data.aligners) { aligner in
-                Stepper("Aligner #\(aligner.aligner_number): Day \(aligner.days)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
+                Stepper("Aligner #\(aligner.aligner_number): \(aligner.days) Day(s)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
             }
         }
         .navigationBarTitle(Text("Aligner Adjustment"))

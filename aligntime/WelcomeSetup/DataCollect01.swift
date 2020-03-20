@@ -39,6 +39,7 @@ struct DataCollect01: View {
                     Divider()
                 }
                 .padding(.bottom,40)
+                .padding(.top, 30)
                 VStack(alignment: .center){
                     Text("Number of days for each aligners")
                         .font(.headline)

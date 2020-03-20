@@ -83,8 +83,8 @@ struct TodayTimer: View {
             .frame(width: 120, height: 120, alignment: .bottom)
         }
         .actionSheet(isPresented: $show_reminder) {
-            ActionSheet(title: Text("Reminder"),
-                        message: Text("You will receive notification in the time interval they’ve selected"),
+            ActionSheet(title: Text("Wear Time Reminder"),
+                        message: Text("Remind me to wear aligners again in"),
                         buttons: [
                                   .default(Text("15 Minutes"), action: {
                                         self.pause_timer(time_interval: 900)
