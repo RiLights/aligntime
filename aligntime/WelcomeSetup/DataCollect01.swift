@@ -75,6 +75,7 @@ struct DataCollect01: View {
                 if self.view_mode{
                     DataCollectControllButton01()
                         .padding(.horizontal,20)
+                        .padding(.bottom,5)
                 }
                 else{
                     NavigationLink(destination: DataCollect02(view_mode:false)) {
@@ -86,6 +87,7 @@ struct DataCollect01: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    .padding(.bottom,5)
                 }
             }
         }

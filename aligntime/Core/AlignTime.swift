@@ -377,7 +377,7 @@ final class AlignTime: ObservableObject {
                     for i in self.intervals{
                         i.time = Date().fromTimestamp(i.timestamp)
                     }
-                    self.current_state = self.intervals.last.wear
+                    self.current_state = true//self.intervals.last.wear
                 }
                 else{
                     self.intervals = [DayInterval(0, wear: true, time: Date())]
@@ -428,7 +428,7 @@ final class AlignTime: ObservableObject {
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        content.body = "Did you forgot to start the timer?"
+        content.body = "Did you forget to start the timer?"
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+1200, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier04, content: content, trigger: trigger)

@@ -63,6 +63,7 @@ struct DataCollect02: View {
                 if self.view_mode{
                     DataCollectControllButton02()
                         .padding(.horizontal,20)
+                        .padding(.bottom,5)
                 }
                 else{
                     Button(action: {
@@ -78,6 +79,7 @@ struct DataCollect02: View {
                                 .foregroundColor(Color.white)
                         }
                     }
+                    .padding(.bottom,5)
                 }
             }
         }
