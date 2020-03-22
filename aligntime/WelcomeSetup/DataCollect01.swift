@@ -25,9 +25,9 @@ struct DataCollect01: View {
     
     var body: some View {
         Section() {
-            VStack(alignment: .center){
+            VStack(alignment: .leading){
                 VStack(alignment: .center){
-                    Text("How many aligners do you require for your treatment?")
+                    Text("How many aligners do you require?")
                         .font(.headline)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
@@ -35,11 +35,10 @@ struct DataCollect01: View {
                         Text("\(user_data.required_aligners_total)")
                         Stepper("", value: $user_data.required_aligners_total, in: 1...200)
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 30)
                     Divider()
                 }
-                .padding(.bottom,40)
-                .padding(.top, 30)
+                //.padding(.top, 30)
                 VStack(alignment: .center){
                     Text("Number of days for each aligners")
                         .font(.headline)
@@ -50,16 +49,16 @@ struct DataCollect01: View {
                         Text("\(user_data.aligners_wear_days)")
                         Stepper("", value: $user_data.aligners_wear_days, in: 1...31)
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 30)
                     Divider()
                 }
-                .padding(.bottom,40)
+                .padding(.bottom)
                 VStack(alignment: .center){
                     Text("When did you start your treatment?")
                         .font(.headline)
                         //.fontWeight(.regular)
                         .foregroundColor(.blue)
-                        .padding(.horizontal, 30)
+                        //.padding(.horizontal, 30)
                         .multilineTextAlignment(.center)
                     DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
                             Text("")
@@ -68,8 +67,8 @@ struct DataCollect01: View {
                     Text("Start date is: \(user_data.start_treatment, formatter: dateFormatter)")
                         .font(.footnote)
                         .foregroundColor(.blue)
-                        .padding(.horizontal, 30)
                 }
+                .padding(.horizontal, 40)
                 
                 Spacer()
                 if self.view_mode{
@@ -91,7 +90,9 @@ struct DataCollect01: View {
                 }
             }
         }
+        //.navigationBarTitle("")
         .navigationBarBackButtonHidden(view_mode)
+        //.navigationBarHidden(view_mode)
     }
 }
 

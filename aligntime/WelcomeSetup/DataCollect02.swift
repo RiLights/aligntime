@@ -16,7 +16,7 @@ struct DataCollect02: View {
 
     var body: some View {
         Section {
-            VStack(alignment: .center){
+            VStack(alignment: .leading){
                 VStack(alignment: .center){
                     Text("Aligner number you are wearing now")
                         .font(.headline)
@@ -34,7 +34,7 @@ struct DataCollect02: View {
                 VStack(alignment: .center){
                     Text("How many days have you been wearing current aligner for?")
                         .font(.headline)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 30)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
@@ -48,7 +48,7 @@ struct DataCollect02: View {
                 VStack(alignment: .center){
                     Text("Preferred aligners wear hours per day")
                         .font(.headline)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 30)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
