@@ -27,7 +27,7 @@ struct DataCollect01: View {
         Section() {
             VStack(alignment: .leading){
                 VStack(alignment: .center){
-                    Text("How many aligners do you require?")
+                    Text(NSLocalizedString("How many aligners do you require?",comment:""))
                         .font(.headline)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct DataCollect01: View {
                 }
                 //.padding(.top, 30)
                 VStack(alignment: .center){
-                    Text("Number of days for each aligners")
+                    Text(NSLocalizedString("Number of days for each aligners",comment:""))
                         .font(.headline)
                         //.fontWeight(.regular)
                         .foregroundColor(.blue)
@@ -54,7 +54,7 @@ struct DataCollect01: View {
                 }
                 .padding(.bottom)
                 VStack(alignment: .center){
-                    Text("When did you start your treatment?")
+                    Text(NSLocalizedString("When did you start your treatment?",comment:""))
                         .font(.headline)
                         //.fontWeight(.regular)
                         .foregroundColor(.blue)
@@ -82,7 +82,7 @@ struct DataCollect01: View {
                             Rectangle()
                                 .frame(height: 40)
                                 .padding(0)
-                            Text("Next")
+                            Text(NSLocalizedString("Next",comment:""))
                                 .foregroundColor(.white)
                         }
                     }
@@ -110,7 +110,7 @@ struct DataCollectControllButton01: View {
                         .frame(height: 40)
                         .foregroundColor(Color.secondary)
                         .opacity(0.5)
-                    Text("Back")
+                    Text(NSLocalizedString("Back",comment:""))
                         .foregroundColor(Color.white)
                 }
             }
@@ -119,7 +119,7 @@ struct DataCollectControllButton01: View {
                     Rectangle()
                         .frame(height: 40)
                         .padding(0)
-                    Text("Next")
+                    Text(NSLocalizedString("Next",comment:""))
                         .foregroundColor(.white)
                 }
             }

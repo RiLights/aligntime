@@ -31,16 +31,14 @@ struct IntervalFields: View {
                 }
             }
             Divider()
-//            Text("Selected Date: \(self.core_data.selected_date, formatter: date_formatter)")
-//                .foregroundColor(.accentColor)
-//                .font(.system(size: 15))
-//                .padding(.bottom,5)
-//                .animation(.none)
-            Text("Total Wear Time: \(hour_timer_format(self.core_data.total_wear_time_for_date(date:self.core_data.selected_date))!)")
-                .foregroundColor(.accentColor)
-                .font(.system(size: 18))
-                .padding(.bottom, 5)
-                .animation(.none)
+            HStack{
+                Text(NSLocalizedString("Total Wear Time:",comment:""))
+                Text("\(hour_timer_format(self.core_data.total_wear_time_for_date(date:self.core_data.selected_date))!)")
+            }
+             .foregroundColor(.accentColor)
+             .font(.system(size: 18))
+             .padding(.bottom, 5)
+             .animation(.none)
         }
         .sheet(isPresented: self.$show_modal) {
             IntervalEditList(navigation_label: self.$navigation_label,dismiss:self.$show_modal).environmentObject(self.core_data)

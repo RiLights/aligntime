@@ -16,17 +16,17 @@ struct ProfileManager: View {
             NavigationView {
                 List {
                     //LinkMenu(icon: "chart.pie", label: "View Wear Time Statistics", destination: StatisticsView())
-                    LinkMenu(icon: "doc.plaintext", label: "Modify Treatment Plan", destination: TreatmentPlan())
-                    LinkMenu(icon: "list.bullet.indent", label: "Individual Aligner Adjust", destination: IndividualAlignerManager())
+                    LinkMenu(icon: "doc.plaintext", label: NSLocalizedString("Modify Treatment Plan",comment: ""), destination: TreatmentPlan())
+                    LinkMenu(icon: "list.bullet.indent", label: NSLocalizedString("Individual Aligner Adjust",comment: ""), destination: IndividualAlignerManager())
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
-                    LinkMenu(icon: "slowmo", label: "About", destination: About(view_mode: false))
+                    LinkMenu(icon: "slowmo", label: NSLocalizedString("About",comment: ""), destination: About(view_mode: false))
                     Button(action: {
                         self.rateApp(id:"1497677812")
                         //self.showingAlert = true
                     }){
                         HStack {
                             Image(systemName: "paperplane")
-                            Text("Give Us Feedback")
+                            Text(NSLocalizedString("Give Us Feedback",comment: ""))
                         }
                     }
                 }.navigationBarTitle(Text("AlignTime"), displayMode: .automatic)

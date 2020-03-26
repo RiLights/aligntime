@@ -14,13 +14,13 @@ struct TodayDaysLeft: View {
     var body: some View {
         VStack{
             HStack(alignment: .center, spacing: 4) {
-                Text("You have been wearing aligners for")
+                Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
                 Text(self.core_data.wearing_aligners_days)
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
-                Text("days")
+                Text(NSLocalizedString("days",comment:""))
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
             }
@@ -31,7 +31,7 @@ struct TodayDaysLeft: View {
                     .padding(.leading, 5)
                     .padding(.top, 7)
                     .padding(.bottom, 30)
-                Text("days left until the end of your treatment")
+                Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
                     .padding(.trailing, 5)

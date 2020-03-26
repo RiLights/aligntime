@@ -16,7 +16,7 @@ struct About: View {
         Section {
             VStack(alignment: .center){
                 Image("iter02_2_welcome_small")
-                Text("AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.")
+                Text(NSLocalizedString("About_AlignTime",comment:""))
                     .font(.system(size: 17))
                     .fontWeight(.regular)
                     .foregroundColor(.secondary)
@@ -47,7 +47,7 @@ struct AboutControllButton: View {
                         .frame(height: 40)
                         .foregroundColor(Color.secondary)
                         .opacity(0.5)
-                    Text("Back")
+                    Text(NSLocalizedString("Back",comment:""))
                         .foregroundColor(Color.white)
                 }
             }

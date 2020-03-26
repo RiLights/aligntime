@@ -35,7 +35,7 @@ struct OffEvents: View {
             self.show_modal.toggle()
         }) {
             VStack{
-                Text("Off Times:")
+                Text(NSLocalizedString("Off Times:",comment:""))
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
                 ForEach(core_data.get_off_days()) { i in
@@ -49,7 +49,7 @@ struct OffEvents: View {
                             .foregroundColor(.accentColor)
                             .font(.system(size: 21))
                         if (self.core_data.intervals.count<=i.id+1){
-                            Text("Now")
+                            Text(NSLocalizedString("Now",comment:""))
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
                                 .foregroundColor(.accentColor)

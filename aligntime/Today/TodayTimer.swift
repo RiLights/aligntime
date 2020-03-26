@@ -34,7 +34,7 @@ struct TodayTimer: View {
         VStack{
             VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 4) {
-                    Text("Wear time: ")
+                    Text(NSLocalizedString("Wear time: ",comment:""))
                         .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                         .padding(.bottom, 5)
@@ -44,7 +44,7 @@ struct TodayTimer: View {
                         .padding(.bottom, 5)
                 }
                 HStack(alignment: .center, spacing: 0) {
-                    Text("Out time: ")
+                    Text(NSLocalizedString("Out time: ",comment:""))
                         .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                     Text(off_time)
@@ -83,19 +83,19 @@ struct TodayTimer: View {
             .frame(width: 120, height: 120, alignment: .bottom)
         }
         .actionSheet(isPresented: $show_reminder) {
-            ActionSheet(title: Text("Wear Time Reminder"),
-                        message: Text("Remind me to wear aligners again in"),
+            ActionSheet(title: Text(NSLocalizedString("Wear Time Reminder",comment:"")),
+                        message: Text(NSLocalizedString("Remind me to wear aligners again in",comment:"")),
                         buttons: [
-                                  .default(Text("15 Minutes"), action: {
+                                  .default(Text(NSLocalizedString("15 Minutes",comment:"")), action: {
                                         self.pause_timer(time_interval: 900)
                                   }),
-                                  .default(Text("30 Minutes"), action: {
+                                  .default(Text(NSLocalizedString("30 Minutes",comment:"")), action: {
                                         self.pause_timer(time_interval: 1800)
                                   }),
-                                  .default(Text("1 Hour"), action: {
+                                  .default(Text(NSLocalizedString("1 Hour",comment:"")), action: {
                                         self.pause_timer(time_interval: 3600)
                                   }),
-                                  .default(Text("No Reminder"),action: {
+                                  .default(Text(NSLocalizedString("No Reminder",comment:"")),action: {
                                       self.pause_timer(time_interval: 0)
                                   }),
                                   .cancel(),

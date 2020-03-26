@@ -16,10 +16,10 @@ struct IndividualAlignerManager: View {
     var body: some View {
         List {
             ForEach(user_data.aligners) { aligner in
-                Stepper("Aligner #\(aligner.aligner_number): \(aligner.days) Day(s)", value: self.$user_data.aligners[aligner.id].days, in: 1...20)
+                Stepper(String(format: NSLocalizedString("Aligner # %d: %d Day(s)",comment: ""),aligner.aligner_number,aligner.days), value: self.$user_data.aligners[aligner.id].days, in: 1...20)
             }
         }
-        .navigationBarTitle(Text("Aligner Adjustment"))
+        .navigationBarTitle(Text(NSLocalizedString("Aligner Adjustment",comment:"")))
     }
     private func addRow() {
         let count = self.user_data.aligners.count

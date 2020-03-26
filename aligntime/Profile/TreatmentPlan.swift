@@ -20,7 +20,7 @@ struct TreatmentPlan: View {
         VStack(alignment: .trailing, spacing: 18) {
             DataCollect01(view_mode: false)
         }
-        .navigationBarTitle(Text("Treatment Plan"), displayMode: .large)
+        .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .large)
     }
 }
 

@@ -18,7 +18,7 @@ struct DataCollect02: View {
         Section {
             VStack(alignment: .leading){
                 VStack(alignment: .center){
-                    Text("Aligner number you are wearing now")
+                    Text(NSLocalizedString("Aligner number you are wearing now",comment:""))
                         .font(.headline)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
@@ -32,7 +32,7 @@ struct DataCollect02: View {
                 .padding(.top,85)
                 .padding(.bottom,40)
                 VStack(alignment: .center){
-                    Text("How many days have you been wearing current aligner for?")
+                    Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
                         .font(.headline)
                         .padding(.horizontal, 30)
                         .foregroundColor(.blue)
@@ -46,7 +46,7 @@ struct DataCollect02: View {
                 }
                 .padding(.bottom,40)
                 VStack(alignment: .center){
-                    Text("Preferred aligners wear hours per day")
+                    Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
                         .font(.headline)
                         .padding(.horizontal, 30)
                         .foregroundColor(.blue)
@@ -75,7 +75,7 @@ struct DataCollect02: View {
                             Rectangle()
                                .frame(height: 35)
                                .foregroundColor(Color.blue)
-                            Text("Reset All History")
+                            Text(NSLocalizedString("Reset All History",comment:""))
                                 .foregroundColor(Color.white)
                         }
                     }
@@ -87,7 +87,7 @@ struct DataCollect02: View {
         .navigationBarBackButtonHidden(view_mode)
         .navigationBarHidden(view_mode)
         .alert(isPresented: self.$reset_alert) {
-            Alert(title: Text("Reset All History"), message: Text("Do you want to erase all history?"), primaryButton: .destructive(Text("Erase")) {
+            Alert(title: Text(NSLocalizedString("Reset All History",comment:"")), message: Text(NSLocalizedString("Do you want to erase all history?",comment:"")), primaryButton: .destructive(Text(NSLocalizedString("Erase",comment:""))) {
                 self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
                 self.user_data.current_state = true
                 self.user_data.update_min_max_dates()
@@ -110,7 +110,7 @@ struct DataCollectControllButton02: View {
                         .frame(height: 40)
                         .foregroundColor(Color.secondary)
                         .opacity(0.5)
-                    Text("Back")
+                    Text(NSLocalizedString("Back",comment:""))
                         .foregroundColor(Color.white)
                 }
             }
@@ -119,7 +119,7 @@ struct DataCollectControllButton02: View {
                     Rectangle()
                         .frame(height: 40)
                         .padding(0)
-                    Text("Ready")
+                    Text(NSLocalizedString("Ready",comment:""))
                         .foregroundColor(.white)
                 }
             }

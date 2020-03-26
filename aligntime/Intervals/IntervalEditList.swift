@@ -54,7 +54,7 @@ struct IntervalEditList: View {
                                         .frame(width: 50)
                                     Text("-")
                                     if (self.core_data.intervals.count<=i.id+1){
-                                        Text("Now")
+                                        Text(NSLocalizedString("Now",comment:""))
                                             .frame(width: 50)
                                             .padding(.horizontal,2)
                                     }
@@ -86,7 +86,7 @@ struct IntervalEditList: View {
                         Rectangle()
                            .frame(height: 35)
                            .foregroundColor(Color.blue)
-                        Text("Return")
+                        Text(NSLocalizedString("Return",comment:""))
                             .foregroundColor(Color.white)
                     }
                 }
