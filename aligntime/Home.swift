@@ -31,7 +31,7 @@ struct Home: View {
                    .font(.title)
                    .tabItem {
                         VStack {
-                            Text("Today")
+                            Text(NSLocalizedString("Today",comment:""))
                             Image(systemName: "bag")
                         }
                    }
@@ -41,7 +41,7 @@ struct Home: View {
                    .font(.title)
                    .tabItem {
                        VStack {
-                           Text("Calendar")
+                           Text(NSLocalizedString("Calendar",comment:""))
                            Image(systemName: "calendar")
                        }
                    }

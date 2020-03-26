@@ -19,7 +19,7 @@ struct TodayHeader: View {
     
     var body: some View {
         HStack {
-            Text("Today:")
+            Text(NSLocalizedString("Today:",comment:""))
                 .font(.system(size: 23))
                 .foregroundColor(Color.primary)
                 .fontWeight(Font.Weight.light)
