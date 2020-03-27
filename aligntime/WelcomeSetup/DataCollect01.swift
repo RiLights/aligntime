@@ -64,9 +64,12 @@ struct DataCollect01: View {
                             Text("")
                         }
                         .labelsHidden()
-                    Text("Start date is: \(user_data.start_treatment, formatter: dateFormatter)")
-                        .font(.footnote)
-                        .foregroundColor(.blue)
+                    HStack{
+                        Text(NSLocalizedString("Start date is:",comment:""))
+                        Text("\(user_data.start_treatment, formatter: dateFormatter)")
+                    }
+                    .font(.footnote)
+                    .foregroundColor(.blue)
                 }
                 .padding(.horizontal, 40)
                 

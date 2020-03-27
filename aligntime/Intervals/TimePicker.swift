@@ -18,7 +18,7 @@ struct TimePicker: View {
         VStack (spacing:0){
             Spacer()
             HStack{
-                Text("Start Time")
+                Text(NSLocalizedString("Start Time",comment:""))
                     .padding()
                 Spacer()
             }
@@ -36,12 +36,12 @@ struct TimePicker: View {
             }
             Divider()
             HStack{
-                Text("End Time")
+                Text(NSLocalizedString("End Time",comment:""))
                     .padding()
                 Spacer()
             }
             if (self.core_data.intervals.count<=self.event_id+1){
-                 Text("Now")
+                 Text(NSLocalizedString("Now",comment:""))
                     .font(.title)
                     .padding(40)
             }
