@@ -25,10 +25,12 @@ struct CalendarManager: View {
     }
        
     func startUp() {
-         // example of some foreground colors
-         core_data.colors.weekdayHeaderColor = Color.white
-         core_data.colors.monthHeaderColor = Color.green
-         core_data.colors.textColor = Color.blue
-         core_data.colors.disabledColor = Color.red
+            // example of some foreground colors
+            core_data.colors.weekdayHeaderColor = Color.white
+            core_data.colors.monthHeaderColor = Color.green
+            core_data.colors.textColor = Color.blue
+            core_data.colors.disabledColor = Color.red
+
+            self.core_data.selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
        }
 }

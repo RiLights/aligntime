@@ -31,11 +31,11 @@ struct OffEvents: View {
     
     var body: some View {
         Button(action: {
-            self.navigation_label = "Off Times"
+            self.navigation_label = "Out Times"
             self.show_modal.toggle()
         }) {
             VStack{
-                Text(NSLocalizedString("Off Times:",comment:""))
+                Text(NSLocalizedString("Out Times",comment:""))
                     .foregroundColor(.accentColor)
                     .font(.system(size: 21))
                 ForEach(core_data.get_off_days()) { i in

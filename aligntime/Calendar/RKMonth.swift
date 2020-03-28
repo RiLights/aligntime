@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct RKMonth: View {
-    @Binding var isPresented: Bool
     @EnvironmentObject var core_data: AlignTime
     
+    var cell_text_color: Color = Color.blue
     let monthOffset: Int
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
@@ -40,7 +40,8 @@ struct RKMonth: View {
                                             isSelected: self.isSpecialDate(date: column),
                                             isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
                                         cellWidth: self.cellWidth,
-                                        rim_color: self.rim_color(date: column))
+                                        rim_color: self.rim_color(date: column),
+                                        cell_text_color: self.cell_text_color)
                                         .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("")
@@ -94,14 +95,6 @@ struct RKMonth: View {
             rowArray.append(columnArray)
         }
         return rowArray
-    }
-    
-    func getMonthHeader() -> String {
-        let headerDateFormatter = DateFormatter()
-        headerDateFormatter.calendar = core_data.calendar
-        headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: core_data.calendar.locale)
-        
-        return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
     }
     
     func getDateAtIndex(index: Int) -> Date {

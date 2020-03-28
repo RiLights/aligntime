@@ -27,6 +27,7 @@ final class AlignTime: ObservableObject {
     
     
     @Published var calendar = Calendar.current
+    @Published var expanded_calendar:Bool = false
     @Published var minimumDate: Date = Date()
     @Published var maximumDate: Date = Date() //.addingTimeInterval(60*60*24*2)
     @Published var startDate: Date! = nil
@@ -36,7 +37,7 @@ final class AlignTime: ObservableObject {
     @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
-    @Published var selected_month = 0//Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
+    @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
     
     @Published var current_state = true
     

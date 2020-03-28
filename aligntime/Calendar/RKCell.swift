@@ -15,11 +15,12 @@ struct RKCell: View {
     
     var cellWidth: CGFloat
     var rim_color: Color = Color.clear
+    var cell_text_color: Color = Color.blue
     
     var body: some View {
         Text(rkDate.getText())
             .fontWeight(rkDate.getFontWeight())
-            .foregroundColor(rkDate.getTextColor())
+            .foregroundColor(cell_text_color) //rkDate.getTextColor()
             .frame(width: cellWidth, height: cellWidth)
             .font(.system(size: 18))
             .background(rkDate.getBackgroundColor())
@@ -31,5 +32,4 @@ struct RKCell: View {
             
     }
 }
-
 
