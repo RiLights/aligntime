@@ -19,7 +19,7 @@ class RKColorSettings : ObservableObject {
     @Published var betweenStartAndEndColor: Color = Color.red
     // background colors
     @Published var textBackColor: Color = Color.clear
-    @Published var todayBackColor: Color = Color.red//Color.secondary.opacity(0.1)
+    @Published var todayBackColor: Color = Color.secondary.opacity(0.1)
     @Published var selectedBackColor: Color = Color.secondary.opacity(0.3)
     @Published var disabledBackColor: Color = Color.clear
     @Published var betweenStartAndEndBackColor: Color = Color.blue

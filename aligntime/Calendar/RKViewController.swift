@@ -91,13 +91,13 @@ struct RKViewController: View {
             .frame(height: 320)
         }
         .sheet(isPresented: self.$core_data.expanded_calendar) {
-            TestController()
+            CalendarExpand()
                 .environmentObject(self.core_data)
         }
     }
 }
 
-struct TestController: View {
+struct CalendarExpand: View {
     @EnvironmentObject var core_data: AlignTime
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
