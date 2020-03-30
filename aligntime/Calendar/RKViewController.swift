@@ -7,6 +7,12 @@
 //
 import SwiftUI
 
+func first_date_for_year()->Date{
+    let calendar = Calendar.current
+    let comp = calendar.dateComponents([.year], from: Date())
+    
+    return (calendar.date(from: comp)?.advanced(by: -1))!
+}
 
 struct RKViewController: View {
     @EnvironmentObject var core_data: AlignTime
@@ -29,15 +35,9 @@ struct RKViewController: View {
         var offset = DateComponents()
         offset.month = self.core_data.selected_month
         
-        return self.core_data.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
+        return self.core_data.calendar.date(byAdding: offset, to: first_date_for_year())!
     }
     
-    func RKFirstDateMonth() -> Date {
-        var components = self.core_data.calendar.dateComponents(calendarUnitYMD, from: core_data.minimumDate)
-        components.day = 1
-        
-        return self.core_data.calendar.date(from: components)!
-    }
     
     var body: some View {
         Group() {
@@ -57,15 +57,11 @@ struct RKViewController: View {
                             .foregroundColor(Color(UIColor.systemBackground))
                         }
                         Button(action: {self.core_data.expanded_calendar.toggle()}) {
-                            HStack{
                             Text(self.getMonthHeader())
                                 .foregroundColor(Color(UIColor.systemBackground))
                                 .font(.system(size:20))
                                 .frame(width: 170)
-                                //.padding(.horizontal,10)
-                                Text("d: \(self.core_data.selected_month)")
-                                .foregroundColor(Color(UIColor.systemBackground))
-                            }
+                                .padding(.horizontal,10)
                         }
                         Button("  >") {
                             self.core_data.selected_month += 1;
@@ -104,29 +100,22 @@ struct RKViewController: View {
 struct CalendarExpand: View {
     @EnvironmentObject var core_data: AlignTime
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
-    
-    func firstOfMonthForOffset(index:Int) -> Date {
-        var offset = DateComponents()
-        offset.month = index
-        
-        return self.core_data.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
-    }
-    
+
     func getMonthHeader(index:Int) -> String {
         let headerDateFormatter = DateFormatter()
         headerDateFormatter.calendar = self.core_data.calendar
         headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: self.core_data.calendar.locale)
-        
+
         return headerDateFormatter.string(from: firstOfMonthForOffset(index:index)).uppercased()
     }
     
-    func RKFirstDateMonth() -> Date {
-        var components = self.core_data.calendar.dateComponents(calendarUnitYMD, from: core_data.minimumDate)
-        components.day = 1
-        
-        return self.core_data.calendar.date(from: components)!
+    func firstOfMonthForOffset(index:Int) -> Date {
+        var offset = DateComponents()
+        offset.month = index
+
+        return self.core_data.calendar.date(byAdding: offset, to: first_date_for_year())!
     }
-    
+
     var body: some View {
         Group {
             //RKWeekdayHeader()

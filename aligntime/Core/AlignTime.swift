@@ -37,7 +37,7 @@ final class AlignTime: ObservableObject {
     @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
-    @Published var selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
+    @Published var selected_month = Calendar.current.dateComponents(in: .autoupdatingCurrent, from: Date()).month ?? 0
     
     @Published var current_state = true
     

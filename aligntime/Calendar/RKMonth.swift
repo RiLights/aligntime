@@ -112,7 +112,7 @@ struct RKMonth: View {
         var offset = DateComponents()
         offset.month = monthOffset
         
-        var components = core_data.calendar.dateComponents(calendarUnitYMD, from: core_data.minimumDate)
+        var components = core_data.calendar.dateComponents(calendarUnitYMD, from: first_date_for_year())
         components.day = 1
         
         let first_month = core_data.calendar.date(from: components)!

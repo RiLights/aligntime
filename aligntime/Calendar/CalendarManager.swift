@@ -25,12 +25,13 @@ struct CalendarManager: View {
     }
        
     func startUp() {
+            core_data.update_min_max_dates()
             // example of some foreground colors
             core_data.colors.weekdayHeaderColor = Color.white
             core_data.colors.monthHeaderColor = Color.green
             core_data.colors.textColor = Color.blue
             core_data.colors.disabledColor = Color.red
 
-            self.core_data.selected_month = Calendar.current.dateComponents(in: .current, from: Date()).month ?? 0
+        self.core_data.selected_month = Calendar.current.dateComponents(in: .autoupdatingCurrent, from: Date()).month ?? 0
        }
 }
