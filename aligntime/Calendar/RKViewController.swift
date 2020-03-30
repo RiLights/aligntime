@@ -57,11 +57,15 @@ struct RKViewController: View {
                             .foregroundColor(Color(UIColor.systemBackground))
                         }
                         Button(action: {self.core_data.expanded_calendar.toggle()}) {
+                            HStack{
                             Text(self.getMonthHeader())
                                 .foregroundColor(Color(UIColor.systemBackground))
                                 .font(.system(size:20))
                                 .frame(width: 170)
-                                .padding(.horizontal,10)
+                                //.padding(.horizontal,10)
+                                Text("d: \(self.core_data.selected_month)")
+                                .foregroundColor(Color(UIColor.systemBackground))
+                            }
                         }
                         Button("  >") {
                             self.core_data.selected_month += 1;
