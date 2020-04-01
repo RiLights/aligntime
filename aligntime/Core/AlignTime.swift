@@ -13,7 +13,7 @@ final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
     
-    @Published var required_aligners_total:Int = 75
+    @Published var required_aligners_total:Int = 50
     @Published var aligners_wear_days:Int = 7
     @Published var start_treatment:Date = Date()
     @Published var aligner_number_now:Int = 1
@@ -47,7 +47,22 @@ final class AlignTime: ObservableObject {
     let notification_identifier04 = "AlignTime.id.04"
     
     var colors = RKColorSettings()
-
+    
+    func set_default_values() {
+        required_aligners_total = 50
+        aligners_wear_days = 7
+        start_treatment = Date()
+        aligner_number_now = 1
+        current_aligner_days = 1
+        wear_hours = 20
+        current_state = true
+        complete = false
+        days_left = "0"
+        
+        aligners = []
+        intervals = [DayInterval(0, wear: true, time: Date())]
+        selected_date = Date()
+    }
     
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
         var total:TimeInterval = 0
@@ -350,7 +365,7 @@ final class AlignTime: ObservableObject {
   
     func pull_user_defaults(){
         self.required_aligners_total = defaults.integer(forKey: "require_count")
-        if self.required_aligners_total == 0 {self.required_aligners_total = 75 }
+        if self.required_aligners_total == 0 {self.required_aligners_total = 50 }
         
         self.aligners_wear_days = defaults.integer(forKey: "aligners_count")
         if self.aligners_wear_days == 0 {self.aligners_wear_days = 7 }

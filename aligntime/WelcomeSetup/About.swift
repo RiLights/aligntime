@@ -10,12 +10,17 @@ import SwiftUI
 
 struct About: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+
     @State var view_mode:Bool = true
     
     var body: some View {
         Section {
             VStack(alignment: .center){
                 Image("iter02_2_welcome_small")
+                Text("Version \(appVersion)")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
                 Text(NSLocalizedString("About_AlignTime",comment:""))
                     .font(.system(size: 17))
                     .fontWeight(.regular)

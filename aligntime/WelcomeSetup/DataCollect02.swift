@@ -12,7 +12,6 @@ struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
-    @State var reset_alert = false
 
     var body: some View {
         Section {
@@ -65,34 +64,11 @@ struct DataCollect02: View {
                         .padding(.horizontal,20)
                         .padding(.bottom,5)
                 }
-                else{
-                    Button(action: {
-                        self.reset_alert.toggle()
-                        //self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
-                        //self.user_data.update_min_max_dates()
-                    }){
-                        ZStack(alignment: .center){
-                            Rectangle()
-                               .frame(height: 35)
-                               .foregroundColor(Color.blue)
-                            Text(NSLocalizedString("Reset All History",comment:""))
-                                .foregroundColor(Color.white)
-                        }
-                    }
-                    .padding(.bottom,5)
-                }
             }
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(view_mode)
         .navigationBarHidden(view_mode)
-        .alert(isPresented: self.$reset_alert) {
-            Alert(title: Text(NSLocalizedString("Reset All History",comment:"")), message: Text(NSLocalizedString("Do you want to erase all history?",comment:"")), primaryButton: .destructive(Text(NSLocalizedString("Erase",comment:""))) {
-                self.user_data.intervals = [DayInterval(0, wear: true, time: Date())]
-                self.user_data.current_state = true
-                self.user_data.update_min_max_dates()
-                },secondaryButton: .cancel())
-        }
     }
 }
 

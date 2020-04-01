@@ -79,18 +79,6 @@ struct DataCollect01: View {
                         .padding(.horizontal,20)
                         .padding(.bottom,5)
                 }
-                else{
-                    NavigationLink(destination: DataCollect02(view_mode:false)) {
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .padding(0)
-                            Text(NSLocalizedString("Next",comment:""))
-                                .foregroundColor(.white)
-                        }
-                    }
-                    .padding(.bottom,5)
-                }
             }
         }
         //.navigationBarTitle("")

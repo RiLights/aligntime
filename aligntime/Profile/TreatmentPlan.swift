@@ -18,7 +18,10 @@ struct TreatmentPlan: View {
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 18) {
-            DataCollect01(view_mode: false)
+            ScrollView(.vertical) {
+                DataCollect01(view_mode: false)
+                DataCollect02(view_mode: false)
+            }
         }
         .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .large)
     }
