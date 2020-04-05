@@ -18,8 +18,8 @@
 /* Calendar Screen */
 "Out Times" = "Out Times";
 "Now" = "Now";
-"Removed aligners at" = "Removed aligners at";
-"Inserted aligners at" = "Inserted aligners at";
+"Start Time" = "Removed aligners at";
+"End Time" = "Inserted aligners at";
 "Total Wear Time:" = "Total Wear Time:";
 
 /* Profile Screen */
