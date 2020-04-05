@@ -83,8 +83,6 @@ struct Legend: View {
             res.append(dates[Int(i)])
         }
         res.append(dates.last)
-        print(res.count)
-        print(dates.count)
         return res.reversed()
     }
     

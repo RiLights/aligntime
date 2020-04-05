@@ -1,4 +1,4 @@
-﻿/* No comment provided by engineer. */
+/* No comment provided by engineer. */
 "Calendar" = "Календар";
 "Today" = "Сьогодні";
 
@@ -16,7 +16,7 @@
 "Out time: " = "Без елайнерів: ";
 
 /* Calendar Screen */
-"Out Times" = "Час без елайнерів:";
+"Out Times" = "Час без елайнерів";
 "Now" = "Зараз";
 "Start Time" = "Вийняли елайнери о";
 "End Time" = "Одягнули елайнери о";
@@ -28,6 +28,7 @@
 "Modify Treatment Plan" = "Змінити план вирівнювання елайнерами";
 "Treatment Plan" = "План вирівнювання елайнерами";
 "Individual Aligner Adjust" = "Змінити план щодо окремих елайнерів";
+"Reset All History" = "Видалити план вирівнювання";
 "About" = "Про AlignTime";
 "Give Us Feedback" = "Надішліть нам відгук";
 
@@ -43,7 +44,6 @@
 "How many days have you been wearing current aligner for?" = "Скільки днів ви вже носите поточний елайнер?";
 "Preferred aligners wear hours per day" = "Скільки годин на добу ви повинні носити елайнери";
 "Start date is:" = "Дата початку вирівнювання:";
-"Reset All History" = "Видалити план вирівнювання";
-"Do you want to erase all history and start a new treatment plan? This action can’t be undone?" = "Ви дійсно хочете стерти всю історію та створити новий план вирівнювання?";
+"Do you want to erase all history?" = "Ви дійсно хочете стерти всю історію та створити новий план вирівнювання?";
 "Erase" = "Стерти";
 "About_AlignTime" = "AlignTime - це мобільний додаток, створений користувачами елайнерів, щоб допомогти іншим користувачам відслідковувати час носіння елайнерів. \n \n AlignTime допомагає записувати щоденний час носіння кожного елайнера, надсилає нагадування, якщо Ви були занадто довго без елайнерів.";

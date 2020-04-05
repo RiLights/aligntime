@@ -25,7 +25,7 @@ struct ProfileManager: View {
                     }){
                         HStack {
                             Image(systemName: "doc")
-                            Text(NSLocalizedString("Reset treatment plan",comment: ""))
+                            Text(NSLocalizedString("Reset All History",comment: ""))
                         }
                     }
                     LinkMenu(icon: "slowmo", label: NSLocalizedString("About",comment: ""), destination: About(view_mode: false))
@@ -46,7 +46,7 @@ struct ProfileManager: View {
         }
         .alert(isPresented: self.$reset_alert) {
             Alert(title: Text(NSLocalizedString("Reset All History",comment:"")), message: Text(NSLocalizedString("""
-Do you want to erase all history and start a treatment new plan?\nThis action can’t be undone
+Do you want to erase all history?
 """,comment:"")), primaryButton: .destructive(Text(NSLocalizedString("Erase",comment:""))) {
                 self.user_data.set_default_values()
                 self.user_data.update_min_max_dates()

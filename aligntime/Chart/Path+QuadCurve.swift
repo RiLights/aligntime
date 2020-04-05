@@ -143,7 +143,6 @@ extension Path {
         let p1 = CGPoint(x: CGFloat(points[0]-offset)*step.x, y: 0)
         path.move(to: p1)
         for pointIndex in 0..<points.count {
-            print(points[pointIndex])
             let p2 = CGPoint(x: step.x*CGFloat(points[pointIndex]), y: step.y * CGFloat(pointIndex))
             path.addLine(to: p2)
         }

@@ -31,7 +31,7 @@ struct OffEvents: View {
     
     var body: some View {
         Button(action: {
-            self.navigation_label = "Out Times"
+            self.navigation_label = NSLocalizedString("Out Times",comment:"")
             self.show_modal.toggle()
         }) {
             VStack{
