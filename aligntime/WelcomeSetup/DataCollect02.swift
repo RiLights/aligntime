@@ -66,7 +66,7 @@ struct DataCollect02: View {
                 }
             }
         }
-        .navigationBarTitle("")
+        .navigationBarTitle(view_mode ? "" : NSLocalizedString("Treatment Plan",comment:""))
         .navigationBarBackButtonHidden(view_mode)
         .navigationBarHidden(view_mode)
     }

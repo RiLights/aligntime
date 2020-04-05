@@ -15,13 +15,6 @@ struct IntervalFields: View {
     @State var show_modal = false
     @State var intervals:[DayInterval] = []
     
-    var date_formatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        //formatter.dateFormat = "dd MMMM"
-        return formatter
-    }
-    
     var body: some View {
         VStack{
             ScrollView(.vertical) {

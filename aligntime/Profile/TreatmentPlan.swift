@@ -19,6 +19,7 @@ struct TreatmentPlan: View {
     var body: some View {
         VStack(alignment: .trailing, spacing: 18) {
             ScrollView(.vertical) {
+                Text("")
                 DataCollect01(view_mode: false)
                 DataCollect02(view_mode: false)
             }

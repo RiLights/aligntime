@@ -27,6 +27,13 @@
 		F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B5C55238D0A7800BC10C9 /* ContentView.swift */; };
 		F05B5C58238D0A7900BC10C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C57238D0A7900BC10C9 /* Assets.xcassets */; };
 		F05B5C5B238D0A7900BC10C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */; };
+		F05CC209243885FC00641B22 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC204243885FC00641B22 /* IndicatorPoint.swift */; };
+		F05CC20A243885FC00641B22 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC205243885FC00641B22 /* LineView.swift */; };
+		F05CC20B243885FC00641B22 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC206243885FC00641B22 /* Legend.swift */; };
+		F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC207243885FC00641B22 /* MagnifierRect.swift */; };
+		F05CC20D243885FC00641B22 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC208243885FC00641B22 /* Path+QuadCurve.swift */; };
+		F05CC20F243886A300641B22 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC20E243886A300641B22 /* Helpers.swift */; };
+		F05CC211243886B500641B22 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC210243886B500641B22 /* Line.swift */; };
 		F06CFBE2242B4620001876DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F06CFBE4242B4620001876DC /* Localizable.strings */; };
 		F08BCD2323D82A3E00659118 /* test_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08BCD2223D82A3E00659118 /* test_data.swift */; };
 		F08BCD4523D987F500659118 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08BCD4423D987F500659118 /* Transitions.swift */; };
@@ -83,6 +90,13 @@
 		F05B5C57238D0A7900BC10C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F05B5C5F238D0A7900BC10C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F05CC204243885FC00641B22 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
+		F05CC205243885FC00641B22 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		F05CC206243885FC00641B22 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
+		F05CC207243885FC00641B22 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
+		F05CC208243885FC00641B22 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
+		F05CC20E243886A300641B22 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		F05CC210243886B500641B22 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F06CFBE3242B4620001876DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F06CFBE5242B467D001876DC /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F08BCD2223D82A3E00659118 /* test_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_data.swift; sourceTree = "<group>"; };
@@ -183,6 +197,7 @@
 		F05B5C50238D0A7800BC10C9 /* aligntime */ = {
 			isa = PBXGroup;
 			children = (
+				F05CC203243885FC00641B22 /* Chart */,
 				F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */,
 				F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */,
 				F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */,
@@ -209,6 +224,20 @@
 				F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F05CC203243885FC00641B22 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F05CC20E243886A300641B22 /* Helpers.swift */,
+				F05CC204243885FC00641B22 /* IndicatorPoint.swift */,
+				F05CC210243886B500641B22 /* Line.swift */,
+				F05CC205243885FC00641B22 /* LineView.swift */,
+				F05CC206243885FC00641B22 /* Legend.swift */,
+				F05CC207243885FC00641B22 /* MagnifierRect.swift */,
+				F05CC208243885FC00641B22 /* Path+QuadCurve.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */ = {
@@ -377,8 +406,11 @@
 				F08BCD4523D987F500659118 /* Transitions.swift in Sources */,
 				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */,
+				F05CC20D243885FC00641B22 /* Path+QuadCurve.swift in Sources */,
 				F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */,
 				F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */,
+				F05CC20F243886A300641B22 /* Helpers.swift in Sources */,
+				F05CC209243885FC00641B22 /* IndicatorPoint.swift in Sources */,
 				F0D255A32417990A0005B749 /* TimePicker.swift in Sources */,
 				F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */,
 				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
@@ -386,15 +418,19 @@
 				F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */,
 				F0FEDB4023C8704D00682F85 /* IntervalFields.swift in Sources */,
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,
+				F05CC211243886B500641B22 /* Line.swift in Sources */,
 				F0FCAF1D24009B5B00378FAB /* OffEvents.swift in Sources */,
 				F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */,
 				F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */,
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
+				F05CC20A243885FC00641B22 /* LineView.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileManager.swift in Sources */,
+				F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
 				F005971E23FD2D33006605C5 /* IndividualAlignerManager.swift in Sources */,
+				F05CC20B243885FC00641B22 /* Legend.swift in Sources */,
 				6D4B5DBA23BB9F5E00F4B2CA /* RKColorSettings.swift in Sources */,
 				F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */,
 				6D4B5DBD23BB9F5E00F4B2CA /* RKWeekdayHeader.swift in Sources */,
