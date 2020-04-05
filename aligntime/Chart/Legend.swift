@@ -14,7 +14,8 @@ struct Legend: View {
     @Binding var hideHorizontalLines: Bool
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     let padding:CGFloat = 1
-    let divisions:Double = 10
+    let divisions:Double = 9
+    var dates:[Date]
 
     var stepWidth: CGFloat {
         if data.points.count < 2 {
@@ -39,11 +40,17 @@ struct Legend: View {
         return CGFloat(points.min() ?? 0)
     }
     
+    var date_formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }
+    
     var body: some View {
         ZStack(alignment: .topLeading){
             ForEach((0...Int(divisions)), id: \.self) { height in
                 HStack(alignment: .center){
-                    Text("\(self.getYLegendSafe(height: height), specifier: "%.2f")").offset(x: 0, y: self.getYposition(height: height) )
+                    Text("\(self.get_dates()[height], formatter: self.date_formatter)").offset(x: 0, y: self.getYposition(height: height) )
                         .foregroundColor(Colors.LegendText)
                         .font(.caption)
                     self.line(atHeight: self.getYLegendSafe(height: height), width: self.frame.width)
@@ -65,23 +72,22 @@ struct Legend: View {
         return 0
     }
     
-    func getXLegendSafe(height:Int)->CGFloat{
-        if let legend = getXLegend() {
-            return CGFloat(legend[height])
+    func get_dates()->[Date]{
+        var res:[Date] = []
+        res.append(dates.first)
+        let count:Double = Double(dates.count)
+        let val = count/8
+        for i in stride(from: 1, to: count, by: val) {
+            res.append(dates[Int(i)])
         }
-        return 0
+        res.append(dates.last)
+        print(res.count)
+        return res.reversed()
     }
     
     func getYposition(height: Int)-> CGFloat {
         if let legend = getYLegend() {
             return (self.frame.height-((CGFloat(legend[height]) - min)*self.stepHeight))-(self.frame.height/2)
-        }
-        return 0
-    }
-    
-    func getXposition(width: Int)-> CGFloat {
-        if let legend = getXLegend() {
-            return (self.frame.width-((CGFloat(legend[width]) - min)*self.stepHeight))-(self.frame.width/2)
         }
         return 0
     }
@@ -101,18 +107,6 @@ struct Legend: View {
         var result:[Double] = []
         for i in (0...Int(divisions)){
             result.append(min+step * Double(i))
-        }
-        return result
-    }
-    
-    func getXLegend() -> [Int]? {
-        let points = self.data.onlyPoints()
-        guard let max = points.max() else { return nil }
-        guard let min = points.min() else { return nil }
-        let step = Double(max - min)/divisions
-        var result:[Int] = []
-        for i in (1...24){
-            result.append(100*i)
         }
         return result
     }
