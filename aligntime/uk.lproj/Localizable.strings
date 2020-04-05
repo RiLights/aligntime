@@ -16,10 +16,10 @@
 "Out time: " = "Без елайнерів: ";
 
 /* Calendar Screen */
-"Out Times" = "Час без елайнерів:";
+"Out Time" = "Час без елайнерів:";
 "Now" = "Зараз";
-"Removed aligners at" = "Вийняли елайнери о";
-"Inserted aligners at" = "Одягнули елайнери о";
+"Start Time" = "Вийняли елайнери о";
+"End Time" = "Одягнули елайнери о";
 "Total Wear Time:" = "Загальний час з елайнерами:";
 
 /* Profile Screen */
