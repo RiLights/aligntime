@@ -23,12 +23,14 @@ struct Legend: View {
         }
         return frame.size.width / CGFloat(data.points.count-1)
     }
+    
     var stepHeight: CGFloat {
         let points = self.data.onlyPoints()
         if let min = points.min(), let max = points.max(), min != max {
             if (min < 0){
                 return (frame.size.height-padding) / CGFloat(max - min)
-            }else{
+            }
+            else{
                 return (frame.size.height-padding) / CGFloat(max + min)
             }
         }
@@ -82,6 +84,7 @@ struct Legend: View {
         }
         res.append(dates.last)
         print(res.count)
+        print(dates.count)
         return res.reversed()
     }
     
