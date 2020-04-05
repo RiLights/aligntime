@@ -24,7 +24,7 @@ struct TreatmentPlan: View {
                 DataCollect02(view_mode: false)
             }
         }
-        .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .large)
+        .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .inline)
     }
 }
 

@@ -88,5 +88,6 @@ struct StatisticsView: View {
                 .padding(.leading, 74)
             }
         }
+        .navigationBarTitle(Text(NSLocalizedString("Time Statistic",comment:"")), displayMode: .large)
     }
 }
