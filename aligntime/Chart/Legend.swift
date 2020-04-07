@@ -106,6 +106,7 @@ struct Legend: View {
         guard let min = points.min() else { return nil }
         let step = Double(max - min)/divisions
         var result:[Double] = []
+        print(min+step)
         for i in (0...Int(divisions)){
             result.append(min+step * Double(i))
         }

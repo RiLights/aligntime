@@ -9,7 +9,7 @@
 import SwiftUI
 
 public struct Line: View {
-    @ObservedObject var data: ChartData
+    var data: [Double]
     @Binding var frame: CGRect
     @Binding var touchLocation: CGPoint
     @Binding var showIndicator: Bool
@@ -24,7 +24,7 @@ public struct Line: View {
     var stepWidth: CGFloat {
         var min: Double?
         var max: Double?
-        let points = self.data.onlyPoints()
+        let points = self.data
         if minDataValue != nil && maxDataValue != nil {
             min = minDataValue!
             max = maxDataValue!
@@ -44,38 +44,30 @@ public struct Line: View {
         return 0
     }
     var stepHeight: CGFloat {
-        if data.points.count < 2 {
+        if data.count < 2 {
             return 0
         }
-        return frame.size.height / CGFloat(data.points.count-1)
+        return frame.size.height / CGFloat(data.count-1)
     }
     var path: Path {
-        let points = self.data.onlyPoints()
+        let points = self.data
         //return Path.linePathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight))
         return Path.quadCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: minDataValue)
     }
     var closedPath: Path {
-        let points = self.data.onlyPoints()
+        let points = self.data
         return Path.quadClosedCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: minDataValue)
     }
     
     public var body: some View {
         ZStack {
-            if(true){
-                self.path
-                    .trim(from: 0, to: self.showFull ? 1:0)
-                    .stroke(LinearGradient(gradient: gradient.getGradient(), startPoint: .leading, endPoint: .trailing) ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))
-                    .animation(Animation.easeOut(duration: 1.2).delay(Double(self.index)*0.4))
-                    .onAppear {
-                        self.showFull = true
-                    }
-            }
-            else{
-                self.closedPath
-                    .fill(LinearGradient(gradient: Gradient(colors: [Colors.GradientUpperBlue, .white]), startPoint: .bottom, endPoint: .top))
-                    .transition(.opacity)
-                    .animation(.easeIn(duration: 1.6))
-            }
+            self.path
+                .trim(from: 0, to: self.showFull ? 1:0)
+                .stroke(LinearGradient(gradient: gradient.getGradient(), startPoint: .leading, endPoint: .trailing) ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))
+                .animation(Animation.easeOut(duration: 1.2).delay(Double(self.index)*0.4))
+                .onAppear {
+                    self.showFull = true
+                }
         }
     }
     
@@ -86,10 +78,3 @@ public struct Line: View {
     
 }
 
-struct Line_Previews: PreviewProvider {
-    static var previews: some View {
-        GeometryReader{ geometry in
-            Line(data: ChartData(points: [12,-230,10,54]), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(nil), maxDataValue: .constant(nil))
-        }.frame(width: 320, height: 160)
-    }
-}

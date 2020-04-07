@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var user_data: AlignTime
     @State private var hideHorizontalLines: Bool = false
-    let hours:[Int] = [0,3,6,9,12,15,18,21,24]
+    //let hours:[Int] = [0,3,6,9,12,15,18,21,24]
     
     var body: some View {
         //StatisticsView()

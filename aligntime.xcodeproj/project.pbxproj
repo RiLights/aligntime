@@ -28,7 +28,6 @@
 		F05B5C58238D0A7900BC10C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C57238D0A7900BC10C9 /* Assets.xcassets */; };
 		F05B5C5B238D0A7900BC10C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */; };
 		F05CC209243885FC00641B22 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC204243885FC00641B22 /* IndicatorPoint.swift */; };
-		F05CC20A243885FC00641B22 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC205243885FC00641B22 /* LineView.swift */; };
 		F05CC20B243885FC00641B22 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC206243885FC00641B22 /* Legend.swift */; };
 		F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC207243885FC00641B22 /* MagnifierRect.swift */; };
 		F05CC20D243885FC00641B22 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC208243885FC00641B22 /* Path+QuadCurve.swift */; };
@@ -91,7 +90,6 @@
 		F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F05B5C5F238D0A7900BC10C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F05CC204243885FC00641B22 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
-		F05CC205243885FC00641B22 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		F05CC206243885FC00641B22 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
 		F05CC207243885FC00641B22 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
 		F05CC208243885FC00641B22 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				F05CC20E243886A300641B22 /* Helpers.swift */,
 				F05CC204243885FC00641B22 /* IndicatorPoint.swift */,
 				F05CC210243886B500641B22 /* Line.swift */,
-				F05CC205243885FC00641B22 /* LineView.swift */,
 				F05CC206243885FC00641B22 /* Legend.swift */,
 				F05CC207243885FC00641B22 /* MagnifierRect.swift */,
 				F05CC208243885FC00641B22 /* Path+QuadCurve.swift */,
@@ -425,7 +422,6 @@
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
 				F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
-				F05CC20A243885FC00641B22 /* LineView.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileManager.swift in Sources */,
 				F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
@@ -600,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -625,7 +621,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
