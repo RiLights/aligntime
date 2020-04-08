@@ -55,7 +55,7 @@ struct IntervalEditList: View {
                                     Text("-")
                                     if (self.core_data.intervals.count<=i.id+1){
                                         Text(NSLocalizedString("Now",comment:""))
-                                            .frame(width: 50)
+                                            .frame(width: 60)
                                             .padding(.horizontal,2)
                                     }
                                     else{
@@ -77,7 +77,7 @@ struct IntervalEditList: View {
                             .font(.system(size: 20))
                             .padding()})
                 )
-                .navigationBarTitle(self.navigation_label)
+                .navigationBarTitle(Text("\(self.navigation_label)"),displayMode: .inline)
                 }
                 Button(action: {
                     self.dismiss = false
