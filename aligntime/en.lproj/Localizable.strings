@@ -5,6 +5,7 @@
 /* Today Screen */
 "You_have_been_wearing_aligners_for" = "You have been wearing aligners for";
 "days" = "days";
+"day" = "day";
 "days_left_until_the_end_of_your_treatment" = "days left until the end of your treatment";
 "Wear Time Reminder" = "Wear Time Reminder";
 "Remind me to wear aligners again in" ="Remind me to wear aligners again in";
@@ -47,4 +48,13 @@
 "Do you want to erase all history?" = "Do you want to erase all history and start a new treatment plan? This action can’t be undone";
 "Erase" = "Erase";
 "About_AlignTime" = "AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.";
+
+/* Reminders */
+"AlignTime Reminder" = "AlignTime Reminder";
+"Time to put your aligners on again" = "Time to put your aligners on again";
+"Don’t forget to put your aligners on" = "Don’t forget to put your aligners on";
+"Your aligners have been out for a while now" = "Your aligners have been out for a while now. It’s time to put them back on";
+"Did you forget to start the timer?" = "Did you forget to start the timer?";
+
+
 

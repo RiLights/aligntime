@@ -21,7 +21,7 @@ final class AlignTime: ObservableObject {
     @Published var wear_hours:Int = 20
     
     @Published var days_left:String = "0"
-    @Published var wearing_aligners_days:String = "0"
+    @Published var wearing_aligners_days:Int = 0
     
     @Published var complete:Bool = false
     
@@ -152,7 +152,7 @@ final class AlignTime: ObservableObject {
         update_individual_aligners()
         
         let days_interval = Date().timeIntervalSince(self.start_treatment)
-        self.wearing_aligners_days = String(days_interval.days)
+        self.wearing_aligners_days = days_interval.days
         
         let aligners_days_left:Int = get_custom_aligners_days_left(start_aligner:self.aligner_number_now-1)
         let total_days_left_digit:Int = aligners_days_left - self.current_aligner_days
@@ -423,8 +423,8 @@ final class AlignTime: ObservableObject {
     func send_notification(time_interval:Double){
         
         let content = UNMutableNotificationContent()
-        content.title = "AlignTime Reminder"
-        content.body = "Time to put your aligners on again"
+        content.title = NSLocalizedString("AlignTime Reminder",comment: "")
+        content.body = NSLocalizedString("Time to put your aligners on again",comment: "")
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = notification_identifier01
         
@@ -432,19 +432,19 @@ final class AlignTime: ObservableObject {
         var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        content.body = "Don’t forget to put your aligners on"
+        content.body = NSLocalizedString("Don’t forget to put your aligners on",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+120, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier02, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
-        content.body = "Your aligners have been out for a while now. It’s time to put them back on"
+        content.body = NSLocalizedString("Your aligners have been out for a while now. It’s time to put them back on",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        content.body = "Did you forget to start the timer?"
+        content.body = NSLocalizedString("Did you forget to start the timer?",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+1200, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier04, content: content, trigger: trigger)

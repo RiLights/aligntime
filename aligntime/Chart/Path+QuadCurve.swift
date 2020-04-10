@@ -128,7 +128,7 @@ extension Path {
             let p2 = CGPoint(x: step.x*CGFloat(points[pointIndex]), y: step.y * CGFloat(pointIndex))
             let midPoint = CGPoint.midPointForPoints(p1: p1, p2: p2)
             path.addQuadCurve(to: midPoint, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p1))
-            path.addQuadCurve(to: p2, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p2))
+            //path.addQuadCurve(to: p2, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p2))
             p1 = p2
         }
         return path
@@ -164,10 +164,11 @@ extension Path {
             let p2 = CGPoint(x: step.x*CGFloat(points[pointIndex]), y: step.y * CGFloat(pointIndex))
             let midPoint = CGPoint.midPointForPoints(p1: p1, p2: p2)
             path.addQuadCurve(to: midPoint, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p1))
-            path.addQuadCurve(to: p2, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p2))
+            //path.addQuadCurve(to: p2, control: CGPoint.controlPointForPoints(p1: midPoint, p2: p2))
             p1 = p2
         }
-        path.addLine(to: CGPoint(x: p1.x, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: p1.y))
+        //path.addLine(to: CGPoint(x: 0, y: 1000))
         path.closeSubpath()
         return path
     }

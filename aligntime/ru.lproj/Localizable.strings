@@ -4,7 +4,9 @@
 
 /* Today Screen */
 "You_have_been_wearing_aligners_for" = "Вы уже носите элайнеры";
-"days" = "дни";
+"days" = "дней";
+"day" = "день";
+"days/4" = "дня";
 "days_left_until_the_end_of_your_treatment" = "дней до завершения выравнивания";
 "Wear Time Reminder" = "Напоминание";
 "Remind me to wear aligners again in" ="Напомнить мне одеть элайнеры через";
@@ -47,4 +49,11 @@
 "Do you want to erase all history?" = "Вы действительно хотите стереть всю историю и начать новый план выравнивания элайнерами?";
 "Erase" = "Стереть";
 "About_AlignTime" = "AlignTime был создан позьзователями элайнеров для того, чтобы упростить процес выравния для других пользователей. \n \n С помощью AlignTime вы можете записывать время, на протяжении которого вы носили элайнеры каждый день, а так же установить напоминания, которые подскажут, когда вам нужно будет снова одеть элайнеры. Также у вас будет возможность просмотреть свой прогресс в календаре приложения.";
+
+/* Reminders */
+"AlignTime Reminder" = "Напоминание от AlignTime";
+"Time to put your aligners on again" = "Время снова надеть элайнеры";
+"Don’t forget to put your aligners on" = "Не забудь надеть элайнеры";
+"Your aligners have been out for a while now" = "Ты уже долгое время без элайнеров. Пора их снова надеть";
+"Did you forget to start the timer?" = "Кажется вы забыли включить таймер?";
 

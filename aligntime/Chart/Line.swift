@@ -61,6 +61,12 @@ public struct Line: View {
     
     public var body: some View {
         ZStack {
+            self.closedPath
+//                .fill(LinearGradient(gradient: Gradient(colors: [.clear, .blue]), startPoint: .leading, endPoint: .trailing))
+                .fill(Color.blue)
+                .opacity(0.8)
+                .transition(.opacity)
+                .animation(.easeIn(duration: 2))
             self.path
                 .trim(from: 0, to: self.showFull ? 1:0)
                 .stroke(LinearGradient(gradient: gradient.getGradient(), startPoint: .leading, endPoint: .trailing) ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))

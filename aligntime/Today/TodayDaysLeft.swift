@@ -17,12 +17,23 @@ struct TodayDaysLeft: View {
                 Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                Text(self.core_data.wearing_aligners_days)
+                Text("\(self.core_data.wearing_aligners_days)")
                     .font(.system(size: 20))
                     .foregroundColor(Color.blue)
-                Text(NSLocalizedString("days",comment:""))
+                Group{
+                    if self.core_data.wearing_aligners_days == 1 {
+                        Text(NSLocalizedString("day",comment:""))
+                    }
+                    else if (self.core_data.wearing_aligners_days>1 && self.core_data.wearing_aligners_days<5){
+                        Text(NSLocalizedString("days/4",comment:""))
+                    }
+                    else{
+                        Text(NSLocalizedString("days",comment:""))
+                    }
+                }
                     .font(.system(size: 17))
                     .foregroundColor(Color.primary)
+                
             }
             HStack(alignment: .center, spacing: 4) {
                 Text(self.core_data.days_left)

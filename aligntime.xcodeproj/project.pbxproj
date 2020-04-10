@@ -13,7 +13,6 @@
 		6D4B5DBB23BB9F5E00F4B2CA /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */; };
 		6D4B5DBC23BB9F5E00F4B2CA /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */; };
 		6D4B5DBD23BB9F5E00F4B2CA /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */; };
-		F002C5E4243DC48300E2F8AD /* Localizeble.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = F002C5E6243DC48300E2F8AD /* Localizeble.stringsdict */; };
 		F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971423FBCE48006605C5 /* TreatmentPlan.swift */; };
 		F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971623FBCE74006605C5 /* StatisticsView.swift */; };
 		F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */; };
@@ -75,7 +74,6 @@
 		6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
 		6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
-		F002C5E5243DC48300E2F8AD /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = uk; path = uk.lproj/Localizeble.stringsdict; sourceTree = "<group>"; };
 		F005971423FBCE48006605C5 /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		F005971623FBCE74006605C5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodontistAppointment.swift; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 				F05B5C5F238D0A7900BC10C9 /* Info.plist */,
 				F05B5C59238D0A7900BC10C9 /* Preview Content */,
 				F08BCD2223D82A3E00659118 /* test_data.swift */,
-				F002C5E6243DC48300E2F8AD /* Localizeble.stringsdict */,
 				F06CFBE4242B4620001876DC /* Localizable.strings */,
 			);
 			path = aligntime;
@@ -375,7 +372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F05B5C5B238D0A7900BC10C9 /* Preview Assets.xcassets in Resources */,
-				F002C5E4243DC48300E2F8AD /* Localizeble.stringsdict in Resources */,
 				F06CFBE2242B4620001876DC /* Localizable.strings in Resources */,
 				F05B5C58238D0A7900BC10C9 /* Assets.xcassets in Resources */,
 			);
@@ -461,14 +457,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F002C5E6243DC48300E2F8AD /* Localizeble.stringsdict */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F002C5E5243DC48300E2F8AD /* uk */,
-			);
-			name = Localizeble.stringsdict;
-			sourceTree = "<group>";
-		};
 		F06CFBE4242B4620001876DC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -608,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -633,7 +621,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

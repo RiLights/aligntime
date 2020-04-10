@@ -84,46 +84,52 @@ struct StatisticsView: View {
     
     var body: some View {
         VStack{
-            Text("Average hours per day: \(test_average()/60,specifier: "%.2f")h")
-            Divider()
-            Text("Hours")
-                .foregroundColor(Colors.LegendText)
-                .font(.caption)
-            HStack(){
-                ForEach(hours, id: \.self) { width in
-                    HStack(){
-                        Spacer()
-                        Text("\(width)")
-                            .foregroundColor(Colors.LegendText)
-                            .font(.caption)
-                        Spacer()
-                    }
-                }
+            if self.test_date().count<2{
+                Text("Not enough data for statistic")
+                    .foregroundColor(Colors.LegendText)
             }
-            .padding(.leading, 55)
-            ZStack{
-                VStack(spacing:0){
-                    ForEach(get_dates(), id: \.self) { d in
-                        Group {
-                            HStack{
-                                Text("\(d, formatter: self.date_formatter)")
-                                    .foregroundColor(Colors.LegendText)
-                                    .font(.caption)
-                                VStack(spacing:0){
-                                    Divider()
-                                }
-                            }
-                            if d != self.get_dates().last{
-                                Spacer()
-                            }
+            else{
+                Text("Average hours per day: \(test_average()/60,specifier: "%.2f")h")
+                Divider()
+                Text("Hours")
+                    .foregroundColor(Colors.LegendText)
+                    .font(.caption)
+                HStack(){
+                    ForEach(hours, id: \.self) { width in
+                        HStack(){
+                            Spacer()
+                            Text("\(width)")
+                                .foregroundColor(Colors.LegendText)
+                                .font(.caption)
+                            Spacer()
                         }
                     }
                 }
-                .padding(.horizontal, 10)
-                GeometryReader{ geometry in
-                    Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(nil), maxDataValue: .constant(nil),showBackground: true)
+                .padding(.leading, 55)
+                ZStack{
+                    VStack(spacing:0){
+                        ForEach(get_dates(), id: \.self) { d in
+                            Group {
+                                HStack{
+                                    Text("\(d, formatter: self.date_formatter)")
+                                        .foregroundColor(Colors.LegendText)
+                                        .font(.caption)
+                                    VStack(spacing:0){
+                                        Divider()
+                                    }
+                                }
+                                if d != self.get_dates().last{
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 10)
+                    GeometryReader{ geometry in
+                        Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(nil), maxDataValue: .constant(nil),showBackground: true)
+                    }
+                    .padding(.leading, 74)
                 }
-                .padding(.leading, 74)
             }
         }
         .navigationBarTitle(Text(NSLocalizedString("Time Statistic",comment:"")), displayMode: .large)

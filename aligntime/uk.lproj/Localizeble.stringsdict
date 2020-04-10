@@ -6,7 +6,7 @@
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
+		<key>days</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
@@ -15,13 +15,13 @@
 			<key>zero</key>
 			<string></string>
 			<key>one</key>
-			<string></string>
+			<string>day</string>
 			<key>two</key>
 			<string></string>
 			<key>few</key>
 			<string></string>
 			<key>many</key>
-			<string></string>
+			<string>days</string>
 			<key>other</key>
 			<string></string>
 		</dict>
