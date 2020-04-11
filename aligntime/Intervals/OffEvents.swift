@@ -44,7 +44,7 @@ struct OffEvents: View {
                             .font(.system(size: 18))
                             .fontWeight(.light)
                             .foregroundColor(self.intervals_color_day(date:i.time))
-                            .frame(width: 50)
+                            //.frame(width: 50)
                         Text("-")
                             .foregroundColor(.accentColor)
                             .font(.system(size: 21))
@@ -76,7 +76,7 @@ struct OffEvents: View {
                     }
                 }
             }
-            .frame(width: 250)
+            .frame(width: 300)
         }
     }
 }

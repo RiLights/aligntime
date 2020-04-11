@@ -51,19 +51,17 @@ struct IntervalEditList: View {
                             }){
                                 HStack(alignment: .center){
                                     Text(i.time_string)
-                                        .frame(width: 50)
                                     Text("-")
                                     if (self.core_data.intervals.count<=i.id+1){
                                         Text(NSLocalizedString("Now",comment:""))
-                                            .frame(width: 60)
                                             .padding(.horizontal,2)
                                     }
                                     else{
                                         Text("\(self.core_data.intervals[i.id+1].time_string)")
-                                            .frame(width: 50)
                                             .padding(.horizontal,2)
                                     }
                                 }
+                                .frame(width: 300)
                             }
                             Spacer()
                         }

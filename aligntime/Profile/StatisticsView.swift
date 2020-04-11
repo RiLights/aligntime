@@ -89,6 +89,7 @@ struct StatisticsView: View {
                     .foregroundColor(Colors.LegendText)
             }
             else{
+                Text("Yesterday Debug:\(self.test_minutes()[self.test_minutes().count-2])")
                 Text("Average hours per day: \(test_average()/60,specifier: "%.2f")h")
                 Divider()
                 Text("Hours")
@@ -126,9 +127,9 @@ struct StatisticsView: View {
                     }
                     .padding(.horizontal, 10)
                     GeometryReader{ geometry in
-                        Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(nil), maxDataValue: .constant(nil),showBackground: true)
+                        Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true),showBackground: true)
                     }
-                    .padding(.leading, 74)
+                    .padding(.leading, 70)
                 }
             }
         }

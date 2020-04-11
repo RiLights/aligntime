@@ -10,7 +10,7 @@ import Foundation
 
 func clock_string_format(_ date: Date) -> String? {
     let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
+    formatter.timeStyle = .short
     return formatter.string(from: date)
 }
 
@@ -31,8 +31,8 @@ class DayInterval: Identifiable,ObservableObject,Comparable,Codable {
         timestamp = try values.decode(Int64.self, forKey: .timestamp)
         time = Date().fromTimestamp(timestamp)
         timezone = try values.decode(TimeZone.self, forKey: .timezone)
-        
     }
+    
     init(_ id: Int, wear: Bool, time: Date ) {
         self.timestamp = time.timestamp()
         self.wear = wear

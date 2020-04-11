@@ -13,35 +13,17 @@ public struct Line: View {
     @Binding var frame: CGRect
     @Binding var touchLocation: CGPoint
     @Binding var showIndicator: Bool
-    @Binding var minDataValue: Double?
-    @Binding var maxDataValue: Double?
+    var minDataValue: Int = 0
+    var maxDataValue: Int = 1440
     @State private var showFull: Bool = false
     @State var showBackground: Bool = true
     var gradient: GradientColor = GradientColor(start: Colors.GradientPurple, end: Colors.GradientNeonBlue)
     var index:Int = 0
-    let padding:CGFloat = 30
+    let padding:CGFloat = 18
     var curvedLines: Bool = true
     var stepWidth: CGFloat {
-        var min: Double?
-        var max: Double?
-        let points = self.data
-        if minDataValue != nil && maxDataValue != nil {
-            min = minDataValue!
-            max = maxDataValue!
-        }else if let minPoint = points.min(), let maxPoint = points.max(), minPoint != maxPoint {
-            min = minPoint
-            max = maxPoint
-        }else {
-            return 0
-        }
-        if let min = min, let max = max, min != max {
-            if (min <= 0){
-                return (frame.size.width-padding) / CGFloat(max - min)
-            }else{
-                return (frame.size.width-padding) / CGFloat(max + min)
-            }
-        }
-        return 0
+        return (frame.size.width-padding) / CGFloat(maxDataValue + minDataValue)
+
     }
     var stepHeight: CGFloat {
         if data.count < 2 {
@@ -52,11 +34,11 @@ public struct Line: View {
     var path: Path {
         let points = self.data
         //return Path.linePathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight))
-        return Path.quadCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: minDataValue)
+        return Path.quadCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: Double(minDataValue))
     }
     var closedPath: Path {
         let points = self.data
-        return Path.quadClosedCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: minDataValue)
+        return Path.quadClosedCurvedPathWithPoints(points: points, step: CGPoint(x: stepWidth, y: stepHeight), globalOffset: Double(minDataValue))
     }
     
     public var body: some View {

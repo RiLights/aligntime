@@ -115,12 +115,12 @@ extension Path {
         return ret
     }
     
-    static func quadCurvedPathWithPoints(points:[Double], step:CGPoint, globalOffset: Double? = nil) -> Path {
+    static func quadCurvedPathWithPoints(points:[Double], step:CGPoint, globalOffset: Double) -> Path {
         var path = Path()
         if (points.count < 2){
             return path
         }
-        let offset = globalOffset ?? points.min()!
+        let offset = globalOffset
 //        guard let offset = points.min() else { return path }
         var p1 = CGPoint(x: CGFloat(points[0]-offset)*step.x, y: 0)
         path.move(to: p1)
@@ -149,12 +149,12 @@ extension Path {
         return path
     }
     
-    static func quadClosedCurvedPathWithPoints(points:[Double], step:CGPoint, globalOffset: Double? = nil) -> Path {
+    static func quadClosedCurvedPathWithPoints(points:[Double], step:CGPoint, globalOffset: Double) -> Path {
         var path = Path()
         if (points.count < 2){
             return path
         }
-        let offset = globalOffset ?? points.min()!
+        let offset = globalOffset
 
 //        guard let offset = points.min() else { return path }
         path.move(to: .zero)

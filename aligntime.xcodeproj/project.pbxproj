@@ -27,9 +27,6 @@
 		F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B5C55238D0A7800BC10C9 /* ContentView.swift */; };
 		F05B5C58238D0A7900BC10C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C57238D0A7900BC10C9 /* Assets.xcassets */; };
 		F05B5C5B238D0A7900BC10C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */; };
-		F05CC209243885FC00641B22 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC204243885FC00641B22 /* IndicatorPoint.swift */; };
-		F05CC20B243885FC00641B22 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC206243885FC00641B22 /* Legend.swift */; };
-		F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC207243885FC00641B22 /* MagnifierRect.swift */; };
 		F05CC20D243885FC00641B22 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC208243885FC00641B22 /* Path+QuadCurve.swift */; };
 		F05CC20F243886A300641B22 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC20E243886A300641B22 /* Helpers.swift */; };
 		F05CC211243886B500641B22 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CC210243886B500641B22 /* Line.swift */; };
@@ -89,9 +86,6 @@
 		F05B5C57238D0A7900BC10C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05B5C5A238D0A7900BC10C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F05B5C5F238D0A7900BC10C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F05CC204243885FC00641B22 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
-		F05CC206243885FC00641B22 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
-		F05CC207243885FC00641B22 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
 		F05CC208243885FC00641B22 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
 		F05CC20E243886A300641B22 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		F05CC210243886B500641B22 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -228,10 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				F05CC20E243886A300641B22 /* Helpers.swift */,
-				F05CC204243885FC00641B22 /* IndicatorPoint.swift */,
 				F05CC210243886B500641B22 /* Line.swift */,
-				F05CC206243885FC00641B22 /* Legend.swift */,
-				F05CC207243885FC00641B22 /* MagnifierRect.swift */,
 				F05CC208243885FC00641B22 /* Path+QuadCurve.swift */,
 			);
 			path = Chart;
@@ -407,7 +398,6 @@
 				F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */,
 				F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */,
 				F05CC20F243886A300641B22 /* Helpers.swift in Sources */,
-				F05CC209243885FC00641B22 /* IndicatorPoint.swift in Sources */,
 				F0D255A32417990A0005B749 /* TimePicker.swift in Sources */,
 				F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */,
 				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
@@ -423,10 +413,8 @@
 				F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileManager.swift in Sources */,
-				F05CC20C243885FC00641B22 /* MagnifierRect.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
 				F005971E23FD2D33006605C5 /* IndividualAlignerManager.swift in Sources */,
-				F05CC20B243885FC00641B22 /* Legend.swift in Sources */,
 				6D4B5DBA23BB9F5E00F4B2CA /* RKColorSettings.swift in Sources */,
 				F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */,
 				6D4B5DBD23BB9F5E00F4B2CA /* RKWeekdayHeader.swift in Sources */,
@@ -596,7 +584,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -621,7 +609,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

@@ -438,7 +438,7 @@ final class AlignTime: ObservableObject {
         request = UNNotificationRequest(identifier: notification_identifier02, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
-        content.body = NSLocalizedString("Your aligners have been out for a while now. It’s time to put them back on",comment: "")
+        content.body = NSLocalizedString("Your aligners have been out for a while now",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
