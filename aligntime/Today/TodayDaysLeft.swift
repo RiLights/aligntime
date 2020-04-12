@@ -11,6 +11,19 @@ import SwiftUI
 struct TodayDaysLeft: View {
     @EnvironmentObject var core_data: AlignTime
     
+    func is_plural_number()->Bool{
+        if self.core_data.wearing_aligners_days.description.last! == "2"{
+            return true
+        }
+        else if self.core_data.wearing_aligners_days.description.last! == "3"{
+            return true
+        }
+        else if self.core_data.wearing_aligners_days.description.last! == "4"{
+            return true
+        }
+        return false
+    }
+    
     var body: some View {
         VStack{
             HStack(alignment: .center, spacing: 4) {
@@ -24,7 +37,7 @@ struct TodayDaysLeft: View {
                     if self.core_data.wearing_aligners_days == 1 {
                         Text(NSLocalizedString("day",comment:""))
                     }
-                    else if (self.core_data.wearing_aligners_days>1 && self.core_data.wearing_aligners_days<5){
+                    else if self.is_plural_number(){
                         Text(NSLocalizedString("days/4",comment:""))
                     }
                     else{

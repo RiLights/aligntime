@@ -16,9 +16,9 @@ struct ProfileManager: View {
         VStack(alignment: .trailing, spacing: 18) {
             NavigationView {
                 List {
-                    LinkMenu(icon: "chart.pie", label: "View Wear Time Statistics", destination: StatisticsView())
                     LinkMenu(icon: "doc.plaintext", label: NSLocalizedString("Modify Treatment Plan",comment: ""), destination: TreatmentPlan())
                     LinkMenu(icon: "list.bullet.indent", label: NSLocalizedString("Individual Aligner Adjust",comment: ""), destination: IndividualAlignerManager())
+                    LinkMenu(icon: "chart.pie", label: NSLocalizedString("Time Statistics",comment: ""), destination: StatisticsView())
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     Button(action: {
                         self.reset_alert.toggle()

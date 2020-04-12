@@ -13,24 +13,24 @@ struct Welcome: View {
         NavigationView {
             VStack{
                 VStack(alignment: .center){
-                    Text("Welcome to AlignTime")
-                        .font(.largeTitle)
+                    Text(NSLocalizedString("Welcome to AlignTime",comment:""))
+                        .font(.system(size: 54))
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
                         .padding(.horizontal, 30)
                         .multilineTextAlignment(.center)
                         .scaleEffect(1.1)
-                    Text("Your assistant on the way to a perfect smile")
-                        .font(.body)
-                        .padding(.vertical,10)
-                        .padding(.horizontal, 100)
+                    Text(NSLocalizedString("Your assistant on the way to a perfect smile",comment:""))
+                        .font(.system(size: 27))
+                        .padding(.vertical,20)
+                        .padding(.horizontal, 20)
                         .multilineTextAlignment(.center)
 
                 }
                 .padding(.top, 50)
                 Spacer()
                 NavigationLink(destination: WelcomeInfo()) {
-                    Text("Add your treatment")
+                    Text(NSLocalizedString("Add your treatment",comment:""))
                         .font(.headline)
                         .padding(12)
                         .padding(.horizontal,20)
@@ -41,7 +41,7 @@ struct Welcome: View {
                 .padding(8)
 
                 NavigationLink(destination: About()) {
-                    Text("About AlignTime")
+                    Text(NSLocalizedString("About AlignTime",comment:""))
                         .font(.headline)
                         .padding(12)
                         .padding(.horizontal,30)

@@ -25,6 +25,7 @@
 "Total Wear Time:" = "Загальний час з елайнерами:";
 
 /* Profile Screen */
+"Time Statistics" = "Переглянути статистику";
 "Aligner Adjustment" = "Eлайнери";
 "Aligner # %d: %d Day(s)" = "Eлайнер #%d: %d Днів";
 "Modify Treatment Plan" = "Змінити план вирівнювання елайнерами";
@@ -33,6 +34,11 @@
 "Reset All History" = "Видалити план вирівнювання";
 "About" = "Про AlignTime";
 "Give Us Feedback" = "Надішліть нам відгук";
+"Not enough data for statistic" = "Недостатньо даних для статистики";
+"Average wear time: " = "Середній час носіння елайнерів: ";
+"Hours" = "Годин";
+"per_hour" = " годин на добу";
+"Time Statistic" = "Статистика часу";
 
 /* Welcome Screen */
 "Return" = "Назад";
@@ -49,6 +55,11 @@
 "Do you want to erase all history?" = "Ви дійсно хочете стерти всю історію та створити новий план вирівнювання?";
 "Erase" = "Стерти";
 "About_AlignTime" = "AlignTime - це мобільний додаток, створений користувачами елайнерів, щоб допомогти іншим користувачам відслідковувати час носіння елайнерів. \n \n AlignTime допомагає записувати щоденний час носіння кожного елайнера, надсилає нагадування, якщо Ви були занадто довго без елайнерів.";
+
+"Welcome to AlignTime" = " Вітаємо\n в AlignTime";
+"Your assistant on the way to a perfect smile" = "Ваш помічник на шляху до ідеальної посмішки";
+"Add your treatment" = "Розпочати";
+"About AlignTime" = "Про AlignTime";
 
 /* Reminders */
 "AlignTime Reminder" = "Нагадування від AlignTime";

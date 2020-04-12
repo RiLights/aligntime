@@ -73,26 +73,31 @@ struct StatisticsView: View {
         return mytime
     }
     
-    func test_average()->Double{
+    func test_average()->Int{
         let intArray = test_minutes()
         let sumArray = intArray.reduce(0, +)
 
         let avgArrayValue = sumArray/Double(intArray.count)
         
-        return avgArrayValue
+        return Int(avgArrayValue/60)
     }
     
     var body: some View {
         VStack{
             if self.test_date().count<2{
-                Text("Not enough data for statistic")
+                Text(NSLocalizedString("Not enough data for statistic",comment:""))
                     .foregroundColor(Colors.LegendText)
             }
             else{
-                Text("Yesterday Debug:\(self.test_minutes()[self.test_minutes().count-2])")
-                Text("Average hours per day: \(test_average()/60,specifier: "%.2f")h")
+                Group{
+                    Text(NSLocalizedString("Average wear time: ",comment:""))
+                        + Text("\(test_average())")
+                            .foregroundColor(.blue)
+                        + Text(NSLocalizedString("per_hour",comment:""))
+                }
+                .font(.footnote)
                 Divider()
-                Text("Hours")
+                Text(NSLocalizedString("Hours",comment:""))
                     .foregroundColor(Colors.LegendText)
                     .font(.caption)
                 HStack(){
