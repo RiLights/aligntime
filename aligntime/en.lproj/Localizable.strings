@@ -41,10 +41,10 @@
 "Number of days for each aligners" = "Number of days for each aligners";
 "When did you start your treatment?" = "When did you start your treatment?";
 "Aligner number you are wearing now" = "Aligner number you are wearing now";
-"How many days have you been wearing current aligner for?" = "How many days have you been wearing current aligner for?";
+"How many days have you been wearing current aligner for?" = "How many days have you been wearing the current aligner for?";
 "Preferred aligners wear hours per day" = "Preferred aligners wear hours per day";
 "Start date is:" = "Start date is:";
 "Do you want to erase all history?" = "Do you want to erase all history and start a new treatment plan? This action can’t be undone";
 "Erase" = "Erase";
-"About_AlignTime" = "AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when its time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.";
+"About_AlignTime" = "AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when it is time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.";
 
