@@ -30,6 +30,7 @@ struct DataCollect01: View {
                     Text(NSLocalizedString("How many aligners do you require?",comment:""))
                         .font(.headline)
                         .foregroundColor(.blue)
+                        .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                     HStack {
                         Text("\(user_data.required_aligners_total)")
@@ -44,6 +45,7 @@ struct DataCollect01: View {
                         .font(.headline)
                         //.fontWeight(.regular)
                         .foregroundColor(.blue)
+                        .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                     HStack {
                         Text("\(user_data.aligners_wear_days)")
@@ -59,6 +61,7 @@ struct DataCollect01: View {
                         //.fontWeight(.regular)
                         .foregroundColor(.blue)
                         //.padding(.horizontal, 30)
+                        .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                     DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
                             Text("")

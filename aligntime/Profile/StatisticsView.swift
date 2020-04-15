@@ -90,10 +90,14 @@ struct StatisticsView: View {
             }
             else{
                 Group{
-                    Text(NSLocalizedString("Average wear time: ",comment:""))
-                        + Text("\(test_average())")
-                            .foregroundColor(.blue)
-                        + Text(NSLocalizedString("per_hour",comment:""))
+                    HStack{
+                        Text(NSLocalizedString("Average wear time: ",comment:""))
+                            + Text("\(test_average())")
+                                .foregroundColor(.blue)
+                            + Text(NSLocalizedString("per_hour",comment:""))
+                        Spacer()
+                    }
+                    .padding()
                 }
                 .font(.footnote)
                 Divider()

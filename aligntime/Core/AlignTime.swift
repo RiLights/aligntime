@@ -127,7 +127,10 @@ final class AlignTime: ObservableObject {
     }
     
     func get_expected_aligner_for_date(start_aligner:Int,date:Date)->Int{
-        return 0
+        let start_date = Calendar.current.startOfDay(for: self.start_treatment)
+        let time_past = start_date.distance(to: date)
+        
+        return time_past.days
     }
   
     func get_custom_aligners_days_left(start_aligner:Int)->Int{

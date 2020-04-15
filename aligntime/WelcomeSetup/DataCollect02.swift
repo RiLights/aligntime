@@ -21,6 +21,8 @@ struct DataCollect02: View {
                         .font(.headline)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.horizontal, 30)
                     HStack {
                         Text("\(user_data.aligner_number_now)")
                         Stepper("", value: $user_data.aligner_number_now, in: 1...200)
@@ -34,6 +36,7 @@ struct DataCollect02: View {
                     Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
                         .font(.headline)
                         .padding(.horizontal, 30)
+                        .fixedSize(horizontal: false, vertical: true)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     HStack {
@@ -49,6 +52,7 @@ struct DataCollect02: View {
                         .font(.headline)
                         .padding(.horizontal, 30)
                         .foregroundColor(.blue)
+                        .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                     HStack {
                         Text("\(user_data.wear_hours)")

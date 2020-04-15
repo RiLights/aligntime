@@ -61,7 +61,7 @@ struct IntervalEditList: View {
                                             .padding(.horizontal,2)
                                     }
                                 }
-                                .frame(width: 300)
+                                .frame(width: 320)
                             }
                             Spacer()
                         }
