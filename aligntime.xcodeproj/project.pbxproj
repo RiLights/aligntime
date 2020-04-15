@@ -290,8 +290,6 @@
 			dependencies = (
 			);
 			name = aligntime;
-			packageProductDependencies = (
-			);
 			productName = aligntime;
 			productReference = F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */;
 			productType = "com.apple.product-type.application";
@@ -345,8 +343,6 @@
 				pl,
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
-			packageReferences = (
-			);
 			productRefGroup = F05B5C45238D0A7800BC10C9;
 			projectDirPath = "";
 			projectRoot = "";
