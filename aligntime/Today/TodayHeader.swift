@@ -18,16 +18,22 @@ struct TodayHeader: View {
     }
     
     var body: some View {
-        HStack {
-            Text(NSLocalizedString("Today",comment:""))
-                + Text(":")
-                .font(.system(size: 23))
+        VStack{
+            HStack {
+                Text(NSLocalizedString("Today",comment:""))
+                    + Text(":")
+                    .foregroundColor(Color.primary)
+                    .fontWeight(Font.Weight.light)
+                Text("\(Date(), formatter: date_formatter)")
+                    .font(.system(size: 23))
+                    .foregroundColor(Color.accentColor)
+                    .fontWeight(Font.Weight.light)
+            }
+            Text("Expected Aligner: ")
                 .foregroundColor(Color.primary)
-                .fontWeight(Font.Weight.light)
-            Text("\(Date(), formatter: date_formatter)")
-                .font(.system(size: 23))
-                .foregroundColor(Color.accentColor)
-                .fontWeight(Font.Weight.light)
+                + Text("00")
+                    .foregroundColor(Color.accentColor)
         }
+        .font(.system(size: 23))
     }
 }

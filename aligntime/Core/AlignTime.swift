@@ -125,6 +125,10 @@ final class AlignTime: ObservableObject {
         push_user_defaults()
         update_min_max_dates()
     }
+    
+    func get_expected_aligner_for_date(start_aligner:Int,date:Date)->Int{
+        return 0
+    }
   
     func get_custom_aligners_days_left(start_aligner:Int)->Int{
         var days:Int = 0

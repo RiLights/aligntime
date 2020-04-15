@@ -637,6 +637,27 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(days_result, "340")
     }
     
+    func test_expected_aligner01() {
+        let align_time:AlignTime = AlignTime()
+        let day = dateFormatter.date(from: "2019-07-12 00:00")
+        
+        align_time.required_aligners_total = 74
+        align_time.aligners_wear_days = 7
+        align_time.start_treatment = day!
+        align_time.aligner_number_now = 28
+        align_time.current_aligner_days = 1
+        
+        let a01:IndividualAligner = IndividualAligner(0,days:10,aligner_number:34)
+        let a02:IndividualAligner = IndividualAligner(1,days:10,aligner_number:35)
+        let a03:IndividualAligner = IndividualAligner(2,days:10,aligner_number:36)
+        let a04:IndividualAligner = IndividualAligner(3,days:10,aligner_number:37)
+        
+        align_time.aligners = [a01,a02,a03,a04]
+
+        let result = align_time.get_expected_aligner_for_date(start_aligner:0,date:day!)
+        XCTAssertEqual(result, 0)
+    }
+    
     func test_remove_interesected_events01(){
         let date1 = dateFormatter.date(from: "2019-12-06 15:00")!
         let date2 = dateFormatter.date(from: "2019-12-07 13:20")!

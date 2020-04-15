@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -333,7 +333,7 @@
 				};
 			};
 			buildConfigurationList = F05B5C49238D0A7800BC10C9 /* Build configuration list for PBXProject "aligntime" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
