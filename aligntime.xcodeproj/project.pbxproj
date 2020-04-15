@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -112,6 +112,7 @@
 		F0E3882323E8204400B758C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0E3AEA8242CC3D700881E22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0E3AEA9242CC3E300881E22 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0EFC83524468A3D00BE6644 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0FCAF1C24009B5B00378FAB /* OffEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffEvents.swift; sourceTree = "<group>"; };
 		F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F0FEDB3823C410A100682F85 /* IntervalEditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEditList.swift; sourceTree = "<group>"; };
@@ -332,7 +333,7 @@
 				};
 			};
 			buildConfigurationList = F05B5C49238D0A7800BC10C9 /* Build configuration list for PBXProject "aligntime" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -341,6 +342,7 @@
 				uk,
 				ru,
 				pl,
+				es,
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
 			productRefGroup = F05B5C45238D0A7800BC10C9;
@@ -448,6 +450,7 @@
 				F06CFBE5242B467D001876DC /* uk */,
 				F0E3AEA8242CC3D700881E22 /* ru */,
 				F0E3AEA9242CC3E300881E22 /* pl */,
+				F0EFC83524468A3D00BE6644 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -1,0 +1,63 @@
+/* No comment provided by engineer. */
+"Calendar" = "Calendario";
+"Today" = "Hoy";
+
+/* Today Screen */
+"You_have_been_wearing_aligners_for" = "Has estado usando alineadores por";
+"days" = "días";
+"day" = "día";
+"days/4" = "días";
+"days_left_until_the_end_of_your_treatment" = " días hasta la terminación del tratamiento";
+"Wear Time Reminder" = "Recordatorio";
+"Remind me to wear aligners again in" ="Recordarme colocar los alineadores en";
+"15 Minutes" = "15 Minutos";
+"30 Minutes" = "30 Minutos";
+"1 Hour" = "1 Hora";
+"No Reminder" = "Sin Recordatorio";
+"Wear time: " = "Con alineadores: ";
+"Out time: " = "Sin alineadores: ";
+
+/* Calendar Screen */
+"Out Times" = "Tiempo sin alineadores";
+"Now" = "Ahora";
+"Start Time" = "Alineadores retirados";
+"End Time" = "Alineadores puestos";
+"Total Wear Time:" = "Tiempo total con alineadores";
+
+/* Profile Screen */
+"Time Statistics" = "Ver mis estadísticas";
+"Aligner Adjustment" = "Alineadores";
+"Aligner # %d: %d Day(s)" = "Alineador #%d: %d Día(s)";
+"Modify Treatment Plan" = "Modificar Plan de Tratamiento";
+"Treatment Plan" = "Plan de Tratamiento";
+"Individual Aligner Adjust" = "Ajustes de Alineador Individual";
+"Reset All History" = "Reiniciar todo el historial";
+"About" = "Acerca De AlignTime";
+"Give Us Feedback" = " Comentarios y sugerencias";
+"Average wear time: " = "Tiempo promedio de uso: ";
+"Hours" = "Horas";
+"per_hour" = " horas al día";
+"Time Statistic" = "Estadística de tiempo";
+
+/* Welcome Screen */
+"Return" = "Regresar";
+"Back" = "Regresar";
+"Ready" = "Listo";
+"Next" = "Siguiente";
+"How many aligners do you require?" = "Número total de alineadores requerido";
+"Number of days for each aligners" = "Número de días para cada alineador";
+"When did you start your treatment?" = " ¿Cuándo comenzó el tratamiento? ";
+"Aligner number you are wearing now" = "Número del alineador que llevas puesto ahora";
+"How many days have you been wearing current aligner for?" = "Número de días que llevas puesto el alineador actual";
+"Preferred aligners wear hours per day" = "Tiempo recomendado de uso diario";
+"Start date is:" = " Fecha de inicio:";
+"Do you want to erase all history?" = "¿Deseas borrar todo el historial y comenzar un nuevo plan de tratamiento? Esta acción no se puede deshacer.";
+"Erase" = "Borrar";
+"About_AlignTime" = " AlignTime es una aplicación móvil creada por los usuarios de alineadores Invisilign para facilitar el seguimiento del tiempo de uso de los frenillos. AlignTime ayuda a registrar el tiempo de uso diario de cada alineador, envía notificaciones si un alineador ha estado fuera por demasiado tiempo, y alerta cuando es el momento de cambiar los alineadores. Utilizando la funcionalidad Calendario se puede controlar el progreso del tratamiento.";
+
+/* Reminders */
+"AlignTime Reminder" = "Recordatorio de AlignTime";
+"Time to put your aligners on again" = "Es hora de volver a colocar los alineadores";
+"Don’t forget to put your aligners on" = "No te olvides de colocar los alineadores";
+"Your aligners have been out for a while now" = "Has pasado mucho tiempo sin usar los alineadores. Es hora de volver a colocarlos.";
+"Did you forget to start the timer?" = "¿Olvidaste de comenzar el temporizador?";
