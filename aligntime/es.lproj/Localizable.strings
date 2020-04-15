@@ -16,6 +16,7 @@
 "No Reminder" = "Sin Recordatorio";
 "Wear time: " = "Con alineadores: ";
 "Out time: " = "Sin alineadores: ";
+"Expected Aligner #: " = "Esperado alineador #: ";
 
 /* Calendar Screen */
 "Out Times" = "Tiempo sin alineadores";
@@ -54,6 +55,11 @@
 "Do you want to erase all history?" = "¿Deseas borrar todo el historial y comenzar un nuevo plan de tratamiento? Esta acción no se puede deshacer.";
 "Erase" = "Borrar";
 "About_AlignTime" = " AlignTime es una aplicación móvil creada por los usuarios de alineadores Invisilign para facilitar el seguimiento del tiempo de uso de los frenillos. AlignTime ayuda a registrar el tiempo de uso diario de cada alineador, envía notificaciones si un alineador ha estado fuera por demasiado tiempo, y alerta cuando es el momento de cambiar los alineadores. Utilizando la funcionalidad Calendario se puede controlar el progreso del tratamiento.";
+
+"Welcome to AlignTime" = "Bienvenido \n a AlignTime";
+"Your assistant on the way to a perfect smile" = "Tu asistente en camino a una sonrisa perfecta";
+"Add your treatment" = "Empezar";
+"About AlignTime" = "Sobre AlignTime";
 
 /* Reminders */
 "AlignTime Reminder" = "Recordatorio de AlignTime";

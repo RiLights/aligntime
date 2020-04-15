@@ -29,9 +29,13 @@ struct TodayHeader: View {
                     .foregroundColor(Color.accentColor)
                     .fontWeight(Font.Weight.light)
             }
-            Text("Expected Aligner: ")
+            Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                 .foregroundColor(Color.primary)
-                + Text("00")
+                + Text("""
+                    \(self.core_data.get_expected_aligner_for_date(
+                    start_aligner:self.core_data.aligner_number_now,
+                    date:Date()))
+                    """)
                     .foregroundColor(Color.accentColor)
         }
         .font(.system(size: 23))

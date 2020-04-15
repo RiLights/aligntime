@@ -99,7 +99,7 @@ struct StatisticsView: View {
                     }
                     .padding()
                 }
-                .font(.footnote)
+                .font(.system(size: 16))
                 Divider()
                 Text(NSLocalizedString("Hours",comment:""))
                     .foregroundColor(Colors.LegendText)
@@ -115,7 +115,7 @@ struct StatisticsView: View {
                         }
                     }
                 }
-                .padding(.leading, 55)
+                .padding(.leading, 60)
                 ZStack{
                     VStack(spacing:0){
                         ForEach(get_dates(), id: \.self) { d in
@@ -138,7 +138,7 @@ struct StatisticsView: View {
                     GeometryReader{ geometry in
                         Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true),showBackground: true)
                     }
-                    .padding(.leading, 70)
+                    .padding(.leading, 78)
                 }
             }
         }

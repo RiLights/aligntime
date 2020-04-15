@@ -16,6 +16,7 @@
 "No Reminder" = "Без Нагадування";
 "Wear time: " = "З елайнерами: ";
 "Out time: " = "Без елайнерів: ";
+"Expected Aligner #: " = "Eлайнер #: ";
 
 /* Calendar Screen */
 "Out Times" = "Час без елайнерів";
