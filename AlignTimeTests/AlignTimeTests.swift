@@ -682,7 +682,7 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(result, 3)
     }
     
-    func test_expected_aligner3() {
+    func test_expected_aligner03() {
         let align_time:AlignTime = AlignTime()
         let start_day = dateFormatter.date(from: "2019-07-12 00:00")
         let current_day = dateFormatter.date(from: "2019-08-10 00:00")
