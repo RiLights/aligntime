@@ -62,6 +62,8 @@
 "Your assistant on the way to a perfect smile" = "Your assistant on the way to a perfect smile";
 "Add your treatment" = "Add your treatment";
 "About AlignTime" = "About AlignTime";
+"Show expected aligner" = "Show expected aligner";
+"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Reminders */
 "AlignTime Reminder" = "AlignTime Reminder";

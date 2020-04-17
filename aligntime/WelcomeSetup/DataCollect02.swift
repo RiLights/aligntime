@@ -52,7 +52,7 @@ struct DataCollect02: View {
                                     .font(.headline)
                             }
                             if user_data.show_expected_aligner{
-                                Text(NSLocalizedString("When did you start aligner which you are wearing now?",comment:""))
+                                Text(NSLocalizedString("start_date_for_current_aligners",comment:""))
                                     .font(.headline)
                                     //.fontWeight(.regular)
                                     .foregroundColor(.blue)

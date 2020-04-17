@@ -61,6 +61,8 @@
 "Your assistant on the way to a perfect smile" = "Ваш помощник на пути к идеальной улыбке";
 "Add your treatment" = "Начать";
 "About AlignTime" = "О AlignTime";
+"Show expected aligner" = "Show expected aligner";
+"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Reminders */
 "AlignTime Reminder" = "Напоминание от AlignTime";
