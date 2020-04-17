@@ -29,14 +29,17 @@ struct TodayHeader: View {
                     .foregroundColor(Color.accentColor)
                     .fontWeight(Font.Weight.light)
             }
-            Text(NSLocalizedString("Expected Aligner #: ",comment:""))
-                .foregroundColor(Color.primary)
-                + Text("""
-                    \(self.core_data.get_expected_aligner_for_date(
-                    start_aligner:self.core_data.aligner_number_now,
-                    date:Date()))
-                    """)
-                    .foregroundColor(Color.accentColor)
+            if core_data.show_expected_aligner{
+                Text(NSLocalizedString("Expected Aligner #: ",comment:""))
+                    .foregroundColor(Color.primary)
+                    + Text("""
+                        \(self.core_data.get_expected_aligner_for_date(
+                        start_aligner:self.core_data.aligner_number_now,
+                        start_date: self.core_data.start_date_for_current_aligners,
+                        date:Date()))
+                        """)
+                        .foregroundColor(Color.accentColor)
+            }
         }
         .font(.system(size: 23))
     }

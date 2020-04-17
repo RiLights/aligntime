@@ -17,8 +17,10 @@ final class AlignTime: ObservableObject {
     @Published var aligners_wear_days:Int = 7
     @Published var start_treatment:Date = Date()
     @Published var aligner_number_now:Int = 1
+    @Published var start_date_for_current_aligners:Date = Date()
     @Published var current_aligner_days:Int = 1
     @Published var wear_hours:Int = 20
+    @Published var show_expected_aligner:Bool = false
     
     @Published var days_left:String = "0"
     @Published var wearing_aligners_days:Int = 0
@@ -53,6 +55,8 @@ final class AlignTime: ObservableObject {
         aligners_wear_days = 7
         start_treatment = Date()
         aligner_number_now = 1
+        start_date_for_current_aligners = Date()
+        show_expected_aligner = false
         current_aligner_days = 1
         wear_hours = 20
         current_state = true
@@ -126,26 +130,27 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
     }
     
-    func get_expected_aligner_for_date(start_aligner:Int,date:Date)->Int{
-        let start_date = Calendar.current.startOfDay(for: self.start_treatment)
-        let time_past = start_date.distance(to: date)
+    func get_expected_aligner_for_date(start_aligner:Int,start_date:Date,date:Date)->Int{
+        let start_date = Calendar.current.startOfDay(for: start_date)
+        let time_past = date.timeIntervalSince(start_date)//start_date.distance(to: date)
         var expected_aligner = start_aligner
         var days_left = 0
         
         for i in (start_aligner...self.required_aligners_total){
-            for custom_aligner in self.aligners{
-                if custom_aligner.aligner_number == i{
-                    days_left+=custom_aligner.days
-                    if time_past.days<days_left{
-                        return expected_aligner
-                    }
-                    else{
-                        expected_aligner+=1
-                    }
-                }
+            let custom_aligners = self.aligners.filter { $0.aligner_number == i }
+            if custom_aligners.count == 0 {continue}
+            let custom_aligner = custom_aligners.first
+            
+            days_left+=custom_aligner.days
+            if time_past.days<days_left{
+                return expected_aligner
+            }
+            else{
+                expected_aligner+=1
             }
         }
-        return self.required_aligners_total
+        print("days_left",self.required_aligners_total)
+        return expected_aligner-1
     }
   
     func get_custom_aligners_days_left(start_aligner:Int)->Int{
@@ -373,6 +378,8 @@ final class AlignTime: ObservableObject {
         defaults.set(aligner_number_now, forKey: "align_count_now")
         defaults.set(current_aligner_days, forKey: "days_wearing")
         defaults.set(complete, forKey: "collecting_data_complete")
+        defaults.set(show_expected_aligner, forKey: "show_expected_aligner")
+        defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(self.intervals) {
@@ -398,12 +405,22 @@ final class AlignTime: ObservableObject {
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
         if self.current_aligner_days == 0 {self.current_aligner_days = 1 }
         
+        self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
+        
         let start_treatment_raw = defaults.double(forKey: "start_treatment")
         if start_treatment_raw == 0{
             self.start_treatment = Date()
         }
         else{
             self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
+        }
+        
+        let start_date_for_current_aligners_raw = defaults.double(forKey: "start_date_for_current_aligners")
+        if start_date_for_current_aligners_raw == 0{
+            self.start_date_for_current_aligners = Date()
+        }
+        else{
+            self.start_date_for_current_aligners = Date(timeIntervalSince1970:start_date_for_current_aligners_raw)
         }
         
         // Event

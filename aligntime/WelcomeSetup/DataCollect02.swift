@@ -13,6 +13,12 @@ struct DataCollect02: View {
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
 
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+    
     var body: some View {
         Section {
             VStack(alignment: .leading){
@@ -32,6 +38,41 @@ struct DataCollect02: View {
                 }
                 .padding(.top,85)
                 .padding(.bottom,40)
+                if self.view_mode==false{
+                    Group{
+                        VStack(alignment: .center){
+                            Toggle(isOn: $user_data.show_expected_aligner) {
+                                Text(NSLocalizedString("Show expected aligner",comment:""))
+                                    .foregroundColor(.accentColor)
+                                    .font(.headline)
+                            }
+                            if user_data.show_expected_aligner{
+                                Text(NSLocalizedString("When did you start aligner which you are wearing now?",comment:""))
+                                    .font(.headline)
+                                    //.fontWeight(.regular)
+                                    .foregroundColor(.blue)
+                                    //.padding(.horizontal, 30)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.top,20)
+                                DatePicker(selection: $user_data.start_date_for_current_aligners, in: user_data.start_treatment...Date(), displayedComponents: .date) {
+                                        Text("")
+                                    }
+                                    .labelsHidden()
+                                HStack(spacing:0){
+                                    Text(NSLocalizedString("Start date for aligner",comment:""))
+                                    Text(" #\(user_data.aligner_number_now) ")
+                                    Text(NSLocalizedString("is:",comment:""))
+                                    Text(" \(user_data.start_date_for_current_aligners, formatter: dateFormatter)")
+                                }
+                                .font(.footnote)
+                                .foregroundColor(.blue)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.bottom,40)
+                }
                 VStack(alignment: .center){
                     Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
                         .font(.headline)
