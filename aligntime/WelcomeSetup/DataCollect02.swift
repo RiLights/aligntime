@@ -12,6 +12,11 @@ struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
+    var min_aligner_date:Date {
+        get {
+            return Calendar.current.date(byAdding: .day, value: -(self.user_data.aligners_wear_days), to: Date())!
+        }
+    }
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -38,7 +43,7 @@ struct DataCollect02: View {
                 }
                 .padding(.top,85)
                 .padding(.bottom,40)
-                if self.view_mode==false{
+                if self.view_mode==false {
                     Group{
                         VStack(alignment: .center){
                             Toggle(isOn: $user_data.show_expected_aligner) {
@@ -55,7 +60,7 @@ struct DataCollect02: View {
                                     .fixedSize(horizontal: false, vertical: true)
                                     .multilineTextAlignment(.center)
                                     .padding(.top,20)
-                                DatePicker(selection: $user_data.start_date_for_current_aligners, in: user_data.start_treatment...Date(), displayedComponents: .date) {
+                                DatePicker(selection: $user_data.start_date_for_current_aligners, in: min_aligner_date...Date(), displayedComponents: .date) {
                                         Text("")
                                     }
                                     .labelsHidden()
@@ -73,21 +78,23 @@ struct DataCollect02: View {
                     .padding(.horizontal, 40)
                     .padding(.bottom,40)
                 }
-                VStack(alignment: .center){
-                    Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
-                        .font(.headline)
+                if user_data.show_expected_aligner==false{
+                    VStack(alignment: .center){
+                        Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
+                            .font(.headline)
+                            .padding(.horizontal, 30)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(.blue)
+                            .multilineTextAlignment(.center)
+                        HStack {
+                            Text("\(user_data.current_aligner_days)")
+                            Stepper("", value: $user_data.current_aligner_days, in: 1...user_data.aligners_wear_days)
+                        }
                         .padding(.horizontal, 30)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .foregroundColor(.blue)
-                        .multilineTextAlignment(.center)
-                    HStack {
-                        Text("\(user_data.current_aligner_days)")
-                        Stepper("", value: $user_data.current_aligner_days, in: 1...31)
+                        Divider()
                     }
-                    .padding(.horizontal, 30)
-                    Divider()
+                    .padding(.bottom,40)
                 }
-                .padding(.bottom,40)
                 VStack(alignment: .center){
                     Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
                         .font(.headline)
@@ -103,6 +110,7 @@ struct DataCollect02: View {
                     Divider()
                 }
                 .padding(.bottom,40)
+                
                 Spacer()
                 if self.view_mode{
                     DataCollectControllButton02()

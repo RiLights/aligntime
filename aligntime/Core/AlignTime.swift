@@ -17,10 +17,14 @@ final class AlignTime: ObservableObject {
     @Published var aligners_wear_days:Int = 7
     @Published var start_treatment:Date = Date()
     @Published var aligner_number_now:Int = 1
-    @Published var start_date_for_current_aligners:Date = Date()
     @Published var current_aligner_days:Int = 1
     @Published var wear_hours:Int = 20
     @Published var show_expected_aligner:Bool = false
+    @Published var start_date_for_current_aligners:Date = Date(){
+        didSet{
+            self.current_aligner_days = start_date_for_current_aligners.distance(to: Date()).days
+        }
+    }
     
     @Published var days_left:String = "0"
     @Published var wearing_aligners_days:Int = 0
@@ -175,6 +179,7 @@ final class AlignTime: ObservableObject {
         }
         return days
     }
+    
     func update_today_dates() {
         update_individual_aligners()
         
