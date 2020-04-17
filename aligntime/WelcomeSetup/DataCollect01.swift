@@ -21,7 +21,7 @@ struct DataCollect01: View {
         return formatter
     }
     
-    let min_date = Calendar.current.date(byAdding: .year, value: -3, to: Date())
+    let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
     
     var body: some View {
         Section() {
