@@ -40,6 +40,8 @@
 "Hours" = "Hours";
 "per_hour" = " hours per day";
 "Time Statistic" = "Time Statistic";
+"Show expected aligner" = "Show expected aligner";
+"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 
 /* Welcome Screen */
@@ -62,8 +64,8 @@
 "Your assistant on the way to a perfect smile" = "Your assistant on the way to a perfect smile";
 "Add your treatment" = "Add your treatment";
 "About AlignTime" = "About AlignTime";
-"Show expected aligner" = "Show expected aligner";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
+"setting_up" = "Let's go through setting up your new treatment";
+"to_do_this_once" = "(You would only need to do this once)";
 
 /* Reminders */
 "AlignTime Reminder" = "AlignTime Reminder";

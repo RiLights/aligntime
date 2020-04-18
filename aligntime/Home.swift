@@ -49,7 +49,10 @@ struct Home: View {
            }
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
-            .sheet(isPresented: $showingProfile, onDismiss:{self.core_data.update_today_dates()}) {
+            .sheet(isPresented: $showingProfile, onDismiss:{
+                self.core_data.update_today_dates()
+                self.core_data.push_user_defaults()
+            }) {
                 ProfileManager().environmentObject(self.core_data)
             }
             .gesture(DragGesture()

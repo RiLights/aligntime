@@ -40,6 +40,8 @@
 "Hours" = "Годин";
 "per_hour" = " годин на добу";
 "Time Statistic" = "Статистика часу";
+"Show expected aligner" = "Show expected aligner";
+"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Welcome Screen */
 "Return" = "Назад";
@@ -61,8 +63,8 @@
 "Your assistant on the way to a perfect smile" = "Ваш помічник на шляху до ідеальної посмішки";
 "Add your treatment" = "Розпочати";
 "About AlignTime" = "Про AlignTime";
-"Show expected aligner" = "Show expected aligner";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
+"setting_up" = "Давайте налаштуємо Ваш план вирівнювання.";
+"to_do_this_once" = "(Це потрібно зробити тільки один раз)";
 
 /* Reminders */
 "AlignTime Reminder" = "Нагадування від AlignTime";

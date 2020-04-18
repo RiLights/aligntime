@@ -410,7 +410,7 @@ final class AlignTime: ObservableObject {
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
         if self.current_aligner_days == 0 {self.current_aligner_days = 1 }
         
-        self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
+        self.show_expected_aligner = false//defaults.bool(forKey: "show_expected_aligner")
         
         let start_treatment_raw = defaults.double(forKey: "start_treatment")
         if start_treatment_raw == 0{

@@ -14,15 +14,7 @@ struct DataCollect01: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
-    
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
-    
-    let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
-    
+        
     var body: some View {
         Section() {
             VStack(alignment: .leading){
@@ -56,25 +48,20 @@ struct DataCollect01: View {
                 }
                 .padding(.bottom)
                 VStack(alignment: .center){
-                    Text(NSLocalizedString("When did you start your treatment?",comment:""))
+                    Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
                         .font(.headline)
-                        //.fontWeight(.regular)
+                        .padding(.horizontal, 30)
                         .foregroundColor(.blue)
-                        //.padding(.horizontal, 30)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
-                    DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
-                            Text("")
-                        }
-                        .labelsHidden()
-                    HStack{
-                        Text(NSLocalizedString("Start date is:",comment:""))
-                        Text("\(user_data.start_treatment, formatter: dateFormatter)")
+                    HStack {
+                        Text("\(user_data.wear_hours)")
+                        Stepper("", value: $user_data.wear_hours, in: 12...24)
                     }
-                    .font(.footnote)
-                    .foregroundColor(.blue)
+                    .padding(.horizontal, 30)
+                    Divider()
                 }
-                .padding(.horizontal, 40)
+                .padding(.bottom)
                 
                 Spacer()
                 if self.view_mode{

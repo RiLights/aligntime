@@ -17,10 +17,10 @@ struct TreatmentPlan: View {
     }
     
     var body: some View {
-        VStack(alignment: .trailing, spacing: 18) {
+        VStack(alignment: .trailing, spacing: 0) {
             ScrollView(.vertical) {
-                Text("")
                 DataCollect01(view_mode: false)
+                    .padding(.top, 10)
                 DataCollect02(view_mode: false)
             }
         }

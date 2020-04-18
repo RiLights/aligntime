@@ -19,11 +19,12 @@ struct ProfileManager: View {
                     LinkMenu(icon: "chart.pie", label: NSLocalizedString("Time Statistics",comment: ""), destination: StatisticsView())
                     LinkMenu(icon: "doc.plaintext", label: NSLocalizedString("Modify Treatment Plan",comment: ""), destination: TreatmentPlan())
                     LinkMenu(icon: "list.bullet.indent", label: NSLocalizedString("Individual Aligner Adjust",comment: ""), destination: IndividualAlignerManager())
+
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     Button(action: {
                         self.reset_alert.toggle()
                     }){
-                        HStack {
+                        HStack(spacing:13) {
                             Image(systemName: "doc")
                             Text(NSLocalizedString("Reset All History",comment: ""))
                         }
@@ -32,7 +33,7 @@ struct ProfileManager: View {
                     Button(action: {
                         self.rateApp(id:"1497677812")
                     }){
-                        HStack {
+                        HStack(spacing:10) {
                             Image(systemName: "paperplane")
                             Text(NSLocalizedString("Give Us Feedback",comment: ""))
                         }
@@ -72,11 +73,12 @@ Do you want to erase all history?
         return NavigationLink(destination: destination) {
             HStack {
                 Image(systemName: icon)
+                    .frame(width: 20)
                 Text(label)
+                    //.padding(.leading,3)
             }
         }
     }
-
 }
 
 

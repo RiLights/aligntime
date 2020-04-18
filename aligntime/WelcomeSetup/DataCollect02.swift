@@ -17,6 +17,7 @@ struct DataCollect02: View {
             return Calendar.current.date(byAdding: .day, value: -(self.user_data.aligners_wear_days), to: Date())!
         }
     }
+    let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -41,9 +42,9 @@ struct DataCollect02: View {
                     .padding(.horizontal, 30)
                     Divider()
                 }
-                .padding(.top,85)
+                .padding(.top,15)
                 .padding(.bottom,40)
-                if self.view_mode==false {
+                if false {
                     Group{
                         VStack(alignment: .center){
                             Toggle(isOn: $user_data.show_expected_aligner) {
@@ -96,20 +97,25 @@ struct DataCollect02: View {
                     .padding(.bottom,40)
                 }
                 VStack(alignment: .center){
-                    Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
+                    Text(NSLocalizedString("When did you start your treatment?",comment:""))
                         .font(.headline)
-                        .padding(.horizontal, 30)
+                        //.fontWeight(.regular)
                         .foregroundColor(.blue)
+                        //.padding(.horizontal, 30)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
-                    HStack {
-                        Text("\(user_data.wear_hours)")
-                        Stepper("", value: $user_data.wear_hours, in: 12...24)
+                    DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
+                            Text("")
+                        }
+                        .labelsHidden()
+                    HStack{
+                        Text(NSLocalizedString("Start date is:",comment:""))
+                        Text("\(user_data.start_treatment, formatter: dateFormatter)")
                     }
-                    .padding(.horizontal, 30)
-                    Divider()
+                    .font(.footnote)
+                    .foregroundColor(.blue)
                 }
-                .padding(.bottom,40)
+                .padding(.horizontal, 40)
                 
                 Spacer()
                 if self.view_mode{

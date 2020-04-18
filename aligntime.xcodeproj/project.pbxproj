@@ -112,7 +112,6 @@
 		F0E3882323E8204400B758C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0E3AEA8242CC3D700881E22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0E3AEA9242CC3E300881E22 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F0EFC83524468A3D00BE6644 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0FCAF1C24009B5B00378FAB /* OffEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffEvents.swift; sourceTree = "<group>"; };
 		F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F0FEDB3823C410A100682F85 /* IntervalEditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEditList.swift; sourceTree = "<group>"; };
@@ -190,7 +189,6 @@
 		F05B5C50238D0A7800BC10C9 /* aligntime */ = {
 			isa = PBXGroup;
 			children = (
-				F05CC203243885FC00641B22 /* Chart */,
 				F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */,
 				F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */,
 				F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */,
@@ -202,6 +200,7 @@
 				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
 				F026CA0A23B0A7BC006EC25D /* Calendar */,
 				F0071CC523D6F035000B5280 /* Intervals */,
+				F05CC203243885FC00641B22 /* Chart */,
 				F05B5C57238D0A7900BC10C9 /* Assets.xcassets */,
 				F05B5C5F238D0A7900BC10C9 /* Info.plist */,
 				F05B5C59238D0A7900BC10C9 /* Preview Content */,
@@ -342,7 +341,6 @@
 				uk,
 				ru,
 				pl,
-				es,
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
 			productRefGroup = F05B5C45238D0A7800BC10C9;
@@ -450,7 +448,6 @@
 				F06CFBE5242B467D001876DC /* uk */,
 				F0E3AEA8242CC3D700881E22 /* ru */,
 				F0E3AEA9242CC3E300881E22 /* pl */,
-				F0EFC83524468A3D00BE6644 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -583,7 +580,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -608,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

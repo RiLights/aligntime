@@ -14,14 +14,14 @@ struct WelcomeInfo: View {
     var body: some View {
         Section {
             VStack(alignment: .center){
-                Text("Let's go through setting up your new treatment")
+                Text(NSLocalizedString("setting_up",comment:""))
                     .font(.largeTitle)
                     .fontWeight(.regular)
                     .foregroundColor(.blue)
                     .padding(.horizontal, 30)
                     .padding(.bottom, 20)
                     .multilineTextAlignment(.center)
-                Text("(You would only need to do this once)")
+                Text(NSLocalizedString("to_do_this_once",comment:""))
                     .font(.headline)
                     .fontWeight(.light)
                     .foregroundColor(.blue)
@@ -38,7 +38,7 @@ struct WelcomeInfo: View {
                                 .foregroundColor(Color.secondary)
                                 .padding(0)
                                 .opacity(0.5)
-                            Text("Back")
+                            Text(NSLocalizedString("Back",comment:""))
                                 .foregroundColor(Color.white)
                         }
                     }
@@ -47,7 +47,7 @@ struct WelcomeInfo: View {
                             Rectangle()
                                 .frame(height: 40)
                                 .padding(0)
-                            Text("Next")
+                            Text(NSLocalizedString("Next",comment:""))
                                 .foregroundColor(.white)
                         }
                     }

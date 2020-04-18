@@ -40,6 +40,8 @@
 "Hours" = "Часов";
 "per_hour" = " часа в сутки";
 "Time Statistic" = "Статистика времени";
+"Show expected aligner" = "Show expected aligner";
+"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Welcome Screen */
 "Return" = "Назад";
@@ -61,8 +63,8 @@
 "Your assistant on the way to a perfect smile" = "Ваш помощник на пути к идеальной улыбке";
 "Add your treatment" = "Начать";
 "About AlignTime" = "О AlignTime";
-"Show expected aligner" = "Show expected aligner";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
+"setting_up" = "Давайте настроим Ваш план выравнивания";
+"to_do_this_once" = "(Это необходимо сделать только один раз)";
 
 /* Reminders */
 "AlignTime Reminder" = "Напоминание от AlignTime";

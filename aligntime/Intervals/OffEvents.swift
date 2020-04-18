@@ -53,7 +53,7 @@ struct OffEvents: View {
                                 .font(.system(size: 18))
                                 .fontWeight(.light)
                                 .foregroundColor(.accentColor)
-                                //.frame(width: 50)
+                                //.frame(width: 70)
                         }
                         else{
                             Text("\(self.core_data.intervals[i.id+1].time_string )")
@@ -74,9 +74,10 @@ struct OffEvents: View {
                                 .animation(.none)
                         }
                     }
+                    .frame(width: 300)
                 }
             }
-            .frame(width: 300)
+            
         }
     }
 }
