@@ -27,18 +27,28 @@ struct TodayDaysLeft: View {
     var body: some View {
         VStack{
             HStack(alignment: .center, spacing: 4) {
-                Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
-                    .font(.system(size: 17))
-                    .foregroundColor(Color.primary)
-                Text("\(self.core_data.wearing_aligners_days)")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color.blue)
+                if self.core_data.wearing_aligners_days >= 1 {
+                    Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
+                        .font(.system(size: 17))
+                        .foregroundColor(Color.primary)
+                    Text("\(self.core_data.wearing_aligners_days)")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.blue)
+                }
+                else{
+                    Text(NSLocalizedString("You just started your treatment",comment:""))
+                        .font(.system(size: 17))
+                        .foregroundColor(Color.primary)
+                }
                 Group{
                     if self.core_data.wearing_aligners_days == 1 {
                         Text(NSLocalizedString("day",comment:""))
                     }
                     else if self.is_plural_number(){
                         Text(NSLocalizedString("days/4",comment:""))
+                    }
+                    else if self.core_data.wearing_aligners_days == 0{
+                        Text("")
                     }
                     else{
                         Text(NSLocalizedString("days",comment:""))

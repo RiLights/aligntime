@@ -54,14 +54,13 @@ struct IntervalEditList: View {
                                     Text("-")
                                     if (self.core_data.intervals.count<=i.id+1){
                                         Text(NSLocalizedString("Now",comment:""))
-                                            .padding(.horizontal,2)
                                     }
                                     else{
                                         Text("\(self.core_data.intervals[i.id+1].time_string)")
-                                            .padding(.horizontal,2)
                                     }
+                                    
                                 }
-                                .frame(width: 320)
+                                .frame(width: 270)
                             }
                             Spacer()
                         }

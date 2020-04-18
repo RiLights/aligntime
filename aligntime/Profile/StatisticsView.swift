@@ -87,6 +87,8 @@ struct StatisticsView: View {
             if self.test_date().count<2{
                 Text(NSLocalizedString("Not enough data for statistic",comment:""))
                     .foregroundColor(Colors.LegendText)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
             }
             else{
                 Group{

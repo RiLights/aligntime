@@ -26,7 +26,7 @@ final class AlignTime: ObservableObject {
         }
     }
     
-    @Published var days_left:String = "0"
+    @Published var days_left:String = "1"
     @Published var wearing_aligners_days:Int = 0
     
     @Published var complete:Bool = false
@@ -65,7 +65,7 @@ final class AlignTime: ObservableObject {
         wear_hours = 20
         current_state = true
         complete = false
-        days_left = "0"
+        days_left = "1"
         
         aligners = []
         intervals = [DayInterval(0, wear: true, time: Date())]
@@ -153,7 +153,7 @@ final class AlignTime: ObservableObject {
                 expected_aligner+=1
             }
         }
-        print("days_left",self.required_aligners_total)
+        //print("days_left",self.required_aligners_total)
         return expected_aligner-1
     }
   

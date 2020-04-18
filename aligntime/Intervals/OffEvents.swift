@@ -74,7 +74,7 @@ struct OffEvents: View {
                                 .animation(.none)
                         }
                     }
-                    .frame(width: 300)
+                    .frame(width: 320)
                 }
             }
             
