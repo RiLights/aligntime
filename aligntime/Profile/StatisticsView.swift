@@ -84,7 +84,7 @@ struct StatisticsView: View {
     
     var body: some View {
         VStack{
-            if self.test_date().count<2{
+            if self.test_date().count<9{
                 Text(NSLocalizedString("Not enough data for statistic",comment:""))
                     .foregroundColor(Colors.LegendText)
                     .fixedSize(horizontal: false, vertical: true)

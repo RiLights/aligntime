@@ -21,6 +21,7 @@ struct IntervalFields: View {
                 HStack(alignment:.top){
                     OffEvents(navigation_label:self.$navigation_label,
                                       show_modal: self.$show_modal)
+                    .frame(width: 310)
                 }
             }
             Divider()

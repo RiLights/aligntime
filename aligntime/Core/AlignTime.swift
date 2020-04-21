@@ -39,7 +39,7 @@ final class AlignTime: ObservableObject {
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     
-    @Published var intervals:[DayInterval] = test_intervals()//create_wear_intervals(intervals:days_intervals,type:true)
+    @Published var intervals:[DayInterval] = [DayInterval(0, wear: true, time: Date())] //test_intervals()
     @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
@@ -410,7 +410,7 @@ final class AlignTime: ObservableObject {
         self.current_aligner_days = defaults.integer(forKey: "days_wearing")
         if self.current_aligner_days == 0 {self.current_aligner_days = 1 }
         
-        self.show_expected_aligner = false//defaults.bool(forKey: "show_expected_aligner")
+        self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
         
         let start_treatment_raw = defaults.double(forKey: "start_treatment")
         if start_treatment_raw == 0{

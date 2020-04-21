@@ -36,7 +36,7 @@ struct TodayDaysLeft: View {
                         .foregroundColor(Color.blue)
                 }
                 else{
-                    Text(NSLocalizedString("You just started your treatment",comment:""))
+                    Text(NSLocalizedString("You have just started your treatment",comment:""))
                         .font(.system(size: 17))
                         .foregroundColor(Color.primary)
                 }

@@ -44,7 +44,7 @@ struct DataCollect02: View {
                 }
                 .padding(.top,15)
                 .padding(.bottom,40)
-                if false {
+                if self.view_mode == false {
                     Group{
                         VStack(alignment: .center){
                             Toggle(isOn: $user_data.show_expected_aligner) {
