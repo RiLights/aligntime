@@ -44,58 +44,33 @@ struct DataCollect02: View {
                 }
                 .padding(.top,15)
                 .padding(.bottom,40)
+                
+                VStack(alignment: .center){
+                    Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
+                        .font(.headline)
+                        .padding(.horizontal, 30)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .foregroundColor(.blue)
+                        .multilineTextAlignment(.center)
+                    HStack {
+                        Text("\(user_data.days_wearing)")
+                        Stepper("", value: $user_data.days_wearing, in: 1...user_data.aligners_wear_days)
+                    }
+                    .padding(.horizontal, 30)
+                    Divider()
+                }
+                .padding(.bottom,40)
+                
                 if self.view_mode == false {
-                    Group{
-                        VStack(alignment: .center){
-                            Toggle(isOn: $user_data.show_expected_aligner) {
-                                Text(NSLocalizedString("Show expected aligner",comment:""))
-                                    .foregroundColor(.accentColor)
-                                    .font(.headline)
-                            }
-                            if user_data.show_expected_aligner{
-                                Text(NSLocalizedString("start_date_for_current_aligners",comment:""))
-                                    .font(.headline)
-                                    //.fontWeight(.regular)
-                                    .foregroundColor(.blue)
-                                    //.padding(.horizontal, 30)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.top,20)
-                                DatePicker(selection: $user_data.start_date_for_current_aligners, in: min_aligner_date...Date(), displayedComponents: .date) {
-                                        Text("")
-                                    }
-                                    .labelsHidden()
-                                HStack(spacing:0){
-                                    Text(NSLocalizedString("Start date for aligner",comment:""))
-                                    Text(" #\(user_data.aligner_number_now) ")
-                                    Text(NSLocalizedString("is:",comment:""))
-                                    Text(" \(user_data.start_date_for_current_aligners, formatter: dateFormatter)")
-                                }
-                                .font(.footnote)
-                                .foregroundColor(.blue)
-                            }
-                        }
+                    Toggle(isOn: $user_data.show_expected_aligner) {
+                        Text(NSLocalizedString("Show expected aligner",comment:""))
+                            .foregroundColor(.accentColor)
+                            .font(.headline)
                     }
                     .padding(.horizontal, 40)
                     .padding(.bottom,40)
                 }
-                if user_data.show_expected_aligner==false{
-                    VStack(alignment: .center){
-                        Text(NSLocalizedString("How many days have you been wearing current aligner for?",comment:""))
-                            .font(.headline)
-                            .padding(.horizontal, 30)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .foregroundColor(.blue)
-                            .multilineTextAlignment(.center)
-                        HStack {
-                            Text("\(user_data.current_aligner_days)")
-                            Stepper("", value: $user_data.current_aligner_days, in: 1...user_data.aligners_wear_days)
-                        }
-                        .padding(.horizontal, 30)
-                        Divider()
-                    }
-                    .padding(.bottom,40)
-                }
+                
                 VStack(alignment: .center){
                     Text(NSLocalizedString("When did you start your treatment?",comment:""))
                         .font(.headline)

@@ -25,6 +25,7 @@ struct CalendarManager: View {
     }
        
     func startUp() {
+            self.core_data.selected_date = Date()
             core_data.update_min_max_dates()
             // example of some foreground colors
             core_data.colors.weekdayHeaderColor = Color.white

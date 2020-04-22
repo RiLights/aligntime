@@ -33,10 +33,7 @@ struct TodayHeader: View {
                 Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                     .foregroundColor(Color.primary)
                     + Text("""
-                        \(self.core_data.get_expected_aligner_for_date(
-                        start_aligner:self.core_data.aligner_number_now,
-                        start_date: self.core_data.start_date_for_current_aligners,
-                        date:Date()))
+                        \(self.core_data.aligner_number_now)
                         """)
                         .foregroundColor(Color.accentColor)
             }
