@@ -54,7 +54,7 @@ struct DataCollect02: View {
                         .multilineTextAlignment(.center)
                     HStack {
                         Text("\(user_data.days_wearing)")
-                        Stepper("", value: $user_data.days_wearing, in: 1...user_data.aligners_wear_days)
+                        Stepper("", value: $user_data.days_wearing, in: 0...user_data.aligners_wear_days)
                     }
                     .padding(.horizontal, 30)
                     Divider()

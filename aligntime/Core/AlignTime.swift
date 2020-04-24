@@ -140,9 +140,9 @@ final class AlignTime: ObservableObject {
         let days_past = date.timeIntervalSince(start_date).days//start_date.distance(to: date)
         var expected_aligner = self.aligner_number_now
         var current_aligner_day = self.days_wearing
-        var day_index = current_aligner_day
+        var day_index = 0
         
-        print("dddd",days_past)
+        print("dddd days_past",days_past)
         while (day_index < days_past ){
             //if day_index == days_past {continue}
             //print("dddd",day_index)
@@ -158,7 +158,7 @@ final class AlignTime: ObservableObject {
             }
             day_index+=1
         }
-        
+        print("dddd current_aligner_day",current_aligner_day)
         self.aligner_number_now = expected_aligner
         self.start_date_for_current_aligners = Date()
         self.days_wearing = current_aligner_day
