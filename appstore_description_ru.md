@@ -4,23 +4,24 @@ What's New in This Version 1.3:
 
 
 _Subtitle_:
-Simple Aligner Time Tracker
+Приложение для пользователей элайнеров
 
 _Promo text_:
-AlignTime was created by an Invisalign® User to meet all of the daily needs of Invisalign® (or SmileDirectClub®, ClearCorrect®, Candid®, etc.) Users alike.
-Description Combining all of the functionalities needed in order to track Invisalign® wear times effortlessly and effectively, AlignTime is a great tool to support the journey towards straighter teeth for those who find themselves caught up in busy day-to-day life. Easy to use Aligners timer and Aligners reminders would help you to reach Invisalign® optimal daily wear time. AlignTime helps you stay on track with Invisalign® treatment by providing a simple and easy to use App. Reminders, calendar, and wear time statistics – all of this in one application.
+AlignTime был создан пользователями Invisalign® чтобы помочь другим пользователям при лечении с помощью системы Invisalign®.
+
+Соединив в себе весь функционал, необходимый для отслеживания времени, в течение которого пользователь носит элайнеры, AlignTime является приложением, которое в первую очередь призвано облегчить жизнь пользователей на пути к идеальной улыбке. Встроенный таймер и система напоминаний помогут вам всегда быть уверенными в том, что вы носите элайнеры в течение необходимого количества часов.
 
 ## Key Features:
-- Reminder notifications, easy to set, so you would never forget to put your aligners on again.
-- Wear time recorded for every day to help you reach your goal faster. If you forget to start or stop the timer, edit history by adding time you've spent without aligners.
-- Calendar with the ability to view wear times. Days with wear time, less than the target amount of hours noted during your set up, will be highlighted in amber.
-- Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
-- Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
+- Благодаря сообщениям с напоминаниями вы больше никогда не забудете надеть элайнеры после приемов пищи.
+- Время, в течение которого вы носили элайнеры, ежедневно будет записываться в историю. Даже если вы забыли остановить таймер, у вас всегда есть возможность отредактировать историю просто добавив время, в течение которого вы не носили элайнер.
+- С помощью календаря можно просмотреть, сколько часов вы носили элайнеры в тот или инной день. Дни, когда вы носили элайнеры менее чем рекомендованое время, будут подсвечиваться янтарным цветом.
+- Внесите план выравнивания в приложение сразу после загрузки, а при необходимости измените его в настройках.
+- Наслаждайтесь минималистическим и дружественным интерфейсом без назойливой рекламы.
 
-Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
+
+Keywords: Элайнеры,Инвизилайн,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
 
 
 __disclaimer__
-All product names, trademarks and registered trademarks are property of their respective owners. 
-All company, product and service names used are for identification purposes only. 
-Use of these names,trademarks and brands does not imply endorsement.
+_____________
+Все названия продуктов, торговые марки и зарегистрированные торговые марки являются собственностью соответствующих владельцев. Все наименования фирм, товаров и услуг используются только для идентификации. Использование этих названий, торговых марок и брендов не означает одобрения.
