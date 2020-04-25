@@ -11,7 +11,7 @@ AlignTime Został stworzony przez użytkowników Invisalign®, aby pomóc innym 
 
 _Description_: Łącząc wszystkie funkcje niezbędne do śledzenia czasu, w którym użytkownik nosi nakładki, AlignTime to aplikacja, która została zaprojektowana przede wszystkim w celu ułatwienia życia użytkownikom w drodze do idealnego uśmiechu.
 
-## Key Features:
+## Kluczowe cechy::
 - Dzięki wiadomościom przypominającym już nigdy nie zapomnisz wkładać wkładek po posiłkach.
 - Dodaj plan wyrównania do aplikacji natychmiast po pobraniu i, jeśli to konieczne, zmień go w ustawieniach.
 - Minimalistyczny i przyjazny interfejs bez irytujących reklam.
