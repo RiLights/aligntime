@@ -143,7 +143,6 @@ final class AlignTime: ObservableObject {
         var expected_aligner = self.aligner_number_now
         var current_aligner_day = self.days_wearing
         let days_past = abs(seconds_past).days
-        print("dddd days_past",days_past)
         if seconds_past>0{
             (expected_aligner,
                 current_aligner_day) = forward_walking_wearing_days(days_past: days_past)
