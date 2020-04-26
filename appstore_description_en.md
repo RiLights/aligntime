@@ -1,6 +1,6 @@
 What's New in This Version 1.3:
 - Added Current Aligner functionality
-- Fixed intitial data
+- Fixed some bugs
 
 
 _Subtitle_:
@@ -22,7 +22,7 @@ Combining all of the functionalities needed in order to track Invisalign® wear 
 Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
 
 
-__disclaimer__
+__Disclaimer__
 All product names, trademarks and registered trademarks are property of their respective owners. 
 All company, product and service names used are for identification purposes only. 
 Use of these names,trademarks and brands does not imply endorsement.
