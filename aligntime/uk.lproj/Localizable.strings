@@ -41,7 +41,7 @@
 "Hours" = "Годин";
 "per_hour" = " годин на добу";
 "Time Statistic" = "Статистика часу";
-"Show expected aligner" = "Show expected aligner";
+"Show expected aligner" = "Показати поточний елайнер";
 "start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Welcome Screen */
