@@ -1,5 +1,5 @@
 What's New in This Version 1.3:
-- Added Current Aligner functionality
+- Added 'Current Aligner' functionality
 - Fixed some bugs
 
 
