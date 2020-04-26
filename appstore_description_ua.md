@@ -1,10 +1,10 @@
 What's New in This Version 1.3:
-- Expected Aligner functionality
-- Fixed intitial data
+- Added 'Current Aligner' functionality
+- Fixed some bugs
 
 
 _Subtitle_:
-Додаток для користувачів елайнерів
+Для користувачів елайнерів
 
 _Promo text_:
 AlignTime був створений користувачами Invisalign® аби допомогти іншим користувачам під час лікування за допомогою системи Invisalign® (або SmileDirectClub®, та інші)
@@ -23,5 +23,5 @@ _Description_:
 Keywords: Елайнери,Інвізілайн,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
 
 
-__disclaimer__
+__Дисклеймер__
 Усі назви товарів, торговельні марки та зареєстровані торговельні марки є власністю відповідних власників. Усі найменування фірм, товарів та послуг використовуються лише для ідентифікації. Використання цих назв, торгових марок та брендів не означає схвалення.
