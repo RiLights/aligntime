@@ -657,7 +657,7 @@ class AlignTimeTests: XCTestCase {
 
         _ = align_time.get_expected_aligner_for_date(date:current_day!)
         
-        XCTAssertEqual(align_time.days_wearing, 10)
+        XCTAssertEqual(align_time.days_wearing, 1)
     }
     
     func test_expected_current_day02() {
@@ -726,7 +726,7 @@ class AlignTimeTests: XCTestCase {
 
         let result = align_time.get_expected_aligner_for_date(date:current_day!)
         
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result, 2)
     }
     
     func test_expected_aligner02() {
@@ -797,6 +797,29 @@ class AlignTimeTests: XCTestCase {
 
         let result = align_time.get_expected_aligner_for_date(date:current_day!)
         XCTAssertEqual(result, 3)
+    }
+    
+    func test_expected_aligner05() {
+        let align_time:AlignTime = AlignTime()
+        let start_day_for_aligner = dateFormatter.date(from: "2019-07-07 00:00")
+        let current_day = dateFormatter.date(from: "2019-07-05 00:00")
+
+        align_time.required_aligners_total = 2
+        align_time.aligners_wear_days = 7
+        align_time.start_date_for_current_aligners = start_day_for_aligner!
+        align_time.aligner_number_now = 1
+        align_time.days_wearing = 7
+
+        let a01:IndividualAligner = IndividualAligner(0,days:10,aligner_number:1)
+        let a02:IndividualAligner = IndividualAligner(1,days:10,aligner_number:2)
+
+
+
+        align_time.aligners = [a01,a02]
+
+        _ = align_time.get_expected_aligner_for_date(date:current_day!)
+        
+        XCTAssertEqual(align_time.days_wearing, 5)
     }
     
     func test_remove_interesected_events01(){

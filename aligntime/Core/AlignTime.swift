@@ -137,17 +137,35 @@ final class AlignTime: ObservableObject {
     
     func get_expected_aligner_for_date(date:Date)->Int{
         let start_date = Calendar.current.startOfDay(for: self.start_date_for_current_aligners)
-        let days_past = date.timeIntervalSince(start_date).days//start_date.distance(to: date)
+        let seconds_past = date.timeIntervalSince(start_date)
+        if seconds_past==0 {return self.aligner_number_now}
+        
+        var expected_aligner = self.aligner_number_now
+        var current_aligner_day = self.days_wearing
+        let days_past = abs(seconds_past).days
+        print("dddd days_past",days_past)
+        if seconds_past>0{
+            (expected_aligner,
+                current_aligner_day) = forward_walking_wearing_days(days_past: days_past)
+        }
+        else{
+            (expected_aligner,
+                current_aligner_day) = backward_walking_wearing_days(days_past: days_past)
+        }
+
+        self.aligner_number_now = expected_aligner
+        self.start_date_for_current_aligners = Date()
+        self.days_wearing = current_aligner_day
+        
+        return expected_aligner
+    }
+    
+    func forward_walking_wearing_days(days_past:Int)->(Int,Int){
         var expected_aligner = self.aligner_number_now
         var current_aligner_day = self.days_wearing
         var day_index = 0
         
-        print("dddd days_past",days_past)
-        while (day_index < days_past ){
-            //if day_index == days_past {continue}
-            //print("dddd",day_index)
-            //if self.aligners.count <= expected_aligner {continue}
-            
+        while (day_index < days_past){
             let aligner_days = self.aligners[expected_aligner-1].days
             if current_aligner_day >= aligner_days{
                 expected_aligner+=1
@@ -158,14 +176,28 @@ final class AlignTime: ObservableObject {
             }
             day_index+=1
         }
-        print("dddd current_aligner_day",current_aligner_day)
-        self.aligner_number_now = expected_aligner
-        self.start_date_for_current_aligners = Date()
-        self.days_wearing = current_aligner_day
-        
-        return expected_aligner
+        return (expected_aligner,current_aligner_day)
     }
-  
+    
+    func backward_walking_wearing_days(days_past:Int)->(Int,Int){
+        var expected_aligner = self.aligner_number_now
+        var current_aligner_day = self.days_wearing
+        var day_index = 0
+        
+        while (day_index < days_past){
+            let aligner_days = self.aligners[expected_aligner-1].days
+            if current_aligner_day == 1{
+                expected_aligner-=1
+                current_aligner_day = aligner_days
+            }
+            else{
+                current_aligner_day-=1
+            }
+            day_index+=1
+        }
+        return (expected_aligner,current_aligner_day)
+    }
+    
     func get_custom_aligners_days_left(start_aligner:Int)->Int{
         var days:Int = 0
         var skip_default = false
