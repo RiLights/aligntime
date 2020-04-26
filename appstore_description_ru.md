@@ -1,6 +1,6 @@
 What's New in This Version 1.3:
-- Current Aligner functionality
-- Fixed some data
+- Added 'Current Aligner' functionality
+- Fixed some bugs
 
 
 _Subtitle_:
