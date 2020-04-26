@@ -16,7 +16,7 @@
 "No Reminder" = "Без Напоминания";
 "Wear time: " = "С элайнерами: ";
 "Out time: " = "Без элайнеров: ";
-"Expected Aligner #: " = "Ожидаемый елайнер#: ";
+"Expected Aligner #: " = "Элайнер #: ";
 "You have just started your treatment" = "Вы только начали выравнивание";
 
 /* Calendar Screen */
@@ -41,7 +41,7 @@
 "Hours" = "Часов";
 "per_hour" = " часа в сутки";
 "Time Statistic" = "Статистика времени";
-"Show expected aligner" = "Show expected aligner";
+"Show expected aligner" = "Показать текущий элайнер";
 "start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 
 /* Welcome Screen */
