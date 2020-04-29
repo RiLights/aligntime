@@ -11,7 +11,7 @@ import SwiftUI
 struct RKMonth: View {
     @EnvironmentObject var core_data: AlignTime
     
-    var cell_text_color: Color = Color.blue
+    var cell_text_color = Color.accentColor
     let monthOffset: Int
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
@@ -41,7 +41,8 @@ struct RKMonth: View {
                                             isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
                                         cellWidth: self.cellWidth,
                                         rim_color: self.rim_color(date: column),
-                                        cell_text_color: self.cell_text_color)
+                                        cell_text_color: self.cell_text_color,
+                                        dot_color: self.dot_color(date: column))
                                         .onTapGesture { self.dateTapped(date: column) }
                                 } else {
                                     Text("")
@@ -54,6 +55,40 @@ struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(core_data.colors.monthBackColor)
+    }
+    
+    func dot_color(date: Date)->Color{
+        let start_date = Calendar.current.startOfDay(for: self.core_data.start_date_for_current_aligners)
+        let seconds_past = date.timeIntervalSince(start_date)
+        
+        var expected_aligner = 0
+        var current_aligner_day = 0
+        let days_past = abs(seconds_past).days
+        //print("debug ..",days_past)
+        if seconds_past > 0{
+            (expected_aligner,
+                 current_aligner_day) = core_data.forward_walking_wearing_days(days_past: days_past)
+            //print("days_past",days_past)
+            let aligner_days = self.core_data.aligners[expected_aligner-1].days
+            if current_aligner_day==aligner_days{
+                return self.cell_text_color
+            }
+        }
+        else{
+            (expected_aligner,
+                 current_aligner_day) = core_data.backward_walking_wearing_days(days_past: days_past)
+            //if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
+            //if (self.aligners.count <= expected_aligner) {return (expected_aligner,current_aligner_day)}
+            //if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
+            
+            if expected_aligner != 0{
+                let aligner_days = self.core_data.aligners[expected_aligner-1].days
+                if current_aligner_day==aligner_days{
+                    return self.cell_text_color
+                }
+            }
+        }
+        return Color.clear
     }
     
     func rim_color(date: Date)->Color{

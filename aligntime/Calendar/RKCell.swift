@@ -15,7 +15,8 @@ struct RKCell: View {
     
     var cellWidth: CGFloat
     var rim_color: Color = Color.clear
-    var cell_text_color: Color = Color.blue
+    var cell_text_color: Color = Color.red
+    var dot_color: Color = Color.clear
     
     var body: some View {
         Text(rkDate.getText())
@@ -25,11 +26,26 @@ struct RKCell: View {
             .font(.system(size: 18))
             .background(rkDate.getBackgroundColor())
             .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(rim_color, lineWidth: 2)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(rim_color, lineWidth: 2)
+                    VStack{
+                        Spacer()
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(dot_color)
+                            //.stroke(Color(UIColor.systemBackground), lineWidth: 2)
+                            .frame(width: 5, height: 5)
+                            
+                            //.padding(15)
+                            .fixedSize()
+                            //.padding(.top, 10)
+                            //.padding(10)
+                            //.padding(.top, 10)
+                    }
+                    
+                }
             )
             .cornerRadius(cellWidth/2)
-            
     }
 }
 

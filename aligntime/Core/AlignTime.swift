@@ -165,6 +165,9 @@ final class AlignTime: ObservableObject {
         var day_index = 0
         
         while (day_index < days_past){
+            if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
+            if (self.aligners.count <= expected_aligner) {return (expected_aligner,current_aligner_day)}
+
             let aligner_days = self.aligners[expected_aligner-1].days
             if current_aligner_day >= aligner_days{
                 expected_aligner+=1
@@ -182,8 +185,12 @@ final class AlignTime: ObservableObject {
         var expected_aligner = self.aligner_number_now
         var current_aligner_day = self.days_wearing
         var day_index = 0
-        
+
         while (day_index < days_past){
+            if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
+            if expected_aligner == 0 {return (expected_aligner,current_aligner_day)}
+            //if (self.aligners.count <= expected_aligner) {return (expected_aligner,current_aligner_day)}
+
             let aligner_days = self.aligners[expected_aligner-1].days
             if current_aligner_day == 1{
                 expected_aligner-=1
