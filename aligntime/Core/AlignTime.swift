@@ -15,17 +15,17 @@ final class AlignTime: ObservableObject {
     
     @Published var required_aligners_total:Int = 50
     @Published var aligners_wear_days:Int = 7
+        {
+            didSet{
+                self.update_induvidual_aligners_from_aligner(aligner_number:self.aligner_number_now)
+            }
+        }
     @Published var start_treatment:Date = Date()
     @Published var aligner_number_now:Int = 1
     @Published var days_wearing:Int = 1
     @Published var wear_hours:Int = 20
     @Published var show_expected_aligner:Bool = false
     @Published var start_date_for_current_aligners:Date = Date()
-//        {
-//        didSet{
-//            self.days_wearing = start_date_for_current_aligners.distance(to: Date()).days
-//        }
-//    }
     
     @Published var days_left:String = "1"
     @Published var wearing_aligners_days:Int = 0
@@ -288,6 +288,14 @@ final class AlignTime: ObservableObject {
             self.aligners = res
         }
     }
+    
+    func update_induvidual_aligners_from_aligner(aligner_number:Int){
+        for i in self.aligners{
+            if i.aligner_number>=aligner_number{
+                i.days=self.aligners_wear_days
+            }
+        }
+    }
 
     func date_format(date: Date) -> Date {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
@@ -457,94 +465,6 @@ final class AlignTime: ObservableObject {
         let val = self.get_wear_timer_for_date(update_time: selected_date)
         return val
     }
-    
-    func push_user_defaults(){
-        defaults.set(required_aligners_total, forKey: "require_count")
-        defaults.set(aligners_wear_days, forKey: "aligners_count")
-        defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
-        defaults.set(aligner_number_now, forKey: "align_count_now")
-        defaults.set(days_wearing, forKey: "days_wearing")
-        defaults.set(complete, forKey: "collecting_data_complete")
-        defaults.set(show_expected_aligner, forKey: "show_expected_aligner")
-        defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
-        
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(self.intervals) {
-            defaults.set(encoded, forKey: "intervals")
-        }
-        
-        let encoder_aligners = JSONEncoder()
-        if let encoded_aligners = try? encoder_aligners.encode(self.aligners) {
-            defaults.set(encoded_aligners, forKey: "aligners")
-        }
-    }
-  
-    func pull_user_defaults(){
-        self.required_aligners_total = defaults.integer(forKey: "require_count")
-        if self.required_aligners_total == 0 {self.required_aligners_total = 50 }
-        
-        self.aligners_wear_days = defaults.integer(forKey: "aligners_count")
-        if self.aligners_wear_days == 0 {self.aligners_wear_days = 7 }
-        
-        self.aligner_number_now = defaults.integer(forKey: "align_count_now")
-        if self.aligner_number_now == 0 {self.aligner_number_now = 1 }
-        
-        self.days_wearing = defaults.integer(forKey: "days_wearing")
-        if self.days_wearing == 0 {self.days_wearing = 1 }
-        
-        self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
-        
-        let start_treatment_raw = defaults.double(forKey: "start_treatment")
-        if start_treatment_raw == 0{
-            self.start_treatment = Date()
-        }
-        else{
-            self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
-        }
-        
-        let start_date_for_current_aligners_raw = defaults.double(forKey: "start_date_for_current_aligners")
-        if start_date_for_current_aligners_raw == 0{
-            self.start_date_for_current_aligners = Date()
-        }
-        else{
-            self.start_date_for_current_aligners = Date(timeIntervalSince1970:start_date_for_current_aligners_raw)
-        }
-        
-        // Event
-        if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
-            let decoder = JSONDecoder()
-            if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
-                if temp_intervals != [] {
-                    self.intervals = temp_intervals
-                    for i in self.intervals{
-                        i.time = Date().fromTimestamp(i.timestamp)
-                    }
-                    self.current_state = true//self.intervals.last.wear
-                }
-                else{
-                    self.intervals = [DayInterval(0, wear: true, time: Date())]
-                    self.current_state = true
-                }
-            }
-        }
-        
-        // Aligners
-        if let temp_data_aligners = defaults.object(forKey: "aligners") as? Data {
-            let decoder_aligners = JSONDecoder()
-            if let temp_aligners = try? decoder_aligners.decode([IndividualAligner].self, from: temp_data_aligners) {
-                if temp_aligners.count != 0 {
-                    self.aligners = temp_aligners
-                }
-                else{
-                    self.update_individual_aligners()
-                }
-            }
-        }
-        
-        self.complete = defaults.bool(forKey: "collecting_data_complete")
-        self.update_min_max_dates()
-    }
-    
 
     func send_notification(time_interval:Double){
         
@@ -575,14 +495,6 @@ final class AlignTime: ObservableObject {
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+1200, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier04, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
-    func resetDefaults() {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
     }
     
     func remove_notification(){
@@ -625,21 +537,4 @@ final class AlignTime: ObservableObject {
         }
         return true
     }
-}
-
-
-func timer_format(_ second: TimeInterval) -> String? {
-    let formatter = DateComponentsFormatter()
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [.hour, .minute, .second]
-    formatter.zeroFormattingBehavior = .pad
-    return formatter.string(from: second)
-}
-
-func hour_timer_format(_ second: TimeInterval) -> String? {
-    let formatter = DateComponentsFormatter()
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [.hour, .minute]
-    formatter.zeroFormattingBehavior = .pad
-    return formatter.string(from: second+1)
 }

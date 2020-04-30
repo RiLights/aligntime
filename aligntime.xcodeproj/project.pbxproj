@@ -46,6 +46,8 @@
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0D255A32417990A0005B749 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D255A22417990A0005B749 /* TimePicker.swift */; };
 		F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E3882123E8204400B758C7 /* AlignTimeTests.swift */; };
+		F0E69CFE245AD1A200364C3A /* UserDataRestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E69CFD245AD1A200364C3A /* UserDataRestore.swift */; };
+		F0E69D00245AD28700364C3A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E69CFF245AD28700364C3A /* Utils.swift */; };
 		F0FCAF1D24009B5B00378FAB /* OffEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAF1C24009B5B00378FAB /* OffEvents.swift */; };
 		F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */; };
 		F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEDB3823C410A100682F85 /* IntervalEditList.swift */; };
@@ -112,6 +114,8 @@
 		F0E3882323E8204400B758C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0E3AEA8242CC3D700881E22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0E3AEA9242CC3E300881E22 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0E69CFD245AD1A200364C3A /* UserDataRestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRestore.swift; sourceTree = "<group>"; };
+		F0E69CFF245AD28700364C3A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F0FCAF1C24009B5B00378FAB /* OffEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffEvents.swift; sourceTree = "<group>"; };
 		F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F0FEDB3823C410A100682F85 /* IntervalEditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEditList.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */,
+				F0E69CFF245AD28700364C3A /* Utils.swift */,
+				F0E69CFD245AD1A200364C3A /* UserDataRestore.swift */,
 				F0FEDB3623C40D6200682F85 /* TimeIntervalExtension.swift */,
 				F0FEDB4123C8761C00682F85 /* DayInterval.swift */,
 				F0FEDB4323C9357800682F85 /* AlignTimeError.swift */,
@@ -406,7 +412,9 @@
 				F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */,
 				F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */,
 				F0ADCFC523B3F69500F7A3E7 /* DataCollect02.swift in Sources */,
+				F0E69D00245AD28700364C3A /* Utils.swift in Sources */,
 				F0A92E1623F3BFF900874E00 /* TodayHeader.swift in Sources */,
+				F0E69CFE245AD1A200364C3A /* UserDataRestore.swift in Sources */,
 				F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */,
 				F026CA1923B0B453006EC25D /* ProfileManager.swift in Sources */,
 				F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */,
@@ -580,7 +588,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -605,7 +613,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
