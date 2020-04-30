@@ -16,8 +16,9 @@ struct CalendarManager: View {
     var body: some View {
         VStack(alignment: .center) {
             RKViewController()
+            AlignerNoticion()
             IntervalFields()
-                .padding(.top, 20)
+                //.padding(.top, 20)
                 .padding(.horizontal, 30)
                 .animation(.spring())
             Spacer()
@@ -36,3 +37,23 @@ struct CalendarManager: View {
         self.core_data.selected_month = Calendar.current.dateComponents(in: .autoupdatingCurrent, from: Date()).month ?? 0
        }
 }
+
+struct AlignerNoticion: View {
+    @EnvironmentObject var core_data: AlignTime
+
+
+    var body: some View {
+        HStack(){
+            if self.core_data.is_last_day_for_aligner(date: self.core_data.selected_date){
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: 5, height: 5)
+                    .padding(.leading,10)
+                Text("Last day for aligner")
+                    .font(.footnote)
+            }
+            Spacer()
+        }
+        .foregroundColor(.accentColor)
+    }
+}
+

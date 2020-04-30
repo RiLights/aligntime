@@ -33,14 +33,8 @@ struct RKCell: View {
                         Spacer()
                         RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(dot_color)
-                            //.stroke(Color(UIColor.systemBackground), lineWidth: 2)
                             .frame(width: 5, height: 5)
-                            
-                            //.padding(15)
                             .fixedSize()
-                            //.padding(.top, 10)
-                            //.padding(10)
-                            //.padding(.top, 10)
                     }
                     
                 }

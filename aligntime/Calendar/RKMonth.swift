@@ -58,35 +58,8 @@ struct RKMonth: View {
     }
     
     func dot_color(date: Date)->Color{
-        let start_date = Calendar.current.startOfDay(for: self.core_data.start_date_for_current_aligners)
-        let seconds_past = date.timeIntervalSince(start_date)
-        
-        var expected_aligner = 0
-        var current_aligner_day = 0
-        let days_past = abs(seconds_past).days
-        //print("debug ..",days_past)
-        if seconds_past > 0{
-            (expected_aligner,
-                 current_aligner_day) = core_data.forward_walking_wearing_days(days_past: days_past)
-            //print("days_past",days_past)
-            let aligner_days = self.core_data.aligners[expected_aligner-1].days
-            if current_aligner_day==aligner_days{
-                return self.cell_text_color
-            }
-        }
-        else{
-            (expected_aligner,
-                 current_aligner_day) = core_data.backward_walking_wearing_days(days_past: days_past)
-            //if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
-            //if (self.aligners.count <= expected_aligner) {return (expected_aligner,current_aligner_day)}
-            //if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
-            
-            if expected_aligner != 0{
-                let aligner_days = self.core_data.aligners[expected_aligner-1].days
-                if current_aligner_day==aligner_days{
-                    return self.cell_text_color
-                }
-            }
+        if self.core_data.is_last_day_for_aligner(date: date){
+            return self.cell_text_color
         }
         return Color.clear
     }
