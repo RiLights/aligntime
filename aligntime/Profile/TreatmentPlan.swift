@@ -19,9 +19,16 @@ struct TreatmentPlan: View {
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
             ScrollView(.vertical) {
-                DataCollect01(view_mode: false)
+                DataCollect01Body()
                     .padding(.top, 10)
-                DataCollect02(view_mode: false)
+                Toggle(isOn: $user_data.show_expected_aligner) {
+                    Text(NSLocalizedString("Show expected aligner",comment:""))
+                        .foregroundColor(.accentColor)
+                        .font(.headline)
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom,30)
+                DataCollect02Body()
             }
         }
         .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .inline)

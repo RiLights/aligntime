@@ -14,6 +14,7 @@ struct WelcomeInfo: View {
     var body: some View {
         Section {
             VStack(alignment: .center){
+                Spacer()
                 Text(NSLocalizedString("setting_up",comment:""))
                     .font(.largeTitle)
                     .fontWeight(.regular)
@@ -56,6 +57,8 @@ struct WelcomeInfo: View {
                 .padding(.bottom,5)
             }
         }
+        .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }

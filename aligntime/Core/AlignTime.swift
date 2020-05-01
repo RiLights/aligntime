@@ -40,7 +40,7 @@ final class AlignTime: ObservableObject {
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     
-    @Published var intervals:[DayInterval] = [DayInterval(0, wear: true, time: Date())] //test_intervals()
+    @Published var intervals:[DayInterval] = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))] //test_intervals()
     @Published var aligners:[IndividualAligner] = []
 
     @Published var selected_date: Date! = Date()//nil
@@ -69,7 +69,7 @@ final class AlignTime: ObservableObject {
         days_left = "1"
         
         aligners = []
-        intervals = [DayInterval(0, wear: true, time: Date())]
+        intervals = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))]
         selected_date = Date()
     }
     

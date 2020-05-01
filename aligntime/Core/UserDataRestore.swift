@@ -80,7 +80,7 @@ extension AlignTime {
                       self.current_state = true//self.intervals.last.wear
                   }
                   else{
-                      self.intervals = [DayInterval(0, wear: true, time: Date())]
+                      self.intervals = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))]
                       self.current_state = true
                   }
               }

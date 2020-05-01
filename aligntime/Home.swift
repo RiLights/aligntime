@@ -10,16 +10,14 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject var core_data: AlignTime
-    @State private var selection = 1
+    @State private var selection = 0
     
     @State var showingProfile = false
-    @State var isNavigationBarHidden: Bool = true
     
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: 26))
-                //.imageScale(.large)
                 .accessibility(label: Text("User Profile"))
                 .padding()
         }
@@ -70,6 +68,7 @@ struct Home: View {
 //            })
             )
         }
+        .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }

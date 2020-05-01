@@ -9,71 +9,78 @@
 import SwiftUI
 import UIKit
 
-
 struct DataCollect01: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var user_data: AlignTime
+
+    var body: some View {
+    //ScrollView{
+            VStack(alignment: .leading){
+                DataCollect01Body()
+                Spacer()
+                DataCollectControllButton01()
+                    .padding(.horizontal,20)
+                    .padding(.bottom,5)
+            }
+        //}
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+    }
+}
+
+struct DataCollect01Body: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
     @State var view_mode:Bool = true
         
     var body: some View {
-        Section() {
-            VStack(alignment: .leading){
-                VStack(alignment: .center){
-                    Text(NSLocalizedString("How many aligners do you require?",comment:""))
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
-                    HStack {
-                        Text("\(user_data.required_aligners_total)")
-                        Stepper("", value: $user_data.required_aligners_total, in: 1...200)
-                    }
-                    .padding(.horizontal, 30)
-                    Divider()
+        VStack(alignment: .leading){
+            VStack(alignment: .center){
+                Text(NSLocalizedString("How many aligners do you require?",comment:""))
+                    .font(.headline)
+                    .foregroundColor(.blue)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                HStack {
+                    Text("\(user_data.required_aligners_total)")
+                    Stepper("", value: $user_data.required_aligners_total, in: 1...200)
                 }
-                //.padding(.top, 30)
-                VStack(alignment: .center){
-                    Text(NSLocalizedString("Number of days for each aligners",comment:""))
-                        .font(.headline)
-                        //.fontWeight(.regular)
-                        .foregroundColor(.blue)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
-                    HStack {
-                        Text("\(user_data.aligners_wear_days)")
-                        Stepper("", value: $user_data.aligners_wear_days, in: 1...31)
-                    }
-                    .padding(.horizontal, 30)
-                    Divider()
-                }
-                .padding(.bottom)
-                VStack(alignment: .center){
-                    Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
-                        .font(.headline)
-                        .padding(.horizontal, 30)
-                        .foregroundColor(.blue)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
-                    HStack {
-                        Text("\(user_data.wear_hours)")
-                        Stepper("", value: $user_data.wear_hours, in: 12...24)
-                    }
-                    .padding(.horizontal, 30)
-                    Divider()
-                }
-                .padding(.bottom)
-                
-                Spacer()
-                if self.view_mode{
-                    DataCollectControllButton01()
-                        .padding(.horizontal,20)
-                        .padding(.bottom,5)
-                }
+                .padding(.horizontal, 30)
+                Divider()
             }
+            .padding(.top, 15)
+            VStack(alignment: .center){
+                Text(NSLocalizedString("Number of days for each aligners",comment:""))
+                    .font(.headline)
+                    //.fontWeight(.regular)
+                    .foregroundColor(.blue)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                HStack {
+                    Text("\(user_data.aligners_wear_days)")
+                    Stepper("", value: $user_data.aligners_wear_days, in: 1...31)
+                }
+                .padding(.horizontal, 30)
+                Divider()
+            }
+            .padding(.bottom)
+            VStack(alignment: .center){
+                Text(NSLocalizedString("Preferred aligners wear hours per day",comment:""))
+                    .font(.headline)
+                    .padding(.horizontal, 30)
+                    .foregroundColor(.blue)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                HStack {
+                    Text("\(user_data.wear_hours)")
+                    Stepper("", value: $user_data.wear_hours, in: 12...24)
+                }
+                .padding(.horizontal, 30)
+                Divider()
+            }
+            .padding(.bottom)
         }
-        //.navigationBarTitle("")
-        .navigationBarBackButtonHidden(view_mode)
-        //.navigationBarHidden(view_mode)
     }
 }
 
