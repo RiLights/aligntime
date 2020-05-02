@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject var core_data: AlignTime
-    @State private var selection = 1
+    @State private var selection = 0
     
     var profileButton: some View {
         Button(action: { self.core_data.showing_profile.toggle() }) {

@@ -22,7 +22,7 @@ struct ProfileManager: View {
 
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     Button(action: {
-                        self.reset_alert.toggle()
+                        self.reset_alert = true
                     }){
                         HStack(spacing:13) {
                             Image(systemName: "doc")
