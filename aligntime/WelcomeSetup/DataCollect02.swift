@@ -16,11 +16,12 @@ struct DataCollect02: View {
         ScrollView{
             VStack(alignment: .leading){
                 DataCollect02Body()
+                    .padding(.top,5)
                 Spacer()
                 DataCollectControllButton02()
                     .padding(.horizontal,20)
+                    .padding(.top,20)
                     .padding(.bottom,5)
-                    //.padding(.top,10)
             }
         }
         .navigationBarTitle("")

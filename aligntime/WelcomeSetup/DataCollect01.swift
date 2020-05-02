@@ -14,15 +14,17 @@ struct DataCollect01: View {
     @EnvironmentObject var user_data: AlignTime
 
     var body: some View {
-    //ScrollView{
+    ScrollView{
             VStack(alignment: .leading){
                 DataCollect01Body()
+                    .padding(.top,10)
                 Spacer()
                 DataCollectControllButton01()
                     .padding(.horizontal,20)
+                    .padding(.top,20)
                     .padding(.bottom,5)
             }
-        //}
+        }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

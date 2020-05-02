@@ -40,16 +40,34 @@ struct CalendarManager: View {
 
 struct AlignerNoticion: View {
     @EnvironmentObject var core_data: AlignTime
-
+    @State var days:Int = 0
+    var raw_days:Int = 0
+    
+    func show_aligner_number(date:Date)->Bool{
+        let (aligner,aligner_day) = self.core_data.get_expected_aligner_for_date(date:self.core_data.selected_date)
+        if self.core_data.is_last_day_for_aligner(aligner:aligner,
+                                                  day_count:aligner_day){
+            return true
+        }
+        return false
+    }
+    
+    func get_aligner(date:Date)->Int{
+        let (aligner,_) = self.core_data.get_expected_aligner_for_date(date:self.core_data.selected_date)
+        return aligner
+    }
 
     var body: some View {
         HStack(){
-            if self.core_data.is_last_day_for_aligner(date: self.core_data.selected_date){
+            if show_aligner_number(date: self.core_data.selected_date){
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width: 5, height: 5)
                     .padding(.leading,10)
-                Text("Last day for aligner")
-                    .font(.footnote)
+                Group{
+                    Text("Last day for aligner")
+                        + Text(" #\(get_aligner(date: self.core_data.selected_date))")
+                }
+                .font(.footnote)
             }
             Spacer()
         }

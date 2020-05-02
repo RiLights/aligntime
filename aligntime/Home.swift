@@ -10,12 +10,10 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject var core_data: AlignTime
-    @State private var selection = 0
-    
-    @State var showingProfile = false
+    @State private var selection = 1
     
     var profileButton: some View {
-        Button(action: { self.showingProfile.toggle() }) {
+        Button(action: { self.core_data.showing_profile.toggle() }) {
             Image(systemName: "person.crop.circle")
                 .font(.system(size: 26))
                 .accessibility(label: Text("User Profile"))
@@ -47,26 +45,12 @@ struct Home: View {
            }
             .accentColor(.blue)
             .navigationBarItems(trailing: profileButton)
-            .sheet(isPresented: $showingProfile, onDismiss:{
+            .sheet(isPresented: self.$core_data.showing_profile, onDismiss:{
                 self.core_data.update_today_dates()
                 self.core_data.push_user_defaults()
             }) {
                 ProfileManager().environmentObject(self.core_data)
             }
-            .gesture(DragGesture()
-//            .onEnded({ (value) in
-//                if (value.translation.width > 0){
-//                    if (value.translation.width > 100) && (self.selection>=1){
-//                        self.selection-=1
-//                    }
-//                }
-//                else{
-//                    if (value.translation.width < -100) && (self.selection<=1){
-//                        self.selection+=1
-//                    }
-//                }
-//            })
-            )
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)

@@ -58,7 +58,9 @@ struct RKMonth: View {
     }
     
     func dot_color(date: Date)->Color{
-        if self.core_data.is_last_day_for_aligner(date: date){
+        let (aligner,aligner_day) = self.core_data.get_expected_aligner_for_date(date:date)
+        if self.core_data.is_last_day_for_aligner(aligner:aligner,
+                                                  day_count:aligner_day){
             return self.cell_text_color
         }
         return Color.clear
