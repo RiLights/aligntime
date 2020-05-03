@@ -13,20 +13,51 @@ struct DataCollect02: View {
     @EnvironmentObject var user_data: AlignTime
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading){
-                DataCollect02Body()
-                    .padding(.top,5)
+        ZStack{
+            VStack{
+                HStack{
+                    Spacer()
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundColor(.accentColor)
+                        .frame(width: 100, height: 400)
+                        .padding(.top, -50)
+                        .padding(.trailing, -50)
+                        .blur(radius: 100)
+                        .opacity(0.3)
+                }
                 Spacer()
-                DataCollectControllButton02()
-                    .padding(.horizontal,20)
-                    .padding(.top,20)
-                    .padding(.bottom,5)
+                HStack{
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundColor(.accentColor)
+                        .frame(width: 100, height: 200)
+                        .padding(.leading, -70)
+                        //.padding(.bottom, 80)
+                        .blur(radius: 100)
+                        .opacity(0.7)
+                    Spacer()
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundColor(.accentColor)
+                        .frame(width: 100, height: 200)
+                        .padding(.trailing, -40)
+                        .blur(radius: 100)
+                        .opacity(0.5)
+                }
             }
+            ScrollView{
+                VStack(alignment: .leading){
+                    DataCollect02Body()
+                        .padding(.top,5)
+                    Spacer()
+                    DataCollectControllButton02()
+                        .padding(.horizontal,20)
+                        .padding(.top,20)
+                        .padding(.bottom,5)
+                }
+            }
+            .navigationBarTitle("")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
-        .navigationBarTitle("")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
     }
 }
 
