@@ -15,15 +15,13 @@ struct RKDate {
     var isDisabled: Bool = false
     var isToday: Bool = false
     var isSelected: Bool = false
-    var isBetweenStartAndEnd: Bool = false
     
-    init(date: Date, core: AlignTime, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+    init(date: Date, core: AlignTime, isDisabled: Bool, isToday: Bool, isSelected: Bool) {
         self.date = date
         self.core = core
         self.isDisabled = isDisabled
         self.isToday = isToday
         self.isSelected = isSelected
-        self.isBetweenStartAndEnd = isBetweenStartAndEnd
     }
     
     func getText() -> String {
@@ -37,9 +35,6 @@ struct RKDate {
     
     func getBackgroundColor() -> Color {
         var backgroundColor = core.colors.textBackColor
-        if isBetweenStartAndEnd {
-            backgroundColor = core.colors.betweenStartAndEndBackColor
-        }
         if isToday {
             backgroundColor = core.colors.todayBackColor
         }
@@ -60,8 +55,6 @@ struct RKDate {
             fontWeight = Font.Weight.thin
         } else if isSelected {
             fontWeight = Font.Weight.medium
-        } else if isBetweenStartAndEnd {
-            fontWeight = Font.Weight.regular
         }
         return fontWeight
     }

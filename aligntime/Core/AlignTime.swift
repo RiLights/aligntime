@@ -26,6 +26,7 @@ final class AlignTime: ObservableObject {
     @Published var wear_hours:Int = 20
     @Published var show_expected_aligner:Bool = false
     @Published var start_date_for_current_aligners:Date = Date()
+    @Published var aligner_time_notification:Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
     
     @Published var days_left:String = "1"
     @Published var wearing_aligners_days:Int = 0
@@ -53,6 +54,8 @@ final class AlignTime: ObservableObject {
     let notification_identifier02 = "AlignTime.id.02"
     let notification_identifier03 = "AlignTime.id.03"
     let notification_identifier04 = "AlignTime.id.04"
+    let notification_identifier_aligner = "AlignTime.id.aligner"
+    let notification_center = UNUserNotificationCenter.current()
     
     var colors = RKColorSettings()
     
@@ -68,6 +71,7 @@ final class AlignTime: ObservableObject {
         current_state = true
         complete = false
         days_left = "1"
+        aligner_time_notification = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
         
         aligners = []
         intervals = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))]
@@ -238,9 +242,22 @@ final class AlignTime: ObservableObject {
         return days
     }
     
+    func get_date_to_change_aligner(aligner_number:Int,curent_aligner_day:Int)->Int{
+        let aligner_offset = aligner_number-1
+        if aligner_offset < self.aligners.count{
+            let aligner_days = self.aligners[aligner_offset].days
+            if curent_aligner_day <= aligner_days{
+                let days_left = aligner_days-curent_aligner_day
+                return days_left
+            }
+        }
+        return 0
+    }
+    
     func update_today_dates() {
         update_individual_aligners()
         update_expected_aligner_data()
+        update_aligner_notification()
         
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         self.wearing_aligners_days = days_interval.days
@@ -280,57 +297,33 @@ final class AlignTime: ObservableObject {
         self.start_date_for_current_aligners = Date()
         self.days_wearing = current_aligner_day
     }
-
-    func date_format(date: Date) -> Date {
-        guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
-            fatalError("Failed to strip time from Date object")
+    
+    func update_min_max_dates(){
+        if self.intervals.count != 0 {
+            self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
+            self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
         }
-        return date
+    }
+    
+    func update_aligner_notification(){
+        let days_left = get_date_to_change_aligner(aligner_number: self.aligner_number_now, curent_aligner_day: self.days_wearing)
+        let date_offset = Calendar.current.date(byAdding: .day, value: days_left, to: Date())
+        
+        let hour = calendar.component(.hour, from: self.aligner_time_notification)
+        let minutes = calendar.component(.minute, from: self.aligner_time_notification)
+        let seconds = calendar.component(.second, from: self.aligner_time_notification)
+        
+        let notification_time = Calendar.current.date(bySettingHour: hour, minute: minutes, second: seconds, of: date_offset!)
+
+        notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier_aligner])
+        notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier_aligner])
+        self.send_aligner_notification(time:notification_time!,aligner_number:self.aligner_number_now+1)
     }
    
     func date_string_format(_ date: Date) -> String? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
-    }
-    
-    func _interval_filter(wear: Bool) -> [DayInterval] {
-        // Get last interval from previous day
-        if self.selected_date == nil {
-            return []
-        }
-        
-        var intervals = self.intervals.filter{ $0.belongTo(self.selected_date) }
-        if intervals == [] {
-            return []
-        }
-                
-        let previous_intervals = self.intervals.filter{ $0.timestamp < intervals.first.timestamp }
-        if previous_intervals != [] {
-            intervals.prepend(previous_intervals.last)
-        }
-        
-        let next_intervals = self.intervals.filter{ $0.timestamp > intervals.last.timestamp }
-        if next_intervals != [] {
-            intervals.append(next_intervals.first)
-        }
-        else {
-            let time = Date()
-            intervals.append(DayInterval(intervals.last.id+1,wear: !intervals.last.wear,time: time ) )
-        }
-        
-        if intervals.first.wear != wear {
-            intervals.remove(at: 0)
-        }
-        
-        var result:[DayInterval] = []
-        for (s,e) in intervals.pairs() {
-            if s.wear == wear && e != nil {
-                result.append(s)
-            }
-        }
-        
-        return result
     }
     
     func get_wear_days()->[DayInterval]{
@@ -341,103 +334,11 @@ final class AlignTime: ObservableObject {
         return _interval_filter(wear: false)
     }
     
-    
     func is_selected_date(date:Date)->Bool{
         if self.selected_date == nil {
             return false
         }
         return date.belongTo(date: self.selected_date)
-    }
-    
-    func reasign_intervals_id(){
-        for (i,v) in self.intervals.enumerated(){
-            v.id = i
-        }
-        
-        update_min_max_dates()
-    }
-    
-    func get_first_event_for_selected_date()->DayInterval{
-        let previous_intervals = self.intervals.filter{ $0.timestamp < self.selected_date.timestamp()}
-        return previous_intervals.last
-    }
-    
-    func reasign_intervals_date_id(){
-        self.intervals.sort(by: { $0.timestamp < $1.timestamp })
-        for (i,_) in self.intervals.enumerated(){
-            self.intervals[i].id = i
-        }
-        
-        update_min_max_dates()
-    }
-    
-    func add_new_event(to:[DayInterval]){
-        var local_id:Int = 0
-        var time:Date = Date()
-        if to == []{
-            let interval = get_first_event_for_selected_date()
-            local_id = interval.id
-            time = self.selected_date
-        }
-        else{
-            local_id = to.last.id
-            time = to.last.time
-        }
-        let wear_state = self.intervals[local_id].wear
-        if wear_state{
-            let d_off = DayInterval(local_id+1,
-                                wear: false, time: time.advanced(by: 1))
-            self.intervals.insert(d_off,at: local_id+1)
-            let d_wear = DayInterval(local_id+2,
-                                wear: true, time: time.advanced(by: 1))
-            self.intervals.insert(d_wear, at: local_id+2)
-        }
-        else{
-            let d_wear = DayInterval(local_id+1,
-                                wear: true, time: time.advanced(by: 1))
-            self.intervals.insert(d_wear, at: local_id+1)
-            let d_off = DayInterval(local_id+2,
-                                    wear: false, time: time.advanced(by: 1))
-            self.intervals.insert(d_off, at: local_id+2)
-        }
-        reasign_intervals_date_id()
-    }
-    
-    func remove_interesected_events(event_index:Int){
-        if self.intervals.count==1{
-             return
-        }
-        
-        let start_event = self.intervals[event_index].timestamp
-        var end_event = Date().timestamp()
-        if self.intervals.count>event_index+1{
-             end_event = self.intervals[event_index+1].timestamp
-        }
-        
-        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
-        reasign_intervals_date_id()
-        force_event_order()
-    }
-    
-    func force_event_order(){
-        if self.intervals.count == 0{
-            return
-        }
-        var previos_event = DayInterval(self.intervals[0].id,
-                                        wear:!self.intervals[0].wear,
-                                        time: self.intervals[0].time)
-        for i in self.intervals{
-            if (i.wear == previos_event.wear){
-                let new_event = DayInterval(previos_event.id,
-                                            wear:!previos_event.wear,
-                                            time:i.time.advanced(by: -2))
-                //new_event.wear = !new_event.wear
-                new_event.time = new_event.time.advanced(by: 1)
-                self.intervals.insert(new_event, at: new_event.id)
-            }
-            previos_event = i
-        }
-        reasign_intervals_date_id()
     }
     
     func total_wear_time_for_date(date:Date)->TimeInterval{
@@ -449,76 +350,64 @@ final class AlignTime: ObservableObject {
         let val = self.get_wear_timer_for_date(update_time: selected_date)
         return val
     }
+    
+    func send_aligner_notification(time:Date,aligner_number:Int){
 
-    func send_notification(time_interval:Double){
+        let content = UNMutableNotificationContent()
+        content.title = NSLocalizedString("AlignTime Reminder",comment: "")
+        content.body = NSLocalizedString("Today is your last day with the aligner #\(aligner_number)",comment: "")
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "AlignerAlignTimeNotification"
+        content.threadIdentifier = "aligner-aligntime"
+        content.summaryArgument = "AlignTime"
+        
+        let comps = Calendar.current.dateComponents([.year,.day,.month,.hour,.minute], from: time)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
+        let request = UNNotificationRequest(identifier: notification_identifier_aligner, content: content, trigger: trigger)
+        notification_center.add(request, withCompletionHandler: nil)
+    }
+
+    func send_wear_notification(time_interval:Double){
         
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("AlignTime Reminder",comment: "")
         content.body = NSLocalizedString("Time to put your aligners on again",comment: "")
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = notification_identifier01
+        content.categoryIdentifier = "WearAlignTimeNotification"
+        content.threadIdentifier = "wear-aligntime"
+        content.summaryArgument = "AlignTime"
         
         var trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval, repeats: false)
         var request = UNNotificationRequest(identifier: notification_identifier01, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        notification_center.add(request, withCompletionHandler: nil)
         
         content.body = NSLocalizedString("Don’t forget to put your aligners on",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+120, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier02, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        notification_center.add(request)
 
         content.body = NSLocalizedString("Your aligners have been out for a while now",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+420, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier03, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        notification_center.add(request)
         
         content.body = NSLocalizedString("Did you forget to start the timer?",comment: "")
 
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: time_interval+1200, repeats: false)
         request = UNNotificationRequest(identifier: notification_identifier04, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        notification_center.add(request)
     }
     
-    func remove_notification(){
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier01])
-        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier01])
-        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier02])
-        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier02])
-        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier03])
-        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier03])
-        center.removePendingNotificationRequests(withIdentifiers: [notification_identifier04])
-        center.removeDeliveredNotifications(withIdentifiers: [notification_identifier04])
-    }
-    
-    /// Calendar Manager
-    
-    func update_min_max_dates(){
-        if self.intervals.count != 0 {
-            self.minimumDate = Date().fromTimestamp( self.intervals.min()!.timestamp )
-            self.maximumDate = Date().fromTimestamp( self.intervals.max()!.timestamp )
-        }
-    }
-    
-    func is_between(_ date: Date) -> Bool {
-        if self.startDate == nil {
-            return false
-        } else if self.endDate == nil {
-            return false
-        } else if self.calendar.compare(date, to: self.startDate, toGranularity: .day) == .orderedAscending {
-            return false
-        } else if self.calendar.compare(date, to: self.endDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
-    }
-    
-    func is_present(_ date: Date) -> Bool {
-        if self.calendar.compare(date, to: self.minimumDate, toGranularity: .day) == .orderedAscending || self.calendar.compare(date, to: self.maximumDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
+    func remove_wear_notification(){
+        notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier01])
+        notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier01])
+        notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier02])
+        notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier02])
+        notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier03])
+        notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier03])
+        notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier04])
+        notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier04])
     }
 }

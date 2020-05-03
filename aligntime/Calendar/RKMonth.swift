@@ -37,8 +37,7 @@ struct RKMonth: View {
                                             core: self.core_data,
                                             isDisabled: !self.isEnabled(date: column),
                                             isToday: self.isToday(date: column),
-                                            isSelected: self.isSpecialDate(date: column),
-                                            isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                            isSelected: self.isSpecialDate(date: column)),
                                         cellWidth: self.cellWidth,
                                         rim_color: self.rim_color(date: column),
                                         cell_text_color: self.cell_text_color,
@@ -177,13 +176,16 @@ struct RKMonth: View {
         return RKFormatAndCompareDate(date: date, referenceDate: core_data.endDate)
     }
     
-    func isBetweenStartAndEnd(date: Date) -> Bool {
-        return core_data.is_between(date)
-    }
-    
     func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
-        return core_data.is_present(clampedDate)
+        return self.is_present(clampedDate)
+    }
+    
+    func is_present(_ date: Date) -> Bool {
+        if self.core_data.calendar.compare(date, to: self.core_data.minimumDate, toGranularity: .day) == .orderedAscending || self.core_data.calendar.compare(date, to: self.core_data.maximumDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
     }
 }
 

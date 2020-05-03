@@ -25,6 +25,7 @@ extension AlignTime {
           defaults.set(complete, forKey: "collecting_data_complete")
           defaults.set(show_expected_aligner, forKey: "show_expected_aligner")
           defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
+          defaults.set(aligner_time_notification.timeIntervalSince1970, forKey: "aligner_time_notification")
           
           let encoder = JSONEncoder()
           if let encoded = try? encoder.encode(self.intervals) {
@@ -66,6 +67,14 @@ extension AlignTime {
           }
           else{
               self.start_date_for_current_aligners = Date(timeIntervalSince1970:start_date_for_current_aligners_raw)
+          }
+        
+          let aligner_time_notification_raw = defaults.double(forKey: "aligner_time_notification")
+          if aligner_time_notification_raw == 0{
+            self.aligner_time_notification = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
+          }
+          else{
+             self.aligner_time_notification = Date(timeIntervalSince1970:aligner_time_notification_raw)
           }
           
           // Event

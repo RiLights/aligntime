@@ -20,13 +20,13 @@ struct TodayTimer: View {
     func start_timer(){
         self.core_data.current_state = true
         self.core_data.switch_timer()
-        self.core_data.remove_notification()
+        self.core_data.remove_wear_notification()
     }
     func pause_timer(time_interval:Double){
         self.core_data.current_state = false
         self.core_data.switch_timer()
         if time_interval != 0 {
-            self.core_data.send_notification(time_interval: time_interval)
+            self.core_data.send_wear_notification(time_interval: time_interval)
         }
     }
     
@@ -87,7 +87,7 @@ struct TodayTimer: View {
                         message: Text(NSLocalizedString("Remind me to wear aligners again in",comment:"")),
                         buttons: [
                                   .default(Text(NSLocalizedString("15 Minutes",comment:"")), action: {
-                                        self.pause_timer(time_interval: 900)
+                                    self.pause_timer(time_interval: 900)
                                   }),
                                   .default(Text(NSLocalizedString("30 Minutes",comment:"")), action: {
                                         self.pause_timer(time_interval: 1800)
