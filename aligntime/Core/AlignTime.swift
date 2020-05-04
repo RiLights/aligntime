@@ -317,7 +317,7 @@ final class AlignTime: ObservableObject {
 
         notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier_aligner])
         notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier_aligner])
-        self.send_aligner_notification(time:notification_time!,aligner_number:self.aligner_number_now+1)
+        self.send_aligner_notification(time:notification_time!,aligner_number:self.aligner_number_now)
     }
    
     func date_string_format(_ date: Date) -> String? {
