@@ -35,24 +35,21 @@ struct TodayTimer: View {
             VStack(alignment: .center) {
                 HStack(alignment: .center, spacing: 4) {
                     Text(NSLocalizedString("Wear time: ",comment:""))
-                        .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                         .padding(.bottom, 5)
                     Text(wear_time)
-                        .font(.system(size: 24))
                         .foregroundColor(Color.blue)
                         .padding(.bottom, 5)
                 }
                 HStack(alignment: .center, spacing: 0) {
                     Text(NSLocalizedString("Out time: ",comment:""))
-                        .font(.system(size: 24))
                         .foregroundColor(Color.primary)
                     Text(off_time)
-                        .font(.system(size: 24))
                         .foregroundColor(Color.blue)
                 }
             }
             .padding(.bottom, 10)
+            .font(.title)
             .onReceive(self.timer) { input in
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: input))!

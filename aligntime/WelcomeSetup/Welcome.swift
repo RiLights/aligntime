@@ -17,7 +17,7 @@ struct Welcome: View {
                         .foregroundColor(.accentColor)
                         .frame(width: 300, height: 300)
                         .padding(.top, -250)
-                        .blur(radius: 100)
+                        .blur(radius: 120)
                         .opacity(0.3)
                     Spacer()
                 }

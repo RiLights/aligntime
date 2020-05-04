@@ -25,7 +25,6 @@ struct TodayHeader: View {
                     .foregroundColor(Color.primary)
                     .fontWeight(Font.Weight.light)
                 Text("\(Date(), formatter: date_formatter)")
-                    .font(.system(size: 23))
                     .foregroundColor(Color.accentColor)
                     .fontWeight(Font.Weight.light)
             }
@@ -38,6 +37,6 @@ struct TodayHeader: View {
                         .foregroundColor(Color.accentColor)
             }
         }
-        .font(.system(size: 23))
+            .font(.title)//.system(size: 23)
     }
 }

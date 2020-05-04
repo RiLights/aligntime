@@ -75,6 +75,8 @@
 "Your aligners have been out for a while now" = "Your aligners have been out for a while now. It’s time to put them back on";
 "Did you forget to start the timer?" = "Did you forget to start the timer?";
 "last_aligner # %d" = "Today is your last day with the aligner # %d";
+"Changer aligner time notification" = "Changer aligner time notification";
+"Last day for aligner" = "Last day for aligner";
 
 
 

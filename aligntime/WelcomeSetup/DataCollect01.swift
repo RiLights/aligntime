@@ -23,8 +23,8 @@ struct DataCollect01: View {
                         .frame(width: 100, height: 400)
                         .padding(.top, -50)
                         .padding(.trailing, -50)
-                        .blur(radius: 100)
-                        .opacity(0.4)
+                        .blur(radius: 120)
+                        .opacity(0.3)
                 }
                 Spacer()
                 HStack{
@@ -33,15 +33,15 @@ struct DataCollect01: View {
                         .frame(width: 100, height: 200)
                         .padding(.leading, -70)
                         .padding(.bottom, 80)
-                        .blur(radius: 100)
-                        .opacity(0.5)
+                        .blur(radius: 120)
+                        .opacity(0.4)
                     Spacer()
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor(.accentColor)
                         .frame(width: 100, height: 200)
                         .padding(.trailing, -40)
-                        .blur(radius: 100)
-                        .opacity(0.7)
+                        .blur(radius: 120)
+                        .opacity(0.5)
                 }
             }
             ScrollView{

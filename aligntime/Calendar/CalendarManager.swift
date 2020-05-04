@@ -64,7 +64,7 @@ struct AlignerNoticion: View {
                     .frame(width: 5, height: 5)
                     .padding(.leading,10)
                 Group{
-                    Text("Last day for aligner")
+                    Text(NSLocalizedString("Last day for aligner",comment:""))
                         + Text(" #\(get_aligner(date: self.core_data.selected_date))")
                 }
                 .font(.footnote)
