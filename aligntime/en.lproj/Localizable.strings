@@ -74,7 +74,7 @@
 "Don’t forget to put your aligners on" = "Don’t forget to put your aligners on";
 "Your aligners have been out for a while now" = "Your aligners have been out for a while now. It’s time to put them back on";
 "Did you forget to start the timer?" = "Did you forget to start the timer?";
-"last_aligner # %d" = "Today is your last day with the aligner # %d";
+"last_aligner # %d" = "Time to change to aligner # %d";
 
 
 
