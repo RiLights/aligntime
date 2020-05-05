@@ -74,3 +74,6 @@
 "Your aligners have been out for a while now" = "Ты уже долгое время без элайнеров. Пора их снова надеть";
 "Did you forget to start the timer?" = "Кажется вы забыли включить таймер?";
 
+"last_aligner # %d" = "Время надеть элайнер # %d";
+"Changer aligner time notification" = "Во сколько Вам напомнить про замену элайнеров?";
+"Last day for aligner" = "Сегодня Вам пора надеть элайнер #";
