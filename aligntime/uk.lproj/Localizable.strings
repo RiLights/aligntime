@@ -73,3 +73,7 @@
 "Don’t forget to put your aligners on" = "Не забудь одягнути елайнери";
 "Your aligners have been out for a while now" = "Ти вже досить довгий час без елайнерів. Час їх одягнути";
 "Did you forget to start the timer?" = "Здається ви забули увімкнути таймер?";
+
+"last_aligner # %d" = "Час одягати елайнер # %d";
+"Changer aligner time notification" = "О котрій нагадати Вам про заміну елайнерів?";
+"Last day for aligner" = "Сьогодні Вам час одягнути елайнер #";
