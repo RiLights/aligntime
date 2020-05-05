@@ -21,7 +21,18 @@ struct TreatmentPlan: View {
             ScrollView(.vertical) {
                 DataCollect01Body()
                     .padding(.top, 10)
-                
+                VStack(alignment: .center){
+                     Text(NSLocalizedString("Changer aligner time notification",comment:""))
+                         .font(.headline)
+                         .foregroundColor(.blue)
+                         .fixedSize(horizontal: false, vertical: true)
+                         .multilineTextAlignment(.center)
+                     DatePicker(selection: $user_data.aligner_time_notification, displayedComponents: .hourAndMinute) {
+                             Text("")
+                         }
+                         .labelsHidden()
+                 }
+                 .padding(.horizontal, 40)
                 Toggle(isOn: $user_data.show_expected_aligner) {
                     Text(NSLocalizedString("Show expected aligner",comment:""))
                         .foregroundColor(.accentColor)

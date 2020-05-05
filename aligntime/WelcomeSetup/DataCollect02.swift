@@ -132,19 +132,6 @@ struct DataCollect02Body: View {
                 .foregroundColor(.blue)
             }
             .padding(.horizontal, 40)
-            VStack(alignment: .center){
-                 Text(NSLocalizedString("Changer aligner time notification",comment:""))
-                     .font(.headline)
-                     .foregroundColor(.blue)
-                     .fixedSize(horizontal: false, vertical: true)
-                     .multilineTextAlignment(.center)
-                 DatePicker(selection: $user_data.aligner_time_notification, displayedComponents: .hourAndMinute) {
-                         Text("")
-                     }
-                     .labelsHidden()
-             }
-             .padding(.horizontal, 40)
-             .padding(.top,15)
 //            Spacer()
 //            if self.view_mode{
 //                DataCollectControllButton02()
