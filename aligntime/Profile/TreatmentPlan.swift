@@ -30,18 +30,7 @@ struct TreatmentPlan: View {
                 .padding(.horizontal, 40)
                 .padding(.bottom,30)
                 DataCollect02Body()
-                .padding(.bottom,30)
-                VStack(alignment: .center){
-                     Text(NSLocalizedString("Changer aligner time notification",comment:""))
-                         .font(.headline)
-                         .foregroundColor(.blue)
-                         .fixedSize(horizontal: false, vertical: true)
-                         .multilineTextAlignment(.center)
-                     DatePicker(selection: $user_data.aligner_time_notification, displayedComponents: .hourAndMinute) {
-                             Text("")
-                         }
-                         .labelsHidden()
-                 }
+                //.padding(.bottom,30)
             }
         }
         .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .inline)

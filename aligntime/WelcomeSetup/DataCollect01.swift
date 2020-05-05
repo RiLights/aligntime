@@ -34,7 +34,7 @@ struct DataCollect01: View {
                         .padding(.leading, -70)
                         .padding(.bottom, 80)
                         .blur(radius: 120)
-                        .opacity(0.4)
+                        .opacity(0.6)
                     Spacer()
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor(.accentColor)
@@ -50,7 +50,7 @@ struct DataCollect01: View {
                         .padding(.top,10)
                     Spacer()
                     DataCollectControllButton01()
-                        .padding(.horizontal,20)
+                        //.padding(.horizontal,20)
                         .padding(.top,20)
                         .padding(.bottom,5)
                 }
