@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+struct Blur: UIViewRepresentable {
+    var style: UIBlurEffect.Style = .systemMaterial
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        uiView.effect = UIBlurEffect(style: style)
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject var user_data: AlignTime
     @State private var hideHorizontalLines: Bool = false
@@ -17,7 +27,18 @@ struct ContentView: View {
         //StatisticsView()
         Group{
             if user_data.complete == true {
-                Home().environmentObject(user_data)
+                //ZStack{
+                    Home().environmentObject(user_data)
+//                    VStack{
+//                        Image(systemName: "lightbulb")
+//                            .padding()
+//                        Text("What you would like to explain for artist here?")
+//                            .font(.body)
+//                            .padding()
+//                    }
+//                    .frame(width: 250, height: 350)
+//                    .background(Blur(style: .systemUltraThinMaterial))
+//                }
             }
             else{
                 Welcome().environmentObject(user_data)

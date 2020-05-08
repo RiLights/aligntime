@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct DataCollect02: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user_data: AlignTime
@@ -72,6 +73,7 @@ struct DataCollect02Body: View {
         }
     }
     let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
+    //let max_date = Calendar.current.date(byAdding: .day, value: user_data.days_wearing, to: Date())
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -120,7 +122,7 @@ struct DataCollect02Body: View {
                     .foregroundColor(.blue)
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
-                DatePicker(selection: $user_data.start_treatment, in: min_date!...Date(), displayedComponents: .date) {
+                DatePicker(selection: $user_data.start_treatment, in: min_date!...Calendar.current.date(byAdding: .day, value: -(user_data.days_wearing), to: Date())!, displayedComponents: .date) {
                         Text("")
                     }
                     .labelsHidden()

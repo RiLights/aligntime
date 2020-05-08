@@ -28,7 +28,7 @@ struct TreatmentPlan: View {
                          .fixedSize(horizontal: false, vertical: true)
                          .multilineTextAlignment(.center)
                      DatePicker(selection: $user_data.aligner_time_notification, displayedComponents: .hourAndMinute) {
-                             Text("")
+                             Text("Changer aligner time notification")
                          }
                          .labelsHidden()
                  }
