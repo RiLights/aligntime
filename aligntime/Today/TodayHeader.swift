@@ -21,9 +21,9 @@ struct TodayHeader: View {
         VStack{
             HStack {
                 Text(NSLocalizedString("Today",comment:""))
+                    .fontWeight(Font.Weight.light)
                     + Text(":")
                     .foregroundColor(Color.primary)
-                    .fontWeight(Font.Weight.light)
                 Text("\(Date(), formatter: date_formatter)")
                     .foregroundColor(Color.accentColor)
                     .fontWeight(Font.Weight.light)
@@ -31,12 +31,17 @@ struct TodayHeader: View {
             if core_data.show_expected_aligner{
                 Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                     .foregroundColor(Color.primary)
+                    .fontWeight(Font.Weight.light)
                     + Text("""
                         \(self.core_data.aligner_number_now)
                         """)
                         .foregroundColor(Color.accentColor)
+                        
             }
         }
-            .font(.title)//.system(size: 23)
+        //.font(.title)
+        //.scaledFont(size: 25)
+        //.font(.title)//.system(size: 23)
+        //.scaledFont(size: -20)
     }
 }

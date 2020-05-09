@@ -31,10 +31,10 @@ struct TodayDaysLeft: View {
                     Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
                         .foregroundColor(Color.primary)
                     Text("\(self.core_data.wearing_aligners_days)")
-                        //.scaledFont(size: 20)
+                        .scaledFont(size: 20)
                         //.font(.headline)
                         //.font(.title)
-                        .bold()
+                        //.bold()
                         .foregroundColor(Color.blue)
                 }
                 else{
@@ -62,19 +62,16 @@ struct TodayDaysLeft: View {
             .font(.body)
             HStack(alignment: .center, spacing: 4) {
                 Text(self.core_data.days_left)
-                    //.font(.system(size: 20))
-                    .bold()
+                    .scaledFont(size: 20)
+                    //.bold()
                     .foregroundColor(Color.blue)
-                    .padding(.leading, 5)
-                    .padding(.top, 7)
-                    .padding(.bottom, 30)
                 Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
                     //.font(.system(size: 17))
                     .foregroundColor(Color.primary)
-                    .padding(.trailing, 5)
-                    .padding(.top, 7)
-                    .padding(.bottom, 30)
+                    //.padding(.trailing, 5)
             }
+            .padding(.top, 7)
+            .padding(.bottom, 30)
             .font(.body)
         }
         .onAppear() {

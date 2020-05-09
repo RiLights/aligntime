@@ -9,6 +9,7 @@
 import Foundation
 
 extension AlignTime {
+    
     func _interval_filter(wear: Bool) -> [DayInterval] {
         // Get last interval from previous day
         if self.selected_date == nil {
@@ -62,7 +63,7 @@ extension AlignTime {
         update_min_max_dates()
     }
     
-    func add_new_event(to:[DayInterval]){
+    func add_new_event(to:[DayInterval]) throws{
         var local_id:Int = 0
         var time:Date = Date()
         if to == []{

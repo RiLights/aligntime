@@ -12,6 +12,7 @@ import UserNotifications
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
+    @Published var debug_val:Double = 0
     
     @Published var required_aligners_total:Int = 50
     @Published var aligners_wear_days:Int = 7

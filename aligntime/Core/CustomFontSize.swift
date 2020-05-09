@@ -20,7 +20,7 @@ struct ScaledFont: ViewModifier {
 
 extension View {
     func scaledFont(size: CGFloat) -> some View {
-        return self.modifier(ScaledFont(size: 20))
+        return self.modifier(ScaledFont(size: size))
     }
 }
 

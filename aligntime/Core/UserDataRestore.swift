@@ -16,6 +16,7 @@ extension AlignTime {
                 defaults.removeObject(forKey: key)
             }
       }
+    
       func push_user_defaults(){
           defaults.set(required_aligners_total, forKey: "require_count")
           defaults.set(aligners_wear_days, forKey: "aligners_count")
@@ -78,15 +79,16 @@ extension AlignTime {
           }
           
           // Event
+          let timer = ParkBenchTimer()
           if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
               let decoder = JSONDecoder()
               if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
                   if temp_intervals != [] {
-                      self.intervals = temp_intervals
+                    self.intervals = temp_intervals.chunked(into: 2000).last!
                       for i in self.intervals{
                           i.time = Date().fromTimestamp(i.timestamp)
                       }
-                      self.current_state = true//self.intervals.last.wear
+                      self.current_state = self.intervals.last.wear
                   }
                   else{
                       self.intervals = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))]
@@ -94,6 +96,7 @@ extension AlignTime {
                   }
               }
           }
+          self.debug_val = timer.stop()
           
           // Aligners
           if let temp_data_aligners = defaults.object(forKey: "aligners") as? Data {
@@ -109,6 +112,6 @@ extension AlignTime {
           }
           
           self.complete = defaults.bool(forKey: "collecting_data_complete")
-          self.update_min_max_dates()
+//          self.update_min_max_dates()
       }
 }

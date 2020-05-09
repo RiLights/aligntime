@@ -15,6 +15,7 @@ struct CalendarManager: View {
    
     var body: some View {
         VStack(alignment: .center) {
+            //Text("event count: \(self.core_data.aligners.count)")
             RKViewController()
             AlignerNoticion()
             IntervalFields()

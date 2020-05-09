@@ -101,7 +101,11 @@ struct IntervalEditList: View {
         let unsorted = get_filtered_all()
         let sorted = unsorted.sorted(by: { $0.id < $1.id })
         
-        self.core_data.add_new_event(to:sorted)
+        do {
+            try self.core_data.add_new_event(to:sorted)
+        } catch {
+            print("Can't add new event")
+        }
     }
     
     func delete(at offsets: IndexSet) {
