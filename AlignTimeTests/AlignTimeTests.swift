@@ -845,104 +845,123 @@ class AlignTimeTests: XCTestCase {
         XCTAssertEqual(align_time.aligner_number_now, 2)
     }
     
-    func test_remove_interesected_events01(){
-        let date1 = dateFormatter.date(from: "2019-12-06 15:00")!
-        let date2 = dateFormatter.date(from: "2019-12-07 13:20")!
-        let date3 = dateFormatter.date(from: "2019-12-07 14:15")!
-        let date4 = dateFormatter.date(from: "2019-12-07 14:22")!
-        let date5 = dateFormatter.date(from: "2019-12-07 14:50")!
-        
-        let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
-        let date_e = dateFormatter.date(from: "2019-12-07 14:25")!
-
-        let event1 = DayInterval(0, wear: true, time: date1)
-        let event2 = DayInterval(1, wear: false, time: date2)
-        let event3 = DayInterval(2, wear: true, time: date3)
-        let event4 = DayInterval(3, wear: false, time: date4)
-        let event5 = DayInterval(4, wear: true, time: date5)
-        
-        event2.time = date_s
-        event3.time = date_e
-        
-        let date_temp = dateFormatter.date(from: "2019-12-07 14:25")!
-        let event_temp = DayInterval(3, wear: false, time: date_temp)
-        event_temp.time = event_temp.time.advanced(by: 1)
-        
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = [event1,event2,event3,event4,event5]
-        align_time.remove_interesected_events(event_index:1)
-
-        let result:[DayInterval] = [event1,event2,event3,event_temp,event5]
-        XCTAssertEqual(result, align_time.intervals)
-    }
+//    func test_remove_interesected_events01(){
+//        let date1 = dateFormatter.date(from: "2019-12-06 15:00")!
+//        let date2 = dateFormatter.date(from: "2019-12-07 13:20")!
+//        let date3 = dateFormatter.date(from: "2019-12-07 14:15")!
+//        let date4 = dateFormatter.date(from: "2019-12-07 14:22")!
+//        let date5 = dateFormatter.date(from: "2019-12-07 14:50")!
+//        
+//        let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
+//        let date_e = dateFormatter.date(from: "2019-12-07 14:25")!
+//
+//        let event1 = DayInterval(0, wear: true, time: date1)
+//        let event2 = DayInterval(1, wear: false, time: date2)
+//        let event3 = DayInterval(2, wear: true, time: date3)
+//        let event4 = DayInterval(3, wear: false, time: date4)
+//        let event5 = DayInterval(4, wear: true, time: date5)
+//        
+//        event2.time = date_s
+//        event3.time = date_e
+//        
+//        let date_temp = dateFormatter.date(from: "2019-12-07 14:25")!
+//        let event_temp = DayInterval(3, wear: false, time: date_temp)
+//        event_temp.time = event_temp.time.advanced(by: 1)
+//        
+//        let align_time:AlignTime = AlignTime()
+//        align_time.intervals = [event1,event2,event3,event4,event5]
+//        align_time.remove_interesected_events(event_index:1)
+//
+//        let result:[DayInterval] = [event1,event2,event3,event_temp,event5]
+//        XCTAssertEqual(result, align_time.intervals)
+//    }
+//    
+//    func test_remove_interesected_events02(){
+//        let date0 = dateFormatter.date(from: "2019-12-06 15:00")!
+//        let date1 = dateFormatter.date(from: "2019-12-07 13:10")!
+//        let date2 = dateFormatter.date(from: "2019-12-07 13:11")!
+//        let date3 = dateFormatter.date(from: "2019-12-07 13:15")!
+//        let date4 = dateFormatter.date(from: "2019-12-07 13:20")!
+//        let date5 = dateFormatter.date(from: "2019-12-07 14:15")!
+//        let date6 = dateFormatter.date(from: "2019-12-07 14:22")!
+//        
+//        let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
+//
+//        let event0 = DayInterval(0, wear: true, time: date0)
+//        let event1 = DayInterval(1, wear: false, time: date1)
+//        let event2 = DayInterval(2, wear: true, time: date2)
+//        let event3 = DayInterval(3, wear: false, time: date3)
+//        let event4 = DayInterval(4, wear: true, time: date4)
+//        let event5 = DayInterval(5, wear: false, time: date5)
+//        let event6 = DayInterval(6, wear: true, time: date6)
+//        
+//        event5.time = date_s
+//        
+//        let align_time:AlignTime = AlignTime()
+//        align_time.intervals = [event0,event1,event2,event3,event4,event5,event6]
+//        align_time.remove_interesected_events(event_index:5)
+//
+//        let result:[DayInterval] = [event0,event5,event6]
+//        XCTAssertEqual(result, align_time.intervals)
+//    }
+//    
+//    func test_remove_interesected_events03(){
+//        let date0 = dateFormatter.date(from: "2019-07-13 15:39")!
+//        let date1 = dateFormatter.date(from: "2019-07-13 21:30")!
+//        let date2 = dateFormatter.date(from: "2019-07-13 21:30")!
+//        let date3 = dateFormatter.date(from: "2019-07-13 21:30")!
+//        let date4 = dateFormatter.date(from: "2019-07-13 21:30")!
+//        let date5 = dateFormatter.date(from: "2019-07-13 21:31")!
+//        let date6 = dateFormatter.date(from: "2019-07-13 21:31")!
+//        let date7 = dateFormatter.date(from: "2019-07-13 22:14")!
+//        let date8 = dateFormatter.date(from: "2019-07-13 23:12")!
+//        let date9 = dateFormatter.date(from: "2019-07-13 23:13")!
+//        
+//        let date_s = dateFormatter.date(from: "2019-07-13 21:14")!
+//        
+//        let date_temp = dateFormatter.date(from: "2019-07-13 21:14")!
+//        let event_temp = DayInterval(1, wear: true, time: date_temp)
+//        event_temp.time = event_temp.time.advanced(by: 1)
+//
+//        let event0 = DayInterval(0, wear: false, time: date0)
+//        let event1 = DayInterval(1, wear: true, time: date1)
+//        let event2 = DayInterval(2, wear: false, time: date2.advanced(by: 1))
+//        let event3 = DayInterval(3, wear: true, time: date3.advanced(by: 2))
+//        let event4 = DayInterval(4, wear: false, time: date4.advanced(by: 3))
+//        let event5 = DayInterval(5, wear: true, time: date5)
+//        let event6 = DayInterval(6, wear: false, time: date6)
+//        let event7 = DayInterval(7, wear: true, time: date7)
+//        let event8 = DayInterval(8, wear: false, time: date8)
+//        let event9 = DayInterval(9, wear: true, time: date9)
+//        
+//        event8.time = date_s
+//        
+//        let align_time:AlignTime = AlignTime()
+//        align_time.intervals = [event0,event1,event2,event3,event4,event5,event6,event7,event8,event9]
+//        align_time.remove_interesected_events(event_index:8)
+//
+//        let result:[DayInterval] = [event0,event_temp,event8,event9]
+//        XCTAssertEqual(result, align_time.intervals)
+//    }
     
-    func test_remove_interesected_events02(){
-        let date0 = dateFormatter.date(from: "2019-12-06 15:00")!
-        let date1 = dateFormatter.date(from: "2019-12-07 13:10")!
-        let date2 = dateFormatter.date(from: "2019-12-07 13:11")!
-        let date3 = dateFormatter.date(from: "2019-12-07 13:15")!
-        let date4 = dateFormatter.date(from: "2019-12-07 13:20")!
-        let date5 = dateFormatter.date(from: "2019-12-07 14:15")!
-        let date6 = dateFormatter.date(from: "2019-12-07 14:22")!
-        
-        let date_s = dateFormatter.date(from: "2019-12-07 13:00")!
-
-        let event0 = DayInterval(0, wear: true, time: date0)
-        let event1 = DayInterval(1, wear: false, time: date1)
-        let event2 = DayInterval(2, wear: true, time: date2)
-        let event3 = DayInterval(3, wear: false, time: date3)
-        let event4 = DayInterval(4, wear: true, time: date4)
-        let event5 = DayInterval(5, wear: false, time: date5)
-        let event6 = DayInterval(6, wear: true, time: date6)
-        
-        event5.time = date_s
-        
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = [event0,event1,event2,event3,event4,event5,event6]
-        align_time.remove_interesected_events(event_index:5)
-
-        let result:[DayInterval] = [event0,event5,event6]
-        XCTAssertEqual(result, align_time.intervals)
-    }
-    
-    func test_remove_interesected_events03(){
-        let date0 = dateFormatter.date(from: "2019-07-13 15:39")!
-        let date1 = dateFormatter.date(from: "2019-07-13 21:30")!
-        let date2 = dateFormatter.date(from: "2019-07-13 21:30")!
-        let date3 = dateFormatter.date(from: "2019-07-13 21:30")!
-        let date4 = dateFormatter.date(from: "2019-07-13 21:30")!
-        let date5 = dateFormatter.date(from: "2019-07-13 21:31")!
-        let date6 = dateFormatter.date(from: "2019-07-13 21:31")!
-        let date7 = dateFormatter.date(from: "2019-07-13 22:14")!
-        let date8 = dateFormatter.date(from: "2019-07-13 23:12")!
-        let date9 = dateFormatter.date(from: "2019-07-13 23:13")!
-        
-        let date_s = dateFormatter.date(from: "2019-07-13 21:14")!
-        
-        let date_temp = dateFormatter.date(from: "2019-07-13 21:14")!
-        let event_temp = DayInterval(1, wear: true, time: date_temp)
-        event_temp.time = event_temp.time.advanced(by: 1)
-
-        let event0 = DayInterval(0, wear: false, time: date0)
-        let event1 = DayInterval(1, wear: true, time: date1)
-        let event2 = DayInterval(2, wear: false, time: date2.advanced(by: 1))
-        let event3 = DayInterval(3, wear: true, time: date3.advanced(by: 2))
-        let event4 = DayInterval(4, wear: false, time: date4.advanced(by: 3))
-        let event5 = DayInterval(5, wear: true, time: date5)
-        let event6 = DayInterval(6, wear: false, time: date6)
-        let event7 = DayInterval(7, wear: true, time: date7)
-        let event8 = DayInterval(8, wear: false, time: date8)
-        let event9 = DayInterval(9, wear: true, time: date9)
-        
-        event8.time = date_s
-        
-        let align_time:AlignTime = AlignTime()
-        align_time.intervals = [event0,event1,event2,event3,event4,event5,event6,event7,event8,event9]
-        align_time.remove_interesected_events(event_index:8)
-
-        let result:[DayInterval] = [event0,event_temp,event8,event9]
-        XCTAssertEqual(result, align_time.intervals)
-    }
+//    func test_add_event01(){
+//        let date1 = dateFormatter.date(from: "2019-12-06 15:00")!
+//        let date_new = dateFormatter.date(from: "2019-12-07 14:25")!
+//
+//        let event1 = DayInterval(0, wear: true, time: date1)
+//        let new_event = DayInterval(0, wear: false, time: date_new)
+//
+//        let align_time:AlignTime = AlignTime()
+//        align_time.intervals = [event1]
+//
+//        do {
+//            try align_time.add_new_event(event:new_event)
+//        } catch  {
+//            print("error")
+//        }
+//
+//        XCTAssertEqual(1, align_time.intervals[1].id)
+//    }
 
     func testFilterPerformance() {
         let align_time:AlignTime = fill_9000_Intervals()

@@ -12,7 +12,6 @@ import UserNotifications
 final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
-    @Published var debug_val:Double = 0
     
     @Published var required_aligners_total:Int = 50
     @Published var aligners_wear_days:Int = 7
@@ -141,6 +140,8 @@ final class AlignTime: ObservableObject {
         update_min_max_dates()
     }
     
+    // MARK: - Expected Aligner
+    
     func get_expected_aligner_for_date(date:Date)->(Int,Int){
         let start_date = Calendar.current.startOfDay(for: self.start_date_for_current_aligners)
         let seconds_past = date.timeIntervalSince(start_date)
@@ -255,6 +256,8 @@ final class AlignTime: ObservableObject {
         return 0
     }
     
+    // MARK: - Updates
+    
     func update_today_dates() {
         update_individual_aligners()
         update_expected_aligner_data()
@@ -351,6 +354,8 @@ final class AlignTime: ObservableObject {
         let val = self.get_wear_timer_for_date(update_time: selected_date)
         return val
     }
+    
+    // MARK: - Notifications
     
     func send_aligner_notification(time:Date,aligner_number:Int){
 

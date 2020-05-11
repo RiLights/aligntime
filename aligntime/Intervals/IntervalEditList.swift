@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-func get_min_time()->Date{
+func get_1970()->Date{
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd"
     return formatter.date(from: "1970/01/01")!
@@ -20,7 +20,7 @@ struct IntervalEditList: View {
     @Binding var dismiss:Bool
     @State var showing_picker = false
     @State var day_index = 0
-    @State var min_time:Date = get_min_time()
+    @State var min_time:Date = get_1970()
     @State var max_time:Date = Date()
     @State var t:Date = Date()
     
@@ -31,10 +31,6 @@ struct IntervalEditList: View {
         return self.core_data.get_off_days()
     }
     
-    func get_filtered_all()-> [DayInterval]{
-        let combined = self.core_data.get_wear_days() + self.core_data.get_off_days()
-        return combined
-    }
 
     var body: some View {
         NavigationView {
@@ -89,20 +85,29 @@ struct IntervalEditList: View {
                 }
             }
             .sheet(isPresented: self.$showing_picker, onDismiss: {
-                self.core_data.remove_interesected_events(event_index: self.day_index)
-            }
-            ) {
+                self.core_data.reasign_intervals_date_id()
+                self.core_data.force_event_order()}) {
                 TimePicker(dismiss:self.$showing_picker,event_id:self.day_index).environmentObject(self.core_data)
             }
         }
     }
+    
+    func get_first_event_for_selected_date()->DayInterval{
+        let start_of_day = Calendar.current.startOfDay(for: self.core_data.selected_date)
+
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+            
+        let end_of_day = Calendar.current.date(byAdding: components, to: start_of_day)!
+        let previous_intervals = self.core_data.intervals.filter{ $0.time < end_of_day}
+        return previous_intervals.last
+    }
 
     func add_off_event() {
-        let unsorted = get_filtered_all()
-        let sorted = unsorted.sorted(by: { $0.id < $1.id })
-        
+        let new_event = get_first_event_for_selected_date()
         do {
-            try self.core_data.add_new_event(to:sorted)
+            try self.core_data.add_new_event(event_time:new_event.time,wear_state:new_event.wear)
         } catch {
             print("Can't add new event")
         }

@@ -14,6 +14,20 @@ struct TimePicker: View {
     @Binding var dismiss:Bool
     var event_id:Int = 0
     
+    func get_min_time(_ id:Int)->Date{
+        if id >= 0{
+            return self.core_data.intervals[id].time
+        }
+        return get_1970()
+    }
+    
+    func get_max_time(_ id:Int)->Date{
+        if id < self.core_data.intervals.count{
+            return self.core_data.intervals[id].time
+        }
+        return Date()
+    }
+    
     var body: some View {
         VStack (spacing:0){
             Spacer()
@@ -22,18 +36,10 @@ struct TimePicker: View {
                     .padding()
                 Spacer()
             }
-            if (self.core_data.intervals.count > self.event_id+1){
-                DatePicker("", selection: self.$core_data.intervals[event_id].time,
-                           in: ...self.core_data.intervals[event_id+1].time,
-                           displayedComponents: .hourAndMinute)
-                    .labelsHidden()
-            }
-            else if (self.core_data.intervals.count > self.event_id){
-                DatePicker("", selection: self.$core_data.intervals[event_id].time,
-                           in: ...Date(),
-                           displayedComponents: .hourAndMinute)
-                    .labelsHidden()
-            }
+            DatePicker("", selection: self.$core_data.intervals[event_id].time,
+                       in: self.get_min_time(event_id-1)...self.get_max_time(event_id+1),
+                       displayedComponents: .hourAndMinute)
+                .labelsHidden()
             Divider()
             HStack{
                 Text(NSLocalizedString("End Time",comment:""))
@@ -47,7 +53,7 @@ struct TimePicker: View {
             }
             else{
                 DatePicker("", selection: self.$core_data.intervals[event_id+1].time,
-                           in: self.core_data.intervals[event_id].time...Date(),
+                           in: self.get_min_time(event_id)...self.get_max_time(event_id+2),
                            displayedComponents: .hourAndMinute)
                     .labelsHidden()
             }

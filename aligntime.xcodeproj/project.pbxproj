@@ -13,7 +13,7 @@
 		6D4B5DBB23BB9F5E00F4B2CA /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */; };
 		6D4B5DBC23BB9F5E00F4B2CA /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */; };
 		6D4B5DBD23BB9F5E00F4B2CA /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */; };
-		9943977A245E42E900AF5918 /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99439779245E42E900AF5918 /* EventExtension.swift */; };
+		9943977A245E42E900AF5918 /* EventTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99439779245E42E900AF5918 /* EventTools.swift */; };
 		F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971423FBCE48006605C5 /* TreatmentPlan.swift */; };
 		F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971623FBCE74006605C5 /* StatisticsView.swift */; };
 		F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */; };
@@ -75,7 +75,7 @@
 		6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
 		6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
-		99439779245E42E900AF5918 /* EventExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
+		99439779245E42E900AF5918 /* EventTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTools.swift; sourceTree = "<group>"; };
 		F005971423FBCE48006605C5 /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		F005971623FBCE74006605C5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodontistAppointment.swift; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 				F0A92E1323F3B6CF00874E00 /* DateExtension.swift */,
 				F005971F23FE07B1006605C5 /* IndividualAligner.swift */,
 				F0E69CFF245AD28700364C3A /* Utils.swift */,
-				99439779245E42E900AF5918 /* EventExtension.swift */,
+				99439779245E42E900AF5918 /* EventTools.swift */,
 				F031AF3A246013B8008668B2 /* CustomFontSize.swift */,
 			);
 			path = Core;
@@ -405,7 +405,7 @@
 				F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */,
 				F05CC20D243885FC00641B22 /* Path+QuadCurve.swift in Sources */,
 				F0FEDB3923C410A100682F85 /* IntervalEditList.swift in Sources */,
-				9943977A245E42E900AF5918 /* EventExtension.swift in Sources */,
+				9943977A245E42E900AF5918 /* EventTools.swift in Sources */,
 				F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */,
 				F05CC20F243886A300641B22 /* Helpers.swift in Sources */,
 				F0D255A32417990A0005B749 /* TimePicker.swift in Sources */,

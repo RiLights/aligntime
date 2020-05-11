@@ -49,9 +49,12 @@ extension AlignTime {
         return result
     }
     
-    func get_first_event_for_selected_date()->DayInterval{
-        let previous_intervals = self.intervals.filter{ $0.timestamp < self.selected_date.timestamp()}
-        return previous_intervals.last
+    func reasign_intervals_id(){
+        for (i,v) in self.intervals.enumerated(){
+            v.id = i
+        }
+        
+        update_min_max_dates()
     }
     
     func reasign_intervals_date_id(){
@@ -63,11 +66,25 @@ extension AlignTime {
         update_min_max_dates()
     }
     
-    func add_new_event(to:[DayInterval]) throws{
+    func add_new_event(event_time:Date,wear_state:Bool) throws{
+        let current_time = self.selected_date > event_time ? self.selected_date : event_time
+        let new_event01 = DayInterval(0,wear: !wear_state, time: current_time!.advanced(by: 1))
+        let new_event02 = DayInterval(1,wear: wear_state, time: current_time!.advanced(by: 2))
+        
+        if self.intervals.last.time != event_time{
+            self.intervals.append(new_event02)
+        }
+        self.intervals.append(new_event01)
+
+        self.reasign_intervals_date_id()
+        self.force_event_order()
+    }
+    
+    func add_new_event2(to:[DayInterval]) throws{
         var local_id:Int = 0
         var time:Date = Date()
         if to == []{
-            let interval = get_first_event_for_selected_date()
+            let interval = to[0] //get_first_event_for_selected_date()
             local_id = interval.id
             time = self.selected_date
         }
@@ -95,21 +112,21 @@ extension AlignTime {
         reasign_intervals_date_id()
     }
     
-    func remove_interesected_events(event_index:Int){
-        if self.intervals.count==1{
-             return
-        }
-        
-        let start_event = self.intervals[event_index].timestamp
-        var end_event = Date().timestamp()
-        if self.intervals.count>event_index+1{
-             end_event = self.intervals[event_index+1].timestamp
-        }
-        
-        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
-        reasign_intervals_date_id()
-        force_event_order()
-    }
+//    func remove_interesected_events(event_index:Int){
+//        if self.intervals.count==1{
+//             return
+//        }
+//
+//        let start_event = self.intervals[event_index].timestamp
+//        var end_event = Date().timestamp()
+//        if self.intervals.count>event_index+1{
+//             end_event = self.intervals[event_index+1].timestamp
+//        }
+//
+//        self.intervals = self.intervals.filter{ !(($0.timestamp > start_event) && ($0.timestamp < end_event)) }
+//        reasign_intervals_date_id()
+//        force_event_order()
+//    }
     
     func force_event_order(){
         if self.intervals.count == 0{
@@ -119,24 +136,11 @@ extension AlignTime {
                                         wear:!self.intervals[0].wear,
                                         time: self.intervals[0].time)
         for i in self.intervals{
+            //print("ddd",i.wear)
             if (i.wear == previos_event.wear){
-                let new_event = DayInterval(previos_event.id,
-                                            wear:!previos_event.wear,
-                                            time:i.time.advanced(by: -2))
-                //new_event.wear = !new_event.wear
-                new_event.time = new_event.time.advanced(by: 1)
-                self.intervals.insert(new_event, at: new_event.id)
+                i.wear = !i.wear
             }
             previos_event = i
         }
-        reasign_intervals_date_id()
-    }
-    
-    func reasign_intervals_id(){
-        for (i,v) in self.intervals.enumerated(){
-            v.id = i
-        }
-        
-        update_min_max_dates()
     }
 }

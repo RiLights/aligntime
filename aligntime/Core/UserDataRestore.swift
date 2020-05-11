@@ -79,7 +79,6 @@ extension AlignTime {
           }
           
           // Event
-          let timer = ParkBenchTimer()
           if let temp_data_intervals = defaults.object(forKey: "intervals") as? Data {
               let decoder = JSONDecoder()
               if let temp_intervals = try? decoder.decode([DayInterval].self, from: temp_data_intervals) {
@@ -96,7 +95,6 @@ extension AlignTime {
                   }
               }
           }
-          self.debug_val = timer.stop()
           
           // Aligners
           if let temp_data_aligners = defaults.object(forKey: "aligners") as? Data {
