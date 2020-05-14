@@ -36,7 +36,7 @@ struct TodayHeader: View {
                         \(self.core_data.aligner_number_now)
                         """)
                         .foregroundColor(Color.accentColor)
-            //AlignerNumberVisualisation()
+            AlignerNumberVisualisation()
             }
         }
         //.font(.title)
@@ -60,15 +60,22 @@ struct AlignerNumberVisualisation: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 2)
                     .foregroundColor(.gray)
-                    .frame(width: 200, height: 2)
-                HStack {
-                    ForEach(0...self.core_data.days_wearing, id: \.self) { width in
-                        RoundedRectangle(cornerRadius: 2)
+                    .frame(width: 200, height: 4)
+                HStack(spacing:0) {
+                    ForEach(0...self.core_data.days_wearing-1, id: \.self) { width in
+                        HStack(spacing:0) {
+                            Rectangle()
+                            .frame(width:2)
                             .foregroundColor(.accentColor)
-                            .frame(width: 5, height: 5)
+                            RoundedRectangle(cornerRadius: 4)
+                                .foregroundColor(.accentColor)
+                                .frame(width: CGFloat(200/self.core_data.aligners[self.core_data.aligner_number_now].days), height: 4)
+                        }
                     }
+                    Spacer()
                 }
             }
+            .frame(width: 200, height: 8)
         }
     }
 }
