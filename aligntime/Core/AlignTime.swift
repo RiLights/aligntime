@@ -362,7 +362,7 @@ final class AlignTime: ObservableObject {
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("AlignTime Reminder",comment: "")
         content.body = String(format:
-                        NSLocalizedString("last_aligner # %d",comment: ""),aligner_number)
+                        NSLocalizedString("last_aligner # %d",comment: ""),aligner_number+1)
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "AlignerAlignTimeNotification"
         content.threadIdentifier = "aligner-aligntime"

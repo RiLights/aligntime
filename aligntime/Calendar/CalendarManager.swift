@@ -15,7 +15,7 @@ struct CalendarManager: View {
    
     var body: some View {
         VStack(alignment: .center) {
-            Text("event count: \(self.core_data.intervals.count)")
+            //Text("event count: \(self.core_data.intervals.count)")
             RKViewController()
             AlignerNoticion()
             IntervalFields()
@@ -66,7 +66,7 @@ struct AlignerNoticion: View {
                     .padding(.leading,10)
                 Group{
                     Text(NSLocalizedString("Last day for aligner",comment:""))
-                        + Text(" #\(get_aligner(date: self.core_data.selected_date))")
+                        + Text(" #\(get_aligner(date: self.core_data.selected_date)+1)")
                 }
                 .font(.footnote)
             }

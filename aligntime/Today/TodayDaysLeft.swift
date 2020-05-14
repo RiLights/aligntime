@@ -76,7 +76,6 @@ struct TodayDaysLeft: View {
         }
         .onAppear() {
             self.core_data.update_today_dates()
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.core_data.complete = true
                 self.core_data.push_user_defaults()

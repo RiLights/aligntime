@@ -36,12 +36,39 @@ struct TodayHeader: View {
                         \(self.core_data.aligner_number_now)
                         """)
                         .foregroundColor(Color.accentColor)
-                        
+            //AlignerNumberVisualisation()
             }
         }
         //.font(.title)
         //.scaledFont(size: 25)
         //.font(.title)//.system(size: 23)
         //.scaledFont(size: -20)
+    }
+}
+
+struct AlignerNumberVisualisation: View {
+    @EnvironmentObject var core_data: AlignTime
+
+    var date_formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+
+    var body: some View {
+        VStack{
+            ZStack{
+                RoundedRectangle(cornerRadius: 2)
+                    .foregroundColor(.gray)
+                    .frame(width: 200, height: 2)
+                HStack {
+                    ForEach(0...self.core_data.days_wearing, id: \.self) { width in
+                        RoundedRectangle(cornerRadius: 2)
+                            .foregroundColor(.accentColor)
+                            .frame(width: 5, height: 5)
+                    }
+                }
+            }
+        }
     }
 }

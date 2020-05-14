@@ -21,6 +21,14 @@ struct TreatmentPlan: View {
             ScrollView(.vertical) {
                 DataCollect01Body()
                     .padding(.top, 10)
+                Toggle(isOn: $user_data.show_expected_aligner) {
+                    Text(NSLocalizedString("Show expected aligner",comment:""))
+                        .foregroundColor(.accentColor)
+                        .font(.headline)
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom,30)
+                DataCollect02Body()
                 VStack(alignment: .center){
                      Text(NSLocalizedString("Changer aligner time notification",comment:""))
                          .font(.headline)
@@ -33,15 +41,7 @@ struct TreatmentPlan: View {
                          .labelsHidden()
                  }
                  .padding(.horizontal, 40)
-                Toggle(isOn: $user_data.show_expected_aligner) {
-                    Text(NSLocalizedString("Show expected aligner",comment:""))
-                        .foregroundColor(.accentColor)
-                        .font(.headline)
-                }
-                .padding(.horizontal, 40)
-                .padding(.bottom,30)
-                DataCollect02Body()
-                //.padding(.bottom,30)
+                .padding(.top,30)
             }
         }
         .navigationBarTitle(Text(NSLocalizedString("Treatment Plan",comment:"")), displayMode: .inline)

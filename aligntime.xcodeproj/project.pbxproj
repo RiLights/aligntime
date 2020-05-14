@@ -596,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -621,7 +621,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
