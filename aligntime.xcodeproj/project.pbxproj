@@ -50,6 +50,7 @@
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
+		F0BEABBB2470A61500AE9E95 /* SliderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */; };
 		F0D255A32417990A0005B749 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D255A22417990A0005B749 /* TimePicker.swift */; };
 		F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E3882123E8204400B758C7 /* AlignTimeTests.swift */; };
 		F0E69CFE245AD1A200364C3A /* UserDataRestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E69CFD245AD1A200364C3A /* UserDataRestore.swift */; };
@@ -120,6 +121,7 @@
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
+		F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSetup.swift; sourceTree = "<group>"; };
 		F0D255A22417990A0005B749 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlignTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E3882123E8204400B758C7 /* AlignTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTimeTests.swift; sourceTree = "<group>"; };
@@ -211,7 +213,7 @@
 				F05B5C55238D0A7800BC10C9 /* ContentView.swift */,
 				F026CA1C23B0C6D1006EC25D /* Home.swift */,
 				F0ADCFF423BB515900F7A3E7 /* Core */,
-				F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */,
+				F0ADCFCA23B4ABDA00F7A3E7 /* Setup */,
 				F026CA1123B0AF32006EC25D /* Profile */,
 				F0ADCFCD23B5FECF00F7A3E7 /* Today */,
 				F026CA0A23B0A7BC006EC25D /* Calendar */,
@@ -244,7 +246,7 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
-		F0ADCFCA23B4ABDA00F7A3E7 /* WelcomeSetup */ = {
+		F0ADCFCA23B4ABDA00F7A3E7 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */,
@@ -253,11 +255,12 @@
 				F00F927B246D5E11007AB5C1 /* InitSetup01.swift */,
 				F054FF8F246E689E00ABDEA9 /* InitSetup02.swift */,
 				F054FF91246E6D1B00ABDEA9 /* InitSetup03.swift */,
+				F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */,
 				F0ADCFBF23B33BCD00F7A3E7 /* WelcomeInfo.swift */,
 				F0ADCFC623B45CF300F7A3E7 /* About.swift */,
 				F026CA1A23B0BE64006EC25D /* Welcome.swift */,
 			);
-			path = WelcomeSetup;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		F0ADCFCD23B5FECF00F7A3E7 /* Today */ = {
@@ -428,6 +431,7 @@
 				F0A92E1823F3C2B200874E00 /* TodayDaysLeft.swift in Sources */,
 				F0FEDB4423C9357800682F85 /* AlignTimeError.swift in Sources */,
 				F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */,
+				F0BEABBB2470A61500AE9E95 /* SliderSetup.swift in Sources */,
 				F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */,
 				F0FEDB4023C8704D00682F85 /* IntervalFields.swift in Sources */,
 				F0ADCFC323B3F67400F7A3E7 /* DataCollect01.swift in Sources */,
@@ -612,7 +616,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -637,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

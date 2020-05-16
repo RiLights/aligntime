@@ -24,7 +24,7 @@ final class AlignTime: ObservableObject {
     //@Published var aligner_number_now:Int = 1
     @Published var aligner_number_now:Float = 1
     @Published var days_wearing:Float = 1
-    @Published var wear_hours:Int = 20
+    @Published var wear_hours:Float = 20
     @Published var show_expected_aligner:Bool = false
     @Published var start_date_for_current_aligners:Date = Date()
     @Published var aligner_time_notification:Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!

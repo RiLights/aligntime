@@ -23,6 +23,7 @@ extension AlignTime {
           defaults.set(start_treatment.timeIntervalSince1970, forKey: "start_treatment")
           defaults.set(aligner_number_now, forKey: "align_count_now")
           defaults.set(days_wearing, forKey: "days_wearing")
+          defaults.set(wear_hours, forKey: "wear_hours")
           defaults.set(complete, forKey: "collecting_data_complete")
           defaults.set(show_expected_aligner, forKey: "show_expected_aligner")
           defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
@@ -51,6 +52,9 @@ extension AlignTime {
           
         self.days_wearing = Float(defaults.integer(forKey: "days_wearing"))
           if self.days_wearing == 0 {self.days_wearing = 1 }
+        
+        self.wear_hours = Float(defaults.integer(forKey: "wear_hours"))
+          if self.wear_hours == 0 {self.wear_hours = 20 }
           
           self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
           

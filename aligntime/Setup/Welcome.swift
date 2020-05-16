@@ -10,17 +10,15 @@ import SwiftUI
 
 struct Welcome: View {
     @EnvironmentObject var user_data: AlignTime
+    var colors = Gradient(colors: [.accentColor, .clear])
     
     var body: some View {
         NavigationView {
             ZStack{
                 VStack{
-                    RoundedRectangle(cornerRadius: 150)
-                        .foregroundColor(.accentColor)
-                        .frame(width: 300, height: 300)
-                        .padding(.top, -250)
-                        .blur(radius: 120)
-                        .opacity(0.3)
+                    RadialGradient(gradient: colors, center: .top, startRadius: 20, endRadius: 300)
+                        .padding(.top, -159)
+                        .opacity(0.4)
                     Spacer()
                 }
                 VStack{

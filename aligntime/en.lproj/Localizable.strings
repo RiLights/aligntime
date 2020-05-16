@@ -67,6 +67,8 @@
 "About AlignTime" = "About AlignTime";
 "setting_up" = "Let's go through setting up your new treatment";
 "to_do_this_once" = "(You would only need to do this once)";
+"Additional Settings" = "Additional Settings";
+"data is important for us" = "This data is important for us to get maximum correct setup for you";
 
 /* Reminders */
 "AlignTime Reminder" = "AlignTime Reminder";
