@@ -10,7 +10,6 @@ import SwiftUI
 
 struct InitSetup01: View {
     @EnvironmentObject var user_data: AlignTime
-    @State var sliderValue: Float = 1
     
     var body: some View {
         VStack(alignment: .center){
@@ -19,18 +18,20 @@ struct InitSetup01: View {
                 .font(.system(size: 70))
                 .foregroundColor(.blue)
             Spacer()
-            Text(NSLocalizedString("Aligner number you are wearing now \n \(Int(sliderValue))",comment:""))
-                .font(.largeTitle)
-                .fixedSize(horizontal: false, vertical: true)
-                .foregroundColor(.blue)
-                .multilineTextAlignment(.center)
-            Slider(value: self.$sliderValue, in: 1...100, step: 1)
-            Spacer()
-            Text(NSLocalizedString("Maybe Some explanation why do we need this setup and you can change it later, if want",comment:""))
-                .font(.headline)
-                .fontWeight(.ultraLight)
-                .foregroundColor(.blue)
-                .multilineTextAlignment(.center)
+            Group{
+                Text(NSLocalizedString("Aligner number you are wearing now",comment:""))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                Text("\(Int(self.user_data.aligner_number_now))")
+                    .foregroundColor(.accentColor)
+            }
+            .font(.largeTitle)
+            Slider(value: self.$user_data.aligner_number_now, in: 1...100, step: 1)
+            //Spacer()
+//            Text(NSLocalizedString("Maybe Some explanation why do we need this setup and you can change it later, if want",comment:""))
+//                .font(.headline)
+//                .fontWeight(.ultraLight)
+//                .multilineTextAlignment(.center)
             Spacer()
             WelcomeControllButton(next_button_label: "Next", destination:InitSetup02())
         }

@@ -26,66 +26,66 @@ struct TodayDaysLeft: View {
     
     var body: some View {
         VStack(){
-            LeftDaysVisualisation()
-            Group{
-                Text("450")
-                    .font(.body)
-                    .foregroundColor(.accentColor)
-                + Text(" Days Total")
-                    .font(.body)
+//            LeftDaysVisualisation()
+//            Group{
+//                Text("450")
+//                    .font(.body)
+//                    .foregroundColor(.accentColor)
+//                + Text(" Days Total")
+//                    .font(.body)
+//            }
+//            .padding(.bottom,20)
+            HStack(alignment: .center, spacing: 4) {
+                if self.core_data.wearing_aligners_days >= 1 {
+                    Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
+                        .foregroundColor(Color.primary)
+                    Text("\(self.core_data.wearing_aligners_days)")
+                        .scaledFont(size: 20)
+                        //.font(.headline)
+                        //.font(.title)
+                        //.bold()
+                        .foregroundColor(Color.blue)
+                }
+                else{
+                    Text(NSLocalizedString("You have just started your treatment",comment:""))
+                        .foregroundColor(Color.primary)
+                }
+                Group{
+                    if self.core_data.wearing_aligners_days == 1 {
+                        Text(NSLocalizedString("day",comment:""))
+                    }
+                    else if self.is_plural_number(){
+                        Text(NSLocalizedString("days/4",comment:""))
+                    }
+                    else if self.core_data.wearing_aligners_days == 0{
+                        Text("")
+                    }
+                    else{
+                        Text(NSLocalizedString("days",comment:""))
+                    }
+                }
+                    //.font(.system(size: 17))
+                    .foregroundColor(Color.primary)
+
             }
-            .padding(.bottom,20)
-//            HStack(alignment: .center, spacing: 4) {
-//                if self.core_data.wearing_aligners_days >= 1 {
-//                    Text(NSLocalizedString("You_have_been_wearing_aligners_for",comment:""))
-//                        .foregroundColor(Color.primary)
-//                    Text("\(self.core_data.wearing_aligners_days)")
-//                        .scaledFont(size: 20)
-//                        //.font(.headline)
-//                        //.font(.title)
-//                        //.bold()
-//                        .foregroundColor(Color.blue)
-//                }
-//                else{
-//                    Text(NSLocalizedString("You have just started your treatment",comment:""))
-//                        .foregroundColor(Color.primary)
-//                }
-//                Group{
-//                    if self.core_data.wearing_aligners_days == 1 {
-//                        Text(NSLocalizedString("day",comment:""))
-//                    }
-//                    else if self.is_plural_number(){
-//                        Text(NSLocalizedString("days/4",comment:""))
-//                    }
-//                    else if self.core_data.wearing_aligners_days == 0{
-//                        Text("")
-//                    }
-//                    else{
-//                        Text(NSLocalizedString("days",comment:""))
-//                    }
-//                }
-//                    //.font(.system(size: 17))
-//                    .foregroundColor(Color.primary)
-//
-//            }
-//            .font(.body)
-//            HStack(alignment: .center, spacing: 4) {
-//                Text(self.core_data.days_left)
-//                    .scaledFont(size: 20)
-//                    //.bold()
-//                    .foregroundColor(Color.blue)
-//                Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
-//                    //.font(.system(size: 17))
-//                    .foregroundColor(Color.primary)
-//                    //.padding(.trailing, 5)
-//            }
-//            .padding(.top, 7)
-//            .padding(.bottom, 30)
-//            .font(.body)
+            .font(.body)
+            HStack(alignment: .center, spacing: 4) {
+                Text(self.core_data.days_left)
+                    .scaledFont(size: 20)
+                    //.bold()
+                    .foregroundColor(Color.blue)
+                Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
+                    //.font(.system(size: 17))
+                    .foregroundColor(Color.primary)
+                    //.padding(.trailing, 5)
+            }
+            .padding(.top, 7)
+            .padding(.bottom, 30)
+            .font(.body)
         }
         .onAppear() {
             self.core_data.update_today_dates()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
                 self.core_data.complete = true
                 self.core_data.push_user_defaults()
             })

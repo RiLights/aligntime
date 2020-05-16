@@ -19,23 +19,21 @@ struct WelcomeInfo: View {
                     .foregroundColor(.blue)
                 Text(NSLocalizedString("setting_up",comment:""))
                     .font(.largeTitle)
-                    .fontWeight(.regular)
-                    .foregroundColor(.blue)
+                    //.fontWeight(.bold)
+                    //.foregroundColor(.blue)
                     .padding(.bottom, 20)
                     .padding(.top, 20)
                     .multilineTextAlignment(.center)
                 Text(NSLocalizedString("to_do_this_once",comment:""))
                     .font(.headline)
-                    .fontWeight(.light)
-                    .foregroundColor(.blue)
+                    .fontWeight(.ultraLight)
+                    //.foregroundColor(.blue)
                     .multilineTextAlignment(.center)
                 Spacer()
                 WelcomeControllButton(next_button_label: "Next", destination:InitSetup01())
             }
             .padding(.horizontal, 30)
             .navigationBarTitle("")
-//            .navigationBarBackButtonHidden(true)
-//            .navigationBarHidden(true)
         }
     }
 }

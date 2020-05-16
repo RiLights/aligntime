@@ -19,24 +19,24 @@ struct TodayHeader: View {
     
     var body: some View {
         VStack{
-//            HStack {
-//                Text(NSLocalizedString("Today",comment:""))
-//                    .fontWeight(Font.Weight.light)
-//                    + Text(":")
-//                    .foregroundColor(Color.primary)
-//                Text("\(Date(), formatter: date_formatter)")
-//                    .foregroundColor(Color.accentColor)
-//                    .fontWeight(Font.Weight.light)
-//            }
+            HStack {
+                Text(NSLocalizedString("Today",comment:""))
+                    .fontWeight(Font.Weight.light)
+                    + Text(":")
+                    .foregroundColor(Color.primary)
+                Text("\(Date(), formatter: date_formatter)")
+                    .foregroundColor(Color.accentColor)
+                    .fontWeight(Font.Weight.light)
+            }
             if core_data.show_expected_aligner{
                 Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                     .foregroundColor(Color.primary)
                     .fontWeight(Font.Weight.light)
                     + Text("""
-                        \(self.core_data.aligner_number_now)
+                        \(Int(self.core_data.aligner_number_now))
                         """)
                         .foregroundColor(Color.accentColor)
-            AlignerNumberVisualisation()
+            //AlignerNumberVisualisation()
             }
         }
         //.font(.title)
@@ -62,14 +62,14 @@ struct AlignerNumberVisualisation: View {
                     .foregroundColor(.gray)
                     .frame(width: 200, height: 4)
                 HStack(spacing:0) {
-                    ForEach(0...self.core_data.days_wearing-1, id: \.self) { width in
+                    ForEach(0...Int(self.core_data.days_wearing)-1, id: \.self) { width in
                         HStack(spacing:0) {
                             Rectangle()
                             .frame(width:2)
                             .foregroundColor(.accentColor)
                             RoundedRectangle(cornerRadius: 4)
                                 .foregroundColor(.accentColor)
-                                .frame(width: CGFloat(200/self.core_data.aligners[self.core_data.aligner_number_now-1].days), height: 4)
+                                .frame(width: CGFloat(200/self.core_data.aligners[Int(self.core_data.aligner_number_now)-1].days), height: 4)
                         }
                     }
                     Spacer()

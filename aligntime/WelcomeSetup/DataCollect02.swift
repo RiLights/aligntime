@@ -40,7 +40,7 @@ struct DataCollect02Body: View {
     
     var min_aligner_date:Date {
         get {
-            return Calendar.current.date(byAdding: .day, value: -(self.user_data.aligners_wear_days), to: Date())!
+            return Calendar.current.date(byAdding: .day, value: Int(-(self.user_data.aligners_wear_days)), to: Date())!
         }
     }
     let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
@@ -80,7 +80,7 @@ struct DataCollect02Body: View {
                     .multilineTextAlignment(.center)
                 HStack {
                     Text("\(user_data.days_wearing)")
-                    Stepper("", value: $user_data.days_wearing, in: 1...user_data.aligners_wear_days)
+                    Stepper("", value: $user_data.days_wearing, in: 1...Float(user_data.aligners_wear_days))
                 }
                 .padding(.horizontal, 30)
                 Divider()
@@ -93,7 +93,7 @@ struct DataCollect02Body: View {
                     .foregroundColor(.blue)
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
-                DatePicker(selection: $user_data.start_treatment, in: min_date!...Calendar.current.date(byAdding: .day, value: -(user_data.days_wearing), to: Date())!, displayedComponents: .date) {
+                DatePicker(selection: $user_data.start_treatment, in: min_date!...Calendar.current.date(byAdding: .day, value: Int(-(user_data.days_wearing)), to: Date())!, displayedComponents: .date) {
                         Text("")
                     }
                     .labelsHidden()

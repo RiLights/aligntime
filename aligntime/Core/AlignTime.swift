@@ -13,16 +13,17 @@ final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
     
-    @Published var required_aligners_total:Int = 50
-    @Published var aligners_wear_days:Int = 7
+    @Published var required_aligners_total:Float = 50
+    @Published var aligners_wear_days:Float = 7
         {
             didSet{
-                self.update_induvidual_aligners_from_aligner(aligner_number:self.aligner_number_now)
+                self.update_induvidual_aligners_from_aligner(aligner_number:Int(self.aligner_number_now))
             }
         }
     @Published var start_treatment:Date = Date()
-    @Published var aligner_number_now:Int = 1
-    @Published var days_wearing:Int = 1
+    //@Published var aligner_number_now:Int = 1
+    @Published var aligner_number_now:Float = 1
+    @Published var days_wearing:Float = 1
     @Published var wear_hours:Int = 20
     @Published var show_expected_aligner:Bool = false
     @Published var start_date_for_current_aligners:Date = Date()
@@ -147,10 +148,10 @@ final class AlignTime: ObservableObject {
         let seconds_past = date.timeIntervalSince(start_date)
         
         let days_past = abs(seconds_past).days
-        if days_past==0 {return (self.aligner_number_now,self.days_wearing)}
+        if days_past==0 {return (Int(self.aligner_number_now),Int(self.days_wearing))}
         
-        var expected_aligner = self.aligner_number_now
-        var current_aligner_day = self.days_wearing
+        var expected_aligner = Int(self.aligner_number_now)
+        var current_aligner_day = Int(self.days_wearing)
         
         if seconds_past>0{
             (expected_aligner,
@@ -165,8 +166,8 @@ final class AlignTime: ObservableObject {
     }
     
     func forward_walking_wearing_days(days_past:Int)->(Int,Int){
-        var expected_aligner = self.aligner_number_now
-        var current_aligner_day = self.days_wearing
+        var expected_aligner = Int(self.aligner_number_now)
+        var current_aligner_day = Int(self.days_wearing)
         var day_index = 0
         
         while (day_index < days_past){
@@ -187,8 +188,8 @@ final class AlignTime: ObservableObject {
     }
     
     func backward_walking_wearing_days(days_past:Int)->(Int,Int){
-        var expected_aligner = self.aligner_number_now
-        var current_aligner_day = self.days_wearing
+        var expected_aligner = Int(self.aligner_number_now)
+        var current_aligner_day = Int(self.days_wearing)
         var day_index = 0
 
         while (day_index < days_past){
@@ -224,7 +225,7 @@ final class AlignTime: ObservableObject {
     func get_custom_aligners_days_left(start_aligner:Int)->Int{
         var days:Int = 0
         var skip_default = false
-        for i in (1...self.required_aligners_total){
+        for i in (1...Int(self.required_aligners_total)){
             
             if i>start_aligner{
                 for custom_aligner in self.aligners{
@@ -238,7 +239,7 @@ final class AlignTime: ObservableObject {
                     skip_default = false
                     continue
                 }
-                days += self.aligners_wear_days
+                days += Int(self.aligners_wear_days)
             }
         }
         return days
@@ -266,8 +267,8 @@ final class AlignTime: ObservableObject {
         let days_interval = Date().timeIntervalSince(self.start_treatment)
         self.wearing_aligners_days = days_interval.days
         
-        let aligners_days_left:Int = get_custom_aligners_days_left(start_aligner:self.aligner_number_now-1)
-        let total_days_left_digit:Int = aligners_days_left - self.days_wearing
+        let aligners_days_left:Int = get_custom_aligners_days_left(start_aligner:Int(self.aligner_number_now)-1)
+        let total_days_left_digit:Int = aligners_days_left - Int(self.days_wearing)
         
         let days_left_string = String(total_days_left_digit)
         if (self.days_left != days_left_string){
@@ -280,7 +281,7 @@ final class AlignTime: ObservableObject {
     func update_individual_aligners(){
         var res:[IndividualAligner] = []
         if self.aligners.count == 0{
-            for i in 1..<self.required_aligners_total{
+            for i in 1..<Int(self.required_aligners_total){
                 res.append(IndividualAligner(i-1,days:7,aligner_number:i))
             }
             self.aligners = res
@@ -290,16 +291,16 @@ final class AlignTime: ObservableObject {
     func update_induvidual_aligners_from_aligner(aligner_number:Int){
         for i in self.aligners{
             if i.aligner_number>=aligner_number{
-                i.days=self.aligners_wear_days
+                i.days=Int(self.aligners_wear_days)
             }
         }
     }
     
     func update_expected_aligner_data(date:Date = Date()){
         let (expected_aligner,current_aligner_day) = self.get_expected_aligner_for_date(date:date)
-        self.aligner_number_now = expected_aligner
+        self.aligner_number_now = Float(expected_aligner)
         self.start_date_for_current_aligners = Date()
-        self.days_wearing = current_aligner_day
+        self.days_wearing = Float(current_aligner_day)
     }
     
     func update_min_max_dates(){
@@ -310,7 +311,7 @@ final class AlignTime: ObservableObject {
     }
     
     func update_aligner_notification(){
-        let days_left = get_date_to_change_aligner(aligner_number: self.aligner_number_now, curent_aligner_day: self.days_wearing)
+        let days_left = get_date_to_change_aligner(aligner_number: Int(self.aligner_number_now), curent_aligner_day: Int(self.days_wearing))
         let date_offset = Calendar.current.date(byAdding: .day, value: days_left, to: Date())
         
         let hour = calendar.component(.hour, from: self.aligner_time_notification)
@@ -321,7 +322,7 @@ final class AlignTime: ObservableObject {
 
         notification_center.removePendingNotificationRequests(withIdentifiers: [notification_identifier_aligner])
         notification_center.removeDeliveredNotifications(withIdentifiers: [notification_identifier_aligner])
-        self.send_aligner_notification(time:notification_time!,aligner_number:self.aligner_number_now)
+        self.send_aligner_notification(time:notification_time!,aligner_number:Int(self.aligner_number_now))
     }
    
     func date_string_format(_ date: Date) -> String? {

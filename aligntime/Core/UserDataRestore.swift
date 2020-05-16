@@ -40,16 +40,16 @@ extension AlignTime {
       }
     
       func pull_user_defaults(){
-          self.required_aligners_total = defaults.integer(forKey: "require_count")
+        self.required_aligners_total = Float(defaults.integer(forKey: "require_count"))
           if self.required_aligners_total == 0 {self.required_aligners_total = 50 }
           
-          self.aligners_wear_days = defaults.integer(forKey: "aligners_count")
+        self.aligners_wear_days = Float(defaults.integer(forKey: "aligners_count"))
           if self.aligners_wear_days == 0 {self.aligners_wear_days = 7 }
           
-          self.aligner_number_now = defaults.integer(forKey: "align_count_now")
+        self.aligner_number_now = Float(defaults.integer(forKey: "align_count_now"))
           if self.aligner_number_now == 0 {self.aligner_number_now = 1 }
           
-          self.days_wearing = defaults.integer(forKey: "days_wearing")
+        self.days_wearing = Float(defaults.integer(forKey: "days_wearing"))
           if self.days_wearing == 0 {self.days_wearing = 1 }
           
           self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
@@ -109,7 +109,7 @@ extension AlignTime {
               }
           }
           
-          self.complete = defaults.bool(forKey: "collecting_data_complete")
+          self.complete = false//defaults.bool(forKey: "collecting_data_complete")
 //          self.update_min_max_dates()
       }
 }

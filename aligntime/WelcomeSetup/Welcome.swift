@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Welcome: View {
+    @EnvironmentObject var user_data: AlignTime
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -39,7 +41,7 @@ struct Welcome: View {
                     }
                     .padding(.top, 50)
                     Spacer()
-                    NavigationLink(destination: WelcomeInfo()) {
+                    NavigationLink(destination: InitSetup01().environmentObject(self.user_data)) {
                         ZStack(alignment: .center){
                             RoundedRectangle(cornerRadius: 7)
                                 .frame(height: 40)
