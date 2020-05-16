@@ -19,11 +19,15 @@
 		F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */; };
 		F005971E23FD2D33006605C5 /* IndividualAlignerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971D23FD2D33006605C5 /* IndividualAlignerManager.swift */; };
 		F005972023FE07B1006605C5 /* IndividualAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971F23FE07B1006605C5 /* IndividualAligner.swift */; };
+		F00F927C246D5E11007AB5C1 /* InitSetup01.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F927B246D5E11007AB5C1 /* InitSetup01.swift */; };
 		F026CA0C23B0A7E1006EC25D /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */; };
 		F026CA1923B0B453006EC25D /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1823B0B453006EC25D /* ProfileManager.swift */; };
 		F026CA1B23B0BE64006EC25D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1A23B0BE64006EC25D /* Welcome.swift */; };
 		F026CA1D23B0C6D1006EC25D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026CA1C23B0C6D1006EC25D /* Home.swift */; };
 		F031AF3B246013B8008668B2 /* CustomFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F031AF3A246013B8008668B2 /* CustomFontSize.swift */; };
+		F054FF8E246E5FA000ABDEA9 /* WelcomeControllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054FF8D246E5FA000ABDEA9 /* WelcomeControllButton.swift */; };
+		F054FF90246E689E00ABDEA9 /* InitSetup02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054FF8F246E689E00ABDEA9 /* InitSetup02.swift */; };
+		F054FF92246E6D1B00ABDEA9 /* InitSetup03.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054FF91246E6D1B00ABDEA9 /* InitSetup03.swift */; };
 		F05B5C52238D0A7800BC10C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */; };
 		F05B5C54238D0A7800BC10C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */; };
 		F05B5C56238D0A7800BC10C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B5C55238D0A7800BC10C9 /* ContentView.swift */; };
@@ -81,11 +85,15 @@
 		F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodontistAppointment.swift; sourceTree = "<group>"; };
 		F005971D23FD2D33006605C5 /* IndividualAlignerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlignerManager.swift; sourceTree = "<group>"; };
 		F005971F23FE07B1006605C5 /* IndividualAligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAligner.swift; sourceTree = "<group>"; };
+		F00F927B246D5E11007AB5C1 /* InitSetup01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSetup01.swift; sourceTree = "<group>"; };
 		F026CA0B23B0A7E1006EC25D /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F026CA1823B0B453006EC25D /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		F026CA1A23B0BE64006EC25D /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		F026CA1C23B0C6D1006EC25D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F031AF3A246013B8008668B2 /* CustomFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontSize.swift; sourceTree = "<group>"; };
+		F054FF8D246E5FA000ABDEA9 /* WelcomeControllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeControllButton.swift; sourceTree = "<group>"; };
+		F054FF8F246E689E00ABDEA9 /* InitSetup02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSetup02.swift; sourceTree = "<group>"; };
+		F054FF91246E6D1B00ABDEA9 /* InitSetup03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSetup03.swift; sourceTree = "<group>"; };
 		F05B5C51238D0A7800BC10C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F05B5C53238D0A7800BC10C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F05B5C55238D0A7800BC10C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -241,6 +249,10 @@
 			children = (
 				F0ADCFC423B3F69500F7A3E7 /* DataCollect02.swift */,
 				F0ADCFC223B3F67400F7A3E7 /* DataCollect01.swift */,
+				F054FF8D246E5FA000ABDEA9 /* WelcomeControllButton.swift */,
+				F00F927B246D5E11007AB5C1 /* InitSetup01.swift */,
+				F054FF8F246E689E00ABDEA9 /* InitSetup02.swift */,
+				F054FF91246E6D1B00ABDEA9 /* InitSetup03.swift */,
 				F0ADCFBF23B33BCD00F7A3E7 /* WelcomeInfo.swift */,
 				F0ADCFC623B45CF300F7A3E7 /* About.swift */,
 				F026CA1A23B0BE64006EC25D /* Welcome.swift */,
@@ -390,16 +402,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F054FF92246E6D1B00ABDEA9 /* InitSetup03.swift in Sources */,
 				F05B5C52238D0A7800BC10C9 /* AppDelegate.swift in Sources */,
 				F08BCD2323D82A3E00659118 /* test_data.swift in Sources */,
 				6D4B5DBB23BB9F5E00F4B2CA /* RKMonth.swift in Sources */,
+				F054FF90246E689E00ABDEA9 /* InitSetup02.swift in Sources */,
 				6D4B5DB923BB9F5E00F4B2CA /* RKViewController.swift in Sources */,
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
+				F054FF8E246E5FA000ABDEA9 /* WelcomeControllButton.swift in Sources */,
 				F0FEDB4223C8761C00682F85 /* DayInterval.swift in Sources */,
 				F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */,
 				F0A92E1A23F3C3BF00874E00 /* TodayTimer.swift in Sources */,
 				F031AF3B246013B8008668B2 /* CustomFontSize.swift in Sources */,
 				F0ADCFC023B33BCD00F7A3E7 /* WelcomeInfo.swift in Sources */,
+				F00F927C246D5E11007AB5C1 /* InitSetup01.swift in Sources */,
 				F08BCD4523D987F500659118 /* Transitions.swift in Sources */,
 				F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */,
 				F0A92E1223F3B6BD00874E00 /* ArrayExtension.swift in Sources */,
@@ -596,7 +612,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -621,7 +637,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

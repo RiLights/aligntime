@@ -20,7 +20,7 @@ struct DataCollect01: View {
                     DataCollect01Body()
                         .padding(.top,10)
                     Spacer()
-                    DataCollectControllButton01()
+                    WelcomeControllButton(next_button_label: "Next", destination:DataCollect02())
                         //.padding(.horizontal,20)
                         .padding(.top,20)
                         .padding(.bottom,5)
@@ -88,33 +88,36 @@ struct DataCollect01Body: View {
     }
 }
 
-struct DataCollectControllButton01: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var user_data: AlignTime
+//struct WelcomeControllButton<Destination: View>: View {
+//    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+//    @EnvironmentObject var user_data: AlignTime
+//    @State var next_button:String = "Next"
+//
+//    var body: some View {
+//        HStack(alignment: .center,spacing: 0){
+//            Button(action: {
+//                self.presentationMode.wrappedValue.dismiss()
+//            }){
+//                ZStack(alignment: .center){
+//                    Rectangle()
+//                        .frame(height: 40)
+//                        .foregroundColor(Color.secondary)
+//                        .opacity(0.5)
+//                    Text(NSLocalizedString("Back",comment:""))
+//                        .foregroundColor(Color.white)
+//                }
+//            }
+//            NavigationLink(destination: DataCollect02()) {
+//                ZStack(alignment: .center){
+//                    Rectangle()
+//                        .frame(height: 40)
+//                        .padding(0)
+//                    Text(NSLocalizedString(next_button,comment:""))
+//                        .foregroundColor(.white)
+//                }
+//            }
+//        }
+//    }
+//}
 
-    var body: some View {
-        HStack(alignment: .center,spacing: 0){
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }){
-                ZStack(alignment: .center){
-                    Rectangle()
-                        .frame(height: 40)
-                        .foregroundColor(Color.secondary)
-                        .opacity(0.5)
-                    Text(NSLocalizedString("Back",comment:""))
-                        .foregroundColor(Color.white)
-                }
-            }
-            NavigationLink(destination: DataCollect02()) {
-                ZStack(alignment: .center){
-                    Rectangle()
-                        .frame(height: 40)
-                        .padding(0)
-                    Text(NSLocalizedString("Next",comment:""))
-                        .foregroundColor(.white)
-                }
-            }
-        }
-    }
-}
+

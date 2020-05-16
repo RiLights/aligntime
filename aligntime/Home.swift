@@ -54,6 +54,6 @@ struct Home: View {
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
     }
 }

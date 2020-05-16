@@ -109,7 +109,7 @@ extension AlignTime {
               }
           }
           
-          self.complete = false//defaults.bool(forKey: "collecting_data_complete")
+          self.complete = defaults.bool(forKey: "collecting_data_complete")
 //          self.update_min_max_dates()
       }
 }

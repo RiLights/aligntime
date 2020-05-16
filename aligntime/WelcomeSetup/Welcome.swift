@@ -40,27 +40,29 @@ struct Welcome: View {
                     .padding(.top, 50)
                     Spacer()
                     NavigationLink(destination: WelcomeInfo()) {
-                        Text(NSLocalizedString("Add your treatment",comment:""))
-                            .font(.headline)
-                            .padding(12)
-                            .padding(.horizontal,20)
-                            .background(Color.blue)
-                            .cornerRadius(3)
-                            .foregroundColor(.white)
+                        ZStack(alignment: .center){
+                            RoundedRectangle(cornerRadius: 7)
+                                .frame(height: 40)
+                            Text(NSLocalizedString("Add your treatment",comment:""))
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
                     }
-                    .padding(8)
+                    .padding(.vertical,10)
+                    .padding(.horizontal,50)
 
                     NavigationLink(destination: About()) {
-                        Text(NSLocalizedString("About AlignTime",comment:""))
-                            .font(.headline)
-                            .padding(12)
-                            .padding(.horizontal,30)
-                            .background(Color.secondary)
-                            .cornerRadius(3)
-                            .foregroundColor(.white)
-                            //.opacity(0.5)
+                        ZStack(alignment: .center){
+                            RoundedRectangle(cornerRadius: 7)
+                                .frame(height: 40)
+                                .foregroundColor(Color.secondary)
+                            Text(NSLocalizedString("About AlignTime",comment:""))
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
                     }
-                    .padding(15)
+                    .padding(.bottom,15)
+                    .padding(.horizontal,50)
                 }
             }
         }

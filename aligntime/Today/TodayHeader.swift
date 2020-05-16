@@ -19,15 +19,15 @@ struct TodayHeader: View {
     
     var body: some View {
         VStack{
-            HStack {
-                Text(NSLocalizedString("Today",comment:""))
-                    .fontWeight(Font.Weight.light)
-                    + Text(":")
-                    .foregroundColor(Color.primary)
-                Text("\(Date(), formatter: date_formatter)")
-                    .foregroundColor(Color.accentColor)
-                    .fontWeight(Font.Weight.light)
-            }
+//            HStack {
+//                Text(NSLocalizedString("Today",comment:""))
+//                    .fontWeight(Font.Weight.light)
+//                    + Text(":")
+//                    .foregroundColor(Color.primary)
+//                Text("\(Date(), formatter: date_formatter)")
+//                    .foregroundColor(Color.accentColor)
+//                    .fontWeight(Font.Weight.light)
+//            }
             if core_data.show_expected_aligner{
                 Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                     .foregroundColor(Color.primary)
@@ -69,7 +69,7 @@ struct AlignerNumberVisualisation: View {
                             .foregroundColor(.accentColor)
                             RoundedRectangle(cornerRadius: 4)
                                 .foregroundColor(.accentColor)
-                                .frame(width: CGFloat(200/self.core_data.aligners[self.core_data.aligner_number_now].days), height: 4)
+                                .frame(width: CGFloat(200/self.core_data.aligners[self.core_data.aligner_number_now-1].days), height: 4)
                         }
                     }
                     Spacer()

@@ -14,51 +14,28 @@ struct WelcomeInfo: View {
     var body: some View {
         Section {
             VStack(alignment: .center){
-                Spacer()
+                Image(systemName:"square.stack.3d.down.right.fill")
+                    .font(.system(size: 70))
+                    .foregroundColor(.blue)
                 Text(NSLocalizedString("setting_up",comment:""))
                     .font(.largeTitle)
                     .fontWeight(.regular)
                     .foregroundColor(.blue)
-                    .padding(.horizontal, 30)
                     .padding(.bottom, 20)
+                    .padding(.top, 20)
                     .multilineTextAlignment(.center)
                 Text(NSLocalizedString("to_do_this_once",comment:""))
                     .font(.headline)
                     .fontWeight(.light)
                     .foregroundColor(.blue)
-                    .padding(.horizontal, 30)
                     .multilineTextAlignment(.center)
                 Spacer()
-                HStack(alignment: .center,spacing: 0){
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .foregroundColor(Color.secondary)
-                                .padding(0)
-                                .opacity(0.5)
-                            Text(NSLocalizedString("Back",comment:""))
-                                .foregroundColor(Color.white)
-                        }
-                    }
-                    NavigationLink(destination: DataCollect01()) {
-                        ZStack(alignment: .center){
-                            Rectangle()
-                                .frame(height: 40)
-                                .padding(0)
-                            Text(NSLocalizedString("Next",comment:""))
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-                .padding(.horizontal,20)
-                .padding(.bottom,5)
+                WelcomeControllButton(next_button_label: "Next", destination:InitSetup01())
             }
+            .padding(.horizontal, 30)
             .navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+//            .navigationBarBackButtonHidden(true)
+//            .navigationBarHidden(true)
         }
     }
 }
