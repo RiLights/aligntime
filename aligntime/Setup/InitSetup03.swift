@@ -68,15 +68,28 @@ func SetupParameterLink<Destination: View>(label: String, destination: Destinati
     }
 }
 
+func SetupParameterLink2<Destination: View>(label: String,value:String, destination: Destination) -> some View {
+    return NavigationLink(destination: destination) {
+        VStack(alignment: .center,spacing: 15){
+            HStack(alignment: .center,spacing: 0) {
+                Text(NSLocalizedString(label,comment:""))
+                    .foregroundColor(.primary)
+                    //.padding(.leading,3)
+                Spacer()
+                Text(value)
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
+                    .padding(.leading,5)
+            }
+            Divider()
+        }
+        .padding(.top,5)
+    }
+}
+
 struct StartTreatmentPicker: View {
     @EnvironmentObject var user_data: AlignTime
     let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
-    
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
     
     var body: some View {
         VStack(alignment: .center){
@@ -91,7 +104,7 @@ struct StartTreatmentPicker: View {
                 .labelsHidden()
             HStack{
                 Text(NSLocalizedString("Start date is:",comment:""))
-                Text("\(user_data.start_treatment, formatter: dateFormatter)")
+                Text("\(user_data.start_treatment, formatter: date_formatter_long())")
             }
             .font(.footnote)
             .foregroundColor(.blue)

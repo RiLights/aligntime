@@ -21,6 +21,7 @@ struct ProfileManager: View {
                     LinkMenu(icon: "list.bullet.indent", label: NSLocalizedString("Individual Aligner Adjust",comment: ""), destination: IndividualAlignerManager())
 
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
+                    LinkMenu(icon: "rectangle.3.offgrid", label: NSLocalizedString("Display",comment: ""), destination: DisplaySettings())
                     Button(action: {
                         self.reset_alert = true
                     }){

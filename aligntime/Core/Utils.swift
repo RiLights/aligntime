@@ -23,3 +23,15 @@ func hour_timer_format(_ second: TimeInterval) -> String? {
     formatter.zeroFormattingBehavior = .pad
     return formatter.string(from: second+1)
 }
+
+func date_formatter_medium() ->DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}
+
+func date_formatter_long() -> DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    return formatter
+}

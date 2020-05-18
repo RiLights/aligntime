@@ -51,6 +51,7 @@
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
 		F0BEABBB2470A61500AE9E95 /* SliderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */; };
+		F0BEABBD2470AC4100AE9E95 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */; };
 		F0D255A32417990A0005B749 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D255A22417990A0005B749 /* TimePicker.swift */; };
 		F0E3882223E8204400B758C7 /* AlignTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E3882123E8204400B758C7 /* AlignTimeTests.swift */; };
 		F0E69CFE245AD1A200364C3A /* UserDataRestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E69CFD245AD1A200364C3A /* UserDataRestore.swift */; };
@@ -122,6 +123,7 @@
 		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
 		F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSetup.swift; sourceTree = "<group>"; };
+		F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettings.swift; sourceTree = "<group>"; };
 		F0D255A22417990A0005B749 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlignTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E3882123E8204400B758C7 /* AlignTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTimeTests.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				F005971423FBCE48006605C5 /* TreatmentPlan.swift */,
 				F005971D23FD2D33006605C5 /* IndividualAlignerManager.swift */,
 				F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */,
+				F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				F054FF92246E6D1B00ABDEA9 /* InitSetup03.swift in Sources */,
 				F05B5C52238D0A7800BC10C9 /* AppDelegate.swift in Sources */,
 				F08BCD2323D82A3E00659118 /* test_data.swift in Sources */,
+				F0BEABBD2470AC4100AE9E95 /* DisplaySettings.swift in Sources */,
 				6D4B5DBB23BB9F5E00F4B2CA /* RKMonth.swift in Sources */,
 				F054FF90246E689E00ABDEA9 /* InitSetup02.swift in Sources */,
 				6D4B5DB923BB9F5E00F4B2CA /* RKViewController.swift in Sources */,

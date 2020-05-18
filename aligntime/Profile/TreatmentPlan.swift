@@ -10,12 +10,6 @@ import SwiftUI
 struct TreatmentPlan: View {
     @EnvironmentObject var user_data: AlignTime
     
-    var date_formatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }
-    
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
             ScrollView(.vertical) {

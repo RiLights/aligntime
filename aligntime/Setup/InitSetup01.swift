@@ -18,15 +18,19 @@ struct InitSetup01: View {
                 .font(.system(size: 70))
                 .foregroundColor(.blue)
             Spacer()
-            Group{
-                Text(NSLocalizedString("Aligner number you are wearing now",comment:""))
-                    .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.center)
-                Text("\(Int(self.user_data.aligner_number_now))")
-                    .foregroundColor(.accentColor)
-            }
-            .font(.largeTitle)
-            Slider(value: self.$user_data.aligner_number_now, in: 1...100, step: 1)
+            Divider()
+            SetupParameterLink2(label:"Aligner number you are wearing now",value:String(self.user_data.aligner_number_now),destination:SliderSetup(label:"Aligner number you are wearing now",min:1,max:100,slider_value:self.$user_data.aligner_number_now))
+            SetupParameterLink2(label:"Number of days for each aligners",value:String(self.user_data.aligners_wear_days),destination:SliderSetup(label:"Number of days for each aligners",min:1,max:31,slider_value:self.$user_data.aligners_wear_days))
+            SetupParameterLink2(label:"Preferred aligners wear hours per day",value:String(self.user_data.wear_hours),destination:SliderSetup(label:"Preferred aligners wear hours per day",min:12,max:24,slider_value:self.$user_data.wear_hours))
+//            Group{
+//                Text(NSLocalizedString("Aligner number you are wearing now",comment:""))
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .multilineTextAlignment(.center)
+//                Text("\(Int(self.user_data.aligner_number_now))")
+//                    .foregroundColor(.accentColor)
+//            }
+//            .font(.largeTitle)
+//            Slider(value: self.$user_data.aligner_number_now, in: 1...100, step: 1)
             //Spacer()
 //            Text(NSLocalizedString("Maybe Some explanation why do we need this setup and you can change it later, if want",comment:""))
 //                .font(.headline)
