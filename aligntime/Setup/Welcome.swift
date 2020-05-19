@@ -39,7 +39,7 @@ struct Welcome: View {
                     }
                     .padding(.top, 50)
                     Spacer()
-                    NavigationLink(destination: InitSetup01().environmentObject(self.user_data)) {
+                    NavigationLink(destination: WelcomeInfo().environmentObject(self.user_data)) {
                         ZStack(alignment: .center){
                             RoundedRectangle(cornerRadius: 7)
                                 .frame(height: 40)

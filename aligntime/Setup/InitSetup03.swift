@@ -81,6 +81,7 @@ func SetupParameterLink2<Destination: View>(label: String,value:String, destinat
                     .foregroundColor(.gray)
                     .padding(.leading,5)
             }
+            //.background(Rectangle().padding(-13).foregroundColor(Color(red: 0.05, green: 0.05, blue: 0.05)))
             Divider()
         }
         .padding(.top,5)
