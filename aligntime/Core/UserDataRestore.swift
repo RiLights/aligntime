@@ -25,7 +25,7 @@ extension AlignTime {
           defaults.set(days_wearing, forKey: "days_wearing")
           defaults.set(wear_hours, forKey: "wear_hours")
           defaults.set(complete, forKey: "collecting_data_complete")
-          defaults.set(show_expected_aligner, forKey: "show_expected_aligner")
+          defaults.set(show_current_date, forKey: "show_current_date")
           defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
           defaults.set(aligner_time_notification.timeIntervalSince1970, forKey: "aligner_time_notification")
           
@@ -56,7 +56,7 @@ extension AlignTime {
         self.wear_hours = Float(defaults.integer(forKey: "wear_hours"))
           if self.wear_hours == 0 {self.wear_hours = 20 }
           
-          self.show_expected_aligner = defaults.bool(forKey: "show_expected_aligner")
+          self.show_current_date = defaults.bool(forKey: "show_current_date")
           
           let start_treatment_raw = defaults.double(forKey: "start_treatment")
           if start_treatment_raw == 0{
@@ -113,7 +113,7 @@ extension AlignTime {
               }
           }
           
-          self.complete = false//defaults.bool(forKey: "collecting_data_complete")
+          self.complete = defaults.bool(forKey: "collecting_data_complete")
 //          self.update_min_max_dates()
       }
 }

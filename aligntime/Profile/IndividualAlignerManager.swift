@@ -10,8 +10,6 @@ import SwiftUI
 
 struct IndividualAlignerManager: View {
     @EnvironmentObject var user_data: AlignTime
-    @State var locations = [1, 2, 3]
-    @State var test_number = 7
     
     var body: some View {
         List {

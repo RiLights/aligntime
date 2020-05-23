@@ -18,7 +18,6 @@ struct ProfileManager: View {
                 List {
                     LinkMenu(icon: "chart.pie", label: NSLocalizedString("Time Statistics",comment: ""), destination: StatisticsView())
                     LinkMenu(icon: "doc.plaintext", label: NSLocalizedString("Modify Treatment Plan",comment: ""), destination: TreatmentPlan())
-                    LinkMenu(icon: "list.bullet.indent", label: NSLocalizedString("Individual Aligner Adjust",comment: ""), destination: IndividualAlignerManager())
 
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
                     LinkMenu(icon: "rectangle.3.offgrid", label: NSLocalizedString("Display",comment: ""), destination: DisplaySettings())
@@ -66,17 +65,34 @@ struct ProfileManager: View {
         }
     }
 
-    func LinkMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
-        self.user_data.update_individual_aligners()
-        return NavigationLink(destination: destination) {
-            HStack {
-                Image(systemName: icon)
-                    .frame(width: 20)
-                Text(label)
-                    //.padding(.leading,3)
-            }
+}
+
+func LinkMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
+    return NavigationLink(destination: destination) {
+        HStack {
+            Image(systemName: icon)
+                .frame(width: 20)
+            Text(label)
+                //.padding(.leading,3)
         }
     }
 }
 
-
+func LinkSubMenu<Destination: View>(icon: String, label: String, destination: Destination) -> some View {
+    return NavigationLink(destination: destination) {
+        VStack(alignment: .center,spacing: 15){
+            Divider()
+            HStack {
+                Text(label)
+                    .foregroundColor(.primary)
+                Spacer()
+                Image(systemName: icon)
+                    .foregroundColor(.accentColor)
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
+                    .padding(.leading,5)
+            }
+            Divider()
+        }
+    }
+}

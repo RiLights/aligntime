@@ -21,11 +21,10 @@ final class AlignTime: ObservableObject {
             }
         }
     @Published var start_treatment:Date = Date()
-    //@Published var aligner_number_now:Int = 1
     @Published var aligner_number_now:Float = 1
     @Published var days_wearing:Float = 1
     @Published var wear_hours:Float = 20
-    @Published var show_expected_aligner:Bool = false
+    @Published var show_current_date:Bool = true
     @Published var start_date_for_current_aligners:Date = Date()
     @Published var aligner_time_notification:Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
     
@@ -66,7 +65,7 @@ final class AlignTime: ObservableObject {
         start_treatment = Date()
         aligner_number_now = 1
         start_date_for_current_aligners = Date()
-        show_expected_aligner = false
+        show_current_date = false
         days_wearing = 1
         wear_hours = 20
         current_state = true

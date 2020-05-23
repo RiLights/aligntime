@@ -43,6 +43,9 @@
 "Time Statistic" = "Статистика времени";
 "Show expected aligner" = "Показать текущий элайнер";
 "start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
+"Show current date" = "Показать текущую дату";
+"Display" = "Отображения";
+"Display Settings" ="Настройки Отображения";
 
 /* Welcome Screen */
 "Return" = "Назад";

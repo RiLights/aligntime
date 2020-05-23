@@ -19,26 +19,33 @@ struct TodayHeader: View {
     
     var body: some View {
         VStack{
-            HStack {
-                Text(NSLocalizedString("Today",comment:""))
-                    .fontWeight(Font.Weight.light)
-                    + Text(":")
-                    .foregroundColor(Color.primary)
-                Text("\(Date(), formatter: date_formatter)")
-                    .foregroundColor(Color.accentColor)
-                    .fontWeight(Font.Weight.light)
+            if core_data.show_current_date{
+                HStack {
+                    Text(NSLocalizedString("Today",comment:""))
+                        .fontWeight(Font.Weight.light)
+                        + Text(":")
+                        .foregroundColor(Color.primary)
+                    Text("\(Date(), formatter: date_formatter)")
+                        .foregroundColor(Color.accentColor)
+                        .fontWeight(Font.Weight.light)
+                }
             }
-            if core_data.show_expected_aligner{
+            HStack (spacing:0){
                 Text(NSLocalizedString("Expected Aligner #: ",comment:""))
                     .foregroundColor(Color.primary)
                     .fontWeight(Font.Weight.light)
-                    + Text("""
-                        \(Int(self.core_data.aligner_number_now))
-                        """)
-                        .foregroundColor(Color.accentColor)
-            //AlignerNumberVisualisation()
+                    .multilineTextAlignment(.center)
+                Text("\(Int(self.core_data.aligner_number_now))")
+                    .foregroundColor(Color.accentColor)
             }
+//                + Text("""
+//                    \(Int(self.core_data.aligner_number_now))
+//                    """)
+                    //.foregroundColor(Color.accentColor)
+                    
+            //AlignerNumberVisualisation()
         }
+
         //.font(.title)
         //.scaledFont(size: 25)
         //.font(.title)//.system(size: 23)
