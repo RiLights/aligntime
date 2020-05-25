@@ -50,6 +50,7 @@
 		F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFC623B45CF300F7A3E7 /* About.swift */; };
 		F0ADCFCF23B5FF3600F7A3E7 /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */; };
 		F0ADCFF623BB519500F7A3E7 /* AlignTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */; };
+		F0B90F0E247BA84500EA15E3 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B90F0D247BA84500EA15E3 /* NotificationSettings.swift */; };
 		F0BEABBB2470A61500AE9E95 /* SliderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */; };
 		F0BEABBD2470AC4100AE9E95 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */; };
 		F0D255A32417990A0005B749 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D255A22417990A0005B749 /* TimePicker.swift */; };
@@ -122,6 +123,7 @@
 		F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
 		F0ADCFF523BB519500F7A3E7 /* AlignTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignTime.swift; sourceTree = "<group>"; };
 		F0ADCFF923BF3C3E00F7A3E7 /* AlignTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlignTime.entitlements; sourceTree = "<group>"; };
+		F0B90F0D247BA84500EA15E3 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		F0BEABBA2470A61500AE9E95 /* SliderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSetup.swift; sourceTree = "<group>"; };
 		F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettings.swift; sourceTree = "<group>"; };
 		F0D255A22417990A0005B749 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				F005971423FBCE48006605C5 /* TreatmentPlan.swift */,
 				F005971D23FD2D33006605C5 /* IndividualAlignerManager.swift */,
 				F0BEABBC2470AC4100AE9E95 /* DisplaySettings.swift */,
+				F0B90F0D247BA84500EA15E3 /* NotificationSettings.swift */,
 				F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */,
 			);
 			path = Profile;
@@ -417,6 +420,7 @@
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
 				F054FF8E246E5FA000ABDEA9 /* WelcomeControllButton.swift in Sources */,
 				F0FEDB4223C8761C00682F85 /* DayInterval.swift in Sources */,
+				F0B90F0E247BA84500EA15E3 /* NotificationSettings.swift in Sources */,
 				F0FEDB3723C40D6200682F85 /* TimeIntervalExtension.swift in Sources */,
 				F0A92E1A23F3C3BF00874E00 /* TodayTimer.swift in Sources */,
 				F031AF3B246013B8008668B2 /* CustomFontSize.swift in Sources */,
@@ -620,7 +624,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -645,7 +649,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;

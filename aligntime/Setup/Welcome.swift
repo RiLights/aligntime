@@ -16,9 +16,9 @@ struct Welcome: View {
         NavigationView {
             ZStack{
                 VStack{
-                    RadialGradient(gradient: colors, center: .top, startRadius: 20, endRadius: 300)
+                    RadialGradient(gradient: colors, center: .top, startRadius: 10, endRadius: 300)
                         .padding(.top, -159)
-                        .opacity(0.4)
+                        .opacity(0.35)
                     Spacer()
                 }
                 VStack{

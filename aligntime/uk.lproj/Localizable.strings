@@ -42,10 +42,11 @@
 "per_hour" = " годин на добу";
 "Time Statistic" = "Статистика часу";
 "Show expected aligner" = "Показати поточний елайнер";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 "Show current date" = "Показати поточну дату";
 "Display" = "Відображення";
 "Display Settings" ="Налаштування Відображення";
+"Notification Settings" = "Налаштування Cповіщень";
+"Notification" = "Cповіщеня";
 
 
 /* Welcome Screen */

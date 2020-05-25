@@ -35,3 +35,8 @@ func date_formatter_long() -> DateFormatter {
     formatter.dateStyle = .long
     return formatter
 }
+
+func get_max_start_date(days_wearing:Float, date:Date = Date())->Date{
+    
+    return Calendar.current.date(byAdding: .day, value: Int(-days_wearing)+1, to:date)!
+}

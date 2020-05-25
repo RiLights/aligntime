@@ -20,6 +20,7 @@ struct ProfileManager: View {
                     LinkMenu(icon: "doc.plaintext", label: NSLocalizedString("Modify Treatment Plan",comment: ""), destination: TreatmentPlan())
 
                     //LinkMenu(icon: "calendar.circle", label: "Orthodontist Appointment", destination: OrthodontistAppointment())
+                    LinkMenu(icon: "bubble.left", label: NSLocalizedString("Notification",comment: ""), destination: NotificationSettings())
                     LinkMenu(icon: "rectangle.3.offgrid", label: NSLocalizedString("Display",comment: ""), destination: DisplaySettings())
                     Button(action: {
                         self.reset_alert = true

@@ -42,10 +42,11 @@
 "per_hour" = " hours per day";
 "Time Statistic" = "Time Statistic";
 "Show expected aligner" = "Show current aligner";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 "Show current date" = "Show current date";
 "Display" = "Display";
 "Display Settings" ="Display Settings";
+"Notification Settings" = "Notification Settings";
+"Notification" = "Notification";
 
 
 /* Welcome Screen */

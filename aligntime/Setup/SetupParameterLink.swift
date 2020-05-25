@@ -38,7 +38,7 @@ struct StartTreatmentPicker: View {
                 .foregroundColor(.blue)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
-            DatePicker(selection: $user_data.start_treatment, in: min_date!...Calendar.current.date(byAdding: .day, value: Int(-(user_data.days_wearing)), to: Date())!, displayedComponents: .date) {
+            DatePicker(selection: $user_data.start_treatment, in: min_date!...get_max_start_date(days_wearing:user_data.days_wearing), displayedComponents: .date) {
                     Text("")
                 }
                 .labelsHidden()

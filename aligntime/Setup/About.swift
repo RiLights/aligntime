@@ -32,6 +32,7 @@ struct About: View {
                 if self.view_mode{
                     AboutControllButton()
                         .padding(.horizontal,20)
+                        .padding(.bottom,10)
                 }
             }
             .navigationBarBackButtonHidden(view_mode)

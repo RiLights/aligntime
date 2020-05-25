@@ -39,13 +39,14 @@
 "Not enough data for statistic" = "Недостаточно данных для статистики";
 "Average wear time: " = "Среднее время ношения элайнеров: ";
 "Hours" = "Часов";
-"per_hour" = " часа в сутки";
+"per_hour" = " godzin dziennie";
 "Time Statistic" = "Статистика времени";
 "Show expected aligner" = "Показать текущий элайнер";
-"start_date_for_current_aligners" = "When did you start aligner which you are wearing now?";
 "Show current date" = "Показать текущую дату";
 "Display" = "Отображения";
 "Display Settings" ="Настройки Отображения";
+"Notification Settings" = "Настройки Уведомлений";
+"Notification" = "Уведомления";
 
 /* Welcome Screen */
 "Return" = "Назад";
