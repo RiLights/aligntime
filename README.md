@@ -1,5 +1,5 @@
+![](aligntime/Assets.xcassets/iter02_2_welcome_small.imageset/iter02_2_welcome_small.png)
 # Aligntime
-![Alt text](aligntime/Assets.xcassets/iter02_2_welcome_small.png)
 AlignTime App product vision
 
 ##### Target group
