@@ -1,11 +1,11 @@
-/* No comment provided by engineer. */
+/* Tabs */
 "Calendar" = "Calendar";
 "Today" = "Today";
 
 /* Today Screen */
 "You_have_been_wearing_aligners_for" = "You have been wearing aligners for";
 "days" = "days";
-"days/4" = "days";
+"days/4" = "days"; // if your language has plural declension before number 4
 "day" = "day";
 "days_left_until_the_end_of_your_treatment" = "days left until the end of your treatment";
 "Wear Time Reminder" = "Wear Time Reminder";
@@ -16,7 +16,7 @@
 "No Reminder" = "No Reminder";
 "Wear time: " = "Wear time: ";
 "Out time: " = "Out time: ";
-"Expected Aligner #: " = "Aligner #: ";
+"Expected Aligner" = "Aligner";
 "You have just started your treatment" = "You have just started your treatment";
 
 /* Calendar Screen */

@@ -29,13 +29,15 @@ struct TodayHeader: View {
                         .foregroundColor(Color.accentColor)
                         .fontWeight(Font.Weight.light)
                 }
+                .padding(.bottom,10)
             }
             HStack (spacing:0){
-                Text(NSLocalizedString("Expected Aligner #: ",comment:""))
+                Text(NSLocalizedString("Expected Aligner",comment:""))
                     .foregroundColor(Color.primary)
                     .fontWeight(Font.Weight.light)
                     .multilineTextAlignment(.center)
-                Text("\(Int(self.core_data.aligner_number_now))")
+                Text(" #:")
+                Text(" \(Int(self.core_data.aligner_number_now))")
                     .foregroundColor(Color.accentColor)
             }
 //                + Text("""
@@ -43,7 +45,7 @@ struct TodayHeader: View {
 //                    """)
                     //.foregroundColor(Color.accentColor)
                     
-            //AlignerNumberVisualisation()
+            AlignerNumberVisualisation()
         }
 
         //.font(.title)
@@ -61,6 +63,8 @@ struct AlignerNumberVisualisation: View {
         formatter.dateStyle = .long
         return formatter
     }
+    
+    
 
     var body: some View {
         VStack{
@@ -83,6 +87,34 @@ struct AlignerNumberVisualisation: View {
                 }
             }
             .frame(width: 200, height: 8)
+            if self.core_data.days_left_on_aligner == 0{
+                Group{
+                    Text(NSLocalizedString("Last day for aligner",comment:""))
+                        + Text(" #:")
+                        + Text(" \(Int(self.core_data.aligner_number_now)+1)")
+                            .foregroundColor(.accentColor)
+                }
+                .font(.caption)
+            }
+            else{
+                HStack(spacing:4){
+                    Text("\(self.core_data.days_left_on_aligner) ")
+                        .foregroundColor(.accentColor)
+                    Group{
+                        if self.core_data.days_left_on_aligner == 1 {
+                            Text(NSLocalizedString("day",comment:""))
+                        }
+                        else if self.core_data.days_left_on_aligner<=4{
+                            Text(NSLocalizedString("days/4",comment:""))
+                        }
+                        else{
+                            Text(NSLocalizedString("days",comment:""))
+                        }
+                    }
+                    Text(NSLocalizedString("left for the current aligner",comment:""))
+                }
+                .font(.callout)
+            }
         }
     }
 }

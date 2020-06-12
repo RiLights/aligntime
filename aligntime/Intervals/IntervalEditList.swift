@@ -54,11 +54,13 @@ struct IntervalEditList: View {
                                     else{
                                         Text("\(self.core_data.intervals[i.id+1].time_string)")
                                     }
-                                    
                                 }
                                 .frame(width: 270)
                             }
                             Spacer()
+                            Image(systemName: "pause")
+                                .padding(.trailing,5)
+                                .foregroundColor(.secondary)
                         }
                     }
                     .onDelete(perform: delete)

@@ -29,6 +29,7 @@ final class AlignTime: ObservableObject {
     @Published var aligner_time_notification:Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
     
     @Published var days_left:String = "1"
+    @Published var days_left_on_aligner:Int = 1
     @Published var wearing_aligners_days:Int = 0
     
     @Published var complete:Bool = false
@@ -145,7 +146,6 @@ final class AlignTime: ObservableObject {
     func get_expected_aligner_for_date(date:Date)->(Int,Int){
         let start_date = Calendar.current.startOfDay(for: self.start_date_for_current_aligners)
         let seconds_past = date.timeIntervalSince(start_date)
-        
         let days_past = abs(seconds_past).days
         if days_past==0 {return (Int(self.aligner_number_now),Int(self.days_wearing))}
         
@@ -244,7 +244,7 @@ final class AlignTime: ObservableObject {
         return days
     }
     
-    func get_date_to_change_aligner(aligner_number:Int,curent_aligner_day:Int)->Int{
+    func get_days_to_change_aligner(aligner_number:Int,curent_aligner_day:Int)->Int{
         let aligner_offset = aligner_number-1
         if aligner_offset < self.aligners.count{
             let aligner_days = self.aligners[aligner_offset].days
@@ -310,8 +310,8 @@ final class AlignTime: ObservableObject {
     }
     
     func update_aligner_notification(){
-        let days_left = get_date_to_change_aligner(aligner_number: Int(self.aligner_number_now), curent_aligner_day: Int(self.days_wearing))
-        let date_offset = Calendar.current.date(byAdding: .day, value: days_left, to: Date())
+        self.days_left_on_aligner = get_days_to_change_aligner(aligner_number: Int(self.aligner_number_now), curent_aligner_day: Int(self.days_wearing))
+        let date_offset = Calendar.current.date(byAdding: .day, value: self.days_left_on_aligner, to: Date())
         
         let hour = calendar.component(.hour, from: self.aligner_time_notification)
         let minutes = calendar.component(.minute, from: self.aligner_time_notification)

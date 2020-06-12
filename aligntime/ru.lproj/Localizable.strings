@@ -16,7 +16,7 @@
 "No Reminder" = "Без Напоминания";
 "Wear time: " = "С элайнерами: ";
 "Out time: " = "Без элайнеров: ";
-"Expected Aligner #: " = "Элайнер #: ";
+"Expected Aligner" = "Элайнер";
 "You have just started your treatment" = "Вы только начали выравнивание";
 
 /* Calendar Screen */

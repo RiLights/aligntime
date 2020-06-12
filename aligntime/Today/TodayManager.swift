@@ -16,7 +16,11 @@ struct TodayManager: View {
         VStack(alignment: .center) {
             TodayHeader()
             Spacer()
+            Divider()
+                .padding(.bottom, 20)
             TodayTimer()
+            Divider()
+                .padding(.top, 30)
             Spacer()
             TodayDaysLeft()
         }
