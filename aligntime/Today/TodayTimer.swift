@@ -12,7 +12,8 @@ struct TodayTimer: View {
     @EnvironmentObject var core_data: AlignTime
     @State var wear_time = "00:00:00"
     @State var off_time = "00:00:00"
-    @State private var show_reminder = false
+    @State var show_reminder = false
+    @State var out_hours:Bool = false
     let generator_feedback = UIImpactFeedbackGenerator(style: .light)
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -45,7 +46,7 @@ struct TodayTimer: View {
                     Text(NSLocalizedString("Out time: ",comment:""))
                         .foregroundColor(Color.primary)
                     Text(off_time)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(self.out_hours ? Color.orange : Color.accentColor)
                 }
             }
             .padding(.bottom, 10)
@@ -53,10 +54,12 @@ struct TodayTimer: View {
             .onReceive(self.timer) { input in
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: input))!
+                self.out_hours = Int(self.core_data.get_off_timer_for_date(update_time: input)/60)>Int((24-self.core_data.wear_hours)*60)
             }
             .onAppear() {
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
+                self.out_hours = Int(self.core_data.get_off_timer_for_date(update_time: Date())/60)>Int((24-self.core_data.wear_hours)*60)
             }
             Button(action: {
                 if !self.core_data.current_state{

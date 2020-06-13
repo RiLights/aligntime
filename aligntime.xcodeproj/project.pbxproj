@@ -274,8 +274,8 @@
 			children = (
 				F0ADCFCE23B5FF3600F7A3E7 /* TodayManager.swift */,
 				F0A92E1523F3BFF900874E00 /* TodayHeader.swift */,
-				F0A92E1723F3C2B200874E00 /* TodayDaysLeft.swift */,
 				F0A92E1923F3C3BF00874E00 /* TodayTimer.swift */,
+				F0A92E1723F3C2B200874E00 /* TodayDaysLeft.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";

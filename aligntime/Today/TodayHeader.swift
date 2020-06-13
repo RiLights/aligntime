@@ -97,7 +97,7 @@ struct AlignerNumberVisualisation: View {
                 .font(.caption)
             }
             else{
-                HStack(spacing:4){
+                HStack(spacing:0){
                     Text("\(self.core_data.days_left_on_aligner) ")
                         .foregroundColor(.accentColor)
                     Group{

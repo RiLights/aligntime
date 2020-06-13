@@ -280,7 +280,7 @@ final class AlignTime: ObservableObject {
     func update_individual_aligners(){
         var res:[IndividualAligner] = []
         if self.aligners.count == 0{
-            for i in 1..<Int(self.required_aligners_total){
+            for i in 1..<Int(self.required_aligners_total)+1{
                 res.append(IndividualAligner(i-1,days:7,aligner_number:i))
             }
             self.aligners = res
