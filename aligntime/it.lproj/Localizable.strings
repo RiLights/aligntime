@@ -1,0 +1,90 @@
+/* Tabs */
+"Calendar" = "Calendar";
+"Today" = "Today";
+
+/* Today Screen */
+"You_have_been_wearing_aligners_for" = "You have been wearing aligners for";
+"days" = "days";
+"days/4" = "days"; // if your language has plural declension before number 4
+"day" = "day";
+"days_left_until_the_end_of_your_treatment" = "days left until the end of your treatment";
+"Wear Time Reminder" = "Wear Time Reminder";
+"Remind me to wear aligners again in" ="Remind me to wear aligners again in";
+"15 Minutes" = "15 Minutes";
+"30 Minutes" = "30 Minutes";
+"1 Hour" = "1 Hour";
+"No Reminder" = "No Reminder";
+"Wear time: " = "Wear time: ";
+"Out time: " = "Out time: ";
+"Expected Aligner" = "Aligner";
+"You have just started your treatment" = "You have just started your treatment";
+"left for the current aligner" = "left for the current aligner";
+"congratulations" = "You finished your treatment! Congratulations!";
+
+/* Calendar Screen */
+"Out Times" = "Times without aligners";
+"Now" = "Now";
+"Start Time" = "Removed aligners at";
+"End Time" = "Inserted aligners at";
+"Total Wear Time:" = "Total Wear Time:";
+
+/* Profile Screen */
+"Time Statistics" = "View Wear Time Statistics";
+"Aligner Adjustment" = "Aligner Adjustment";
+"Aligner # %d: %d Day(s)" = "Aligner #%d: %d Day(s)";
+"Modify Treatment Plan" = "Modify Treatment Plan";
+"Treatment Plan" = "Treatment Plan";
+"Individual Aligner Adjust" = "Individual Aligner Adjust";
+"Reset All History" = "Reset Treatment Plan";
+"About" = "About";
+"Give Us Feedback" = "Give Us Feedback";
+"Not enough data for statistic" = "Unfortunately, we haven’t got enough data to display wear time statistics";
+"Average wear time: " = "Average wear time: ";
+"Hours" = "Hours";
+"per_hour" = " hours per day";
+"Time Statistic" = "Time Statistic";
+"Show expected aligner" = "Show current aligner";
+"Show current date" = "Show current date";
+"Display" = "Display";
+"Display Settings" ="Display Settings";
+"Notification Settings" = "Notification Settings";
+"Notification" = "Notification";
+
+
+/* Welcome Screen */
+"Return" = "Return";
+"Back" = "Back";
+"Ready" = "Ready";
+"Next" = "Next";
+"How many aligners do you require?" = "How many aligners do you require?";
+"Number of days for each aligners" = "Number of days for each aligners";
+"When did you start your treatment?" = "When did you start your treatment?";
+"Aligner number you are wearing now" = "Aligner number you are wearing now";
+"How many days have you been wearing current aligner for?" = "How many days have you been wearing the current aligner for?";
+"Preferred aligners wear hours per day" = "Daily wear time target (hours per day)";
+"Start date is:" = "Start date is:";
+"Do you want to erase all history?" = "Do you want to erase all history and start a new treatment plan? This action can’t be undone";
+"Erase" = "Erase";
+"About_AlignTime" = "AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when it is time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.";
+
+"Welcome to AlignTime" = "Welcome \n to AlignTime";
+"Your assistant on the way to a perfect smile" = "Your assistant on the way to a perfect smile";
+"Add your treatment" = "Add your treatment";
+"About AlignTime" = "About AlignTime";
+"setting_up" = "Let's go through setting up your new treatment";
+"to_do_this_once" = "(You would only need to do this once)";
+"Additional Settings" = "Additional Settings";
+"data is important for us" = "This data is important for us to get maximum correct setup for you";
+
+/* Reminders */
+"AlignTime Reminder" = "AlignTime Reminder";
+"Time to put your aligners on again" = "Time to put your aligners on again";
+"Don’t forget to put your aligners on" = "Don’t forget to put your aligners on";
+"Your aligners have been out for a while now" = "Your aligners have been out for a while now. It’s time to put them back on";
+"Did you forget to start the timer?" = "Did you forget to start the timer?";
+"last_aligner # %d" = "Time to change to aligner # %d";
+"Changer aligner time notification" = "What time would you like to be reminded to change your aligners?";
+"Last day for aligner" = "Today you are due to start wearing aligner";
+
+
+
