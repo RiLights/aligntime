@@ -18,6 +18,7 @@
 "Out time: " = "Без елайнерів: ";
 "Expected Aligner" = "Eлайнер";
 "You have just started your treatment" = "Ви тільки розпочали вирівнювання";
+"left for the current aligner" = "залишилося для поточного елайнери";
 
 /* Calendar Screen */
 "Out Times" = "Час без елайнерів";

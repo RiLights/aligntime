@@ -28,7 +28,7 @@ struct Home: View {
                    .tabItem {
                         VStack {
                             Text(NSLocalizedString("Today",comment:""))
-                            Image(systemName: "bag")
+                            Image(systemName: "clock")
                         }
                    }
                    .tag(0)

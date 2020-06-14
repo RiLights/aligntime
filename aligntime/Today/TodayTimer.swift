@@ -55,6 +55,11 @@ struct TodayTimer: View {
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: input))!
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: input))!
                 self.out_hours = Int(self.core_data.get_off_timer_for_date(update_time: input)/60)>Int((24-self.core_data.wear_hours)*60)
+                
+                // Need to update after night for change aligner state
+                if self.wear_time == "00:00:01"{
+                    self.core_data.update_today_dates()
+                }
             }
             .onAppear() {
                 self.wear_time = timer_format(self.core_data.get_wear_timer_for_date(update_time: Date()))!

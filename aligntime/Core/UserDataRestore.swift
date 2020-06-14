@@ -26,6 +26,7 @@ extension AlignTime {
           defaults.set(wear_hours, forKey: "wear_hours")
           defaults.set(complete, forKey: "collecting_data_complete")
           defaults.set(show_current_date, forKey: "show_current_date")
+          defaults.set(show_aligner_description, forKey: "show_aligner_description")
           defaults.set(start_date_for_current_aligners.timeIntervalSince1970, forKey: "start_date_for_current_aligners")
           defaults.set(aligner_time_notification.timeIntervalSince1970, forKey: "aligner_time_notification")
           
@@ -41,13 +42,13 @@ extension AlignTime {
       }
     
       func pull_user_defaults(){
-        self.required_aligners_total = Float(defaults.integer(forKey: "require_count"))
+        self.required_aligners_total = defaults.integer(forKey: "require_count")
           if self.required_aligners_total == 0 {self.required_aligners_total = 50 }
           
         self.aligners_wear_days = Float(defaults.integer(forKey: "aligners_count"))
           if self.aligners_wear_days == 0 {self.aligners_wear_days = 7 }
           
-        self.aligner_number_now = Float(defaults.integer(forKey: "align_count_now"))
+        self.aligner_number_now = defaults.integer(forKey: "align_count_now")
           if self.aligner_number_now == 0 {self.aligner_number_now = 1 }
           
         self.days_wearing = Float(defaults.integer(forKey: "days_wearing"))
@@ -56,9 +57,10 @@ extension AlignTime {
         self.wear_hours = Float(defaults.integer(forKey: "wear_hours"))
           if self.wear_hours == 0 {self.wear_hours = 20 }
           
-          self.show_current_date = defaults.bool(forKey: "show_current_date")
+        self.show_current_date = defaults.bool(forKey: "show_current_date")
+        self.show_aligner_description = defaults.bool(forKey: "show_aligner_description")
           
-          let start_treatment_raw = defaults.double(forKey: "start_treatment")
+        let start_treatment_raw = defaults.double(forKey: "start_treatment")
           if start_treatment_raw == 0{
               self.start_treatment = Date()
           }
@@ -66,7 +68,7 @@ extension AlignTime {
               self.start_treatment = Date(timeIntervalSince1970:start_treatment_raw)
           }
           
-          let start_date_for_current_aligners_raw = defaults.double(forKey: "start_date_for_current_aligners")
+        let start_date_for_current_aligners_raw = defaults.double(forKey: "start_date_for_current_aligners")
           if start_date_for_current_aligners_raw == 0{
               self.start_date_for_current_aligners = Date()
           }
@@ -74,7 +76,7 @@ extension AlignTime {
               self.start_date_for_current_aligners = Date(timeIntervalSince1970:start_date_for_current_aligners_raw)
           }
         
-          let aligner_time_notification_raw = defaults.double(forKey: "aligner_time_notification")
+        let aligner_time_notification_raw = defaults.double(forKey: "aligner_time_notification")
           if aligner_time_notification_raw == 0{
             self.aligner_time_notification = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
           }

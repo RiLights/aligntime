@@ -21,6 +21,13 @@ struct DisplaySettings: View {
             }
             .padding(15)
             Divider()
+            Toggle(isOn: self.$user_data.show_aligner_description) {
+                Text(NSLocalizedString("Show Aligner Description",comment:""))
+                    .foregroundColor(.accentColor)
+                    .font(.headline)
+            }
+            .padding(15)
+            Divider()
             Spacer()
         }
         //.padding(.horizontal, 20)

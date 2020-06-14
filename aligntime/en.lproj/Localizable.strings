@@ -18,6 +18,8 @@
 "Out time: " = "Out time: ";
 "Expected Aligner" = "Aligner";
 "You have just started your treatment" = "You have just started your treatment";
+"left for the current aligner" = "left for the current aligner";
+"congratulations" = "You finished your treatment! Congratulations!";
 
 /* Calendar Screen */
 "Out Times" = "Times without aligners";

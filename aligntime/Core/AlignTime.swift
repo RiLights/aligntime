@@ -13,18 +13,19 @@ final class AlignTime: ObservableObject {
     
     let defaults = UserDefaults.standard
     
-    @Published var required_aligners_total:Float = 50
+    @Published var required_aligners_total:Int = 50
     @Published var aligners_wear_days:Float = 7
         {
             didSet{
-                self.update_induvidual_aligners_from_aligner(aligner_number:Int(self.aligner_number_now))
+                self.update_induvidual_aligners_from_aligner(aligner_number:self.aligner_number_now)
             }
         }
     @Published var start_treatment:Date = Date()
-    @Published var aligner_number_now:Float = 1
+    @Published var aligner_number_now:Int = 1
     @Published var days_wearing:Float = 1
     @Published var wear_hours:Float = 20
-    @Published var show_current_date:Bool = true
+    @Published var show_current_date:Bool = false
+    @Published var show_aligner_description:Bool = true
     @Published var start_date_for_current_aligners:Date = Date()
     @Published var aligner_time_notification:Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
     
@@ -297,7 +298,7 @@ final class AlignTime: ObservableObject {
     
     func update_expected_aligner_data(date:Date = Date()){
         let (expected_aligner,current_aligner_day) = self.get_expected_aligner_for_date(date:date)
-        self.aligner_number_now = Float(expected_aligner)
+        self.aligner_number_now = expected_aligner
         self.start_date_for_current_aligners = Date()
         self.days_wearing = Float(current_aligner_day)
     }
