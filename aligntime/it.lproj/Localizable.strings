@@ -7,18 +7,18 @@
 "days" = "giorni";
 "days/4" = "giorni"; // if your language has plural declension before number 4
 "day" = "giorno";
-"days_left_until_the_end_of_your_treatment" = "giorni rimanenti alla fine del tuo trattamento";
+"days_left_until_the_end_of_your_treatment" = "giorni alla fine del tuo trattamento";
 "Wear Time Reminder" = "Promemoria di Indossamento";
 "Remind me to wear aligners again in" ="Ricordami di indossare gli allineatori tra";
 "15 Minutes" = "15 Minuti";
 "30 Minutes" = "30 Minuti";
 "1 Hour" = "1 Ora";
 "No Reminder" = "Nessun Promemoria";
-"Wear time: " = "Tempo di indossamento: ";
-"Out time: " = "Tempo fuori: ";
+"Wear time: " = "Indossato per: ";
+"Out time: " = "Fuori per: ";
 "Expected Aligner" = "Allineatore";
 "You have just started your treatment" = "Hai appena iniziato il tuo trattamento";
-"left for the current aligner" = "rimanenti per il tuo allineatore";
+"left for the current aligner" = "rimanenti per l'allineatore";
 "congratulations" = "Hai finito il trattamento! Congratulazioni!";
 
 /* Calendar Screen */
@@ -29,7 +29,7 @@
 "Total Wear Time:" = "Durata di indossamento:";
 
 /* Profile Screen */
-"Time Statistics" = "Visualizza the Statistiche di Indossamento";
+"Time Statistics" = "Statistiche di Indossamento";
 "Aligner Adjustment" = "Aggiusta gli allineatori";
 "Aligner # %d: %d Day(s)" = "Allineatore #%d: %d Giorni(s)";
 "Modify Treatment Plan" = "Modifica Trattamento";
@@ -38,7 +38,7 @@
 "Reset All History" = "Resetta il Trattamento";
 "About" = "Chi Siamo";
 "Give Us Feedback" = "Mandaci un Feedback";
-"Not enough data for statistic" = "Non ci sono dati sufficienti per visualizzare le statistiche di indossamento";
+"Not enough data for statistic" = "Non ci sono dati sufficienti per visualizzare le statistiche";
 "Average wear time: " = "Durata media di indossamento: ";
 "Hours" = "Ore";
 "per_hour" = " ore al giorni";
@@ -48,7 +48,7 @@
 "Display" = "Display";
 "Display Settings" ="Impostazioni del display";
 "Notification Settings" = "Impostazioni delle notifiche";
-"Notification" = "Notifica";
+"Notification" = "Notifiche";
 
 
 /* Welcome Screen */
