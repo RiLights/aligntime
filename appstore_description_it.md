@@ -1,8 +1,3 @@
-What's New in This Version 1.3:
-- Added 'Current Aligner' functionality
-- Fixed some bugs
-
-
 _Subtitle_:
 Simple Aligner Time Tracker
 
@@ -18,8 +13,6 @@ Combining all of the functionalities needed in order to track Invisalign® wear 
 - Calendar with the ability to view wear times. Days with wear time, less than the target amount of hours noted during your set up, will be highlighted in amber.
 - Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
 - Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
-
-Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
 
 
 __Disclaimer__
