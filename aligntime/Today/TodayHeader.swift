@@ -44,7 +44,6 @@ struct TodayHeader: View {
 //                    \(Int(self.core_data.aligner_number_now))
 //                    """)
                     //.foregroundColor(Color.accentColor)
-                    
             AlignerNumberVisualisation()
         }
 
@@ -73,14 +72,14 @@ struct AlignerNumberVisualisation: View {
                     .foregroundColor(.gray)
                     .frame(width: 200, height: 4)
                 HStack(spacing:0) {
-                    ForEach(0...Int(self.core_data.days_wearing)-1, id: \.self) { width in
+                    ForEach(1...Int(self.core_data.days_wearing), id: \.self) { width_id in
                         HStack(spacing:0) {
                             Rectangle()
                             .frame(width:2)
                             .foregroundColor(.accentColor)
                             RoundedRectangle(cornerRadius: 4)
                                 .foregroundColor(.accentColor)
-                                .frame(width: CGFloat(200/self.core_data.aligners[Int(self.core_data.aligner_number_now)-1].days), height: 4)
+                                .frame(width: CGFloat(200/self.core_data.get_days_for_current_aligner()), height: 4)
                         }
                     }
                     Spacer()

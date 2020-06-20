@@ -68,6 +68,7 @@ final class AlignTime: ObservableObject {
         aligner_number_now = 1
         start_date_for_current_aligners = Date()
         show_current_date = false
+        show_aligner_description = true
         days_wearing = 1
         wear_hours = 20
         current_state = true
@@ -243,6 +244,15 @@ final class AlignTime: ObservableObject {
             }
         }
         return days
+    }
+    
+    func get_days_for_current_aligner()->Int{
+        var d_count = 1
+        if self.aligner_number_now>0 && self.aligners.count>1{
+            let aligner_offset = self.aligner_number_now-1
+            d_count = self.aligners[aligner_offset].days
+        }
+        return d_count
     }
     
     func get_days_to_change_aligner(aligner_number:Int,curent_aligner_day:Int)->Int{

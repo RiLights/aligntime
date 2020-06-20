@@ -82,9 +82,8 @@
 		6D4B5DB423BB9F5E00F4B2CA /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
 		6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
+		992D2F2F249E06CC00D45702 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99439779245E42E900AF5918 /* EventTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTools.swift; sourceTree = "<group>"; };
-		99BE79F124960798002C7DD2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		99BE79F2249607A1002C7DD2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F005971423FBCE48006605C5 /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		F005971623FBCE74006605C5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodontistAppointment.swift; sourceTree = "<group>"; };
@@ -376,7 +375,6 @@
 				uk,
 				ru,
 				pl,
-				de,
 				it,
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
@@ -496,8 +494,7 @@
 				F06CFBE5242B467D001876DC /* uk */,
 				F0E3AEA8242CC3D700881E22 /* ru */,
 				F0E3AEA9242CC3E300881E22 /* pl */,
-				99BE79F124960798002C7DD2 /* de */,
-				99BE79F2249607A1002C7DD2 /* it */,
+				992D2F2F249E06CC00D45702 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -630,7 +627,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -655,7 +652,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
