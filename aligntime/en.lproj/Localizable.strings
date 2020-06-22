@@ -19,7 +19,7 @@
 "Expected Aligner" = "Aligner";
 "You have just started your treatment" = "You have just started your treatment";
 "left for the current aligner" = "left for the current aligner";
-"congratulations" = "You finished your treatment! Congratulations!";
+"congratulations" = "You have finished your treatment! Congratulations!";
 
 /* Calendar Screen */
 "Out Times" = "Times without aligners";
@@ -74,7 +74,7 @@
 "setting_up" = "Let's go through setting up your new treatment";
 "to_do_this_once" = "(You would only need to do this once)";
 "Additional Settings" = "Additional Settings";
-"data is important for us" = "This data is important for us to get maximum correct setup for you";
+"data is important for us" = "This data is important for us to get the best setup for you";
 
 /* Reminders */
 "AlignTime Reminder" = "AlignTime Reminder";
