@@ -2,20 +2,20 @@ _Subtitle_:
 Simple Aligner Time Tracker
 
 _Promo text_:
-AlignTime was created by an Invisalign® User to meet all of the daily needs of aligners users alike (incl. Invisalign®, SmileDirectClub®, ClearCorrect®, Candid®, etc).
+L'app AlignTime è stata creata da un paziente Invisalign® per aiutare a risolvere i problemi comuni di chi usa questo tipo di allineatori (come Invisalign®, SmileDirectClub®, ClearCorrect®, Candid®, ecc).
 
 _Description_: 
-Combining all of the functionalities needed in order to track Invisalign® wear times effortlessly and effectively, AlignTime is a great tool to support the journey towards straighter teeth for those who find themselves caught up in busy day-to-day life. Easy to use Aligners timer and Aligners reminders would help you to reach Invisalign® optimal daily wear time. AlignTime helps you stay on track with Invisalign® treatment by providing a simple and easy to use App. Reminders, calendar, and wear time statistics – all of this in one application.
+Incorporando tutte le funzionalità necessarie per poter tracciare l'utilizzo di Invisalign® senza nessuno sforzo ed in modo efficace, AlignTime è un fantastico strumento di supporto per la strada verso dei denti perfetti, specialmente per chi ha una vita molto frenetica e non ha tempo di badare a dettagli. I timer per gli allineatori sono facili da usare, e i promemoria permettono di raggiungere il tempo ottimale di utilizzo di Invisalign®. Inoltre, AlignTime aiuta a seguire il trattamento Invisalign® con una semplice e facile app. Promemoria, agenda e statistiche di utilizzo: tutto quello che serve in una app.
 
-## Key Features:
-- Reminder notifications, easy to set, so you would never forget to put your aligners on again.
-- Wear time recorded for every day to help you reach your goal faster. If you forget to start or stop the timer, edit history by adding time you've spent without aligners.
-- Calendar with the ability to view wear times. Days with wear time, less than the target amount of hours noted during your set up, will be highlighted in amber.
-- Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
-- Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
+## Feature principali:
+- Notifiche e promemoria, facili da impostare, così non dimenticherai più di indossare gli allineatori
+- Tempo di indossamento registrato ogni giorno per aiutarti a raggiungere il traguardo velocemente. Se ti dimentichi di far partire o stoppare il timer, puoi modificare la storia aggiungendo il tempo trascorso senza allineatori.
+- Agenda con la possibilità di visualizzare i tempi di indossamento. I giorni in cui hai indossato gli allineatori, meno il numero di ore che imposti durante il setup, saranno colorati in arancione.
+- Inserisci i dati del tuo piano di trattamento durante il setup (non bisogna registrarsi). Li puoi sempre modificare più avanti, se hai bisogno.
+- Una UI semplice, user friendly e senza nessun ad. Basta banner pubblicitari! 
 
 
 __Disclaimer__
-All product names, trademarks and registered trademarks are property of their respective owners. 
-All company, product and service names used are for identification purposes only. 
-Use of these names,trademarks and brands does not imply endorsement.
+Tutti i nomi di prodotti, trademark e marchi registrati sono proprietà dei rispettivi proprietari.
+Tutti i nomi dei prodotti, compagnie e servizi sono solo per identificazione.
+L'uso di questi nomi, marchi registrati e brand non costituisce nè implica approvazione/sponsorizzazione.
