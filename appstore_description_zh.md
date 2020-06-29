@@ -1,28 +1,21 @@
-What's New in This Version 1.3:
-- Added 'Current Aligner' functionality
-- Fixed some bugs
-
-
 _Subtitle_:
-Simple Aligner Time Tracker
+牙套定时追踪器
 
 _Promo text_:
-AlignTime was created by an Invisalign® User to meet all of the daily needs of aligners users alike (incl. Invisalign®, SmileDirectClub®, ClearCorrect®, Candid®, etc).
+爱兰泰（AlignTime） 是由隐适美®（Invisalign）的用户创建，旨在满足隐适美矫治器（aligners）用户的所有日常需求（包括 隐适美®（Invisalign®），SmileDirectClub®，ClearCorrect®，Candid®等）.
 
 _Description_: 
-Combining all of the functionalities needed in order to track Invisalign® wear times effortlessly and effectively, AlignTime is a great tool to support the journey towards straighter teeth for those who find themselves caught up in busy day-to-day life. Easy to use Aligners timer and Aligners reminders would help you to reach Invisalign® optimal daily wear time. AlignTime helps you stay on track with Invisalign® treatment by providing a simple and easy to use App. Reminders, calendar, and wear time statistics – all of this in one application.
+拥有一个易于使用的隐形牙套计时和提醒程序，可以帮助您能够达到 隐适美®Invisalign®的最佳日常佩戴时间，从而得到最佳的治疗效果。
+爱兰泰 AlignTime是一个简单易用的App也是一个出色的管家，她结合了所有必须的功能，比如日历、佩戴时间统计等所有必须的功能，因此爱兰泰 AlignTime可以轻松有效地帮助您管理 隐适美®（Invisalign®）佩戴时间。特别是对于那些发现自己忙于日常工作的人，爱兰泰（AlignTime）可帮助他们管理隐适美®（Invisalign®）和各种品牌的隐形牙套的佩戴和使用，使您不必需要花费太多精力，就能达到最优的治疗结果，一切都变得非常简单。
 
-## Key Features:
-- Reminder notifications, easy to set, so you would never forget to put your aligners on again.
-- Wear time recorded for every day to help you reach your goal faster. If you forget to start or stop the timer, edit history by adding time you've spent without aligners.
-- Calendar with the ability to view wear times. Days with wear time, less than the target amount of hours noted during your set up, will be highlighted in amber.
-- Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
-- Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
+## 主要特性:
+- 非常容易设置的智能提醒，您永远不会忘记何时佩戴。
+- 每日佩戴时间记录可以帮您更快地实现您的目标，即使您忘记了添加开始和停止的时间，您也可以手动添加，从而不落下每一次佩戴时间。
+- 可以查看佩戴次数的日历功能。佩戴天数，在你佩戴期间，如果佩戴时间少于计划目标的小时数，将会被用琥珀色高亮显示出来。
+- 在创建时（没有注册要求），输入所有治疗的数据，可以在以后需要时修改。
+- 使用界面友好简约，没有付费的广告。如果有广告对话框弹出可以点击“不”来关闭。
 
-Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
+Keywords: Aligners牙齿矫正器,隐形牙套,牙套,牙齿矫正计时器,牙套计时器,隐形牙套计时器,Invisalign,隐适美计时器,SmileDirectClub,TrayMinder
 
 
-__Disclaimer__
-All product names, trademarks and registered trademarks are property of their respective owners. 
-All company, product and service names used are for identification purposes only. 
-Use of these names,trademarks and brands does not imply endorsement.
+免责声明：所有产品名称，商标和注册商标均为其各自所有者的财产。本程序所有使用的公司，产品和服务名称仅用于标识目的。如若有第三方擅自使用这些名称，商标和品牌，本程序和本公司并不表示认可。
