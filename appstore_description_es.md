@@ -19,4 +19,5 @@ Con temporizador, calendario, recordatorios y estadísticas de uso, AlignTime co
 Keywords: Alineadores, Temporizador De Alineadores, Temporizador de Invisalign, SmileDirectClub, TrayMinder
 
 
-Descargo de responsabilidad. Todos los nombres de los productos, marcas comerciales y marcas registradas son propiedad de sus respectivos propietarios y son utilizados aquí con fines informativos. El uso de estos nombres y marcas registradas no implica aprobación o aval alguno.
+## Descargo de responsabilidad:
+Todos los nombres de los productos, marcas comerciales y marcas registradas son propiedad de sus respectivos propietarios y son utilizados aquí con fines informativos. El uso de estos nombres y marcas registradas no implica aprobación o aval alguno.
