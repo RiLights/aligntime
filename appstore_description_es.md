@@ -3,7 +3,7 @@ _Subtitle_:
 Para usuarios de alineadores
 
 _Promo text_:
-AlignTime fue creado por los usuarios de Invisalign® para ayudar a otros usuarios con los sistemas de tratamiento Invisalign®, SmileDirectClub®, ClearCorrect®, Candid®, etc.
+AlignTime fue creado por los usuarios de Invisalign® para ayudar a otros usuarios con los sistemas de tratamiento Invisalign®, SmileDirectClub®, ClearCorrect®, etc.
 
 _Description_: 
 Con temporizador, calendario, recordatorios y estadísticas de uso, AlignTime combina en una sola aplicación todas las funcionalidades necesarias para gestionar el tiempo de uso de los alineadores sin esfuerzo y de manera eficaz. AlignTime es una herramienta indispensable para facilitar la vida de los usuarios en el camino hacia una sonrisa perfecta.
@@ -16,7 +16,7 @@ Con temporizador, calendario, recordatorios y estadísticas de uso, AlignTime co
 - Permite ingresar todos los datos del plan de tratamiento durante la configuración inicial (no es necesario registrarse) con la posibilidad de poder modificarla más adelante si es que fuese necesario.
 - El aplicativo ofrece además una interfaz minimalista y de fácil uso, sin anuncios molestos.
 
-Keywords: Alineadores, Temporizador De Alineadores, Temporizador de Invisalign, SmileDirectClub, TrayMinder
+Keywords: Alineadores,Temporizador De Alineadores,Temporizador de Invisalign,SmileDirectClub,TrayMinder
 
 
 ## Descargo de responsabilidad:
