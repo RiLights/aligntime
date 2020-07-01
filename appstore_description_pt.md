@@ -1,28 +1,23 @@
-What's New in This Version 1.3:
-- Added 'Current Aligner' functionality
-- Fixed some bugs
-
-
 _Subtitle_:
 Simple Aligner Time Tracker
 
 _Promo text_:
-AlignTime was created by an Invisalign® User to meet all of the daily needs of aligners users alike (incl. Invisalign®, SmileDirectClub®, ClearCorrect®, Candid®, etc).
+AlignTime foi desenvolvido por uma usuária de Invisalign com o objetivo de atender às necessidades diárias dos usuários de alinhadores ortodônticos - Invisalign®, etc.
 
 _Description_: 
-Combining all of the functionalities needed in order to track Invisalign® wear times effortlessly and effectively, AlignTime is a great tool to support the journey towards straighter teeth for those who find themselves caught up in busy day-to-day life. Easy to use Aligners timer and Aligners reminders would help you to reach Invisalign® optimal daily wear time. AlignTime helps you stay on track with Invisalign® treatment by providing a simple and easy to use App. Reminders, calendar, and wear time statistics – all of this in one application.
+Combinando todas as funcionalidades necessárias para gerenciar os tempos de desgaste do alinhador Invisalign® sem esforço e de forma efetiva, AlignTime é uma ótima ferramenta para apoiar a sua jornada por um sorriso perfeito para aqueles que se vêem envolvidos em um cotidiano corrido. O gerenciador de alinhadores fácil de usar e os lembretes/notificações o ajudarão a alcançar o tempo ideal de uso diário do Invisalign®. O AlignTime ajuda você a manter o controle do tratamento com Invisalign® - um aplicativo simples e fácil de usar. Lembretes, notificações, calendário e estatísticas de tempo de uso - tudo isso em um único aplicativo. 
 
 ## Key Features:
-- Reminder notifications, easy to set, so you would never forget to put your aligners on again.
-- Wear time recorded for every day to help you reach your goal faster. If you forget to start or stop the timer, edit history by adding time you've spent without aligners.
-- Calendar with the ability to view wear times. Days with wear time, less than the target amount of hours noted during your set up, will be highlighted in amber.
-- Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
-- Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
+- Notificações e lembretes, fáceis de configurar, para que você nunca esqueça de colocar seus alinhadores novamente.
+- Tempo de uso registrado diariamente para ajudar você a atingir sua meta mais rapidamente. Se você esquecer de iniciar ou parar o cronômetro, edite o histórico adicionando o tempo que ficou sem os alinhadores. 
+- Calendário com a capacidade de visualizar os tempos de uso. Os dias na qual o tempo de uso for inferior à quantidade de horas especificadas no plano serão destacados na cor âmbar (laranja-amarelo). 
+- Digite todos os dados do tratamento durante a configuração inicial e modifique-os posteriormente se necessário. Não é necessário fazer assinatura.  
+- Desfrute de interface amigável e minimalista sem publicidade paga. Diga "não" aos banners irritantes. 
 
-Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
+Keywords: Alinhadores,Timer para Alinhadores,Gerenciador de alinhadores,Invisalign,Invisalign Timer,TrayMinder
 
 
-__Disclaimer__
-All product names, trademarks and registered trademarks are property of their respective owners. 
-All company, product and service names used are for identification purposes only. 
-Use of these names,trademarks and brands does not imply endorsement.
+__Isenção de Responsabilidade:__
+Todos os nomes de produtos, marcas comerciais e marcas registradas são de propriedade de seus respectivos proprietários. 
+Todos os nomes de empresas, produtos e serviços usados são apenas para fins de identificação. 
+O uso desses nomes, marcas comerciais e marcas não implica endosso. 
