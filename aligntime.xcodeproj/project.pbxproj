@@ -83,6 +83,9 @@
 		6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
 		992D2F2F249E06CC00D45702 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		99320AEC24AC4F2F00538746 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		99320AED24AC4F3E00538746 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		99320AEE24AC4FE000538746 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99439779245E42E900AF5918 /* EventTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTools.swift; sourceTree = "<group>"; };
 		F005971423FBCE48006605C5 /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		F005971623FBCE74006605C5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -376,6 +379,9 @@
 				ru,
 				pl,
 				it,
+				"zh-Hans",
+				"pt-PT",
+				es,
 			);
 			mainGroup = F05B5C45238D0A7800BC10C9;
 			productRefGroup = F05B5C45238D0A7800BC10C9;
@@ -495,6 +501,9 @@
 				F0E3AEA8242CC3D700881E22 /* ru */,
 				F0E3AEA9242CC3E300881E22 /* pl */,
 				992D2F2F249E06CC00D45702 /* it */,
+				99320AEC24AC4F2F00538746 /* zh-Hans */,
+				99320AED24AC4F3E00538746 /* pt-PT */,
+				99320AEE24AC4FE000538746 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
