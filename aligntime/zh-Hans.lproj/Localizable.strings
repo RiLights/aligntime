@@ -1,90 +1,90 @@
 /* Tabs */
-"Calendar" = "Calendar";
-"Today" = "Today";
+"Calendar" = "日历";
+"Today" = "今天";
 
 /* Today Screen */
-"You_have_been_wearing_aligners_for" = "You have been wearing aligners for";
-"days" = "days";
-"days/4" = "days"; // if your language has plural declension before number 4
-"day" = "day";
-"days_left_until_the_end_of_your_treatment" = "days left until the end of your treatment";
-"Wear Time Reminder" = "Wear Time Reminder";
-"Remind me to wear aligners again in" ="Remind me to wear aligners again in";
-"15 Minutes" = "15 Minutes";
-"30 Minutes" = "30 Minutes";
-"1 Hour" = "1 Hour";
-"No Reminder" = "No Reminder";
-"Wear time: " = "Wear time: ";
-"Out time: " = "Out time: ";
-"Expected Aligner" = "Aligner";
-"You have just started your treatment" = "You have just started your treatment";
-"left for the current aligner" = "left for the current aligner";
-"congratulations" = "You have finished your treatment! Congratulations!";
+"You_have_been_wearing_aligners_for" = "您已经佩戴牙齿矫治器：";
+"days" = "日";
+"days/4" = "日"; // if your language has plural declension before number 4
+"day" = "日";
+"days_left_until_the_end_of_your_treatment" = "还有___日您的治疗将会结束 OR 距离您治疗结束还有：____天";
+"Wear Time Reminder" = "佩戴时间提醒";
+"Remind me to wear aligners again in" ="在_____提醒我佩戴牙齿矫治器";
+"15 Minutes" = "15 分钟";
+"30 Minutes" = "30分钟";
+"1 Hour" = "1小时";
+"No Reminder" = "不提醒";
+"Wear time: " = "佩戴时间: ";
+"Out time: " = "未佩戴时间: ";
+"Expected Aligner" = "牙齿矫治器";
+"You have just started your treatment" = "您刚刚开始您的治疗";
+"left for the current aligner" = "距离您换下一个牙齿矫治器";
+"congratulations" = " 您已经完成了您的疗程！恭喜您！";
 
 /* Calendar Screen */
-"Out Times" = "Times without aligners";
-"Now" = "Now";
-"Start Time" = "Removed aligners at";
-"End Time" = "Inserted aligners at";
-"Total Wear Time:" = "Total Wear Time:";
+"Out Times" = "未佩戴牙齿矫治器的时间";
+"Now" = "现在";
+"Start Time" = "未佩戴牙齿矫治器时间";
+"End Time" = "佩戴牙齿矫治器时间";
+"Total Wear Time:" = "总佩戴时长:";
 
 /* Profile Screen */
-"Time Statistics" = "View Wear Time Statistics";
-"Aligner Adjustment" = "Aligner Adjustment";
-"Aligner # %d: %d Day(s)" = "Aligner #%d: %d Day(s)";
-"Modify Treatment Plan" = "Modify Treatment Plan";
-"Treatment Plan" = "Treatment Plan";
-"Individual Aligner Adjust" = "Individual Aligner Adjust";
-"Reset All History" = "Reset Treatment Plan";
-"About" = "About";
-"Give Us Feedback" = "Give Us Feedback";
-"Not enough data for statistic" = "Unfortunately, we haven’t got enough data to display wear time statistics";
-"Average wear time: " = "Average wear time: ";
-"Hours" = "Hours";
-"per_hour" = " hours per day";
-"Time Statistic" = "Time Statistic";
-"Show expected aligner" = "Show current aligner";
-"Show current date" = "Show current date";
-"Display" = "Display";
-"Display Settings" ="Display Settings";
-"Notification Settings" = "Notification Settings";
-"Notification" = "Notification";
+"Time Statistics" = "查看佩戴时长统计";
+"Aligner Adjustment" = "牙齿矫治器调整";
+"Aligner # %d: %d Day(s)" = "牙齿矫治器%d: %d 日";
+"Modify Treatment Plan" = "修改治疗方案";
+"Treatment Plan" = "治疗方案";
+"Individual Aligner Adjust" = "单个牙齿矫治器调整";
+"Reset All History" = "重置治疗方案";
+"About" = "关于";
+"Give Us Feedback" = "反馈";
+"Not enough data for statistic" = "抱歉，我们没有得到足够的数据来统计";
+"Average wear time: " = "平均佩戴时间: ";
+"Hours" = "小时";
+"per_hour" = " _小时/日";
+"Time Statistic" = "时间统计";
+"Show expected aligner" = "显示现在牙齿矫治器信息";
+"Show current date" = "显示现在日期";
+"Display" = "显示";
+"Display Settings" ="显示设置";
+"Notification Settings" = "通知设置";
+"Notification" = "通知";
 
 
 /* Welcome Screen */
-"Return" = "Return";
-"Back" = "Back";
-"Ready" = "Ready";
-"Next" = "Next";
-"How many aligners do you require?" = "How many aligners do you require?";
-"Number of days for each aligners" = "Number of days for each aligners";
-"When did you start your treatment?" = "When did you start your treatment?";
-"Aligner number you are wearing now" = "Aligner number you are wearing now";
-"How many days have you been wearing current aligner for?" = "How many days have you been wearing the current aligner for?";
-"Preferred aligners wear hours per day" = "Daily wear time target (hours per day)";
-"Start date is:" = "Start date is:";
-"Do you want to erase all history?" = "Do you want to erase all history and start a new treatment plan? This action can’t be undone";
-"Erase" = "Erase";
-"About_AlignTime" = "AlignTime is a Mobile app, created by users to assist other users in keeping track of Invisalign braces wear time. \n\n AlignTime helps record your daily wear time for each tray, sends reminders if an aligner has been left out for too long and alerts you when it is time to change your tray. You can monitor progress for each aligner wear time using Calendar functionality.";
+"Return" = "返回";
+"Back" = "上一步";
+"Ready" = "准备就绪";
+"Next" = "下一步";
+"How many aligners do you require?" = "您需要多少个牙齿矫治器？";
+"Number of days for each aligners" = "每个牙齿矫治需要多少天";
+"When did you start your treatment?" = "您什么时候开始您的矫正？";
+"Aligner number you are wearing now" = "您现在佩戴的是第几个牙齿矫治器？";
+"How many days have you been wearing current aligner for?" = "您当前佩戴的矫治器已经佩戴多少天了？";
+"Preferred aligners wear hours per day" = "每日佩戴时间目标（每日__小时）";
+"Start date is:" = "开始日期:";
+"Do you want to erase all history?" = "您是否想清楚所有历史记录并且重新开始一个新的治疗方案？此操作无法取消。";
+"Erase" = "清除";
+"About_AlignTime" = "爱兰泰（Align Time）是一款手机应用程序，由用户创建用来记录其他用户佩戴隐适美(Invisalign)的次数。 \n\n 爱兰泰（AlignTime）帮助记录你的日常佩戴次数，向你发送提醒如果矫治器长时间没有被佩戴 并且会在更改的时候给你提醒。你可以通过日历功能对每一次矫治器佩戴进行记录。.";
 
-"Welcome to AlignTime" = "Welcome \n to AlignTime";
-"Your assistant on the way to a perfect smile" = "Your assistant on the way to a perfect smile";
-"Add your treatment" = "Add your treatment";
-"About AlignTime" = "About AlignTime";
-"setting_up" = "Let's go through setting up your new treatment";
-"to_do_this_once" = "(You would only need to do this once)";
-"Additional Settings" = "Additional Settings";
-"data is important for us" = "This data is important for us to get the best setup for you";
+"Welcome to AlignTime" = "欢迎使用爱兰泰 \n AlignTime";
+"Your assistant on the way to a perfect smile" = "你的助手正在通向完美笑容的路上";
+"Add your treatment" = "增加你的治疗方案";
+"About AlignTime" = "关于爱兰泰 AlignTime";
+"setting_up" = "设置=让我们去创建一个新的治疗方案";
+"to_do_this_once" = "(你只需要做一次)";
+"Additional Settings" = "额外设置";
+"data is important for us" = "这些数据对于我们为您获得最佳设置非常重要";
 
 /* Reminders */
-"AlignTime Reminder" = "AlignTime Reminder";
-"Time to put your aligners on again" = "Time to put your aligners on again";
-"Don’t forget to put your aligners on" = "Don’t forget to put your aligners on";
-"Your aligners have been out for a while now" = "Your aligners have been out for a while now. It’s time to put them back on";
-"Did you forget to start the timer?" = "Did you forget to start the timer?";
-"last_aligner # %d" = "Time to change to aligner # %d";
-"Changer aligner time notification" = "What time would you like to be reminded to change your aligners?";
-"Last day for aligner" = "Today you are due to start wearing aligner";
+"AlignTime Reminder" = "爱兰泰（AlignTime ）提醒";
+"Time to put your aligners on again" = "请重新佩戴矫治器";
+"Don’t forget to put your aligners on" = "请别忘记佩戴矫治器";
+"Your aligners have been out for a while now" = "您已经很长时间没有佩戴矫治器，是时候把他们带上了。";
+"Did you forget to start the timer?" = "您是否忘记启动计时器了？";
+"last_aligner # %d" = "距离更换矫治器还有 # %d";
+"Changer aligner time notification" = "什么时间提醒您更换矫治器比较合适？";
+"Last day for aligner" = "今天您要开始带矫治器了";
 
 
 
