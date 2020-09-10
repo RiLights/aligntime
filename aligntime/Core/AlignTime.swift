@@ -147,13 +147,17 @@ final class AlignTime: ObservableObject {
     
     func get_expected_aligner_for_date(date:Date)->(Int,Int){
         let start_date = Calendar.current.startOfDay(for: self.start_date_for_current_aligners)
-        let seconds_past = date.timeIntervalSince(start_date)
+        //let _date = date.convertToTimeZone(initTimeZone: .current, timeZone: TimeZone(secondsFromGMT: 0)!)
+        let tz = TimeZone.current
+        var seconds_past = date.timeIntervalSince(start_date)
+        if tz.isDaylightSavingTime(for: date) {
+            seconds_past+=3600
+        }
         let days_past = abs(seconds_past).days
         if days_past==0 {return (Int(self.aligner_number_now),Int(self.days_wearing))}
         
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
-        
         if seconds_past>0{
             (expected_aligner,
                 current_aligner_day) = forward_walking_wearing_days(days_past: days_past)
@@ -252,6 +256,7 @@ final class AlignTime: ObservableObject {
             let aligner_offset = self.aligner_number_now-1
             d_count = self.aligners[aligner_offset].days
         }
+        //print("debug",d_count)
         return d_count
     }
     
@@ -289,14 +294,37 @@ final class AlignTime: ObservableObject {
     }
     
     func update_individual_aligners(){
-        var res:[IndividualAligner] = []
-        if self.aligners.count == 0{
-            for i in 1..<Int(self.required_aligners_total)+1{
-                res.append(IndividualAligner(i-1,days:7,aligner_number:i))
+        print("count In",self.aligners.count)
+        if self.aligners.count != self.required_aligners_total{
+            var res:[IndividualAligner] = []
+            if self.aligners.count == 0{
+                for i in 1..<Int(self.required_aligners_total)+1{
+                    res.append(IndividualAligner(i-1,days:Int(self.aligners_wear_days),aligner_number:i))
+                }
             }
+            else if self.aligners.count < self.required_aligners_total{
+                for i in 1..<Int(self.required_aligners_total)+1{
+                    var check_in = false
+                    for a in self.aligners{
+                        if a.aligner_number == i{
+                            check_in = true
+                            res.append(a)
+                        }
+                    }
+                    if !check_in{
+                        res.append(IndividualAligner(i-1,days:Int(self.aligners_wear_days),aligner_number:i))
+                    }
+                }
+            }
+            else if self.aligners.count > self.required_aligners_total{
+                res = self.aligners.dropLast(self.aligners.count-self.required_aligners_total)
+            }
+            res.sort(by: { $0.aligner_number < $1.aligner_number })
             self.aligners = res
         }
     }
+    
+
     
     func update_induvidual_aligners_from_aligner(aligner_number:Int){
         for i in self.aligners{

@@ -17,11 +17,33 @@ struct ContentView: View {
         Group{
             if user_data.complete == true {
                 Home().environmentObject(user_data)
+                //ContentView2()
+                //TreatmentPlan().environmentObject(user_data)
+                //Welcome().environmentObject(user_data)
             }
             else{
                 Welcome().environmentObject(user_data)
             }
         }
+    }
+}
+
+struct ContentView2: View {
+
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+    }
+
+    @State var value = ""
+
+    var body: some View {
+        Form {
+            Section(header: Text("How many aligners do you require?")) {
+                TextField("10", text: $value)
+            }
+        }
+        .foregroundColor(Color.blue)
+        .background(Color.clear)
     }
 }
 
