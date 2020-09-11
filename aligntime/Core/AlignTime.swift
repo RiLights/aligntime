@@ -161,6 +161,8 @@ final class AlignTime: ObservableObject {
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
         
+        if expected_aligner>self.required_aligners_total{ return (self.required_aligners_total,self.aligners[self.required_aligners_total-1].days) }
+        
         if seconds_past>0{
             //if self.aligners[expected_aligner-1].days<days_past{return (expected_aligner,self.aligners[expected_aligner-1].days)}
             (expected_aligner,
@@ -180,7 +182,7 @@ final class AlignTime: ObservableObject {
         
         while (day_index < days_past){
             if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
-            if (self.aligners.count < expected_aligner) {return (0,0)}
+            if (self.aligners.count < expected_aligner) {return (expected_aligner,1)}
             if (self.aligners.count == expected_aligner) {
                 if self.aligners[expected_aligner-1].days<days_past{
                     return (expected_aligner,self.aligners[expected_aligner-1].days)
@@ -263,6 +265,7 @@ final class AlignTime: ObservableObject {
         var d_count = 1
         if self.aligner_number_now>0 && self.aligners.count>1{
             let aligner_offset = self.aligner_number_now-1
+            if self.aligners.count<=aligner_offset { return self.aligners[self.required_aligners_total-1].days }
             d_count = self.aligners[aligner_offset].days
         }
         return d_count
@@ -270,6 +273,8 @@ final class AlignTime: ObservableObject {
     
     func get_days_to_change_aligner(aligner_number:Int,curent_aligner_day:Int)->Int{
         let aligner_offset = aligner_number-1
+        //if  aligner_offset<0 { return 0 }
+        
         if aligner_offset < self.aligners.count{
             let aligner_days = self.aligners[aligner_offset].days
             if curent_aligner_day <= aligner_days{

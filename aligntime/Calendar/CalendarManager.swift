@@ -53,6 +53,13 @@ struct AlignerNoticion: View {
         return false
     }
     
+    func is_last_day(date:Date)->Bool{
+        let (aligner,_) = self.core_data.get_expected_aligner_for_date(date:self.core_data.selected_date)
+
+        if aligner==self.core_data.required_aligners_total{return true}
+        return false
+    }
+    
     func get_aligner(date:Date)->Int{
         let (aligner,_) = self.core_data.get_expected_aligner_for_date(date:self.core_data.selected_date)
         return aligner
@@ -64,9 +71,15 @@ struct AlignerNoticion: View {
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width: 5, height: 5)
                     .padding(.leading,10)
+                    .foregroundColor(is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
                 Group{
-                    Text(NSLocalizedString("Last day for aligner",comment:""))
-                        + Text(" #\(get_aligner(date: self.core_data.selected_date)+1)")
+                    if is_last_day(date: self.core_data.selected_date){
+                        Text(NSLocalizedString("congratulations",comment:""))
+                    }
+                    else{
+                        Text(NSLocalizedString("Last day for aligner",comment:""))
+                            + Text(" #\(get_aligner(date: self.core_data.selected_date)+1)")
+                    }
                 }
                 .font(.footnote)
             }
