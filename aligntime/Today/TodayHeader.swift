@@ -44,7 +44,7 @@ struct TodayHeader: View {
 //                    \(Int(self.core_data.aligner_number_now))
 //                    """)
                     //.foregroundColor(Color.accentColor)
-            if self.core_data.days_wearing > 1{
+            if self.core_data.days_wearing != 0{
                 AlignerNumberVisualisation()
             }
         }
