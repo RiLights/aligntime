@@ -69,7 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
             (granted, error) in
         }
-        
+        self.align_time.update_today_dates()
     }
     
 
