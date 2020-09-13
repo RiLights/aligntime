@@ -19,7 +19,7 @@ Combining all of the functionalities needed in order to track Invisalign® wear 
 - Enter all of the treatment data during the initial set up (no signing up required) with the ability to modify it later, if needed.
 - Enjoy friendly and minimalistic UI without paid advertisement. Say 'no' to annoying banners.
 
-Keywords: Aligners,Aligners Timer,Invisalign,Invisalign Timer,SmileDirectClub,TrayMinder
+Keywords: Aligners,Invisalign,Smile Direct,SmileDirectClub,TrayMinder,ClearCorrect,Clear Brace,Candid,ezsmile
 
 
 __Disclaimer__
