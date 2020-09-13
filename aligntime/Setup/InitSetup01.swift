@@ -18,10 +18,10 @@ struct InitSetup01: View {
                 .font(.system(size: 70))
                 .foregroundColor(.blue)
             Spacer()
-            ContentView2()
-                .padding(.top,30)
+//            ContentView2(min:1,max:100,slider_value:self.$user_data.required_aligners_total)
+                //.padding(.top,30)
             //Divider()
-            //InitSetup01Base()
+            InitSetup01Base()
             Spacer()
             WelcomeControllButton(next_button_label: "Next", destination:InitSetup02())
         }

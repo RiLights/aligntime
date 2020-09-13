@@ -17,7 +17,7 @@ struct ContentView: View {
         Group{
             if user_data.complete == true {
                 Home().environmentObject(user_data)
-                //ContentView2()
+                //ContentView4()
                 //TreatmentPlan().environmentObject(user_data)
                 //Welcome().environmentObject(user_data)
             }
@@ -30,20 +30,33 @@ struct ContentView: View {
 
 struct ContentView2: View {
 
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-    }
+//    init(){
+//        UITableView.appearance().backgroundColor = .clear
+//    }
+    
+    var min:Int = 1
+    var max:Int = 2
+    @Binding var slider_value:Int
+    
+    var strengths = ["Mild", "Medium", "Mature"]
 
-    @State var value = ""
+    @State private var selectedStrength = 0
+
+    //@State var value = ""
 
     var body: some View {
         Form {
             Section(header: Text("How many aligners do you require?")) {
-                TextField("10", text: $value)
+                Picker(selection: self.$slider_value, label: Text("hello")) {
+                    ForEach((min...max), id: \.self) {
+                        Text("\($0)")
+                    }
+                }//.pickerStyle(WheelPickerStyle())
             }
         }
         .foregroundColor(Color.blue)
         .background(Color.clear)
+        .navigationBarTitle("Select your cheese",displayMode: .inline)
     }
 }
 
