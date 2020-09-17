@@ -40,7 +40,7 @@
 "Not enough data for statistic" = "Недостатньо даних для статистики";
 "Average wear time: " = "Середній час носіння елайнерів: ";
 "Hours" = "Годин";
-"per_hour" = " годин на добу";
+"per_hour" = " часов в сутки";
 "Time Statistic" = "Статистика часу";
 "Show expected aligner" = "Показати поточний елайнер";
 "Show current date" = "Показати поточну дату";

@@ -18,7 +18,7 @@ struct ContentView: View {
             if user_data.complete == true {
                 Home().environmentObject(user_data)
                 //ContentView4()
-                //TreatmentPlan().environmentObject(user_data)
+                //StatisticsView().environmentObject(user_data)
                 //Welcome().environmentObject(user_data)
             }
             else{
