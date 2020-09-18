@@ -90,9 +90,9 @@ struct RKMonth: View {
      }
     
     func dateTapped(date: Date) {
-        if self.isEnabled(date: date) {
+        //if self.isEnabled(date: date) {
             self.core_data.selected_date = date
-        }
+        //}
     }
     
     func monthArray() -> [[Date]] {

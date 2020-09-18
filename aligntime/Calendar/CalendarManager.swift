@@ -74,7 +74,10 @@ struct AlignerNoticion: View {
                     .foregroundColor(is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
                 Group{
                     if is_last_day(date: self.core_data.selected_date){
-                        Text(NSLocalizedString("congratulations",comment:""))
+                        HStack(spacing:2){
+                            Text(NSLocalizedString("Today",comment:""))
+                            Text(NSLocalizedString("congratulations",comment:""))
+                        }
                     }
                     else{
                         Text(NSLocalizedString("Last day for aligner",comment:""))
