@@ -62,6 +62,7 @@
 "Aligner number you are wearing now" = "您现在佩戴的是第几个牙齿矫治器？";
 "How many days have you been wearing current aligner for?" = "您当前佩戴的矫治器已经佩戴多少天了？";
 "Preferred aligners wear hours per day" = "每日佩戴时间目标（每日__小时）";
+"Out of daily wear time target" = "每日佩戴时间目标（每日__小时";
 "Start date is:" = "开始日期:";
 "Do you want to erase all history?" = "您是否想清楚所有历史记录并且重新开始一个新的治疗方案？此操作无法取消。";
 "Erase" = "清除";

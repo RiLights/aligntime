@@ -61,6 +61,7 @@
 "Aligner number you are wearing now" = "Номер елайнера, який ви носите зараз";
 "How many days have you been wearing current aligner for?" = "Скільки днів ви вже носите поточний елайнер?";
 "Preferred aligners wear hours per day" = "Скільки годин на добу ви повинні носити елайнери";
+"Out of daily wear time target" = "Ліміт часу без елайнерів вичерпано";
 "Start date is:" = "Дата початку вирівнювання:";
 "Do you want to erase all history?" = "Ви дійсно хочете стерти всю історію та створити новий план вирівнювання?";
 "Erase" = "Стерти";

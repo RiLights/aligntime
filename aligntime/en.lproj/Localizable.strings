@@ -62,6 +62,7 @@
 "Aligner number you are wearing now" = "Aligner number you are wearing now";
 "How many days have you been wearing current aligner for?" = "How many days have you been wearing the current aligner for?";
 "Preferred aligners wear hours per day" = "Daily wear time target (hours per day)";
+"Out of daily wear time target" = "Out of daily wear time target";
 "Start date is:" = "Start date is:";
 "Do you want to erase all history?" = "Do you want to erase all history and start a new treatment plan? This action can’t be undone";
 "Erase" = "Erase";

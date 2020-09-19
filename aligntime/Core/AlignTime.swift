@@ -60,6 +60,7 @@ final class AlignTime: ObservableObject {
     let notification_center = UNUserNotificationCenter.current()
     
     var colors = RKColorSettings()
+    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
     func set_default_values() {
         required_aligners_total = 50
@@ -407,6 +408,45 @@ final class AlignTime: ObservableObject {
         }
         let val = self.get_wear_timer_for_date(update_time: selected_date)
         return val
+    }
+    
+    func is_date_present(_ date: Date) -> Bool {
+        if self.calendar.compare(date, to: self.minimumDate, toGranularity: .day) == .orderedAscending || self.calendar.compare(date, to: self.maximumDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
+    
+    func is_date_enabled(date: Date) -> Bool {
+        let clampedDate = self.RKFormatDate(date: date)
+        return self.is_date_present(clampedDate)
+    }
+    
+    func RKFormatDate(date: Date) -> Date {
+        let components = self.calendar.dateComponents(calendarUnitYMD, from: date)
+        
+        return self.calendar.date(from: components)!
+    }
+    
+    func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
+        let refDate = RKFormatDate(date: referenceDate)
+        let clampedDate = RKFormatDate(date: date)
+        return refDate == clampedDate
+    }
+    
+    func isToday(date: Date) -> Bool {
+        return RKFormatAndCompareDate(date: date, referenceDate: Date())
+    }
+    
+    func is_in_wear_time_target(date:Date) -> Bool{
+        if self.is_date_enabled(date: date){
+            if !self.isToday(date: date){
+                if Int(self.total_wear_time_for_date(date:date))<((Int(self.wear_hours)*60*60)-1){
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     // MARK: - Notifications

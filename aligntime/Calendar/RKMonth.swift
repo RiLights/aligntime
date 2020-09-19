@@ -35,8 +35,8 @@ struct RKMonth: View {
                                     RKCell(rkDate: RKDate(
                                             date: column,
                                             core: self.core_data,
-                                            isDisabled: !self.isEnabled(date: column),
-                                            isToday: self.isToday(date: column),
+                                            isDisabled: !self.core_data.is_date_enabled(date: column),
+                                            isToday: self.core_data.isToday(date: column),
                                             isSelected: self.isSpecialDate(date: column)),
                                         cellWidth: self.cellWidth,
                                         rim_color: self.rim_color(date: column),
@@ -73,13 +73,8 @@ struct RKMonth: View {
     }
     
     func rim_color(date: Date)->Color{
-        
-        if self.isEnabled(date: date){
-            if !self.isToday(date: date){
-                if Int(self.core_data.total_wear_time_for_date(date:date))<((Int(self.core_data.wear_hours)*60*60)-1){
-                    return Color.orange
-                }
-            }
+        if !self.core_data.is_in_wear_time_target(date: date){
+                return Color.orange
         }
         
         return Color.clear
@@ -136,24 +131,9 @@ struct RKMonth: View {
         return core_data.calendar.date(byAdding: offset, to: first_month)!
     }
     
-    func RKFormatDate(date: Date) -> Date {
-        let components = core_data.calendar.dateComponents(calendarUnitYMD, from: date)
-        
-        return core_data.calendar.date(from: components)!
-    }
-    
-    func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
-        let refDate = RKFormatDate(date: referenceDate)
-        let clampedDate = RKFormatDate(date: date)
-        return refDate == clampedDate
-    }
-    
     
     // MARK: - Date Property Checkers
     
-    func isToday(date: Date) -> Bool {
-        return RKFormatAndCompareDate(date: date, referenceDate: Date())
-    }
      
     func isSpecialDate(date: Date) -> Bool {
         return     isStartDate(date: date)
@@ -165,7 +145,7 @@ struct RKMonth: View {
         if core_data.selected_date == nil {
             return false
         }
-        return RKFormatAndCompareDate(date: date, referenceDate: core_data.selected_date)
+        return core_data.RKFormatAndCompareDate(date: date, referenceDate: core_data.selected_date)
     }
  
     
@@ -173,26 +153,15 @@ struct RKMonth: View {
         if core_data.startDate == nil {
             return false
         }
-        return RKFormatAndCompareDate(date: date, referenceDate: core_data.startDate)
+        return core_data.RKFormatAndCompareDate(date: date, referenceDate: core_data.startDate)
     }
     
     func isEndDate(date: Date) -> Bool {
         if core_data.endDate == nil {
             return false
         }
-        return RKFormatAndCompareDate(date: date, referenceDate: core_data.endDate)
+        return core_data.RKFormatAndCompareDate(date: date, referenceDate: core_data.endDate)
     }
     
-    func isEnabled(date: Date) -> Bool {
-        let clampedDate = RKFormatDate(date: date)
-        return self.is_present(clampedDate)
-    }
-    
-    func is_present(_ date: Date) -> Bool {
-        if self.core_data.calendar.compare(date, to: self.core_data.minimumDate, toGranularity: .day) == .orderedAscending || self.core_data.calendar.compare(date, to: self.core_data.maximumDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
-    }
 }
 

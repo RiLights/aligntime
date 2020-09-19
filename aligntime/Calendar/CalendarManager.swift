@@ -66,28 +66,40 @@ struct AlignerNoticion: View {
     }
 
     var body: some View {
-        HStack(){
-            if show_aligner_number(date: self.core_data.selected_date){
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 5, height: 5)
-                    .padding(.leading,10)
-                    .foregroundColor(is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
-                Group{
-                    if is_last_day(date: self.core_data.selected_date){
-                        HStack(spacing:2){
-                            Text(NSLocalizedString("Today",comment:""))
-                            Text(NSLocalizedString("congratulations",comment:""))
+        VStack(){
+            if !self.core_data.is_in_wear_time_target(date: self.core_data.selected_date){
+                HStack(){
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.orange, lineWidth: 1)
+                        .frame(width: 10, height: 10)
+                        .padding(.leading,8)
+                    Text(NSLocalizedString("Out of daily wear time target",comment:""))
+                    Spacer()
+                }
+            }
+            HStack(){
+                if show_aligner_number(date: self.core_data.selected_date){
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 5, height: 5)
+                        .padding(.leading,10)
+                        .foregroundColor(is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
+                    Group{
+                        if is_last_day(date: self.core_data.selected_date){
+                            HStack(spacing:2){
+                                Text(NSLocalizedString("Today",comment:""))
+                                Text(NSLocalizedString("congratulations",comment:""))
+                            }
+                        }
+                        else{
+                            Text(NSLocalizedString("Last day for aligner",comment:""))
+                                + Text(" #\(get_aligner(date: self.core_data.selected_date)+1)")
                         }
                     }
-                    else{
-                        Text(NSLocalizedString("Last day for aligner",comment:""))
-                            + Text(" #\(get_aligner(date: self.core_data.selected_date)+1)")
-                    }
                 }
-                .font(.footnote)
+                Spacer()
             }
-            Spacer()
         }
+        .font(.footnote)
         .foregroundColor(.accentColor)
     }
 }
