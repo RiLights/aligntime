@@ -12,6 +12,14 @@ struct StatisticsView: View {
     @EnvironmentObject var core_data: AlignTime
     let calendar = Calendar.current
     
+    func is_in_wear_time_target_for_range(day_index:Int)->Bool{
+        let date_offset = Calendar.current.date(byAdding: .day, value: -day_index, to: Date())
+        if Int(self.core_data.total_wear_time_for_date(date:date_offset!))<((Int(self.core_data.wear_hours)*60*60)-1){
+            return false
+        }
+        return true
+    }
+    
     func get_total_wear_time_for_past(day_index:Int)->CGFloat{
         let date_offset = Calendar.current.date(byAdding: .day, value: -day_index, to: Date())
         let wear_time = self.core_data.total_wear_time_for_date(date:date_offset!)
@@ -68,13 +76,13 @@ struct StatisticsView: View {
                     if self.selected_stat_range == 0 {
                         Text(NSLocalizedString("Average wear time: ",comment:""))
                             + Text("\(get_average_time_for_range(range:7))")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                             + Text(NSLocalizedString("per_hour",comment:""))
                     }
                     else if self.selected_stat_range == 1 {
                         Text(NSLocalizedString("Average wear time: ",comment:""))
                             + Text("\(get_average_time_for_range(range:30))")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                             + Text(NSLocalizedString("per_hour",comment:""))
                     }
                     Spacer()
@@ -102,7 +110,7 @@ struct StatisticsView: View {
                             VStack{
                                 Spacer()
                                 RoundedRectangle(cornerRadius: 3)
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(self.is_in_wear_time_target_for_range(day_index:i) ? Color.accentColor : Color.orange)
                                     .frame(width: 10, height: self.get_total_wear_time_for_past(day_index:i)*6)
                                     .padding(.horizontal,15)
                                     Text("\(self.get_day_for_past(day_index:i))")
@@ -117,7 +125,7 @@ struct StatisticsView: View {
                                     VStack{
                                         Spacer()
                                         RoundedRectangle(cornerRadius: 2)
-                                            .foregroundColor(.accentColor)
+                                            .foregroundColor(self.is_in_wear_time_target_for_range(day_index:i) ? Color.accentColor : Color.orange)
                                             .frame(width: 7, height: self.get_total_wear_time_for_past(day_index:i)*6)
                                             .padding(.horizontal,1)
                                             //Text("\(self.get_day_for_past(day_index:i))")
@@ -152,20 +160,6 @@ struct StatisticsView: View {
                 Divider()
                 Spacer()
             }
-            
-//            GeometryReader{ geometry in
-//                Line(data: self.test_minutes(), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true),showBackground: true)
-//            }
-//            .padding(.leading, 78)
-//            HStack{
-//                Text(NSLocalizedString("Average wear time: ",comment:""))
-//                    + Text("\(test_average())")
-//                        .foregroundColor(.blue)
-//                    + Text(NSLocalizedString("per_hour",comment:""))
-//                Spacer()
-//            }
-//            .padding()
-//            .font(.system(size: 16))
         }
         .navigationBarTitle(Text(NSLocalizedString("Time Statistic",comment:"")), displayMode: .large)
     }

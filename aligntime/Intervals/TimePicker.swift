@@ -12,9 +12,10 @@ import SwiftUI
 struct TimePicker: View {
     @EnvironmentObject var core_data: AlignTime
     @Binding var dismiss:Bool
-    var event_id:Int = 0
+    @Binding var event_id:Int
     
     func get_min_time(_ id:Int)->Date{
+        print("sdf",id)
         if id >= 0{
             return self.core_data.intervals[id].time
         }
@@ -67,6 +68,7 @@ struct TimePicker: View {
                         .foregroundColor(Color.blue)
                     Text("Return")
                         .foregroundColor(Color.white)
+                        .font(.body)
                 }
             }
         }

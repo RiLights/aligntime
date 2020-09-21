@@ -83,13 +83,14 @@ struct IntervalEditList: View {
                            .foregroundColor(Color.blue)
                         Text(NSLocalizedString("Return",comment:""))
                             .foregroundColor(Color.white)
+                            .font(.body)
                     }
                 }
             }
             .sheet(isPresented: self.$showing_picker, onDismiss: {
                 self.core_data.reasign_intervals_date_id()
                 self.core_data.force_event_order()}) {
-                TimePicker(dismiss:self.$showing_picker,event_id:self.day_index).environmentObject(self.core_data)
+                TimePicker(dismiss:self.$showing_picker,event_id:self.$day_index).environmentObject(self.core_data)
             }
         }
     }
