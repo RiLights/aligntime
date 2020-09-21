@@ -15,7 +15,7 @@ struct TimePicker: View {
     @Binding var event_id:Int
     
     func get_min_time(_ id:Int)->Date{
-        print("sdf",id)
+
         if id >= 0{
             return self.core_data.intervals[id].time
         }
