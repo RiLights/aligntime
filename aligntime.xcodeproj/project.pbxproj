@@ -14,6 +14,12 @@
 		6D4B5DBC23BB9F5E00F4B2CA /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB523BB9F5E00F4B2CA /* RKDate.swift */; };
 		6D4B5DBD23BB9F5E00F4B2CA /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B5DB623BB9F5E00F4B2CA /* RKWeekdayHeader.swift */; };
 		9943977A245E42E900AF5918 /* EventTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99439779245E42E900AF5918 /* EventTools.swift */; };
+		9952F388251B30140070A5B0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9952F387251B30140070A5B0 /* WidgetKit.framework */; };
+		9952F38A251B30140070A5B0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9952F389251B30140070A5B0 /* SwiftUI.framework */; };
+		9952F38D251B30140070A5B0 /* AligneTimeWdget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952F38C251B30140070A5B0 /* AligneTimeWdget.swift */; };
+		9952F390251B30170070A5B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9952F38F251B30170070A5B0 /* Assets.xcassets */; };
+		9952F392251B30170070A5B0 /* AligneTimeWdget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9952F38E251B30140070A5B0 /* AligneTimeWdget.intentdefinition */; };
+		9952F393251B30170070A5B0 /* AligneTimeWdget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9952F38E251B30140070A5B0 /* AligneTimeWdget.intentdefinition */; };
 		F005971523FBCE48006605C5 /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971423FBCE48006605C5 /* TreatmentPlan.swift */; };
 		F005971723FBCE74006605C5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971623FBCE74006605C5 /* StatisticsView.swift */; };
 		F005971923FBCE88006605C5 /* OrthodontistAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */; };
@@ -84,6 +90,13 @@
 		99320AED24AC4F3E00538746 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		99320AEE24AC4FE000538746 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		99439779245E42E900AF5918 /* EventTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTools.swift; sourceTree = "<group>"; };
+		9952F385251B30140070A5B0 /* AligneTimeWdgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AligneTimeWdgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9952F387251B30140070A5B0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		9952F389251B30140070A5B0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		9952F38C251B30140070A5B0 /* AligneTimeWdget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AligneTimeWdget.swift; sourceTree = "<group>"; };
+		9952F38E251B30140070A5B0 /* AligneTimeWdget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = AligneTimeWdget.intentdefinition; sourceTree = "<group>"; };
+		9952F38F251B30170070A5B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9952F391251B30170070A5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F005971423FBCE48006605C5 /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		F005971623FBCE74006605C5 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		F005971823FBCE88006605C5 /* OrthodontistAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodontistAppointment.swift; sourceTree = "<group>"; };
@@ -141,6 +154,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9952F382251B30140070A5B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9952F38A251B30140070A5B0 /* SwiftUI.framework in Frameworks */,
+				9952F388251B30140070A5B0 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F05B5C4B238D0A7800BC10C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +180,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9952F386251B30140070A5B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9952F387251B30140070A5B0 /* WidgetKit.framework */,
+				9952F389251B30140070A5B0 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9952F38B251B30140070A5B0 /* AligneTimeWdget */ = {
+			isa = PBXGroup;
+			children = (
+				9952F38C251B30140070A5B0 /* AligneTimeWdget.swift */,
+				9952F38E251B30140070A5B0 /* AligneTimeWdget.intentdefinition */,
+				9952F38F251B30170070A5B0 /* Assets.xcassets */,
+				9952F391251B30170070A5B0 /* Info.plist */,
+			);
+			path = AligneTimeWdget;
+			sourceTree = "<group>";
+		};
 		F0071CC523D6F035000B5280 /* Intervals */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +247,9 @@
 				F0ADCFCB23B5CC6100F7A3E7 /* AlignTime.app */,
 				F0E3881F23E8204400B758C7 /* AlignTimeTests.xctest */,
 				F0E3882023E8204400B758C7 /* AlignTimeTests */,
+				9952F385251B30140070A5B0 /* AligneTimeWdgetExtension.appex */,
+				9952F38B251B30140070A5B0 /* AligneTimeWdget */,
+				9952F386251B30140070A5B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,6 +342,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9952F384251B30140070A5B0 /* AligneTimeWdgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9952F397251B30170070A5B0 /* Build configuration list for PBXNativeTarget "AligneTimeWdgetExtension" */;
+			buildPhases = (
+				9952F381251B30140070A5B0 /* Sources */,
+				9952F382251B30140070A5B0 /* Frameworks */,
+				9952F383251B30140070A5B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AligneTimeWdgetExtension;
+			productName = AligneTimeWdgetExtension;
+			productReference = 9952F385251B30140070A5B0 /* AligneTimeWdgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F05B5C4D238D0A7800BC10C9 /* aligntime */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F05B5C6D238D0A7900BC10C9 /* Build configuration list for PBXNativeTarget "aligntime" */;
@@ -338,10 +400,13 @@
 		F05B5C46238D0A7800BC10C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Ostap;
 				TargetAttributes = {
+					9952F384251B30140070A5B0 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					F05B5C4D238D0A7800BC10C9 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -373,11 +438,20 @@
 			targets = (
 				F05B5C4D238D0A7800BC10C9 /* aligntime */,
 				F0E3881E23E8204400B758C7 /* AlignTimeTests */,
+				9952F384251B30140070A5B0 /* AligneTimeWdgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9952F383251B30140070A5B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9952F390251B30170070A5B0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F05B5C4C238D0A7800BC10C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +472,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9952F381251B30140070A5B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9952F392251B30170070A5B0 /* AligneTimeWdget.intentdefinition in Sources */,
+				9952F38D251B30140070A5B0 /* AligneTimeWdget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F05B5C4A238D0A7800BC10C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,6 +491,7 @@
 				6D4B5DBB23BB9F5E00F4B2CA /* RKMonth.swift in Sources */,
 				F054FF90246E689E00ABDEA9 /* InitSetup02.swift in Sources */,
 				6D4B5DB923BB9F5E00F4B2CA /* RKViewController.swift in Sources */,
+				9952F393251B30170070A5B0 /* AligneTimeWdget.intentdefinition in Sources */,
 				F0ADCFC723B45CF300F7A3E7 /* About.swift in Sources */,
 				F054FF8E246E5FA000ABDEA9 /* WelcomeControllButton.swift in Sources */,
 				F0FEDB4223C8761C00682F85 /* DayInterval.swift in Sources */,
@@ -491,6 +575,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9952F398251B30170070A5B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PD4SW4BCP;
+				INFOPLIST_FILE = AligneTimeWdget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.12;
+				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime.AligneTimeWdget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9952F399251B30170070A5B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PD4SW4BCP;
+				INFOPLIST_FILE = AligneTimeWdget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.12;
+				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime.AligneTimeWdget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F05B5C6B238D0A7900BC10C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -618,7 +750,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -627,7 +759,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -643,7 +775,7 @@
 				CODE_SIGN_ENTITLEMENTS = aligntime/AlignTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"aligntime/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PD4SW4BCP;
 				ENABLE_PREVIEWS = YES;
@@ -652,7 +784,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = project.aligntime;
 				PRODUCT_NAME = AlignTime;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -706,6 +838,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9952F397251B30170070A5B0 /* Build configuration list for PBXNativeTarget "AligneTimeWdgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9952F398251B30170070A5B0 /* Debug */,
+				9952F399251B30170070A5B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F05B5C49238D0A7800BC10C9 /* Build configuration list for PBXProject "aligntime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

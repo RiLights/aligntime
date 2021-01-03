@@ -71,14 +71,29 @@ struct TodayDaysLeft: View {
             .font(.body)
             HStack(alignment: .center, spacing: 4) {
                 if self.core_data.days_left != "0"{
-                    Text(self.core_data.days_left)
-                        .scaledFont(size: 20)
-                        //.bold()
-                        .foregroundColor(Color.blue)
-                    Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
-                        //.font(.system(size: 17))
-                        .foregroundColor(Color.primary)
-                        //.padding(.trailing, 5)
+                    if Locale.preferredLanguages[0].prefix(2) == "zh"{
+                        Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
+                            //.font(.system(size: 17))
+                            .foregroundColor(Color.primary)
+                            //.padding(.trailing, 5)
+                        Text(self.core_data.days_left)
+                            .scaledFont(size: 20)
+                            //.bold()
+                            .foregroundColor(Color.blue)
+                        Text(NSLocalizedString("天",comment:""))
+                            //.font(.system(size: 17))
+                            .foregroundColor(Color.primary)
+                    }
+                    else{
+                        Text(self.core_data.days_left)
+                            .scaledFont(size: 20)
+                            //.bold()
+                            .foregroundColor(Color.blue)
+                        Text(NSLocalizedString("days_left_until_the_end_of_your_treatment",comment:""))
+                            //.font(.system(size: 17))
+                            .foregroundColor(Color.primary)
+                            //.padding(.trailing, 5)
+                    }
                 }
                 else{
                     Text(NSLocalizedString("congratulations",comment:""))

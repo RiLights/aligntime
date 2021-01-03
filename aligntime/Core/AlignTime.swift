@@ -179,7 +179,7 @@ final class AlignTime: ObservableObject {
     func forward_walking_wearing_days(days_past:Int)->(Int,Int){
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
-        var day_index = 0
+        var day_index = 1
         
         while (day_index < days_past){
             if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
@@ -207,7 +207,7 @@ final class AlignTime: ObservableObject {
     func backward_walking_wearing_days(days_past:Int)->(Int,Int){
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
-        var day_index = 0
+        var day_index = 1
 
         while (day_index < days_past){
             if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}

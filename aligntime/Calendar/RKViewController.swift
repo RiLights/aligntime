@@ -60,8 +60,8 @@ struct RKViewController: View {
                             Text(self.getMonthHeader())
                                 .foregroundColor(Color(UIColor.systemBackground))
                                 .font(.system(size:20))
-                                .frame(width: 170)
-                                .padding(.horizontal,10)
+                                .frame(width: 200)
+                                //.padding(.horizontal,10)
                         }
                         Button("  >") {
                             self.core_data.selected_month += 1;

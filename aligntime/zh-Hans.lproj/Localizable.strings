@@ -7,7 +7,7 @@
 "days" = "日";
 "days/4" = "日"; // if your language has plural declension before number 4
 "day" = "日";
-"days_left_until_the_end_of_your_treatment" = "还有___日您的治疗将会结束 OR 距离您治疗结束还有：____天";
+"days_left_until_the_end_of_your_treatment" = "距离您治疗结束还有：";
 "Wear Time Reminder" = "佩戴时间提醒";
 "Remind me to wear aligners again in" ="在_____提醒我佩戴牙齿矫治器";
 "15 Minutes" = "15 分钟";
