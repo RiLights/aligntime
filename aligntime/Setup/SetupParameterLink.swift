@@ -31,6 +31,15 @@ struct StartTreatmentPicker: View {
     @EnvironmentObject var user_data: AlignTime
     let min_date = Calendar.current.date(byAdding: .year, value: -5, to: Date())
     
+    func get_min_date()->Date{
+        if user_data.aligner_number_now == 1{
+            if !user_data.complete {
+                return Calendar.current.date(byAdding: .day, value: -Int(user_data.aligners_wear_days-1), to: Date())!
+            }
+        }
+        return Calendar.current.date(byAdding: .year, value: -5, to: Date())!
+    }
+    
     var body: some View {
         VStack(alignment: .center){
             Text(NSLocalizedString("When did you start your treatment?",comment:""))
@@ -38,7 +47,7 @@ struct StartTreatmentPicker: View {
                 .foregroundColor(.blue)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
-            DatePicker(selection: $user_data.start_treatment, in: min_date!...get_max_start_date(days_wearing:user_data.days_wearing), displayedComponents: .date) {
+            DatePicker(selection: $user_data.start_treatment, in: get_min_date()...get_max_start_date(days_wearing:user_data.days_wearing), displayedComponents: .date) {
                     Text("")
                 }
                 .labelsHidden()

@@ -46,6 +46,7 @@ struct AlignerNoticion: View {
     
     func show_aligner_number(date:Date)->Bool{
         let (aligner,aligner_day) = self.core_data.get_expected_aligner_for_date(date:self.core_data.selected_date)
+        //print("aligner",aligner,aligner_day)
         if self.core_data.is_last_day_for_aligner(aligner:aligner,
                                                   day_count:aligner_day){
             return true
@@ -82,9 +83,9 @@ struct AlignerNoticion: View {
                     RoundedRectangle(cornerRadius: 15)
                         .frame(width: 5, height: 5)
                         .padding(.leading,10)
-                        .foregroundColor(is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
+                        .foregroundColor(self.is_last_day(date: self.core_data.selected_date) ? Color.orange : Color.accentColor)
                     Group{
-                        if is_last_day(date: self.core_data.selected_date){
+                        if self.is_last_day(date: self.core_data.selected_date){
                             HStack(spacing:2){
                                 Text(NSLocalizedString("Today",comment:""))
                                 Text(NSLocalizedString("congratulations",comment:""))

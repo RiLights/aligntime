@@ -10,6 +10,9 @@ import SwiftUI
 
 
 func WelcomeControllButton<Destination: View>(next_button_label: String, destination: Destination) -> some View {
+//    if next_button_label == "Ready"{
+//        if 
+//    }
     return NavigationLink(destination: destination) {
         HStack(alignment: .center,spacing: 0) {
             ZStack(alignment: .center){

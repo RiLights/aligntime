@@ -21,6 +21,16 @@ final class AlignTime: ObservableObject {
             }
         }
     @Published var start_treatment:Date = Date()
+        {
+            didSet{
+                //print("sss",Float(Date().timeIntervalSince(start_treatment).days))
+                if !self.complete {
+                    if self.aligner_number_now == 1 {
+                        self.days_wearing = Float(Date().timeIntervalSince(start_treatment).days)+1
+                    }
+                }
+            }
+        }
     @Published var aligner_number_now:Int = 1
     @Published var days_wearing:Float = 1
     @Published var wear_hours:Float = 20
@@ -73,13 +83,18 @@ final class AlignTime: ObservableObject {
         days_wearing = 1
         wear_hours = 20
         current_state = true
-        complete = false
+        showing_profile = false
         days_left = "1"
         aligner_time_notification = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
         
         aligners = []
         intervals = [DayInterval(0, wear: true, time: Calendar.current.startOfDay(for: Date()))]
         selected_date = Date()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
+            self.complete = false
+        })
+        
     }
     
     func _get_timer_for_date(_ request:Date, wear: Bool) -> TimeInterval{
@@ -152,11 +167,13 @@ final class AlignTime: ObservableObject {
         let tz = TimeZone.current
         var seconds_past = date.timeIntervalSince(start_date)
         if tz.isDaylightSavingTime(for: date) {
-            seconds_past+=3600
+            if seconds_past>0{
+                seconds_past+=3600
+            }
         }
         let days_past = abs(seconds_past).days
         
-        //print("days_past",days_past)
+        //print("seconds_past",seconds_past)
         if days_past==0 {return (Int(self.aligner_number_now),Int(self.days_wearing))}
         
         var expected_aligner = Int(self.aligner_number_now)
@@ -179,7 +196,8 @@ final class AlignTime: ObservableObject {
     func forward_walking_wearing_days(days_past:Int)->(Int,Int){
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
-        var day_index = 1
+        
+        var day_index = 0
         
         while (day_index < days_past){
             if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
@@ -192,7 +210,6 @@ final class AlignTime: ObservableObject {
             
             let aligner_days = self.aligners[expected_aligner-1].days
             if current_aligner_day >= aligner_days{
-                
                 expected_aligner+=1
                 current_aligner_day = 1
             }
@@ -207,8 +224,11 @@ final class AlignTime: ObservableObject {
     func backward_walking_wearing_days(days_past:Int)->(Int,Int){
         var expected_aligner = Int(self.aligner_number_now)
         var current_aligner_day = Int(self.days_wearing)
-        var day_index = 1
-
+        var day_index = 0
+//        if expected_aligner == 1{
+//            day_index = -1
+//        }
+        
         while (day_index < days_past){
             if (self.aligners.count == 0) {return (expected_aligner,current_aligner_day)}
             if expected_aligner == 0 {return (expected_aligner,current_aligner_day)}
@@ -224,6 +244,7 @@ final class AlignTime: ObservableObject {
             }
             day_index+=1
         }
+
         return (expected_aligner,current_aligner_day)
     }
     

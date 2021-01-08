@@ -14,6 +14,7 @@ struct TodayTimer: View {
     @State var off_time = "00:00:00"
     @State var show_reminder = false
     @State var out_hours:Bool = false
+    @State private var width: CGFloat? = nil
     let generator_feedback = UIImpactFeedbackGenerator(style: .light)
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -34,17 +35,22 @@ struct TodayTimer: View {
     var body: some View {
         VStack{
             VStack(alignment: .center) {
-                HStack(alignment: .center, spacing: 4) {
+                HStack(alignment: .center, spacing: 0) {
                     Text(NSLocalizedString("Wear time: ",comment:""))
                         .foregroundColor(Color.primary)
-                        .padding(.bottom, 5)
+                        .frame(width: width, alignment: .leading)
+                        //.lineLimit(1)
+                        .background(CenteringView())
                     Text(wear_time)
                         .foregroundColor(Color.blue)
-                        .padding(.bottom, 5)
+                        
+                        //.padding(.bottom, 5)
                 }
                 HStack(alignment: .center, spacing: 0) {
                     Text(NSLocalizedString("Out time: ",comment:""))
-                        .foregroundColor(Color.primary)
+                        .frame(width: width, alignment: .leading)
+                        //.lineLimit(1)
+                        .background(CenteringView())
                     Text(off_time)
                         .foregroundColor(self.out_hours ? Color.orange : Color.accentColor)
                 }
@@ -66,6 +72,14 @@ struct TodayTimer: View {
                 self.off_time = timer_format(self.core_data.get_off_timer_for_date(update_time: Date()))!
                 self.out_hours = Int(self.core_data.get_off_timer_for_date(update_time: Date())/60)>Int((24-self.core_data.wear_hours)*60)
             }
+            .onPreferenceChange(CenteringColumnPreferenceKey.self) { preferences in
+                        for p in preferences {
+                            let oldWidth = self.width ?? CGFloat.zero
+                            if p.width > oldWidth {
+                                self.width = p.width
+                            }
+                        }
+                    }
             Button(action: {
                 if !self.core_data.current_state{
                     self.start_timer()
@@ -105,6 +119,34 @@ struct TodayTimer: View {
                                   }),
                                   .cancel(),
             ])
+        }
+    }
+}
+
+
+struct CenteringColumnPreferenceKey: PreferenceKey {
+    typealias Value = [CenteringColumnPreference]
+
+    static var defaultValue: [CenteringColumnPreference] = []
+
+    static func reduce(value: inout [CenteringColumnPreference], nextValue: () -> [CenteringColumnPreference]) {
+        value.append(contentsOf: nextValue())
+    }
+}
+
+struct CenteringColumnPreference: Equatable {
+    let width: CGFloat
+}
+
+struct CenteringView: View {
+    var body: some View {
+        GeometryReader { geometry in
+            Rectangle()
+                .fill(Color.clear)
+                .preference(
+                    key: CenteringColumnPreferenceKey.self,
+                    value: [CenteringColumnPreference(width: geometry.frame(in: CoordinateSpace.global).width)]
+                )
         }
     }
 }

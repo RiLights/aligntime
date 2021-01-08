@@ -37,7 +37,7 @@ struct InitSetup01Base: View {
 //            SetupParameterLink(label:"How many aligners do you require?",value:String(Int(self.user_data.required_aligners_total)),destination:SliderSetup(label:"How many aligners do you require?",min:1,max:100,slider_value:self.$user_data.required_aligners_total))
             SetupParameterLink(label:"How many aligners do you require?",value:String(self.user_data.required_aligners_total),destination:PickerValue(label:"How many aligners do you require?",min:1,max:100,slider_value:self.$user_data.required_aligners_total))
             SetupParameterLink(label:"Number of days for each aligners",value:String(Int(self.user_data.aligners_wear_days)),destination:SliderSetup(label:"Number of days for each aligners",min:1,max:31,slider_value:self.$user_data.aligners_wear_days))
-            SetupParameterLink(label:"Preferred aligners wear hours per day",value:String("\(self.user_data.wear_hours)"),destination:SliderSetup(label:"Preferred aligners wear hours per day",min:12,max:24,slider_value:self.$user_data.wear_hours))
+            SetupParameterLink(label:"Preferred aligners wear hours per day",value:String("\(Int(self.user_data.wear_hours))"),destination:SliderSetup(label:"Preferred aligners wear hours per day",min:12,max:24,slider_value:self.$user_data.wear_hours))
         }
     }
 }

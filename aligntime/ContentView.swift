@@ -23,6 +23,7 @@ struct ContentView: View {
             }
             else{
                 Welcome().environmentObject(user_data)
+                //self.user_data.showing_profile.toggle()
             }
         }
     }

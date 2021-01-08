@@ -38,6 +38,12 @@ struct InitSetup02: View {
             if max_date<self.user_data.start_treatment{
                 self.user_data.start_treatment = max_date
             }
+            
+            // something bad
+            self.user_data.update_individual_aligners()
+            if Int(self.user_data.aligners_wear_days) == self.user_data.aligners[0].days{
+                self.user_data.aligners[0].days += 1
+            }
         }
     }
 }

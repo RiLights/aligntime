@@ -825,6 +825,8 @@ class AlignTimeTests: XCTestCase {
         let align_time:AlignTime = AlignTime()
         let start_day_for_aligner = dateFormatter.date(from: "2019-07-22 00:00")
         let current_day = dateFormatter.date(from: "2019-07-10 00:00")
+        
+        //print("dddd",Date())
 
         align_time.required_aligners_total = 4
         align_time.aligners_wear_days = 10

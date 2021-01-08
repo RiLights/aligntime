@@ -23,7 +23,10 @@ struct ProfileManager: View {
                     LinkMenu(icon: "bubble.left", label: NSLocalizedString("Notification",comment: ""), destination: NotificationSettings())
                     LinkMenu(icon: "rectangle.3.offgrid", label: NSLocalizedString("Display",comment: ""), destination: DisplaySettings())
                     Button(action: {
-                        self.reset_alert = true
+                        //self.reset.toggle()
+                        self.reset_alert.toggle()
+                        //self.reset_alert.toggle()
+                        //self.user_data.showing_profile.toggle()
                     }){
                         HStack(spacing:13) {
                             Image(systemName: "doc")
@@ -45,8 +48,13 @@ struct ProfileManager: View {
                             Alert(title: Text(NSLocalizedString("Reset All History",comment:"")), message: Text(NSLocalizedString("""
                 Do you want to erase all history?
                 """,comment:"")), primaryButton: .destructive(Text(NSLocalizedString("Erase",comment:""))) {
+                                    print("das",self.user_data.showing_profile)
+                                    //self.reset_alert.toggle()
                                     self.user_data.set_default_values()
                                     self.user_data.update_min_max_dates()
+                                    //self.user_data.showing_profile.toggle()
+                                    //self.reset.toggle()
+                                    //print("das1",self.user_data.showing_profile)
                                 },secondaryButton: .cancel())
                 }
             }
