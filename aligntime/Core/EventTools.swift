@@ -71,10 +71,15 @@ extension AlignTime {
         let new_event01 = DayInterval(0,wear: !wear_state, time: current_time!.advanced(by: 1))
         let new_event02 = DayInterval(1,wear: wear_state, time: current_time!.advanced(by: 2))
         
+        self.intervals.append(new_event01)
+        
         if self.intervals.last.time != event_time{
             self.intervals.append(new_event02)
         }
-        self.intervals.append(new_event01)
+        
+        if !wear_state{
+            self.intervals.append(new_event02)
+        }
 
         self.reasign_intervals_date_id()
         self.force_event_order()
